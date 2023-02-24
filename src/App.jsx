@@ -3,11 +3,10 @@ import reactLogo from '../public/assets/react.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      <h1>yacine branch</h1>
+      <h1>rami branch</h1>
     </div>
   )
 }
