@@ -7,17 +7,17 @@ export default function Header() {
     return (
         <header>
             <nav>
-                <div className="logo">
+                <Link to='./' className="logo">
                     <img src={logo} alt="" />
-                </div>
+                </Link>
                 <div className="menu">
                     <ul>
-                        <li><Link to=''>Accueil</Link></li>
-                        <li><Link to=''>Trouver un emploi</Link></li>
-                        <li><Link to=''>Blog</Link></li>
-                        <li><Link to=''>Mon Emploi</Link></li>
-                        <li><Link to=''>Career</Link></li>
-                        <li><Link to=''>About</Link></li>
+                        <li><Link to='./'>Accueil</Link></li>
+                        <li><Link to='./trouver un emploi'>Trouver un emploi</Link></li>
+                        <li><Link to='./blog'>Blog</Link></li>
+                        <li><Link to='./mon emploi'>Mon Emploi</Link></li>
+                        <li><Link to='./cariere'>Cariere</Link></li>
+                        <li><Link to='./a propos'>A propos</Link></li>
                     </ul>
                 </div>
                 <div className="log">
