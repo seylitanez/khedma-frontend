@@ -1,13 +1,16 @@
 import { useState } from 'react'
-import reactLogo from '../public/assets/react.svg'
+import { Route ,Routes ,BrowserRouter } from 'react-router-dom';
 import './App.css'
+import PublicRouter from '@p-pages/PublicRouter';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div className="App">
-      <h1>yacine branch</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/*' element={<PublicRouter/>}/>
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }

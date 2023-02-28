@@ -12,9 +12,20 @@ export default defineConfig({
     alias: {
       '@':path.resolve(__dirname,'src'),
       '@components':path.resolve(__dirname,'src/components'),
+      '@p-components':path.resolve(__dirname,'src/components/public'),
       '@pages':path.resolve(__dirname,'src/pages'),
+      '@p-pages':path.resolve(__dirname,'src/pages/public'),
       '@utils':path.resolve(__dirname,'src/utils'),
-      '@utils':path.resolve(__dirname,'src/utils'),
+      '@service':path.resolve(__dirname,'src/service'),
+      '@style': path.resolve(__dirname,'src/styles'),
+      '@image':path.resolve(__dirname,'assets'),
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/styles/color.scss";`,
+      }
     }
-  }
+  },
 })
