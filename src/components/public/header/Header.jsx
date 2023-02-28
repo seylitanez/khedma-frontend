@@ -2,6 +2,7 @@ import React from 'react'
 import logo from "@image/Logo.svg";
 import './header.scss';
 import { Link } from 'react-router-dom';
+import {Buttun} from '@p-components';
 
 export default function Header() {
     return (
@@ -21,8 +22,8 @@ export default function Header() {
                     </ul>
                 </div>
                 <div className="log">
-                    <button id='sing'>Sing in</button>
-                    <button id='log'>Log in</button>
+                    <Buttun id='sing'>Sing in</Buttun>
+                    <Buttun id='log'>Log in</Buttun>
                 </div>
             </nav>
         </header>
