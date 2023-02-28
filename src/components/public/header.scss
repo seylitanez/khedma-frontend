@@ -3,12 +3,11 @@ nav{
     display: flex;
     justify-content: space-between;
     & .logo{
-    height: 60px;
+        height: 60px;
         & img{
             height: 100%;
         }
     }
-    
     & .menu{
         & li{
             display: inline-block;
@@ -18,30 +17,25 @@ nav{
                 color: $color_b;
                 font-size: 16px;
             }
-        }
-        li:hover{
-            & a{
-                color: $color_3;
-                transition: 0.3s;
+            & :hover{
+                & a{
+                    color: $color_3;
+                    transition: 0.3s;
+                }
+                &:before{
+                    transition: 0.9s;
+                    position: absolute;
+                    content: '';
+                    border-radius: 100%;
+                    transition: 0.9s;
+                    height: 10px;
+                    width: 10px;
+                    background-color: $color_3;
+                    top: 50px;
+                    margin-left: auto; 
+                    margin-right: auto;  
+                }
             }
-        }
-        li:hover:before{
-            
-            transition: 0.9s;
-           
-        }
-        li:hover:before{
-            position: absolute;
-            content: '';
-            border-radius: 100%;
-            transition: 0.9s;
-            height: 10px;
-            width: 10px;
-            background-color: $color_3;
-            top: 50px;
-            margin-left: auto; 
-            margin-right: auto;
-            
         }
     }
     & .log{
@@ -50,7 +44,7 @@ nav{
             color: $c2;
             border: 1px solid $color_primary;
             padding: 8px 20px;
-            border-radius: 8px;
+            border-radius: 6px;
             font-size: 16px;
             margin: 0 5px;
             transition: 0.5s;
@@ -61,25 +55,20 @@ nav{
             transition: 0.3s;
             cursor: pointer;
         }
-
-
         & #sing{
             @include btn($color_secondary,$color_primary);
-        }
-        #sing:hover{
-            @include btn($color_primary,$color_secondary);
+            &:hover{
+                @include btn($color_primary,$color_secondary);
+            }
+            &:active{
+                @include btn__active()
+            }
         }
         & #log{
             @include btn($color_primary,$color_secondary);
-        }
-        #log:active{
-            @include btn__active()
-            
-        }
-        #sing:active{
-            @include btn__active()
-            
+            &:active{
+                @include btn__active() 
+            }
         }
     }
-    
 }

@@ -1,8 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import { Routes } from 'react-router-dom'
-import Home from '@p-pages/Home'
-import Layout from '@p-pages/Layout'
+import {Home,Layout }from '@p-pages'
 
 export default function PublicRouter() {
     return (
