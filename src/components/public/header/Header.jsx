@@ -13,7 +13,7 @@ export default function Header() {
                 </Link>
                 <div className="menu">
                     <ul>
-                        <li><Link to='./'>Accueil</Link></li>
+                        <li><Link to='./home'>Accueil</Link></li>
                         <li><Link to='./trouver un emploi'>Trouver un emploi</Link></li>
                         <li><Link to='./blog'>Blog</Link></li>
                         <li><Link to='./mon emploi'>Mon Emploi</Link></li>
