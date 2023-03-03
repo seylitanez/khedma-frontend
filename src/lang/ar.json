@@ -1,0 +1,22 @@
+{
+    "header": {
+        "menu":{
+            "accueil":"ترحيب",
+            "trouver un emploi":"حوس خدمة",
+            "blog":"مدونة",
+            "emploi":"خدمتي",
+            "cariere":"مهنة",
+            "a_propos":"عنا"
+        },
+        "auth":{
+            "connexion":"دخول",
+            "inscription":"تسجيل"
+        }
+    },
+    "home":{
+        "search":{
+            "emploi":"حوس , كلمات مفتاحية , خدمة",
+            "region":"منطقة"
+        }
+    }
+}

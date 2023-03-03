@@ -1,13 +1,21 @@
-import { useState } from 'react'
-import reactLogo from '../public/assets/react.svg'
-import './App.css'
+import { useState,useEffect} from 'react'
+import { Route ,Routes ,BrowserRouter } from 'react-router-dom';
+import './App.scss'
+import PublicRouter from '@p-pages/PublicRouter';
+import {LangueContext} from "@context/langue.jsx";
+import {fr,ar,en} from "@langue";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [langue,setLangue]=useState('fr')
   return (
     <div className="App">
-      <h1>hello world</h1>
+      <LangueContext.Provider value={{lang:langue==='fr'? fr:langue==='ar'?ar:en,setLangue,langue}}>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/*' element={<PublicRouter/>}/>
+          </Routes>
+        </BrowserRouter>
+      </LangueContext.Provider>
     </div>
   )
 }

@@ -1,0 +1,22 @@
+{
+    "header": {
+        "menu":{
+            "accueil":"Accueil",
+            "trouver_emploi":"Trouver un emploi",
+            "blog":"Blog",
+            "emploi":"Mon Emploi",
+            "cariere":"Cariere",
+            "a_propos":"A propos"
+        },
+        "auth":{
+            "connexion":"Se connecter",
+            "inscription":"S'inscrire"
+        }
+    },
+    "home":{
+        "search":{
+            "emploi":"Rechercher , Mot clé , Emploi",
+            "region":"Région"
+        }
+    }
+}

@@ -1,0 +1,9 @@
+.home{
+    background-color: aqua;
+    display: flex;
+    justify-self: flex-start;
+    & .img{
+        position: absolute;
+        right: 10px;
+    }
+}

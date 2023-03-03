@@ -1,0 +1,86 @@
+nav{
+    display: flex;
+    justify-content: space-between;
+    & .logo{
+        height: 60px;
+        & img{
+            height: 100%;
+        }
+    }
+    & .menu{
+        & li{
+            display: inline-block;
+            margin: 0 20px;
+            & a{
+                text-decoration: none;
+                color: $color_b;
+                font-size: 16px;
+            }
+            &:hover{
+                & a{
+                    color: $color_3;
+                    transition: 0.3s;
+                }
+            }
+        }
+    }
+    & .log{
+        @mixin btn ($c1,$c2){
+            background-color: $c1;
+            color: $c2;
+            border: 1px solid $color_primary;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 16px;
+            margin: 0 5px;
+            transition: 0.5s;
+            cursor: pointer;
+        }
+        @mixin btn__active (){
+            opacity: 0.8;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        & #sing{
+            @include btn($color_secondary,$color_primary);
+            &:hover{
+                @include btn($color_primary,$color_secondary);
+            }
+            &:active{
+                @include btn__active()
+            }
+        }
+        & #log{
+            @include btn($color_primary,$color_secondary);
+            &:active{
+                @include btn__active() 
+            }
+        }
+    }
+    & .__langue{
+        background-color: $color_secondary;
+        border-radius: 5px;
+            }
+    
+    & .__langue__menu{
+        & ul {
+            cursor: pointer;
+            & li{
+                display: none;
+                list-style-type: none;
+                cursor: pointer;
+            }
+            
+            &:hover{
+                box-shadow: 5px 0 5px $color_b;
+                border-radius: 3px;
+                & li{
+                    display: block;
+                    background-color: $color_secondary;
+                    }
+            }
+
+        }
+
+    }
+}
