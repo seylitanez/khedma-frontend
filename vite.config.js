@@ -20,7 +20,7 @@ export default defineConfig({
       '@style': path.resolve(__dirname,'src/styles'),
       '@langue': path.resolve(__dirname,'src/lang'),
       '@context': path.resolve(__dirname,'src/context'),
-      '@image':path.resolve(__dirname,'assets'),
+      '@image':path.resolve(__dirname,'src/assets'),
     },
   },
   css: {

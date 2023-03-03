@@ -2,7 +2,7 @@
     "header": {
         "menu":{
             "accueil":"Welcome",
-            "trouver un emploi":"Look for Job",
+            "trouver_emploi":"Look for Job",
             "blog":"Blog",
             "emploi":"My Job",
             "cariere":"Career",

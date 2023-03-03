@@ -60,8 +60,7 @@ nav{
     & .__langue{
         background-color: $color_secondary;
         border-radius: 5px;
-            }
-    
+    }
     & .__langue__menu{
         & ul {
             cursor: pointer;
@@ -70,17 +69,14 @@ nav{
                 list-style-type: none;
                 cursor: pointer;
             }
-            
             &:hover{
                 box-shadow: 5px 0 5px $color_b;
                 border-radius: 3px;
                 & li{
                     display: block;
                     background-color: $color_secondary;
-                    }
+                }
             }
-
         }
-
     }
 }
