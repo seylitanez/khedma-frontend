@@ -18,6 +18,8 @@ export default defineConfig({
       '@utils':path.resolve(__dirname,'src/utils'),
       '@service':path.resolve(__dirname,'src/service'),
       '@style': path.resolve(__dirname,'src/styles'),
+      '@langue': path.resolve(__dirname,'src/lang'),
+      '@context': path.resolve(__dirname,'src/context'),
       '@image':path.resolve(__dirname,'assets'),
     },
   },
