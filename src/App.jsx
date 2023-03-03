@@ -9,7 +9,7 @@ function App() {
   const [langue,setLangue]=useState('fr')
   return (
     <div className="App">
-      <LangueContext.Provider value={{lang:langue==='fr'? fr:langue==='ar'?ar:en,setLangue}}>
+      <LangueContext.Provider value={{lang:langue==='fr'? fr:langue==='ar'?ar:en,setLangue,langue}}>
         <BrowserRouter>
           <Routes>
             <Route path='/*' element={<PublicRouter/>}/>

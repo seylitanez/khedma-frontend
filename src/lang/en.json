@@ -1,12 +1,12 @@
 {
     "header": {
         "menu":{
-            "accueil":"Accueil",
-            "trouver un emploi":"Trouver un emploi",
+            "accueil":"Welcome",
+            "trouver un emploi":"Look for Job",
             "blog":"Blog",
-            "emploi":"Mon Emploi",
-            "cariere":"Cariere",
-            "a_propos":"A propos"
+            "emploi":"My Job",
+            "cariere":"Career",
+            "a_propos":"About"
         },
         "auth":{
             "connexion":"Sing in",
@@ -15,7 +15,7 @@
     },
     "home":{
         "search":{
-            "emploi":"Rechercher , Mot clé , Emploi",
+            "emploi":"Search , key word , Job",
             "region":"Région"
         }
     }

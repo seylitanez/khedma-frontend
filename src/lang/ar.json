@@ -1,22 +1,22 @@
 {
     "header": {
         "menu":{
-            "accueil":"Accueil",
-            "trouver un emploi":"Trouver un emploi",
-            "blog":"Blog",
-            "emploi":"Mon Emploi",
-            "cariere":"Cariere",
-            "a_propos":"A propos"
+            "accueil":"ترحيب",
+            "trouver un emploi":"حوس خدمة",
+            "blog":"مدونة",
+            "emploi":"خدمتي",
+            "cariere":"مهنة",
+            "a_propos":"عنا"
         },
         "auth":{
-            "connexion":"Sing in",
-            "inscription":"Log in"
+            "connexion":"دخول",
+            "inscription":"تسجيل"
         }
     },
     "home":{
         "search":{
-            "emploi":"Rechercher , Mot clé , Emploi",
-            "region":"Région"
+            "emploi":"حوس , كلمات مفتاحية , خدمة",
+            "region":"منطقة"
         }
     }
 }
