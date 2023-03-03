@@ -24,6 +24,9 @@ nav{
             }
         }
     }
+    & .menu__display-none{
+        display: none;
+    }
     & .log{
         @mixin btn ($c1,$c2){
             background-color: $c1;
@@ -41,6 +44,12 @@ nav{
             transition: 0.3s;
             cursor: pointer;
         }
+
+        & .login__display-none{
+            display: none;
+            background-color: red;
+        }
+    
         & #sing{
             @include btn($color_secondary,$color_primary);
             &:hover{
@@ -56,25 +65,62 @@ nav{
                 @include btn__active() 
             }
         }
+        
+    }
+    & .burguer__display-none{
+        display: none;
+    }
+    & .burguer{
+        height: 30px;
+        width: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 5px;
+        cursor: pointer;
+        & div{
+            height: 3px;
+            border-radius: 6px;
+            width: 100%;
+            background-color: black;
+        }
+        & .top{
+        }
+        & .middle{
+            transform: translateY(-5px);
+        }
+        & .bottom{
+            transform: translateY(-10px);
+        }
     }
     & .__langue{
         background-color: $color_secondary;
         border-radius: 5px;
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        top: 10px;
+        z-index: 1;
     }
     & .__langue__menu{
         & ul {
             cursor: pointer;
+            
             & li{
+                margin-left: auto;
+                margin-right: auto;
                 display: none;
                 list-style-type: none;
                 cursor: pointer;
             }
             &:hover{
-                box-shadow: 5px 0 5px $color_b;
+                box-shadow: 0 5px 5px 5px rgba(0, 0, 0, 0.107);
                 border-radius: 3px;
                 & li{
                     display: block;
                     background-color: $color_secondary;
+                    &:hover{
+                        opacity: 0.8;
+                    }
                 }
             }
         }

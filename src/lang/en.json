@@ -16,7 +16,11 @@
     "home":{
         "search":{
             "emploi":"Search , key word , Job",
-            "region":"Région"
+            "region":"Région",
+            "chercher":"Search",
+            "filtrer":"filter",
+            "type_travail":"kind of job",
+            "salaire":"salary"
         }
     }
 }

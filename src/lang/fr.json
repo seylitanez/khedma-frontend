@@ -16,7 +16,11 @@
     "home":{
         "search":{
             "emploi":"Rechercher , Mot clé , Emploi",
-            "region":"Région"
+            "region":"Région",
+            "chercher":"chercher",
+            "filtrer":"filtrer",
+            "type_travail":"type de travail",
+            "salaire":"salaire"
         }
     }
 }

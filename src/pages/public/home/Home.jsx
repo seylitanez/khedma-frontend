@@ -5,13 +5,12 @@ import {Search} from '@p-pages';
 import { useContext } from 'react';
 
 export default function Home() {
-  
   return (
     <div className='home'>
       <div className="img">
-        <Search/>
         <img src={imgh} alt="" />
       </div>
+        <Search/>
     </div>
   )
 }

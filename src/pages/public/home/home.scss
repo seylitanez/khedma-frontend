@@ -1,9 +1,12 @@
 .home{
-    background-color: aqua;
+    
     display: flex;
-    justify-self: flex-start;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+
     & .img{
-        position: absolute;
         right: 10px;
     }
 }

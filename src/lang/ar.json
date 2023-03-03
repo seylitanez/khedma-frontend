@@ -16,7 +16,11 @@
     "home":{
         "search":{
             "emploi":"حوس , كلمات مفتاحية , خدمة",
-            "region":"منطقة"
+            "region":"منطقة",
+            "chercher":"حوس",
+            "filtrer":"تصفية",
+            "type_travail":"نوع العمل",
+            "salaire":"الراتب"
         }
     }
 }

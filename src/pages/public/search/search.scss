@@ -1,7 +1,89 @@
 .search{
+      height: 55px;
+     overflow: hidden;
+     transition: 0.5s;
+    @mixin btn($couleur,$couleur_arrireplan){
+        background-color: $couleur_arrireplan;
+        color: $couleur;
+        font-weight: bold;
+        border-radius: 3px;
+        border: none;
+        cursor: pointer;
+        margin-left: 5px;
+        height: 40px;
 
-    background-color: red;
-    & .search__emploi{
+    }
+    @mixin filter_element($width){
+        background-color: $color_secondary;
+        border: 2px solid $color_b;
+        border-radius: 4px;
+        margin-top: 5px;
+        color: black;
+        font-size: small;
+        font-weight: bold;
+        height: 30px;
+        width: $width;
+        padding-left: auto;
+        padding-right:auto ;
+    }
 
+    & .searchall{
+        display: flex;
+        padding: 5px;
+        align-items: center;
+        height:40px;
+        max-width: fit-content;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+        border-radius: 2px;
+
+        & .searchall__search-emploi{
+
+            & #search-icone{
+                transform: translateY(25%);
+                color: $color_b;
+            }
+            
+            & .search__emploi-inp{
+                height: 40px;
+                border: none;
+                border-right: 2px solid $color_b;
+                font-size: medium;
+                &:focus{
+                    outline: none;
+                }
+            }
+            
+            
+        }
+        & .searchall__search-region{
+            & #location-icone{
+                transform: translateY(25%);
+                color: aqua;
+            }
+            
+            & .search__region-inp{
+                border: none;
+                height: 40px;
+                font-size: medium;
+                &:focus{
+                    outline: none;
+                }
+            }
+            
+            
+        }
+        
+        & #chercher{
+            @include btn($color_secondary,$color_primary)
+        }
+        & #filtrer{
+            @include btn($color_secondary,$color_primary)
+        }
+    }
+    & #type_de_travail{
+        @include filter_element(120px)
+    }
+    & #salaire{
+        @include filter_element(120px)
     }
 }
