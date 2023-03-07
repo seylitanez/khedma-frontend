@@ -22,5 +22,15 @@
             "type_travail":"kind of job",
             "salaire":"salary"
         }
+    },
+    "auth":{
+        "login":{
+            "h2":"Connecter",
+            "email":"email",
+            "password":"password"
+        },
+        "signin":{
+
+        }
     }
 }

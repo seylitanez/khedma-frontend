@@ -10,7 +10,7 @@ nav{
     & .menu{
         & li{
             display: inline-block;
-            margin: 0 20px;
+            margin: 15px 20px;
             & a{
                 text-decoration: none;
                 color: $color_b;
@@ -24,9 +24,6 @@ nav{
             }
         }
     }
-    & .menu__display-none{
-        display: none;
-    }
     & .log{
         @mixin btn ($c1,$c2){
             background-color: $c1;
@@ -35,7 +32,7 @@ nav{
             padding: 8px 20px;
             border-radius: 6px;
             font-size: 16px;
-            margin: 0 5px;
+            margin: 10px 5px;
             transition: 0.5s;
             cursor: pointer;
         }
@@ -44,12 +41,6 @@ nav{
             transition: 0.3s;
             cursor: pointer;
         }
-
-        & .login__display-none{
-            display: none;
-            background-color: red;
-        }
-    
         & #sing{
             @include btn($color_secondary,$color_primary);
             &:hover{
@@ -65,32 +56,9 @@ nav{
                 @include btn__active() 
             }
         }
-        
-    }
-    & .burguer__display-none{
-        display: none;
     }
     & .burguer{
-        height: 30px;
-        width: 30px;
-        display: flex;
-        flex-wrap: wrap;
-        margin-top: 5px;
-        cursor: pointer;
-        & div{
-            height: 3px;
-            border-radius: 6px;
-            width: 100%;
-            background-color: black;
-        }
-        & .top{
-        }
-        & .middle{
-            transform: translateY(-5px);
-        }
-        & .bottom{
-            transform: translateY(-10px);
-        }
+        display: none;
     }
     & .__langue{
         background-color: $color_secondary;
@@ -122,6 +90,41 @@ nav{
                         opacity: 0.8;
                     }
                 }
+            }
+        }
+    }
+}
+@media screen and (max-width: 1130px) {
+    nav{
+        & .menu{
+            display: none;
+            // &.active{
+
+            // }
+        }
+        & .log{
+            display: none;
+        }
+        & .burguer{
+            height: 30px;
+            width: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 5px;
+            cursor: pointer;
+            & div{
+                height: 3px;
+                border-radius: 6px;
+                width: 100%;
+                background-color: black;
+            }
+            & .top{
+            }
+            & .middle{
+                transform: translateY(-5px);
+            }
+            & .bottom{
+                transform: translateY(-10px);
             }
         }
     }

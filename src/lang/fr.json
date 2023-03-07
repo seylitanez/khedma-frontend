@@ -22,5 +22,15 @@
             "type_travail":"type de travail",
             "salaire":"salaire"
         }
+    },
+    "auth":{
+        "login":{
+            "h2":"Connecter",
+            "email":"email",
+            "password":"mot de passe"
+        },
+        "signin":{
+
+        }
     }
 }

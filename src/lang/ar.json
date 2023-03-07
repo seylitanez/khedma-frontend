@@ -22,5 +22,15 @@
             "type_travail":"نوع العمل",
             "salaire":"الراتب"
         }
+    },
+    "auth":{
+        "login":{
+            "h2":"Connecter",
+            "email":"email",
+            "password":"mot de passe"
+        },
+        "signin":{
+
+        }
     }
 }

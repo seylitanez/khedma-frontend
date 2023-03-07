@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import { Routes } from 'react-router-dom'
-import {Home,Layout }from '@p-pages'
+import {Home,Layout,Auth}from '@p-pages'
 
 export default function PublicRouter() {
     return (
@@ -11,6 +11,7 @@ export default function PublicRouter() {
                     <Route index element={<Home/>}/>
                     <Route path='/home' element={<Home/>}/>
                 </Route>
+                <Route path='/auth' element={<Auth/>}/>
             </Routes>
         </div>
     )

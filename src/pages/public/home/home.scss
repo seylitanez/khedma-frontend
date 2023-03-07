@@ -1,11 +1,10 @@
 .home{
-    
+    background-image: url(@image/bacgraound_home.svg);
     display: flex;
     flex-wrap: wrap;
     flex-direction: row-reverse;
     justify-content: center;
     align-items: center;
-
     & .img{
         right: 10px;
     }
