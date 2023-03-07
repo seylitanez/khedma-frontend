@@ -25,9 +25,9 @@
     },
     "auth":{
         "login":{
-            "h2":"Connecter",
-            "email":"email",
-            "password":"mot de passe"
+            "h2":"يتصل",
+            "email":"بريد إلكتروني",
+            "password":"كلمة السر"
         },
         "signin":{
 
