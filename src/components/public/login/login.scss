@@ -35,6 +35,7 @@ $color_8b:#8B8B8B;
         }
         &:focus-within label,&.anim label{
             top: 0px;
+            color: $color_3;
             transform: translateY(-100%);
         }
     }
