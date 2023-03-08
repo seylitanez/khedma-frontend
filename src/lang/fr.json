@@ -21,7 +21,9 @@
             "filtrer":"filtrer",
             "type_travail":"type de travail",
             "salaire":"salaire"
-        }
+        },
+        "h1":"m3a khedma makanch la chomage la degoutage",
+        "h2":"inscrivez vous et consulter pour avoir les meilleurs offres d'emploi grace a khedma"
     },
     "auth":{
         "login":{
@@ -30,7 +32,18 @@
             "password":"mot de passe"
         },
         "signin":{
-
+            "h2":"inscription",
+            "nom":"nom",
+            "prenom":"prenom",
+            "username":"nom d'utilisateur",
+            "email":"email",
+            "password":"mot de passe",
+            "rpassword":"confirmer le mot de passe",
+            "gender":{
+                "male":"HOMME",
+                "femme":"FEMME"
+            },
+            "next":"suivant"
         }
     }
 }

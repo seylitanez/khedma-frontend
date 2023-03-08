@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import { Routes } from 'react-router-dom'
-import {Home,Layout,Auth}from '@p-pages'
+import {Home,Layout,Auth,Inscription}from '@p-pages'
 
 export default function PublicRouter() {
     return (
@@ -12,6 +12,7 @@ export default function PublicRouter() {
                     <Route path='/home' element={<Home/>}/>
                 </Route>
                 <Route path='/auth' element={<Auth/>}/>
+                <Route path='/inscription' element={<Inscription/>}/>
             </Routes>
         </div>
     )

@@ -21,7 +21,9 @@
             "filtrer":"تصفية",
             "type_travail":"نوع العمل",
             "salaire":"الراتب"
-        }
+        },
+        "h1":"m3a khedma makanch la chomage la degoutage",
+        "h2":"Trouver un emploi facilement"
     },
     "auth":{
         "login":{
@@ -30,7 +32,18 @@
             "password":"كلمة السر"
         },
         "signin":{
-
+            "h2":"تسجيل",
+            "nom":"اللقب",
+            "prenom":"الاسم",
+            "username":"إسم المستخدم",
+            "email":"بريد إلكتروني",
+            "password":"كلمة السر",
+            "rpassword":"أكد كلمة المرور",
+            "gender":{
+                "male":"ذكر",
+                "femme":"المرأة"
+            },
+            "next":"التالي"
         }
     }
 }

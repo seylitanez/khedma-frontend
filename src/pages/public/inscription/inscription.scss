@@ -1,5 +1,5 @@
 @import "@style/mixinauth.scss";
-.auth{
+.inscri{
     @include home();
     & .auth__container{
         @include cont();

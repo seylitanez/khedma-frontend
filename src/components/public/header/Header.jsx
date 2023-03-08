@@ -44,7 +44,7 @@ export default function Header() {
                 </div>
                 <div className="log">
                     <Buttun id="sing" onClick={e=>nav("/auth")}>{connexion}</Buttun>
-                    <Buttun id='log'>{inscription}</Buttun>
+                    <Buttun id='log' onClick={e=>nav("/inscription")}>{inscription}</Buttun>
                 </div>  
                 <div className="burguer">
                     <div className='top'></div><br />

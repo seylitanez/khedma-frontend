@@ -21,7 +21,9 @@
             "filtrer":"filter",
             "type_travail":"kind of job",
             "salaire":"salary"
-        }
+        },
+        "h1":"m3a khedma makanch la chomage la degoutage",
+        "h2":"Trouver un emploi facilement"
     },
     "auth":{
         "login":{
@@ -30,7 +32,18 @@
             "password":"password"
         },
         "signin":{
-
+            "h2":"register",
+            "nom":"lastname",
+            "prenom":"firstname",
+            "username":"username",
+            "email":"email",
+            "password":"password",
+            "rpassword":"Confirm password",
+            "gender":{
+                "male":"MALE",
+                "femme":"WOMEN"
+            },
+            "next":"next"
         }
     }
 }

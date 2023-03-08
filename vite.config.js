@@ -21,7 +21,6 @@ export default defineConfig({
       '@langue': path.resolve(__dirname,'src/lang'),
       '@context': path.resolve(__dirname,'src/context'),
       '@image':path.resolve(__dirname,'src/assets'),
-      
     },
   },
   css: {
