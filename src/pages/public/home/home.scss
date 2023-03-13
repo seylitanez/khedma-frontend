@@ -6,9 +6,11 @@
     justify-content: center;
     align-items: center;
     & .img{
+        margin: {top: 60px};
         right: 10px;
     }
     & .left{
+        margin: {top: 60px};
         width: 580px;
         & h1{
             color: $color_primary;
