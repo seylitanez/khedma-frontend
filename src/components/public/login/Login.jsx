@@ -4,6 +4,7 @@ import {LangueContext} from "@context/langue";
 import { MdAccountCircle } from "react-icons/md";
 import "./login.scss"
 import {Input,Buttun} from '@p-components';
+import { Link } from 'react-router-dom';
 
 function useAnim(className) {
     const [anim,setAnim]=useState(className);
@@ -32,10 +33,12 @@ export default function Login() {
             <div className={"login__group "+anims}>
                 <Input type="password" id='mdp' onInput={e=>setActives(e)}>{password}</Input>
             </div>
+            <Link className='nv__compte'>nouveau compte?</Link>
             <div className="login__mdp">
                 <Buttun id="log">{connexion}</Buttun>
-                <Buttun id="sing">{inscription}</Buttun>
+                {/* <Buttun id="sing">{inscription}</Buttun> */}
             </div>
+            
         </form>
     )
 }
