@@ -6,7 +6,14 @@ export default function JobSearch() {
     <div className='jobSearch'>
 
         <h1>hello world</h1>
+        <div className="result">
         <Annonce/>
+        <Annonce/>
+        <Annonce/>
+        <Annonce/>
+        <Annonce/>
+        <Annonce/>
+        </div>
 
     </div>
   )

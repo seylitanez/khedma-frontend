@@ -1,4 +1,9 @@
 
 .jobSearch{
     margin-top: 60px;
+    & .result{
+        display: flex;
+        flex-wrap: wrap;
+        width: 80%;
+    }
 }
