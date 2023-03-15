@@ -4,6 +4,7 @@ import {LangueContext} from "@context/langue";
 import { MdAccountCircle } from "react-icons/md";
 import "./login.scss"
 import {Input,Buttun} from '@p-components';
+import { useNavigate } from 'react-router-dom';
 
 function useAnim(className) {
     const [anim,setAnim]=useState(className);
@@ -22,19 +23,34 @@ export default function Login() {
     const {connexion,inscription}=lang.header.auth;
     const [anim,setActive]=useAnim('');
     const [anims,setActives]=useAnim('');
+    //conection
+    const [user,setUser]=useState({})
+    const onChange = (e) => {
+        setUser({ ...user, [e.target.name]: e.target.value })
+    }
+    const navigate = useNavigate()
+    const sub = (e) => {
+        e.preventDefault()
+        accountService.login(user)
+            .then(res => {
+                accountService.saveToken(res.data.token)
+                navigate('/jobSearch')
+            })
+            .catch(err => console.log(err))
+    }
     return (
-        <form className="form__login">
+        <form className="form__login" onSubmit={sub}>
             {/* <h2>{h2}</h2> */}
             <MdAccountCircle size={100} className='icone_account'/>
             <div className={"login__group "+anim}>
-                <Input type="text" id="email" onInput={e=>setActive(e)}>{email}</Input>
+                <Input type="text" id="email" name='nomUtilisateur' value={user.nomUtilisateur} onChange={onChange} onInput={e=>setActive(e)}>{email}</Input>
             </div>
             <div className={"login__group "+anims}>
-                <Input type="password" id='mdp' onInput={e=>setActives(e)}>{password}</Input>
+                <Input type="password" id='mdp' name='motDePasse' value={user.motDePasse} onChange={onChange} onInput={e=>setActives(e)}>{password}</Input>
             </div>
             <div className="login__mdp">
                 <Buttun id="log">{connexion}</Buttun>
-                <Buttun id="sing">{inscription}</Buttun>
+                {/* <Buttun id="sing">{inscription}</Buttun> */}
             </div>
         </form>
     )
