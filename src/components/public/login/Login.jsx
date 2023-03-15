@@ -4,7 +4,7 @@ import {LangueContext} from "@context/langue";
 import { MdAccountCircle } from "react-icons/md";
 import "./login.scss"
 import {Input,Buttun} from '@p-components';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link} from 'react-router-dom';
 
 function useAnim(className) {
     const [anim,setAnim]=useState(className);
@@ -52,9 +52,7 @@ export default function Login() {
             <div className="login__mdp">
                 <Buttun id="log">{connexion}</Buttun>
                 {/* <Buttun id="sing">{inscription}</Buttun> */}
-                {/* <Buttun id="sing">{inscription}</Buttun> */}
-            </div>
-            
+            </div> 
         </form>
     )
 }

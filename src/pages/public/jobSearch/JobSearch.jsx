@@ -2,12 +2,22 @@ import React from 'react'
 import {Annonce,SideBar} from '@p-components'
 import './jobSearch.scss'
 import axios from 'axios'
+import { useState,useEffect,useRef } from 'react'
+import { annonceService } from "@service";
+
 export default function JobSearch() {
-
-    const tab=[<Annonce/>,<Annonce/>,<Annonce/>,<Annonce/>,<Annonce/>,<Annonce/>]
-
-    axios.get("http://localhost:27017/api/v1/annonces").then(res=>JSON.stringify(res)).then(data=>console.log(data))
-
+  const [annonces, setAnnonces]=useState([])
+  const flg = useRef(false);
+  useEffect(()=>{
+    if (!flg.current) {
+      annonceService.getAnnonce()
+      .then(res=>setAnnonces(res.data))
+      .catch(err=>console.log(err))
+    }
+    return ()=>{
+      flg.current=true;
+    }
+  })
   return (
   <div className='jobSearch'>
       <div className="search">
@@ -15,7 +25,9 @@ export default function JobSearch() {
       </div>
       <SideBar/>
       <div className="list">
-        {tab.map((e)=>e)}
+        {annonces.map((annonce,key)=>{
+          <Annonce annonce={annonce} key={key}/>
+        })}
       </div>
     </div>
   )
