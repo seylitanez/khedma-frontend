@@ -4,10 +4,13 @@ import './jobSearch.scss'
 export default function JobSearch() {
   return (
     <div className='jobSearch'>
+      
+      <div className="search">
 
-        <h1>hello world</h1>
+      </div>
+      <div className="list">
         <Annonce/>
-
+      </div>
     </div>
   )
 }
