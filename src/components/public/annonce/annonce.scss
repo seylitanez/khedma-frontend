@@ -1,13 +1,15 @@
 .annonce{
-    background-color: red;
     display: flex;
+    border: solid 1px black;
+    border-radius: 3px;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     max-width: 300px;
+    color: $color_b;
+
 
     & .annonce-top{
-        background-color: white;
         width: 80%;
         display: flex;
         align-items: center;
@@ -23,18 +25,23 @@
         
         
         width: 80%;
-        background-color: white;
-        border: 1px solid black;
+        border: 1px solid $color_b;
         border-radius: 2px;
+        background-color: $color_b;
     }
     & .description{
-        background-color: wheat;
         width: 80%;
+
         
     }
     & .btn__postuler{
-        background-color: green;
+        background-color: $color_secondary;
         width: 40%;
         height: 30px;
+        font-weight: 900;
+        color: $color_b;
+        border-radius: 3px;
+        border: 1px solid $color_b;
+
     }
 }

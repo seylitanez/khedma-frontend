@@ -12,6 +12,7 @@ export default function Annonce() {
             </div>
           <div className="ville"><h5>ville,region</h5></div>
           <hr className='divider' />
+          <br />
           <div className="description"><h4>recherche d’un cuisinier experimenté avec au moins 1 ans d’eperience </h4></div>
           <br />
           <Buttun className='btn__postuler'>
