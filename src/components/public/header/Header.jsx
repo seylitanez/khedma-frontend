@@ -21,7 +21,7 @@ export default function Header() {
                 <div className="menu">
                     <ul>
                         <li><Link to='./home'>{accueil}</Link></li>
-                        <li><Link to='./trouver un emploi'>{trouver_emploi}</Link></li>
+                        <li><Link to='./jobSearch'>{trouver_emploi}</Link></li>
                         <li><Link to='./blog'>{blog}</Link></li>
                         <li><Link to='./mon emploi'>{emploi}</Link></li>
                         <li><Link to='./cariere'>{cariere}</Link></li>
