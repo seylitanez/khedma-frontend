@@ -3,6 +3,8 @@ nav{
     display: flex;
     justify-content: space-between;
     width: 100vw;
+    top: 0px;
+    background-color: $color_secondary;
     & .logo{
         height: 60px;
         & img{
