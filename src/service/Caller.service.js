@@ -1,4 +1,5 @@
 import axios from "axios";
+import { accountService } from "./Account.service";
 
 const Axios = axios.create({ baseURL:"http://localhost:9630"})
 Axios.interceptors.request.use(request => {
@@ -7,12 +8,12 @@ Axios.interceptors.request.use(request => {
     }
     return request;
 })
-Axios.interceptors.response.use(response => {
-    return response
-}, error => {
-    if (error.response.status === 401) {
-        accountService.logout()
-        window.location = '/auth/login'
-    } else return Promise.reject(error)
-})
+// Axios.interceptors.response.use(response => {
+//     return response
+// }, error => {
+//     if (error.response.status === 401) {
+//         accountService.logout()
+//         window.location = '/auth/login'
+//     } else return Promise.reject(error)
+// })
 export default Axios;

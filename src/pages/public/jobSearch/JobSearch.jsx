@@ -17,7 +17,7 @@ export default function JobSearch() {
     return ()=>{
       flg.current=true;
     }
-  })
+  },[])
   return (
   <div className='jobSearch'>
       <div className="search">
