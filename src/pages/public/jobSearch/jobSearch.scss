@@ -1,3 +1,17 @@
 .jobSearch{
     margin-top: 60px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 100px 1fr;
+    grid-template-areas: "search search search search search" "sideBar lists lists lists lists" "sideBar lists lists lists lists";
+    height: 100%;
+    grid-gap: 0.2rem;
+    & .search{
+        background-color: aqua;
+        grid-area: search;
+    }
+    & .list{
+        grid-area: lists;
+        background-color: red;
+    }
 }

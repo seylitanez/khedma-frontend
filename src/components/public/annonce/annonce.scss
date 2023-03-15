@@ -7,8 +7,6 @@
     justify-content: space-between;
     max-width: 300px;
     color: $color_b;
-
-
     & .annonce-top{
         width: 80%;
         display: flex;
@@ -16,14 +14,10 @@
         justify-content: space-between;
     }
     & .ville{
-
         left: 0px;
         width: 70%;
     }
-
     & .divider{
-        
-        
         width: 80%;
         border: 1px solid $color_b;
         border-radius: 2px;
@@ -31,8 +25,6 @@
     }
     & .description{
         width: 80%;
-
-        
     }
     & .btn__postuler{
         background-color: $color_secondary;
@@ -42,6 +34,5 @@
         color: $color_b;
         border-radius: 3px;
         border: 1px solid $color_b;
-
     }
 }
