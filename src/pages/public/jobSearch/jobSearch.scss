@@ -1,17 +1,22 @@
 .jobSearch{
+    background-color: #eee;
     margin-top: 60px;
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 100px 1fr;
-    grid-template-areas: "search search search search search" "sideBar lists lists lists lists" "sideBar lists lists lists lists";
-    height: 100%;
+    grid-template-areas: "sideBar search search search search" "sideBar lists lists lists lists" "sideBar lists lists lists lists";
     grid-gap: 0.2rem;
     & .search{
-        background-color: aqua;
+        width: 100%;
+        height: 100px;
+        background-color: blueviolet;
+        z-index: 2;
         grid-area: search;
     }
     & .list{
         grid-area: lists;
-        background-color: red;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }

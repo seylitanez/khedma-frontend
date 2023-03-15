@@ -10,6 +10,11 @@ export default function JobSearch() {
       <SideBar/>
       <div className="list">
         <Annonce/>
+        <Annonce/>
+        <Annonce/>
+        <Annonce/>
+        <Annonce/>
+        <Annonce/>
       </div>
     </div>
   )

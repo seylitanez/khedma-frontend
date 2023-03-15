@@ -4,13 +4,34 @@
             "accueil":"Accueil",
             "trouver_emploi":"Trouver un emploi",
             "blog":"Blog",
-            "emploi":"Mon Emploi",
-            "cariere":"Cariere",
             "a_propos":"A propos"
         },
         "auth":{
             "connexion":"Se connecter",
             "inscription":"S'inscrire"
+        }
+    },
+    "footer":{
+        "btn":"subscribe",
+        "menu":{
+            "lien":"LIENS",
+            "accueil":"Accueil",
+            "trouver_emploi":"Trouver un emploi",
+            "blog":"Blog",
+            "a_propos":"A propos"
+        },
+        "contact":{
+            "contact":"CONTACT",
+            "tel":"+213 5 51 48 30 04",
+            "mail":"INFO@gmail.com"
+        },
+        "police":{
+            "slogon":"m3a khedma makanch la chomage la degoutage",
+            "copyRight":"Copyrights© khedma 2023",
+            "terms":"Terms",
+            "cockie":"Cookie policy",
+            "privatep":"Privacy Policy",
+            "license":"License"
         }
     },
     "home":{

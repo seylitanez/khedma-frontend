@@ -13,8 +13,8 @@
         height: 40px;
     }
     @mixin filter_element($width){
-        background-color: $color_secondary;
-        border: 2px solid $color_b;
+        background-color: $color_blanc;
+        border: 2px solid $color_noir;
         border-radius: 4px;
         margin-top: 5px;
         color: black;
@@ -36,12 +36,12 @@
         & .searchall__search-emploi{
             & #search-icone{
                 transform: translateY(25%);
-                color: $color_b;
+                color: $color_noir;
             }
             & .search__emploi-inp{
                 height: 40px;
                 border: none;
-                border-right: 2px solid $color_b;
+                border-right: 2px solid $color_noir;
                 font-size: medium;
                 &:focus{
                     outline: none;
@@ -63,10 +63,10 @@
             }        
         }
         & #chercher{
-            @include btn($color_secondary,$color_primary)
+            @include btn($color_blanc,$color_bleu)
         }
         & #filtrer{
-            @include btn($color_secondary,$color_primary)
+            @include btn($color_blanc,$color_bleu)
         }
     }
     & #type_de_travail{

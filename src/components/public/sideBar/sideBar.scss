@@ -1,3 +1,9 @@
 .sideBar{
     grid-area: sideBar;
+    position: fixed;
+    top: 70px;
+    width: 1.5fr;
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
 }

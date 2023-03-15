@@ -1,15 +1,14 @@
 import React from 'react'
 import {dz,Logo,france,royaume_uni} from "@image"
 import './header.scss';
-import { Link } from 'react-router-dom';
+import { Link ,useNavigate } from 'react-router-dom';
 import {Buttun} from '@p-components';
 import {LangueContext} from "@context/langue";
 import { useContext ,useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 export default function Header() {
     const {lang,langue,setLangue} = useContext(LangueContext);
     const nav=useNavigate()
-    const {accueil,trouver_emploi,blog,emploi,cariere,a_propos}=lang.header.menu;
+    const {accueil,trouver_emploi,blog,a_propos}=lang.header.menu;
     const {connexion,inscription}=lang.header.auth;
 
     return (
@@ -23,9 +22,7 @@ export default function Header() {
                         <li><Link to='./home'>{accueil}</Link></li>
                         <li><Link to='./jobSearch'>{trouver_emploi}</Link></li>
                         <li><Link to='./blog'>{blog}</Link></li>
-                        {/* <li><Link to='./mon emploi'>{emploi}</Link></li> */}
-                        {/* <li><Link to='./cariere'>{cariere}</Link></li> */}
-                        <li><Link to='./a propos'>{a_propos}</Link></li>
+                        <li><Link to='./a_propos'>{a_propos}</Link></li>
                         <li>
                             <div className="__langue">
                                 <div className='__langue__menu'>

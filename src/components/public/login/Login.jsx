@@ -1,6 +1,7 @@
 import React from 'react'
 import { useContext,useState } from 'react'
 import {LangueContext} from "@context/langue";
+import { MdAccountCircle } from "react-icons/md";
 import "./login.scss"
 import {Input,Buttun} from '@p-components';
 
@@ -23,7 +24,8 @@ export default function Login() {
     const [anims,setActives]=useAnim('');
     return (
         <form className="form__login">
-            <h2>{h2}</h2>
+            {/* <h2>{h2}</h2> */}
+            <MdAccountCircle size={100} className='icone_account'/>
             <div className={"login__group "+anim}>
                 <Input type="text" id="email" onInput={e=>setActive(e)}>{email}</Input>
             </div>

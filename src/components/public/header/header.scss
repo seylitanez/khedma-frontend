@@ -4,7 +4,8 @@ nav{
     justify-content: space-between;
     width: 100vw;
     top: 0px;
-    background-color: $color_secondary;
+    z-index: 3;
+    background-color: $color_blanc;
     & .logo{
         height: 60px;
         & img{
@@ -17,12 +18,12 @@ nav{
             margin: 15px 20px;
             & a{
                 text-decoration: none;
-                color: $color_b;
+                color: $color_noir;
                 font-size: 16px;
             }
             &:hover{
                 & a{
-                    color: $color_3;
+                    color: $color_oronge;
                     transition: 0.3s;
                 }
             }
@@ -32,7 +33,7 @@ nav{
         @mixin btn ($c1,$c2){
             background-color: $c1;
             color: $c2;
-            border: 1px solid $color_primary;
+            border: 1px solid $color_bleu;
             padding: 8px 20px;
             border-radius: 6px;
             font-size: 16px;
@@ -46,16 +47,16 @@ nav{
             cursor: pointer;
         }
         & #sing{
-            @include btn($color_secondary,$color_primary);
+            @include btn($color_blanc,$color_bleu);
             &:hover{
-                @include btn($color_primary,$color_secondary);
+                @include btn($color_bleu,$color_blanc);
             }
             &:active{
                 @include btn__active()
             }
         }
         & #log{
-            @include btn($color_primary,$color_secondary);
+            @include btn($color_bleu,$color_blanc);
             &:active{
                 @include btn__active() 
             }
@@ -65,7 +66,7 @@ nav{
         display: none;
     }
     & .__langue{
-        background-color: $color_secondary;
+        background-color: $color_blanc;
         border-radius: 5px;
         position: absolute;
         margin-left: auto;
@@ -89,7 +90,7 @@ nav{
                 border-radius: 3px;
                 & li{
                     display: block;
-                    background-color: $color_secondary;
+                    background-color: $color_blanc;
                     &:hover{
                         opacity: 0.8;
                     }

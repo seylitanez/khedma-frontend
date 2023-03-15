@@ -2,7 +2,7 @@ import React from 'react'
 import imgh from '@image/img_home.svg'
 import "./home.scss";
 import {LangueContext} from "@context/langue"
-import {Search} from '@p-pages';
+import {Search} from '@p-components';
 import { useContext,useState} from 'react';
 
 export default function Home() {

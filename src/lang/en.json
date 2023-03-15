@@ -4,8 +4,6 @@
             "accueil":"Welcome",
             "trouver_emploi":"Look for Job",
             "blog":"Blog",
-            "emploi":"My Job",
-            "cariere":"Career",
             "a_propos":"About"
         },
         "auth":{
@@ -24,6 +22,28 @@
         },
         "h1":"m3a khedma makanch la chomage la degoutage",
         "h2":"Trouver un emploi facilement"
+    },
+    "footer":{
+        "menu":{
+            "lien":"LIENS",
+            "accueil":"Welcome",
+            "trouver_emploi":"Look for Job",
+            "blog":"Blog",
+            "a_propos":"About"
+        },
+        "contact":{
+            "contact":"CONTACT",
+            "tel":"+213 5 51 48 30 04",
+            "mail":"INFO@gmail.com"
+        },
+        "police":{
+            "slogon":"m3a khedma makanch la chomage la degoutage",
+            "copyRight":"Copyrights© khedma 2023",
+            "terms":"Terms",
+            "cockie":"Cookie policy",
+            "privatep":"Privacy Policy",
+            "license":"License"
+        }
     },
     "auth":{
         "login":{
