@@ -48,10 +48,13 @@ export default function Login() {
             <div className={"login__group "+anims}>
                 <Input type="password" id='mdp' name='motDePasse' value={user.motDePasse} onChange={onChange} onInput={e=>setActives(e)}>{password}</Input>
             </div>
+            <Link className='nv__compte'>nouveau compte?</Link>
             <div className="login__mdp">
                 <Buttun id="log">{connexion}</Buttun>
                 {/* <Buttun id="sing">{inscription}</Buttun> */}
+                {/* <Buttun id="sing">{inscription}</Buttun> */}
             </div>
+            
         </form>
     )
 }
