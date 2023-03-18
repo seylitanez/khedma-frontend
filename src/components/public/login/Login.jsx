@@ -5,7 +5,11 @@ import { MdAccountCircle } from "react-icons/md";
 import "./login.scss"
 import {Input,Buttun} from '@p-components';
 import { useNavigate,Link} from 'react-router-dom';
+<<<<<<< HEAD
 import { accountService,annonceService } from "@service";
+=======
+import { accountService } from "@service";
+>>>>>>> e83488e6a5d8c410e2eb230e9e5a9b8718be444a
 
 function useAnim(className) {
     const [anim,setAnim]=useState(className);
