@@ -1,7 +1,6 @@
 import React from 'react'
 import {Annonce,SideBar} from '@p-components'
 import './jobSearch.scss'
-import axios from 'axios'
 import { useState,useEffect,useRef } from 'react'
 import { annonceService } from "@service";
 
@@ -10,14 +9,19 @@ export default function JobSearch() {
   const flg = useRef(false);
   useEffect(()=>{
     if (!flg.current) {
+        console.log("effect");
       annonceService.getAnnonce()
-      .then(res=>setAnnonces(res.data))
+      .then(res=>{
+        console.log("hi");
+        console.log(res.data);
+        setAnnonces(res.data)})
       .catch(err=>console.log(err))
     }
     return ()=>{
       flg.current=true;
     }
   },[])
+
   return (
   <div className='jobSearch'>
       <div className="search">
@@ -25,9 +29,9 @@ export default function JobSearch() {
       </div>
       <SideBar/>
       <div className="list">
-        {annonces.map((annonce,key)=>{
-          <Annonce annonce={annonce} key={key}/>
-        })}
+        {annonces.map((annonce,key)=><Annonce annonce={annonce} key={key}/>)}
+        {console.log(annonces)}
+        
       </div>
     </div>
   )

@@ -2,13 +2,18 @@ import React from 'react'
 import {Buttun} from '@p-components'
 import './annonce.scss'
 
-export default function Annonce({annonce}) {
-  const { nom, categorie,sousCategorie,salaireDeBase,journees, date}=annonce
+export default function Annonce({annonce,nm}) {
+   const { nom, categorie,sousCategorie,salaireDeBase,journees, date}=annonce
+  // console.log("le nom:"+ nom);
+  let jourPublication= new Date(date).getDate()-1
+
+  console.log(nm);
   return (
     <div className='annonce' id='annonce'>
       <div className="annonce-top">
-        <h1 className='titre' >titre</h1>
-        <h3>il ya 4jr</h3>
+        <h1 className='titre' >{nom}</h1>
+        
+        {jourPublication>1?<h3>il ya {jourPublication} jrs</h3>:<h3>il ya {jourPublication} jr</h3>}
         </div>
       <div className="ville"><h5>ville,region</h5></div>
       <span className='divider'></span>

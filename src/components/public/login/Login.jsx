@@ -5,6 +5,7 @@ import { MdAccountCircle } from "react-icons/md";
 import "./login.scss"
 import {Input,Buttun} from '@p-components';
 import { useNavigate,Link} from 'react-router-dom';
+import { accountService,annonceService } from "@service";
 
 function useAnim(className) {
     const [anim,setAnim]=useState(className);
@@ -34,6 +35,8 @@ export default function Login() {
         accountService.login(user)
             .then(res => {
                 accountService.saveToken(res.data.token)
+                console.log(res.data.token);
+                // annonceService.getAnnonce()
                 navigate('/jobSearch')
             })
             .catch(err => console.log(err))
@@ -50,7 +53,7 @@ export default function Login() {
             </div>
             <Link className='nv__compte'>nouveau compte?</Link>
             <div className="login__mdp">
-                <Buttun id="log">{connexion}</Buttun>
+                <Buttun id="log" onClick={sub}>{connexion}</Buttun>
                 {/* <Buttun id="sing">{inscription}</Buttun> */}
             </div> 
         </form>
