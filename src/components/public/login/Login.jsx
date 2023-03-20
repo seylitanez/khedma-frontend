@@ -1,16 +1,10 @@
-import React from 'react'
-import { useContext,useState } from 'react'
+import React,{ useContext,useState } from 'react'
 import {LangueContext} from "@context/langue";
 import { MdAccountCircle } from "react-icons/md";
 import "./login.scss"
 import {Input,Buttun} from '@p-components';
 import { useNavigate,Link} from 'react-router-dom';
-<<<<<<< HEAD
-import { accountService,annonceService } from "@service";
-=======
 import { accountService } from "@service";
->>>>>>> e83488e6a5d8c410e2eb230e9e5a9b8718be444a
-
 function useAnim(className) {
     const [anim,setAnim]=useState(className);
     const setActive=(e)=>{
@@ -29,7 +23,7 @@ export default function Login() {
     const [anim,setActive]=useAnim('');
     const [anims,setActives]=useAnim('');
     //conection
-    const [user,setUser]=useState({})
+    const [user, setUser] = useState({ nomUtilisateur: "", motDePasse :""})
     const onChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value })
     }
@@ -39,9 +33,12 @@ export default function Login() {
         accountService.login(user)
             .then(res => {
                 accountService.saveToken(res.data.token)
-                console.log(res.data.token);
-                // annonceService.getAnnonce()
-                navigate('/jobSearch')
+                accountService.setRole(res.data.role)
+                switch (res.data.role) {
+                    case 'EMPLOYE':navigate('/employe');break;
+                    case 'EMPLOYEUR':navigate('/employeur');break;
+                    case 'MODERATEUR':navigate('/moderateur');break;
+                }
             })
             .catch(err => console.log(err))
     }

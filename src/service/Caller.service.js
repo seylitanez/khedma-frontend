@@ -1,7 +1,7 @@
 import axios from "axios";
 import { accountService } from "./Account.service";
 
-const Axios = axios.create({ baseURL:"http://localhost:9631"})
+const Axios = axios.create({ baseURL:"http://localhost:9630"})
 Axios.interceptors.request.use(request => {
     if (accountService.isLogged()) {
         request.headers.Authorization = 'Bearer ' + accountService.getToken();

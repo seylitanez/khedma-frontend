@@ -6,7 +6,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server:{
-    port:9711,
+    port:9710,
   },
   resolve: {
     alias: {
@@ -15,8 +15,12 @@ export default defineConfig({
       '@p-components':path.resolve(__dirname,'src/components/public'),
       '@pages':path.resolve(__dirname,'src/pages'),
       '@p-pages':path.resolve(__dirname,'src/pages/public'),
+      '@pr-employe-pages':path.resolve(__dirname,'src/pages/private/employe'),
+      '@pr-employeur-pages':path.resolve(__dirname,'src/pages/private/employeur'),
+      '@pr-moderateur-pages':path.resolve(__dirname,'src/pages/private/moderateur'),
       '@utils':path.resolve(__dirname,'src/utils'),
       '@service':path.resolve(__dirname,'src/service'),
+      '@helper':path.resolve(__dirname,'src/helper'),
       '@style': path.resolve(__dirname,'src/styles'),
       '@langue': path.resolve(__dirname,'src/lang'),
       '@context': path.resolve(__dirname,'src/context'),

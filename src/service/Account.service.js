@@ -18,4 +18,10 @@ let isLogged = () => {
 let getToken = () => {
     return localStorage.getItem('token');
 }
-export const accountService = { addUser,login, saveToken, logout, isLogged, getToken }
+let getRole = () => {
+    return localStorage.getItem('role');
+}
+let setRole = (role) => {
+    localStorage.setItem('role', role);
+}
+export const accountService = { addUser,login, saveToken, logout, isLogged, getToken, getRole, setRole }

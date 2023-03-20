@@ -9,12 +9,8 @@ export default function JobSearch() {
   const flg = useRef(false);
   useEffect(()=>{
     if (!flg.current) {
-        console.log("effect");
       annonceService.getAnnonce()
-      .then(res=>{
-        console.log("hi");
-        console.log(res.data);
-        setAnnonces(res.data)})
+      .then(res=>setAnnonces(res.data))
       .catch(err=>console.log(err))
     }
     return ()=>{
@@ -30,8 +26,6 @@ export default function JobSearch() {
       <SideBar/>
       <div className="list">
         {annonces.map((annonce,key)=><Annonce annonce={annonce} key={key}/>)}
-        {console.log(annonces)}
-        
       </div>
     </div>
   )
