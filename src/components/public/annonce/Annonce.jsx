@@ -16,7 +16,8 @@ export default function Annonce({annonce}) {
       <br />
       <div className="description"><h4>recherche d’un cuisinier experimenté avec au moins 1 ans d’eperience </h4></div>
       <br />
-      <Buttun className='btn__postuler'>POSTULER</Buttun>
+      {/* je prefere consulter au lieu de postuler */}
+      <Buttun className='btn__postuler'>CONSULTER</Buttun>
       <br />
     </div>
   )
