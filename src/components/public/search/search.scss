@@ -34,14 +34,16 @@
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
         border-radius: 2px;
         & .searchall__search-emploi{
+            width: 80%;
             & #search-icone{
                 transform: translateY(25%);
                 color: $color_noir;
             }
             & .search__emploi-inp{
+                width: 80%;
                 height: 40px;
                 border: none;
-                border-right: 2px solid $color_noir;
+                // border-right: 2px solid $color_noir;
                 font-size: medium;
                 &:focus{
                     outline: none;

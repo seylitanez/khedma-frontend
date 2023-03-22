@@ -17,9 +17,9 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path='/*' element={<PublicRouter/>}/>
-            <Route path='/employe' element={<AuthGuard role='EMPLOYE'><EmployeRouter/></AuthGuard>}/>
-            <Route path='/employeur' element={<AuthGuard role='EMPLOYEUR'><EmployeurRouter/></AuthGuard>}/>
-            <Route path='/moderateur' element={<AuthGuard role='MODERATEUR'><ModerateurRouter/></AuthGuard>}/>
+            <Route path='/employe/*' element={<AuthGuard role='EMPLOYE'><EmployeRouter/></AuthGuard>}/>
+            <Route path='/employeur/*' element={<AuthGuard role='EMPLOYEUR'><EmployeurRouter/></AuthGuard>}/>
+            <Route path='/moderateur/*' element={<AuthGuard role='MODERATEUR'><ModerateurRouter/></AuthGuard>}/>
           </Routes>
         </BrowserRouter>
       </LangueContext.Provider>

@@ -68,16 +68,16 @@ nav{
     & .__langue{
         background-color: $color_blanc;
         border-radius: 5px;
-        position: absolute;
+        position: fixed;
         margin-left: auto;
         margin-right: auto;
-        top: 10px;
+        right: calc(15vw + 40px);
+        top: 15px;
         z-index: 1;
     }
     & .__langue__menu{
         & ul {
             cursor: pointer;
-            
             & li{
                 margin-left: auto;
                 margin-right: auto;

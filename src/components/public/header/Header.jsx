@@ -23,23 +23,21 @@ export default function Header() {
                         <li><Link to='./jobSearch'>{trouver_emploi}</Link></li>
                         <li><Link to='./blog'>{blog}</Link></li>
                         <li><Link to='./a_propos'>{a_propos}</Link></li>
-                        <li>
-                            <div className="__langue">
-                                <div className='__langue__menu'>
-                                    <ul>{/*ToDo
-                                        -mettre du style aux drapeau
-                                        */}
-                                        <div className="__langu__title">{langue==='fr'? <img  src={france}/>:langue==='ar'?<img src={dz}/>:<img src={royaume_uni}/>}</div>
-                                        <li onClick={()=>setLangue('ar')}><img src={dz}/>dz</li>
-                                        <li onClick={()=>setLangue('fr')}><img src={france}/>fr</li>
-                                        <li onClick={()=>setLangue('en')}><img src={royaume_uni}/>en</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
                     </ul>
                 </div>
                 <div className="log">
+                    <div className="__langue">
+                        <div className='__langue__menu'>
+                            <ul>{/*ToDo
+                                -mettre du style aux drapeau
+                                */}
+                                <div className="__langu__title">{langue==='fr'? <img  src={france}/>:langue==='ar'?<img src={dz}/>:<img src={royaume_uni}/>}</div>
+                                <li onClick={()=>setLangue('ar')}><img src={dz}/>dz</li>
+                                <li onClick={()=>setLangue('fr')}><img src={france}/>fr</li>
+                                <li onClick={()=>setLangue('en')}><img src={royaume_uni}/>en</li>
+                            </ul>
+                        </div>
+                    </div>
                     <Buttun id="sing" onClick={e=>nav("/auth")}>{connexion}</Buttun>
                     <Buttun id='log' onClick={e=>nav("/inscription")}>{inscription}</Buttun>
                 </div>  

@@ -19,10 +19,10 @@ export default function Search() {
                     <BiSearchAlt2 id='search-icone' size={25} className='search-icone'/>
                     <input type="search" className='search__emploi-inp' placeholder={emploi}/>
                 </div>
-                <div className="searchall__search-region">
+                {/* <div className="searchall__search-region">
                     <GrLocation id='location__icone' size={25} className='search-location-icone'/>
                     <input type="search" className='search__region-inp' placeholder={region}/>
-                </div>
+                </div> */}
                 <Buttun id="chercher">
                     {chercher}
                 </Buttun>
