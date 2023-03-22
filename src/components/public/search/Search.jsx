@@ -5,27 +5,30 @@ import {FiFilter} from 'react-icons/fi'
 import {LangueContext} from "@context/langue"
 import "./search.scss";
 import { useContext,useState} from 'react';
-import {Buttun} from '@p-components';
+import {Buttun,Input} from '@p-components';
 
-export default function Search() {
+export default function Search({ setSearch }) {
     const {lang} = useContext(LangueContext);
     const {emploi,region,chercher,filtrer,type_travail,salaire}=lang.home.search;
     const [filtreDisplay,setFiltreDisplay]=useState({height:'55px'})
     const [isFiltreDisplayOff,setIsFiltreDisplayOff]=useState(true)
+
+    const [txtsearch,setTxtsearch]=useState("")
     return (
         <form className="search" style={filtreDisplay}>
             <div className='searchall'>
                 <div className="searchall__search-emploi">
                     <BiSearchAlt2 id='search-icone' size={25} className='search-icone'/>
-                    <input type="search" className='search__emploi-inp' placeholder={emploi}/>
+                    <Input type="search" className='search__emploi-inp'value={txtsearch} onChange={e=>setTxtsearch(e.target.value)} placeholder={emploi}/>
                 </div>
                 {/* <div className="searchall__search-region">
                     <GrLocation id='location__icone' size={25} className='search-location-icone'/>
                     <input type="search" className='search__region-inp' placeholder={region}/>
                 </div> */}
-                <Buttun id="chercher">
-                    {chercher}
-                </Buttun>
+                <Buttun id="chercher" onClick={(e)=>{
+                    e.preventDefault()
+                    setSearch(txtsearch)
+                }}>{chercher}</Buttun>
                 <Buttun id="filtrer"  onClick={(e)=>{
                     e.preventDefault()
                     setIsFiltreDisplayOff(on=>!on)
