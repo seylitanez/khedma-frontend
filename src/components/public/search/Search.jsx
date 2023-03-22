@@ -19,7 +19,7 @@ export default function Search({ setSearch }) {
             <div className='searchall'>
                 <div className="searchall__search-emploi">
                     <BiSearchAlt2 id='search-icone' size={25} className='search-icone'/>
-                    <Input type="search" className='search__emploi-inp'value={txtsearch} onChange={e=>setTxtsearch(e.target.value)} placeholder={emploi}/>
+                    <Input type="search" className='search__emploi-inp' value={txtsearch} onChange={e=>setTxtsearch(e.target.value)} placeholder={emploi}/>
                 </div>
                 {/* <div className="searchall__search-region">
                     <GrLocation id='location__icone' size={25} className='search-location-icone'/>

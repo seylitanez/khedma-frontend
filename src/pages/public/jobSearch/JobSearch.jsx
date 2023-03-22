@@ -20,19 +20,13 @@ export default function JobSearch() {
     }
   },[])
   useEffect(()=>{
-    if (!flg.current) {
-      console.log("hi");
+      console.log(search);
       annonceService.getAnnonceBySearch(search)
       .then(res=>setAnnonces(res.data))
       .catch(err=>console.log(err))
-    }
-    return ()=>{
-      flg.current=true;
-    }
   },[search])
-
   return (
-  <div className='jobSearch'>
+    <div className='jobSearch'>
       <div className="search">
         <Search setSearch={setSearch}/>
       </div>
