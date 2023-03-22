@@ -24,4 +24,7 @@ let getRole = () => {
 let setRole = (role) => {
     localStorage.setItem('role', role);
 }
-export const accountService = { addUser,login, saveToken, logout, isLogged, getToken, getRole, setRole }
+let getUser = () => {
+    return Axios.get('/api/v1/me');
+}
+export const accountService = { addUser,login, saveToken, logout, isLogged, getToken, getRole, setRole , getUser}
