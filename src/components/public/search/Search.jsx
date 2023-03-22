@@ -6,14 +6,18 @@ import {LangueContext} from "@context/langue"
 import "./search.scss";
 import { useContext,useState} from 'react';
 import {Buttun,Input} from '@p-components';
+import { useNavigate } from 'react-router-dom'
+import { AnnonceContext } from "@context/Annonce.jsx";
 
-export default function Search({ setSearch }) {
+export default function Search({ setSearch,parent }) {
     const {lang} = useContext(LangueContext);
+    const { search} = useContext(AnnonceContext)
     const {emploi,region,chercher,filtrer,type_travail,salaire}=lang.home.search;
     const [filtreDisplay,setFiltreDisplay]=useState({height:'55px'})
     const [isFiltreDisplayOff,setIsFiltreDisplayOff]=useState(true)
 
-    const [txtsearch,setTxtsearch]=useState("")
+    const [txtsearch,setTxtsearch]=useState(search)
+    const nav=useNavigate()
     return (
         <form className="search" style={filtreDisplay}>
             <div className='searchall'>
@@ -28,6 +32,7 @@ export default function Search({ setSearch }) {
                 <Buttun id="chercher" onClick={(e)=>{
                     e.preventDefault()
                     setSearch(txtsearch)
+                    if (parent === 'home') nav('/jobSearch')
                 }}>{chercher}</Buttun>
                 <Buttun id="filtrer"  onClick={(e)=>{
                     e.preventDefault()

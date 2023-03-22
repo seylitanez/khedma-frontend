@@ -8,10 +8,6 @@ import { userService } from "@service";
 export default function Profile() {
     const [user, setUser] = useState({})
     useEffect(() => {
-        // accountService.getUser()
-        //     .then(res => {setUser(res.data)
-        //         console.log(res.data.annonces)
-        //         })
         userService.getUser()
             .then(res => setUser(res.data))
             .catch(err => console.log(err))

@@ -3,11 +3,19 @@ import imgh from '@image/img_home.svg'
 import "./home.scss";
 import {LangueContext} from "@context/langue"
 import {Search} from '@p-components';
-import { useContext,useState} from 'react';
+import { annonceService } from "@service";
+import { useContext,useState,useEffect} from 'react';
+import { AnnonceContext } from "@context/Annonce.jsx";
 
 export default function Home() {
   const {lang} = useContext(LangueContext);
+  const { search, setSearch, annonce } = useContext(AnnonceContext)
   const {h1,h2}=lang.home;
+  useEffect(() => {
+    annonceService.getAnnonceBySearch(search)
+      .then(res => annonce.setAnnonces(res.data))
+      .catch(err => console.log(err))
+  }, [search])
   return (
     <div className='home'>
       <div className="img">
@@ -16,7 +24,7 @@ export default function Home() {
       <div className="left">
         <h1>{h1}</h1>
         <h2>{h2}</h2>
-        <Search/>
+        <Search setSearch={setSearch} parent='home'/>
       </div>
     </div>
   )
