@@ -20,7 +20,6 @@ export default function JobSearch() {
     }
   },[])
   useEffect(()=>{
-      console.log(search);
       annonceService.getAnnonceBySearch(search)
       .then(res=>setAnnonces(res.data))
       .catch(err=>console.log(err))
