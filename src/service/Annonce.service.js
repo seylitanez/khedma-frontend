@@ -5,4 +5,7 @@ let getAnnonce=()=>{
 let getAnnonceBySearch=async(search)=>{
     return await Axios.get('/api/v1/employe/search?motcle='+search)
 }
-export const annonceService={getAnnonce,getAnnonceBySearch}
+let addAnnonce=(annonce)=>{
+    return Axios.post('/api/v1/employeur/add-annonce',annonce)
+}
+export const annonceService={getAnnonce,getAnnonceBySearch,addAnnonce}

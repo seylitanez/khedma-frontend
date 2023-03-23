@@ -57,7 +57,7 @@ const Footer = () => {
                     <Link to="#">{terms}</Link>
                     <Link to="#">{cockie}</Link>
                     <Link to="#">{privatep}</Link>
-                    <Link to="#">{license}</Link>  
+                    {/* <Link to="#">{license}</Link>   */}
                 </div>  
             </div>
         </div>
