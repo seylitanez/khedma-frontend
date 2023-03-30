@@ -1,7 +1,7 @@
 import React from 'react'
 import { annonceService } from "@service";
 import "./ajouterAnnonce.scss"
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { Buttun, Input } from '@p-components';
 
 export default function AjouterAnnonce() {
@@ -12,6 +12,10 @@ export default function AjouterAnnonce() {
         if (['commune', 'wilaya'].includes(e.target.name)) setAnnonce({ ...annonce, adresse: { ...annonce.adresse, [e.target.name]: e.target.value }})
         else setAnnonce({ ...annonce, [e.target.name]: e.target.value })
     }
+    useEffect(() => {
+        const date = new Date()
+        setAnnonce({ ...annonce, date: date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()})
+    },[])
     const onChangeJour = (e) => {
         if (!e.target.checked) setJournees(journees.filter(element => element !== e.target.value))
         setJournees([...journees, e.target.value])
@@ -20,7 +24,6 @@ export default function AjouterAnnonce() {
     }
     const onSubmit = (e) => {
         e.preventDefault();
-        setAnnonce({ ...annonce, date: new Date() })
         console.log(annonce);
         // annonceService.addAnnonce(annonce)
         //     .then(res => {setSuccess(true); console.log(res)})
@@ -36,7 +39,7 @@ export default function AjouterAnnonce() {
 // }
     return (
         <div>
-            <form action="" onSubmit={onSubmit}>
+            <form onSubmit={onSubmit}>
                 <Input type="text" id="nom" name="nom" value={annonce.nom} onChange={onChange} requirede='required'>Nom du job</Input>
                 <br />
                 <Input type="text" id="categorie" name="categorie" value={annonce.categorie} onChange={onChange} requirede='required'>Categorie</Input>
