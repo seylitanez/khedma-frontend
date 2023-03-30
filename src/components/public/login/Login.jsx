@@ -47,10 +47,10 @@ export default function Login() {
             {/* <h2>{h2}</h2> */}
             <MdAccountCircle size={100} className='icone_account'/>
             <div className={"login__group "+anim}>
-                <Input type="text" id="email" name='nomUtilisateur' value={user.nomUtilisateur} onChange={onChange} onInput={e=>setActive(e)}>{email}</Input>
+                <Input type="text" id="email" name='nomUtilisateur' value={user.nomUtilisateur} onChange={onChange} onInput={e => setActive(e)} requirede='required'>{email}</Input>
             </div>
             <div className={"login__group "+anims}>
-                <Input type="password" id='mdp' name='motDePasse' value={user.motDePasse} onChange={onChange} onInput={e=>setActives(e)}>{password}</Input>
+                <Input type="password" id='mdp' name='motDePasse' value={user.motDePasse} onChange={onChange} onInput={e => setActives(e)} requirede='required'>{password}</Input>
             </div>
             <Link className='nv__compte'>nouveau compte?</Link>
             <div className="login__mdp">

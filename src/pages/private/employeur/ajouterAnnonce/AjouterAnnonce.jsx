@@ -6,21 +6,25 @@ import { Buttun, Input } from '@p-components';
 
 export default function AjouterAnnonce() {
     const [success, setSuccess] = useState(false)
-    const [annonce, setAnnonce] = useState({})
-    const journees=[]
+    const [annonce, setAnnonce] = useState({nom:'', categorie: '', sousCategorie: '', salaireDeBase: 0,adresse:{commune:"",wilaya:""},descriptionAr:"",descriptionFr:"",journees:[],date:''})
+    const [journees, setJournees] = useState([])
     const onChange = (e) => {
-        setAnnonce({ ...annonce, [e.target.name]: e.target.value })
+        if (['commune', 'wilaya'].includes(e.target.name)) setAnnonce({ ...annonce, adresse: { ...annonce.adresse, [e.target.name]: e.target.value }})
+        else setAnnonce({ ...annonce, [e.target.name]: e.target.value })
     }
     const onChangeJour = (e) => {
-        if (e.target.checked) journees.push(e.target.value)
-        else journees.splice(journees.indexOf(e.target.value),1)
+        if (!e.target.checked) setJournees(journees.filter(element => element !== e.target.value))
+        setJournees([...journees, e.target.value])
+        setAnnonce({ ...annonce, journees: journees })
+        console.log(journees,journees.length);
     }
     const onSubmit = (e) => {
         e.preventDefault();
-        setAnnonce({ ...annonce, [date]: new Date() })
-        annonceService.addAnnonce(annonce)
-            .then(res => {setSuccess(true); console.log(res)})
-            .catch(err => console.log(err))
+        setAnnonce({ ...annonce, date: new Date() })
+        console.log(annonce);
+        // annonceService.addAnnonce(annonce)
+        //     .then(res => {setSuccess(true); console.log(res)})
+        //     .catch(err => console.log(err))
     }
 // {
 //     "nom":"Reparateur",
@@ -33,28 +37,28 @@ export default function AjouterAnnonce() {
     return (
         <div>
             <form action="" onSubmit={onSubmit}>
-                <Input type="text" name="nom" value={annonce.nom} onChange={onChange} >Nom du job</Input>
+                <Input type="text" id="nom" name="nom" value={annonce.nom} onChange={onChange} requirede='required'>Nom du job</Input>
                 <br />
-                <Input type="text" name="categorie" value={annonce.categorie} onChange={onChange} >Categorie</Input>
+                <Input type="text" id="categorie" name="categorie" value={annonce.categorie} onChange={onChange} requirede='required'>Categorie</Input>
                 <br />
-                <Input type="text" name="sousCategorie" value={annonce.sousCategorie}  onChange={onChange} >Sous Categorie</Input>
+                <Input type="text" id="souscategorie" name="sousCategorie" value={annonce.sousCategorie} onChange={onChange} requirede='required'>Sous Categorie</Input>
                 <br />
-                <Input type="text" name="salaireDeBase" value={annonce.salaireDeBase} onChange={onChange} > Salaire</Input>
+                <Input type="text" id="salaire" name="salaireDeBase" value={annonce.salaireDeBase} onChange={onChange} requirede='required'> Salaire</Input>
                 <br />
-                <Input type="checkbox" name="samedi" onClick={onChangeJour}>SAMEDI</Input>
-                <Input type="checkbox" name="dimanche" onClick={onChangeJour}>DIMANCHE</Input>
-                <Input type="checkbox" name="lundi" onClick={onChangeJour}>LUNDI</Input>
-                <Input type="checkbox" name="mardi" onClick={onChangeJour}>MARDI</Input>
-                <Input type="checkbox" name="mercredi" onClick={onChangeJour}>MERCREDI</Input>
-                <Input type="checkbox" name="jeudi" onClick={onChangeJour}>JEUDI</Input>
-                <Input type="checkbox" name="vendredi" onClick={onChangeJour}>VENDREDI</Input>
+                <Input type="checkbox" id="samedi" name="samedi" onChange={onChangeJour} value='SAMEDI'>SAMEDI</Input>
+                <Input type="checkbox" id="dimanche" name="dimanche" onChange={onChangeJour} value='DIMANCHE'>DIMANCHE</Input>
+                <Input type="checkbox" id="lundi" name="lundi" onChange={onChangeJour} value='LUNDI'>LUNDI</Input>
+                <Input type="checkbox" id="mardi" name="mardi" onChange={onChangeJour} value='MARDI'>MARDI</Input>
+                <Input type="checkbox" id="mercredi" name="mercredi" onChange={onChangeJour} value='MERCREDI'>MERCREDI</Input>
+                <Input type="checkbox" id="jeudi" name="jeudi" onChange={onChangeJour} value='JEUDI'>JEUDI</Input>
+                <Input type="checkbox" id="vendredi" name="vendredi" onChange={onChangeJour} value='VENDREDI'>VENDREDI</Input>
                 <br />
-                <Input type="text" name="descriptionFr" value={annonce.descriptionFr} onChange={onChange} >descriptionFr</Input>
+                <Input type="text" id="descriptionFr" name="descriptionFr" value={annonce.descriptionFr} onChange={onChange} requirede='required'>descriptionFr</Input>
                 <br />
-                <Input type="text" name="descriptionAr" value={annonce.descriptionAr} onChange={onChange} >descriptionAr</Input>
+                <Input type="text" id="descriptionAr" name="descriptionAr" value={annonce.descriptionAr} onChange={onChange} requirede='required'>descriptionAr</Input>
                 <br />
-                <Input type="text" name="wilaya" value={annonce.descriptionFr} onChange={onChange} ></Input>
-                <Input type="text" name="commune" value={annonce.descriptionAr} onChange={onChange} ></Input>
+                <Input type="text" id="wilaya" name="wilaya" value={annonce.adresse.wilaya} onChange={onChange} requirede='required'>wilaya</Input>
+                <Input type="text" id="commune" name="commune" value={annonce.adresse.commune} onChange={onChange} requirede='required'>commune</Input>
                 <br />
                 <Buttun>send</Buttun>
                 <br />
