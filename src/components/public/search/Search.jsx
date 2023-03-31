@@ -30,8 +30,12 @@ export default function Search({ setSearch,parent }) {
                 </div> */}
                 <Buttun id="chercher" onClick={(e)=>{
                     e.preventDefault()
+                    // setSearch(txtsearch)
                     setSearch(txtsearch)
-                    if (parent === 'home') nav('/jobSearch/'+txtsearch) 
+                    console.log(txtsearch);
+                    nav('/jobSearch/'+txtsearch) 
+
+
                 }}>{chercher}</Buttun>
                 <Buttun id="filtrer"  onClick={(e)=>{
                     e.preventDefault()

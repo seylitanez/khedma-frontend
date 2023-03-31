@@ -1,8 +1,8 @@
 import React from 'react'
-import {dz,Logo,france,royaume_uni} from "@image"
+import {dz,france,royaume_uni} from "@image"
 import './header.scss';
 import { Link ,useNavigate } from 'react-router-dom';
-import {Buttun} from '@p-components';
+import {Buttun , Logo} from '@p-components';
 import {LangueContext} from "@context/langue";
 import { useContext ,useState } from 'react';
 export default function Header() {
@@ -15,7 +15,7 @@ export default function Header() {
         <header>
             <nav>
                 <Link to='./' className="logo">
-                    <img src={Logo} alt="" />
+                    <Logo />
                 </Link>
                 <div className="menu">
                     <ul>

@@ -1,3 +1,4 @@
+export { default as Searchloupe} from './Searchloupe.svg'
 export { default as dz } from './dz.png'
 export { default as france } from './france.png'
 export { default as royaume_uni } from './royaume-uni.png'

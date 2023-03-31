@@ -9,24 +9,32 @@ import { useParams } from 'react-router-dom';
 
 export default function JobSearch() {
   const { search, setSearch, annonce }=useContext(AnnonceContext)
-  const flg = useRef(false);
   const param=useParams() 
+
+  console.log(param.job);
+
+
   useEffect(()=>{
-    if (!flg.current) {
-      annonceService.getAnnonce()
-      .then(res =>annonce.setAnnonces(res.data))
-      .catch(err=>console.log(err))
+      console.log("! undifned");
+    console.log("test");
+      if (param.job==undefined) {
+        console.log("pas de recherche")
+        annonceService.getAnnonce()
+        .then(res =>annonce.setAnnonces(res.data))
+        .catch(err=>console.log(err))
     }
-    return ()=>{
-      flg.current=true;
+},[param.job])
+useEffect(()=>{
+    if(param.job!=undefined){
+        console.log("la recherche :" +param.job)
+        setSearch(param.job)
+        annonceService.getAnnonceBySearch(param.job/*search*/)
+        .then(res =>annonce.setAnnonces(res.data))
+        .catch(err=>console.log(err))
     }
-  },[])
-  useEffect(()=>{
-    setSearch(param.job)
-    annonceService.getAnnonceBySearch(param.job/*search*/)
-      .then(res =>annonce.setAnnonces(res.data))
-      .catch(err=>console.log(err))
-  },[search])
+  },[param.job])
+
+
   return (
     <div className='jobSearch'>
       <div className="search">

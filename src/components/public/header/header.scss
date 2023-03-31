@@ -8,6 +8,7 @@ nav{
     background-color: $color_blanc;
     & .logo{
         height: 60px;
+        overflow: hidden;
         & img{
             height: 100%;
         }
