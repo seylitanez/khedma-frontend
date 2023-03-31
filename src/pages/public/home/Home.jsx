@@ -10,11 +10,6 @@ export default function Home() {
   const {lang} = useContext(LangueContext);
   const { setSearch } = useContext(AnnonceContext)
   const {h1,h2}=lang.home;
-  useEffect(() => {
-    annonceService.getAnnonceBySearch(search)
-      .then(res => annonce.setAnnonces(res.data))
-      .catch(err => console.log(err))
-  }, [search])
   return (
     <div className='home'>
       <div className="img">
