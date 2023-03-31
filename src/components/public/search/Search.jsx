@@ -31,7 +31,7 @@ export default function Search({ setSearch,parent }) {
                 <Buttun id="chercher" onClick={(e)=>{
                     e.preventDefault()
                     setSearch(txtsearch)
-                    if (parent === 'home') nav('/jobSearch') 
+                    if (parent === 'home') nav('/jobSearch/'+txtsearch) 
                 }}>{chercher}</Buttun>
                 <Buttun id="filtrer"  onClick={(e)=>{
                     e.preventDefault()

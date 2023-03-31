@@ -36,7 +36,7 @@ export default function Login() {
                 accountService.setRole(res.data.role)
                 switch (res.data.role) {
                     case 'EMPLOYE':navigate('/employe');break;
-                    case 'EMPLOYEUR':navigate('/employeur');break;
+                    case 'EMPLOYEUR':navigate('/employeur/profile/'+user.nomUtilisateur);break;
                     case 'MODERATEUR':navigate('/moderateur');break;
                 }
             })

@@ -11,6 +11,7 @@ export default function PublicRouter() {
                 <Route path='/home' element={<Home/>}/>
                 <Route path='/auth' element={<Auth/>}/>
                 <Route path='/inscription' element={<Inscription/>}/>
+                <Route path='/jobSearch' element={<JobSearch />}/>
                 <Route path='/jobSearch/:job' element={<JobSearch />}/>
             </Route>
         </Routes>

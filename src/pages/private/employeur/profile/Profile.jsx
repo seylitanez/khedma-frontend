@@ -3,8 +3,10 @@ import "./profile.scss"
 import { useState, useEffect, useRef } from 'react'
 import {Annonce} from "@p-components"
 import { userService } from "@service";
+import { useParams } from 'react-router-dom';
 
 export default function Profile() {
+    const param=useParams()
     const [user, setUser] = useState({})
      useEffect(() => {
         userService.getUser()

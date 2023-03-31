@@ -5,14 +5,16 @@ import { useEffect,useRef,useContext} from 'react'
 import { annonceService } from "@service";
 import { Search } from '@p-components';
 import { AnnonceContext } from "@context/Annonce.jsx";
+import { useParams } from 'react-router-dom';
 
 export default function JobSearch() {
   const { search, setSearch, annonce }=useContext(AnnonceContext)
   const flg = useRef(false);
+  const param=useParams() 
   useEffect(()=>{
     if (!flg.current) {
       annonceService.getAnnonce()
-        .then(res =>annonce.setAnnonces(res.data))
+      .then(res =>annonce.setAnnonces(res.data))
       .catch(err=>console.log(err))
     }
     return ()=>{
@@ -20,7 +22,8 @@ export default function JobSearch() {
     }
   },[])
   useEffect(()=>{
-      annonceService.getAnnonceBySearch(search)
+    setSearch(param.job)
+    annonceService.getAnnonceBySearch(param.job/*search*/)
       .then(res =>annonce.setAnnonces(res.data))
       .catch(err=>console.log(err))
   },[search])
