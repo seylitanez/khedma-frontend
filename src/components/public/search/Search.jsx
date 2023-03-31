@@ -11,21 +11,18 @@ import { AnnonceContext } from "@context/Annonce.jsx";
 
 export default function Search({ setSearch,parent }) {
     const {lang} = useContext(LangueContext);
-    const { search} = useContext(AnnonceContext)
+    const {search} = useContext(AnnonceContext)
     const {emploi,region,chercher,filtrer,type_travail,salaire}=lang.home.search;
     const [filtreDisplay,setFiltreDisplay]=useState({height:'55px'})
     const [isFiltreDisplayOff,setIsFiltreDisplayOff]=useState(true)
-
     const [txtsearch,setTxtsearch]=useState(search)
-
     const nav=useNavigate()
-    
     return (
         <form className="search" style={filtreDisplay}>
             <div className='searchall'>
                 <div className="searchall__search-emploi">
                     <BiSearchAlt2 id='search-icone' size={25} className='search-icone'/>
-                    <Input type="search" className='search__emploi-inp' value={txtsearch} onChange={e=>setTxtsearch(e.target.value)} placeholder={emploi}/>
+                    <Input type="search" className='search__emploi-inp' value={txtsearch} onChange={e => setTxtsearch(e.target.value)} placeholder={emploi} requirede='required'/>
                 </div>
                 {/* <div className="searchall__search-region">
                     <GrLocation id='location__icone' size={25} className='search-location-icone'/>

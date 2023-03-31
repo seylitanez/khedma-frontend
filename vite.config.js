@@ -9,11 +9,11 @@ export default defineConfig({
     port:9710,
     proxy: {
       '/api': {
-          target: 'http://localhost:9630',
-          changeOrigin: true,
-          secure: false
+        target: 'http://localhost:9630',
+        changeOrigin: true,
+        secure: false
       }
-  }
+    }
   },
   resolve: {
     alias: {
