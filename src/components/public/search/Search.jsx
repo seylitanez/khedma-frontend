@@ -17,7 +17,9 @@ export default function Search({ setSearch,parent }) {
     const [isFiltreDisplayOff,setIsFiltreDisplayOff]=useState(true)
 
     const [txtsearch,setTxtsearch]=useState(search)
+
     const nav=useNavigate()
+    
     return (
         <form className="search" style={filtreDisplay}>
             <div className='searchall'>
@@ -32,7 +34,7 @@ export default function Search({ setSearch,parent }) {
                 <Buttun id="chercher" onClick={(e)=>{
                     e.preventDefault()
                     setSearch(txtsearch)
-                    if (parent === 'home') nav('/jobSearch')
+                    if (parent === 'home') nav('/jobSearch') 
                 }}>{chercher}</Buttun>
                 <Buttun id="filtrer"  onClick={(e)=>{
                     e.preventDefault()

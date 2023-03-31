@@ -7,7 +7,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    max-width: 300px;
+    width: 300px;
     color: $color_noir;
     background-color: $color_blanc;
     &:has(> .btn__postuler:hover){

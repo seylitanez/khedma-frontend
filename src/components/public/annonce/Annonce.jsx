@@ -3,7 +3,7 @@ import {Buttun} from '@p-components'
 import './annonce.scss'
 
 export default function Annonce({annonce}) {
-  const { nom, categorie,sousCategorie,salaireDeBase,journees, date}=annonce
+  const { nom,descriptionFr, categorie,sousCategorie,salaireDeBase,journees, date}=annonce
   let jourPublication=new Date(Date.now()).getDate()-new Date(date).getDate()
   return (
     <div className='annonce' id='annonce'>
@@ -14,7 +14,7 @@ export default function Annonce({annonce}) {
       <div className="ville"><h5>ville,region</h5></div>
       <span className='divider'></span>
       <br />
-      <div className="description"><h4>recherche d’un cuisinier experimenté avec au moins 1 ans d’eperience </h4></div>
+      <div className="description"><h4>{descriptionFr} </h4></div>
       <br />
       {/* je prefere consulter au lieu de postuler */}
       <Buttun className='btn__postuler'>CONSULTER</Buttun>

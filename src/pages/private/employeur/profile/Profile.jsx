@@ -7,9 +7,12 @@ import { userService } from "@service";
 
 export default function Profile() {
     const [user, setUser] = useState({})
-    useEffect(() => {
+     useEffect(() => {
         userService.getUser()
-            .then(res => setUser(res.data))
+            .then(res => {
+                
+                console.log(res.data.annonces);
+                setUser(res.data)})
             .catch(err => console.log(err))
     }, [])
     return (
@@ -18,7 +21,9 @@ export default function Profile() {
             <h2>{user.adresseMail}</h2>
             <h3>{user.genre}</h3>
             <h1>{user.tel}</h1>
-            {/* {user.annonces.map((annonce,key)=><Annonce annonce={annonce}/>)} */}
+            {
+                (user.annonces!=null) && user.annonces.map((annonce,key)=><Annonce annonce={annonce}/>)
+            }
         </div>
     )
 }

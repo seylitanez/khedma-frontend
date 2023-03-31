@@ -3,31 +3,50 @@ import { annonceService } from "@service";
 import "./ajouterAnnonce.scss"
 import { useState,useEffect } from 'react';
 import { Buttun, Input } from '@p-components';
+import { useMemo } from 'react';
 
 export default function AjouterAnnonce() {
     const [success, setSuccess] = useState(false)
-    const [annonce, setAnnonce] = useState({nom:'', categorie: '', sousCategorie: '', salaireDeBase: 0,adresse:{commune:"",wilaya:""},descriptionAr:"",descriptionFr:"",journees:[],date:''})
+    const [annonce, setAnnonce] = useState({nom:'', categorie: '', sousCategorie: '', salaireDeBase: 0,adresse:{commune:"",wilaya:""},descriptionAr:"",descriptionFr:"",journees:[]})
     const [journees, setJournees] = useState([])
+
+
     const onChange = (e) => {
-        if (['commune', 'wilaya'].includes(e.target.name)) setAnnonce({ ...annonce, adresse: { ...annonce.adresse, [e.target.name]: e.target.value }})
-        else setAnnonce({ ...annonce, [e.target.name]: e.target.value })
+        if (['commune', 'wilaya'].includes(e.target.name))
+         setAnnonce({ ...annonce, adresse: { ...annonce.adresse, [e.target.name]: e.target.value }})
+        
+        else 
+         setAnnonce({ ...annonce, [e.target.name]: e.target.value })
+
+
+         
     }
-    useEffect(() => {
-        const date = new Date()
-        setAnnonce({ ...annonce, date: date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()})
-    },[])
-    const onChangeJour = (e) => {
-        if (!e.target.checked) setJournees(journees.filter(element => element !== e.target.value))
-        setJournees([...journees, e.target.value])
+
+
+    useEffect(()=>{
         setAnnonce({ ...annonce, journees: journees })
-        console.log(journees,journees.length);
+    },[journees])
+
+
+    const onChangeJour = (e) => {
+        if (!e.target.checked) {
+            setJournees(journees.filter(element => element !== e.target.value))
+            setAnnonce({ ...annonce, journees: journees })
+            console.log(journees,journees.length);
+        }else{
+
+            setJournees(j=>{return [...j, e.target.value]})
+            setAnnonce({ ...annonce, journees: journees })
+
+        }
     }
+    
     const onSubmit = (e) => {
         e.preventDefault();
         console.log(annonce);
-        // annonceService.addAnnonce(annonce)
-        //     .then(res => {setSuccess(true); console.log(res)})
-        //     .catch(err => console.log(err))
+         annonceService.addAnnonce(annonce)
+         .then(res => {setSuccess(true); console.log(res)})
+         .catch(err => console.log(err))
     }
 // {
 //     "nom":"Reparateur",
