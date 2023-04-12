@@ -1,7 +1,6 @@
 import React from 'react'
 import "./profile.scss"
 import { useState, useEffect, useRef } from 'react'
-import {Annonce} from "@p-components"
 import { userService } from "@service";
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -22,7 +21,6 @@ export default function Profile() {
             <h1>{user.tel}</h1>
             <Link to='ajouterAnnonce'>AjouterAnnonce</Link><br/>
             <Link to='listAnnonce'>listAnnonce</Link>
-            {(user.annonces!=null) && user.annonces.map((annonce,key)=><Annonce annonce={annonce} key={key}/>)}
         </div>
     )
 }
