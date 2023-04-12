@@ -1,39 +1,41 @@
+// $khedma: '#k','#h','#e','#d','#m','#a';
+// @each $letter in $khedma{
+//     #{$letter}{
+//         animation: lettres (1+0.3*$i)s  ease;
+//         transform: 9s;
+//     }
+// }
+// @for $i from 1 through 6{
+//     #{$khedma[$i]]}{
+//         animation: 1+(0.3*$i) s ease;
+//     }
+// }
 #k{
     animation: lettres 1s  ease;
     transform: 9s;
 }
 #h{
     animation: lettres 1.3s  ease;
-    
 }
 #e{
     animation: lettres 1.6s  ease;
-    
 }
 #d{
     animation: lettres 1.9s  ease;
-    
 }
 #m{
     animation: lettres 2.2s  ease;
-    
-    
 }
 #a{
     animation: lettres 2.5s  ease;
-    
 }
 #khedmaAr{
-    
     animation: animation 2s ease;
 }
 #loupe{
-
     z-index: 2;
     animation: loupeanimation 2.3s  ease;
-
 }
-
 @keyframes animation {
     0%{
         transform: translateY(80px);

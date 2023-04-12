@@ -1,6 +1,6 @@
 import React from 'react'
 import './logo.scss'
-import Searchloupe from '@image/Searchloupe.svg'
+import { Searchloupe } from '@image'
 
 
 export default function Logo() {
