@@ -32,10 +32,7 @@ export default function Search({ setSearch,parent }) {
                     e.preventDefault()
                     // setSearch(txtsearch)
                     setSearch(txtsearch)
-                    console.log(txtsearch);
                     nav('/jobSearch/'+txtsearch) 
-
-
                 }}>{chercher}</Buttun>
                 <Buttun id="filtrer"  onClick={(e)=>{
                     e.preventDefault()

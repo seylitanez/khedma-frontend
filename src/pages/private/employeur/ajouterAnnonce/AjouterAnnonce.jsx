@@ -27,7 +27,6 @@ export default function AjouterAnnonce() {
     }
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log(annonce);
         annonceService.addAnnonce(annonce)
          .then(res => {setSuccess(true); console.log(res)})
          .catch(err => console.log(err))

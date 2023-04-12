@@ -1,7 +1,7 @@
 // $khedma: '#k','#h','#e','#d','#m','#a';
 // @each $letter in $khedma{
 //     #{$letter}{
-//         animation: lettres 1s  ease;
+//         animation: lettres (1+0.3*$i)s  ease;
 //         transform: 9s;
 //     }
 // }
