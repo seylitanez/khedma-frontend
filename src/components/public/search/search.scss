@@ -10,6 +10,7 @@
         border: none;
         cursor: pointer;
         margin-left: 5px;
+        padding: 10px;
         height: 40px;
     }
     @mixin filter_element($width){
@@ -68,7 +69,8 @@
             @include btn($color_blanc,$color_bleu)
         }
         & #filtrer{
-            @include btn($color_blanc,$color_bleu)
+            @include btn($color_blanc,$color_bleu);
+            width:80px;
         }
     }
     & #type_de_travail{

@@ -9,8 +9,8 @@
     & .search{
         width: 100%;
         height: 100px;
-        background-color: blueviolet;
         z-index: 2;
+        background-color: $color_blanc;
         grid-area: search;
     }
     & .list{
