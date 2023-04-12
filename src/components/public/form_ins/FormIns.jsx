@@ -11,6 +11,11 @@ export default function FormIns() {
     const {male,femme}=gender;
     const [user,setUser]=useState({nomUtilisateur:"",motDePasse:"",nom:"",prenom:"",adresseMail:"",genre:""})
     const onchange=(e)=>setUser({...user,[e.target.name]:e.target.value})
+    const checkPassword=e=>{   
+        if (e.target.value!=user.motDePasse) {
+            
+        }
+    }
     const onsubmit=(e)=>{
         e.preventDefault();
         accountService.addUser(user)
