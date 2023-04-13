@@ -21,7 +21,15 @@ export default function FormIns() {
     const onsubmit=(e)=>{
         e.preventDefault();
         accountService.addUser(user)
-        .then(res=>console.log(res))
+        .then(res=>{
+            accountService.saveToken(res.data.token)
+            accountService.setRole(res.data.role)
+            switch (res.data.role) {
+                case 'EMPLOYE': navigate('/employe'); break;
+                case 'EMPLOYEUR': navigate('/employeur/profile/' + user.nomUtilisateur); break;
+                case 'MODERATEUR': navigate('/moderateur'); break;
+            }
+        })
         .catch(err=>console.log(err))
     }
     return (
