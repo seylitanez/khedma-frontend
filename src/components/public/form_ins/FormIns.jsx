@@ -11,9 +11,11 @@ export default function FormIns() {
     const {male,femme}=gender;
     const [user,setUser]=useState({nomUtilisateur:"",motDePasse:"",nom:"",prenom:"",adresseMail:"",genre:""})
     const [psw,setpsw]=useState("")
+    const [pswd,setpswd]=useState("")
     const onchange=(e)=>setUser({...user,[e.target.name]:e.target.value})
     const checkPassword=e=>{
         if (e.target.id==="rmdp" ) setpsw(e.target.value)
+        if (e.target.id==="mdp" ) setpswd(e.target.value)
         if (psw===user.motDePasse) onchange(e)        
     }
     const onsubmit=(e)=>{
@@ -38,7 +40,7 @@ export default function FormIns() {
                 <Input type="email" id="email" name="adresseMail" value={user.adresseMail} onChange={onchange}>{email}</Input>
             </div>
             <div className={"ins__group "}>
-                <Input type="password" id='mdp' name="motDePasse" value={user.motDePasse} onChange={checkPassword}>{password}</Input>
+                <Input type="password" id='mdp' name="motDePasse" value={pswd} onChange={checkPassword}>{password}</Input>
             </div>
             <div className={"ins__group "}>
                 <Input type="password" id='rmdp' name="motDePasse" value={psw} onChange={checkPassword}>{rpassword}</Input>
