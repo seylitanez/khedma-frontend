@@ -1,4 +1,5 @@
 import Axios from "./Caller.service";
+import jwt_decode from "jwt-decode";
 let addUser = (user) => {
     return Axios.post('/api/v1/auth/add-user', user)
 }
@@ -19,12 +20,9 @@ let getToken = () => {
     return localStorage.getItem('token');
 }
 let getRole = () => {
-    return localStorage.getItem('role');
-}
-let setRole = (role) => {
-    localStorage.setItem('role', role);
+    return jwt_decode(getToken()).role;
 }
 let getUser = () => {
     return Axios.get('/api/v1/me');
 }
-export const accountService = { addUser,login, saveToken, logout, isLogged, getToken, getRole, setRole , getUser}
+export const accountService = { addUser,login, saveToken, logout, isLogged, getToken, getRole, getUser}
