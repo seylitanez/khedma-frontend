@@ -1,12 +1,18 @@
 .sideBar{
     grid-area: sideBar;
-    position: fixed;
-    top: 70px;
-    padding-top: 50px;
+    position: sticky;
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    top: 70px;
+    padding-top: 10px;
     align-items: center;
     background-color: white;
     padding: 10px;
     padding-top: 50px;
     left: 10px;
+    border: 1px solid black;
+    border-radius: 8px;
+    height: 80vh;
+    width: fit-content;
 }

@@ -4,19 +4,21 @@ import { useContext,useState } from 'react';
 import { accountService } from "@service";
 import {LangueContext} from "@context/langue";
 import {Input,Buttun} from '@p-components';
+import { useNavigate } from 'react-router-dom';
 
 export default function FormIns() {
     const {lang} = useContext(LangueContext);
     const {h2,nom,prenom,username,email,password,rpassword,gender,next}=lang.auth.signin;
     const {male,femme}=gender;
-    const [user,setUser]=useState({nomUtilisateur:"",motDePasse:"",nom:"",prenom:"",adresseMail:"",genre:""})
+    const [user,setUser]=useState({nomUtilisateur:"",motDePasse:"",nom:"",prenom:"",adresseMail:"",genre:"HOMME",role:"EMPLOYEUR"})
     const [psw,setpsw]=useState("")
     const [pswd,setpswd]=useState("")
+    const navigate=useNavigate()
     const onchange=(e)=>setUser({...user,[e.target.name]:e.target.value})
     const checkPassword=e=>{
         if (e.target.id==="rmdp" ) setpsw(e.target.value)
         if (e.target.id==="mdp" ) setpswd(e.target.value)
-        if (psw===user.motDePasse) onchange(e)        
+        if (psw===pswd) onchange(e)        
     }
     const onsubmit=(e)=>{
         e.preventDefault();
@@ -54,8 +56,8 @@ export default function FormIns() {
                 <Input type="password" id='rmdp' name="motDePasse" value={psw} onChange={checkPassword}>{rpassword}</Input>
             </div>
             <div className={"ins__group "}>
-                <Input type="radio" id='male'name="genre" value="male"onChange={onchange} >{male}</Input>
-                <Input type="radio" id='femme'name="genre" value='femme'onChange={onchange}>{femme}</Input>
+                <Input type="radio" id='male'name="genre" value="HOMME"onChange={onchange} >{male}</Input>
+                <Input type="radio" id='femme'name="genre" value='FEMME'onChange={onchange}>{femme}</Input>
             </div>
             <div className="ins__next">
                 <Buttun id="sing">{next}</Buttun>

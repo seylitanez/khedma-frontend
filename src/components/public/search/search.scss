@@ -80,3 +80,13 @@
         @include filter_element(120px)
     }
 }
+
+@media screen and (max-width:673px) {
+
+    .search{
+        & .searchall{
+            transform: scale(0.95);
+        }
+    }
+    
+ }

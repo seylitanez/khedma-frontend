@@ -1,4 +1,6 @@
 import Axios from "./Caller.service";
+import jwt_decode from "jwt-decode"
+
 let addUser = (user) => {
     return Axios.post('/api/v1/auth/add-user', user)
 }
@@ -6,6 +8,8 @@ let login = (user) => {
     return Axios.post('/api/v1/auth/login', user)
 }
 let saveToken = (token) => {
+
+    console.log(jwt_decode(token));
     localStorage.setItem('token', token);
 }
 let logout = () => {

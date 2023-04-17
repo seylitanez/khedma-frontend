@@ -1,51 +1,92 @@
 .annonce{
-    margin-top: 10px;
-    margin-left: 10px;
-    display: flex;
+
+    margin-top: 0px;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
     border: solid 1px black;
     border-radius: 3px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    width: 300px;
-    color: $color_noir;
     background-color: $color_blanc;
-    &:has(> .btn__postuler:hover){
-        background-color: $color_bleu;
-        color: $color_blanc;
-        transition: 0.3s;
-        box-shadow: 0 0 15px $color_bleu;
-        & .divider{
-            background-color:  white;
-        }
-    }
-    & .annonce-top{
-        width: 90%;
+    margin-top: 15px;
+    margin-left: 15px;
+    width: 300px;
+    height: 280px;
+    
+    
+    
+    & .annonce__front{
+        transform-style: preserve-3d;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: space-between;
-    }
-    & .ville{
-        width: 80%;
-    }
-    & .divider{
-        width: 80%;
-        background-color: $color_noir;
-        border-radius: 2px;
-        height: 2px;
-    }
-    & .description{
-        width: 80%;
-    }
-    & .btn__postuler{
-        background-color: $color_blanc;
-        width: 40%;
-        height: 40px;
-        font-weight: 900;
         color: $color_noir;
-        border-radius: 3px;
-        border: 2px solid $color_noir;
-        font-size: medium;
+        transform: translateZ(1);
+        width: 300px;
+        height: 280px;
+
+&:has(> .btn__postuler:hover){
+    background-color: $color_bleu;
+    color: $color_blanc;
+    transition: 0.3s;
+    box-shadow: 0 0 15px $color_bleu;
+    & .divider{
+        background-color:  white;
     }
+}
+& .annonce-top{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transform: translateZ(50px);
+
+}
+& .ville{
+    width: 80%;
+}
+& .divider{
+    width: 80%;
+    background-color: $color_noir;
+    border-radius: 2px;
+    height: 2px;
+    transform: translateZ(50px);
     
+}
+& .description{
+    width: 80%;
+}
+& .btn__postuler{
+    background-color: $color_blanc;
+    padding: 2px;
+    width: 40%;
+    height: 40px;
+    font-weight: 900;
+    color: $color_noir;
+    border-radius: 3px;
+    border: 2px solid $color_noir;
+    font-size: medium;
+    cursor: pointer;
+    transform: translateZ(50px);
+}
+}
+
+& .annonce__back{
+    margin: 10px;
+    position: absolute;
+    background-color: $color_blanc;
+    transform-style: preserve-3d;
+    border-radius: 3px;
+    padding: 30px;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    transform: translateZ(-1px) rotateY(180deg);
+    
+    & h5{
+        transform: translateZ(50px);
+
+    }
+}
+
 }

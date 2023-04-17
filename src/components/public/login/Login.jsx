@@ -23,7 +23,7 @@ export default function Login() {
     const [anim,setActive]=useAnim('');
     const [anims,setActives]=useAnim('');
     //conection
-    const [user, setUser] = useState({ nomUtilisateur: "", motDePasse :""})
+    const [user, setUser] = useState({ adresseMail: "", motDePasse :""})
     const onChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value })
     }
@@ -36,7 +36,7 @@ export default function Login() {
                 accountService.setRole(res.data.role)
                 switch (res.data.role) {
                     case 'EMPLOYE':navigate('/employe');break;
-                    case 'EMPLOYEUR':navigate('/employeur/profile/'+user.nomUtilisateur);break;
+                    case 'EMPLOYEUR':navigate('/employeur/profile/'+user.adresseMail);break;
                     case 'MODERATEUR':navigate('/moderateur');break;
                 }
             })
@@ -47,7 +47,7 @@ export default function Login() {
             {/* <h2>{h2}</h2> */}
             <MdAccountCircle size={100} className='icone_account'/>
             <div className={"login__group "+anim}>
-                <Input type="text" id="email" name='nomUtilisateur' value={user.nomUtilisateur} onChange={onChange} onInput={e => setActive(e)} requirede='required'>{email}</Input>
+                <Input type="text" id="email" name='adresseMail' value={user.adresseMail} onChange={onChange} onInput={e => setActive(e)} requirede='required'>{email}</Input>
             </div>
             <div className={"login__group "+anims}>
                 <Input type="password" id='mdp' name='motDePasse' value={user.motDePasse} onChange={onChange} onInput={e => setActives(e)} requirede='required'>{password}</Input>
