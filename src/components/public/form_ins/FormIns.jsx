@@ -10,7 +10,7 @@ export default function FormIns() {
     const {lang} = useContext(LangueContext);
     const {h2,nom,prenom,username,email,password,rpassword,gender,next}=lang.auth.signin;
     const {male,femme}=gender;
-    const [user,setUser]=useState({nomUtilisateur:"",motDePasse:"",nom:"",prenom:"",adresseMail:"",genre:"HOMME",role:"EMPLOYEUR"})
+    const [user,setUser]=useState({motDePasse:"",nom:"",prenom:"",adresseMail:"",genre:"HOMME",role:"EMPLOYE"})
     const [psw,setpsw]=useState("")
     const [pswd,setpswd]=useState("")
     const navigate=useNavigate()

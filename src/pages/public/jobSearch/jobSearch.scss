@@ -7,11 +7,16 @@
     grid-template-areas: "sideBar search search search search" "sideBar lists lists lists lists" "sideBar lists lists lists lists";
     grid-gap: 0.2rem;
     & .search{
-        width: 100%;
-        height: 100px;
-        z-index: 2;
+        width:100%;
         background-color: $color_blanc;
         grid-area: search;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+    }
+    & #type_de_travail{
+        position: relative;
+        background-color: red;
     }
     & .list{
         grid-area: lists;
