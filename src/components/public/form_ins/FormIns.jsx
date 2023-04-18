@@ -10,11 +10,7 @@ export default function FormIns() {
     const {lang} = useContext(LangueContext);
     const {h2,nom,prenom,username,email,password,rpassword,gender,next}=lang.auth.signin;
     const {male,femme}=gender;
-<<<<<<< HEAD
-    const [user,setUser]=useState({motDePasse:"",nom:"",prenom:"",adresseMail:"",genre:"HOMME",role:"EMPLOYE"})
-=======
     const [user,setUser]=useState({motDePasse:"",nom:"",prenom:"",adresseMail:"",genre:"",role:"EMPLOYE"})
->>>>>>> 1768dc8a5a181f2c1f9d330684a87f0bfceb6672
     const [psw,setpsw]=useState("")
     const [pswd,setpswd]=useState("")
     const navigate=useNavigate()
@@ -30,8 +26,8 @@ export default function FormIns() {
         .then(res=>{
             accountService.saveToken(res.data.token)
             switch (user.role) {
-                case 'EMPLOYE': navigate('/employe'); break;
-                case 'EMPLOYEUR': navigate('/employeur/profile/' + user.nomUtilisateur); break;
+                case 'EMPLOYE': navigate('/employe/profile/' + accountService.getUserName()); break;
+                case 'EMPLOYEUR': navigate('/employeur/profile/' + accountService.getUserName()); break;
                 case 'MODERATEUR': navigate('/moderateur'); break;
             }
         })

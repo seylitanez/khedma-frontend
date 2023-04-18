@@ -4,7 +4,7 @@
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 100px 1fr;
-    grid-template-areas: "sideBar search search search search" "sideBar lists lists lists lists" "sideBar lists lists lists lists";
+    grid-template-areas: "sideBar search search search search" "sideBar lists lists lists lists" "sideBar lists lists lists lists" "sideBar pagination pagination pagination pagination";
     grid-gap: 0.2rem;
     & .search{
         width:100%;
@@ -25,5 +25,13 @@
         justify-content: center;
         min-height: 100vh;
         margin-bottom: 50px;
+    }
+    & .pagination{
+        grid-area: pagination;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 }

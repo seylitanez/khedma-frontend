@@ -34,8 +34,8 @@ export default function Login() {
             .then(res => {
                 accountService.saveToken(res.data.token)
                 switch (accountService.getRole()) {
-                    case 'EMPLOYE':navigate('/employe');break;
-                    case 'EMPLOYEUR':navigate('/employeur/profile/'+user.adresseMail);break;
+                    case 'EMPLOYE': navigate('/employe/profile/'+accountService.getUserName());break;
+                    case 'EMPLOYEUR': navigate('/employeur/profile/'+accountService.getUserName());break;
                     case 'MODERATEUR':navigate('/moderateur');break;
                 }
             })
