@@ -10,7 +10,11 @@ export default function FormIns() {
     const {lang} = useContext(LangueContext);
     const {h2,nom,prenom,username,email,password,rpassword,gender,next}=lang.auth.signin;
     const {male,femme}=gender;
+<<<<<<< HEAD
     const [user,setUser]=useState({motDePasse:"",nom:"",prenom:"",adresseMail:"",genre:"HOMME",role:"EMPLOYE"})
+=======
+    const [user,setUser]=useState({motDePasse:"",nom:"",prenom:"",adresseMail:"",genre:"",role:"EMPLOYE"})
+>>>>>>> 1768dc8a5a181f2c1f9d330684a87f0bfceb6672
     const [psw,setpsw]=useState("")
     const [pswd,setpswd]=useState("")
     const navigate=useNavigate()
@@ -25,8 +29,7 @@ export default function FormIns() {
         accountService.addUser(user)
         .then(res=>{
             accountService.saveToken(res.data.token)
-            accountService.setRole(res.data.role)
-            switch (res.data.role) {
+            switch (user.role) {
                 case 'EMPLOYE': navigate('/employe'); break;
                 case 'EMPLOYEUR': navigate('/employeur/profile/' + user.nomUtilisateur); break;
                 case 'MODERATEUR': navigate('/moderateur'); break;
@@ -42,9 +45,6 @@ export default function FormIns() {
             </div>
             <div className={"ins__group "}>
                 <Input type="text" id="prenom" name="prenom" value={user.prenom} onChange={onchange}>{prenom}</Input>
-            </div>
-            <div className={"ins__group "}>
-                <Input type="text" id="username" name="nomUtilisateur" value={user.nomUtilisateur} onChange={onchange}>{username}</Input>
             </div>
             <div className={"ins__group "}>
                 <Input type="email" id="email" name="adresseMail" value={user.adresseMail} onChange={onchange}>{email}</Input>
