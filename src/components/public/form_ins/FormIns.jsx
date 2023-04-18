@@ -30,8 +30,8 @@ export default function FormIns() {
         .then(res=>{
             accountService.saveToken(res.data.token)
             switch (user.role) {
-                case 'EMPLOYE': navigate('/employe'); break;
-                case 'EMPLOYEUR': navigate('/employeur/profile/' + user.nomUtilisateur); break;
+                case 'EMPLOYE': navigate('/employe/profile/' + accountService.getUserName()); break;
+                case 'EMPLOYEUR': navigate('/employeur/profile/' + accountService.getUserName()); break;
                 case 'MODERATEUR': navigate('/moderateur'); break;
             }
         })

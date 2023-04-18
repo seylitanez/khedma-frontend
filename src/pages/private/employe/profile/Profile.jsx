@@ -9,9 +9,7 @@ export default function Profile() {
     useEffect(() => {
         if (!flg.current) {
             accountService.getUser()
-                .then(res => {setUser(res.data)
-                console.log(res.data)
-                })
+                .then(res => setUser(res.data))
                 .catch(err => console.log(err))
         }
         return () => {
@@ -23,7 +21,7 @@ export default function Profile() {
             <h1>{user.nomUtilisateur}</h1>
             <h2>{user.adresseMail}</h2>
             <h3>{user.genre}</h3>
-            <h1>{user.tel}</h1>
+            <h3>{user.tel}</h3>
             {/* <h1>{user.adresse.wilaya}</h1> */}
             {/* <h1>{[user.adresse.commune]}</h1> */}
         </div>

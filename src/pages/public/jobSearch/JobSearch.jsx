@@ -23,7 +23,6 @@ export default function JobSearch() {
 },[param.job])
 useEffect(()=>{
     if(param.job!=undefined){
-      
         setSearch(param.job)
         annonceService.getAnnonceBySearch(param.job/*search*/)
         .then(res =>{annonce.setAnnonces(res.data)
@@ -35,20 +34,15 @@ useEffect(()=>{
               page.push([])
             }
             page[p].push(element)
-              
           });
-        }
-        
+          }
         )
         .catch(err=>console.log(err))
     }
   },[param.job,page])
-
-
    useEffect(()=>{
      setPage([[]])
      setNbrPage(0)
-
    },[param.job])
   return (
     <div className='jobSearch'>
@@ -59,8 +53,8 @@ useEffect(()=>{
       <div className="list">
          {page[nbrPage].length!==0? page[nbrPage].map((annonce,key)=><Annonce annonce={annonce} key={key}/>):<h1>aucun resultat</h1>}
       </div>
-      
-      <div className='pagination'>{page.map((btn,index)=><button onClick={()=>{setNbrPage(index); console.log(page[index]);}}>{index}</button>)}</div>
+
+      <div className='pagination'>{page.map((btn,index)=><button onClick={()=>{setNbrPage(index); console.log(page[index]);}} key={index}>{index}</button>)}</div>
     </div>
   )
 }
