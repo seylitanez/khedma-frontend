@@ -52,7 +52,7 @@
             "password":"password"
         },
         "signin":{
-            "h2":"register",
+            "h2":"Personal Informations",
             "nom":"lastname",
             "prenom":"firstname",
             "username":"username",

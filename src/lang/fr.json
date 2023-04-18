@@ -53,7 +53,7 @@
             "password":"mot de passe"
         },
         "signin":{
-            "h2":"inscription",
+            "h2":"Information personnelles",
             "nom":"nom",
             "prenom":"prenom",
             "username":"nom d'utilisateur",
