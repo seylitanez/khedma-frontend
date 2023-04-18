@@ -7,7 +7,7 @@ import { useState } from 'react'
 
 export default function Logo() {
   const [loupeId,setLoupeId]=useState(<rect id='loupe' y="15" width="59" height="46" fill="url(#pattern0)"/>)
-  console.log(loupeId);
+  // console.log(loupeId);
   
    useEffect(()=>{
      setInterval(()=>{
