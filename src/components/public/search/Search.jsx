@@ -5,9 +5,9 @@ import {FiFilter} from 'react-icons/fi'
 import {LangueContext} from "@context/langue"
 import "./search.scss";
 import { useContext,useState} from 'react';
-import {Buttun,Input} from '@p-components';
 import { useNavigate } from 'react-router-dom'
-import { AnnonceContext } from "@context/Annonce.jsx";
+import { AnnonceContext } from "@context/Annonce";
+import { Buttun, Input } from '@p-components/index'
 
 export default function Search({ setSearch,parent }) {
     const {lang} = useContext(LangueContext);

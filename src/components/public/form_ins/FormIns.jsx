@@ -3,8 +3,8 @@ import "./formins.scss";
 import { useContext,useState } from 'react';
 import { accountService } from "@service";
 import {LangueContext} from "@context/langue";
-import {Input,Buttun} from '@p-components';
 import { useNavigate } from 'react-router-dom';
+import { Buttun, Input } from '@p-components/index';
 
 
 export default function FormIns() {

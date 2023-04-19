@@ -2,7 +2,7 @@ import React from 'react'
 import { Annonce } from '@p-components'
 import './jobSearch.scss'
 import { useState, useEffect, useRef } from 'react'
-import { annonceService } from "@service";
+import { annonceService } from '@service/Annonce.service'
 
 export default function JobSearch() {
     const [annonces, setAnnonces] = useState([])

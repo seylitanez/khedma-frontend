@@ -1,8 +1,8 @@
 import React from 'react'
-import { annonceService } from "@service";
+import { annonceService } from "@service/index";
 import "./ajouterAnnonce.scss"
 import { useState,useEffect } from 'react';
-import { Buttun, Input } from '@p-components';
+import { Buttun, Input } from '@p-components/index';
 import { useMemo } from 'react';
 
 export default function AjouterAnnonce() {

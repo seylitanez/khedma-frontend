@@ -2,8 +2,8 @@ import { useState,useEffect} from 'react'
 import { Route ,Routes ,BrowserRouter } from 'react-router-dom';
 import './App.scss'
 import PublicRouter from '@p-pages/PublicRouter';
-import {LangueContext} from "@context/langue.jsx";
-import {AnnonceContext} from "@context/Annonce.jsx";
+import {LangueContext} from "@context/langue";
+import {AnnonceContext} from "@context/Annonce";
 import {fr,ar,en} from "@langue";
 import AuthGuard from '@helper/AuthGuard';
 import EmployeRouter from '@pr-employe-pages/EmployeRouter';

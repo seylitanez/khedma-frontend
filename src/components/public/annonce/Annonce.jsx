@@ -1,7 +1,7 @@
 import React from 'react'
-import {Buttun} from '@p-components'
 import './annonce.scss'
 import { useState } from 'react'
+import { Buttun } from '@p-components/index'
 
 export default function Annonce({annonce}) {
   const { nom,descriptionFr, categorie,sousCategorie,salaireDeBase,journees, date}=annonce

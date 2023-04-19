@@ -2,9 +2,9 @@ import React,{ useContext,useState } from 'react'
 import {LangueContext} from "@context/langue";
 import { MdAccountCircle } from "react-icons/md";
 import "./login.scss"
-import {Input,Buttun} from '@p-components';
 import { useNavigate,Link} from 'react-router-dom';
-import { accountService } from "@service";
+import { accountService } from '@service/Account.service';
+import { Buttun, Input } from '@p-components/index';
 function useAnim(className) {
     const [anim,setAnim]=useState(className);
     const setActive=(e)=>{
@@ -41,9 +41,6 @@ export default function Login() {
             })
             .catch(err => console.log(err))
     }
-
-
-    
     return (
         <form className="form__login" onSubmit={sub}>
             {/* <h2>{h2}</h2> */}

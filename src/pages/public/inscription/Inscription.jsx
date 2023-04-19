@@ -1,7 +1,7 @@
 import React from 'react'
 import "./inscription.scss"
 import {Logo,illustration_ayth} from '@image'
-import {FormIns} from '@p-components';
+import {FormIns} from '@p-components/index';
 
 export default function Inscription() {
     return (

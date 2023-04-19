@@ -1,13 +1,13 @@
 import React from 'react'
-import {Login} from '@p-components'
 import "./sideBar.scss";
+import { Buttun, Login } from '@p-components/index';
 
 export default function SideBar() {
     return (
         <section className='sideBar'>
             <Login/>
-            <button>filtre1</button>
-            <button>filtre2</button>
+            <Buttun>filtre1</Buttun>
+            <Buttun>filtre2</Buttun>
         </section>
     )
 }
