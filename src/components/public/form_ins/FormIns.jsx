@@ -6,6 +6,7 @@ import {LangueContext} from "@context/langue";
 import {Input,Buttun} from '@p-components';
 import { useNavigate } from 'react-router-dom';
 
+
 export default function FormIns() {
     const {lang} = useContext(LangueContext);
     const {h2,nom,prenom,username,email,password,rpassword,gender,next}=lang.auth.signin;
@@ -13,6 +14,9 @@ export default function FormIns() {
     const [user,setUser]=useState({motDePasse:"",nom:"",prenom:"",adresseMail:"",genre:"",role:"EMPLOYE"})
     const [psw,setpsw]=useState("")
     const [pswd,setpswd]=useState("")
+
+    // const [animation,setAnimation]=useAnimation('animation');
+
     const navigate=useNavigate()
     const onchange=(e)=>setUser({...user,[e.target.name]:e.target.value})
     const checkPassword=e=>{
@@ -34,24 +38,22 @@ export default function FormIns() {
         .catch(err=>console.log(err))
     }
     return (
-        <form onSubmit={onsubmit}>
+        <form className='form' onSubmit={onsubmit}>
             <h2>{h2}</h2>
-            <div className={"ins__group "}>
-                <Input type="text" id="nom" name="nom" value={user.nom} onChange={onchange}>{nom}</Input>
+            <div className={"ins__group__nom__prenom "}>
+                <Input type="text" placeholder="nom" id="nom" name="nom" value={user.nom}   onChange={onchange}/>
+                <Input type="text"  placeholder='prenom' id="prenom" name="prenom" value={user.prenom} onChange={onchange}/>
             </div>
             <div className={"ins__group "}>
-                <Input type="text" id="prenom" name="prenom" value={user.prenom} onChange={onchange}>{prenom}</Input>
+                <Input type="email" id="email" placeholder='email@exemple.com' name="adresseMail" value={user.adresseMail} onChange={onchange}/>
             </div>
             <div className={"ins__group "}>
-                <Input type="email" id="email" name="adresseMail" value={user.adresseMail} onChange={onchange}>{email}</Input>
+                <Input type="password" id='mdp' name="motDePasse" placeholder="mot de passe" value={pswd} onChange={checkPassword}/>
             </div>
             <div className={"ins__group "}>
-                <Input type="password" id='mdp' name="motDePasse" value={pswd} onChange={checkPassword}>{password}</Input>
+                <Input type="password" id='rmdp' name="motDePasse" placeholder="confirmer le mot de passe" value={psw} onChange={checkPassword}/>
             </div>
-            <div className={"ins__group "}>
-                <Input type="password" id='rmdp' name="motDePasse" value={psw} onChange={checkPassword}>{rpassword}</Input>
-            </div>
-            <div className={"ins__group "}>
+            <div className={"ins__group__genre"}>
                 <Input type="radio" id='male'name="genre" value="HOMME"onChange={onchange} >{male}</Input>
                 <Input type="radio" id='femme'name="genre" value='FEMME'onChange={onchange}>{femme}</Input>
             </div>

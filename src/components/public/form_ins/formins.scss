@@ -1,0 +1,74 @@
+$color_8b:#8B8B8B;
+
+.form{
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    
+    & .ins__group__nom__prenom{
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        margin-top: 20px;
+        
+        & Input{
+            padding: 10px;
+            border-radius: 10px;
+            height: 25px;
+            border: none;
+            box-shadow: 0 0 1px black;
+            margin-bottom: 10px;
+            &:hover{
+                box-shadow: 0 0 0px 1px $color_bleu;
+            }
+            
+        }
+        
+        & #nom{
+            width: 21%;
+            
+        }
+        & #prenom{
+            margin-left: 10px;
+            width: 21%;
+        }
+    }
+
+& .ins__group{
+        margin-top: 10px;
+        width: fit-content;
+        margin-bottom: 10px;
+        & Input{
+            border-radius: 10px;
+            border: none;
+            height: 25px;
+            box-shadow: 0 0 1px black;
+            padding: 10px;
+            
+            &:hover{
+                box-shadow: 0 0 0px 1px $color_bleu;
+            }
+            
+        }
+    }
+    
+    & .ins__next{
+        & #sing{
+            position: absolute;
+            border-radius: 15px;
+            background-color: $color_bleu;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: medium;
+            font-weight: bold;
+            cursor: pointer;
+            margin-right: 0px;
+        }
+
+    }
+
+    
+}

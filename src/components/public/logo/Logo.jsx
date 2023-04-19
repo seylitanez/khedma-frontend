@@ -1,7 +1,7 @@
 import React from 'react'
 import './logo.scss'
 import { Searchloupe } from '@image'
-import { useEffect, useState } from 'react'
+import { useEffect,useState } from 'react'
 
 
 export default function Logo() {
