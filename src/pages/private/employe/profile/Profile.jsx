@@ -1,7 +1,9 @@
 import React from 'react'
 import "./profile.scss";
 import { useState, useEffect, useRef } from 'react'
-import { accountService } from "@service";
+import { Header } from '@p-components/index';
+import { accountService } from '@service/Account.service';
+import { CardCV, CardProfile } from '@pr-components/index';
 
 export default function Profile() {
     const [user, setUser] = useState({})
@@ -9,7 +11,7 @@ export default function Profile() {
     useEffect(() => {
         if (!flg.current) {
             accountService.getUser()
-                .then(res => setUser(res.data))
+                .then(res => { setUser(res.data); console.log(res.data);})
                 .catch(err => console.log(err))
         }
         return () => {
@@ -17,13 +19,18 @@ export default function Profile() {
         }
     }, [])
     return (
-        <div>
-            <h1>{user.nomUtilisateur}</h1>
-            <h2>{user.adresseMail}</h2>
-            <h3>{user.genre}</h3>
-            <h3>{user.tel}</h3>
-            {/* <h1>{user.adresse.wilaya}</h1> */}
-            {/* <h1>{[user.adresse.commune]}</h1> */}
+        <div className='profile_employe'>
+            <div className="nav">
+                <Header/>
+            </div>
+            <div className="sidebar">
+
+            </div>
+            <div className="main">
+                <h1>Profile</h1>
+                <CardProfile user={user}/>
+                <CardCV/>
+            </div>
         </div>
     )
 }

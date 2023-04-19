@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "baseUrl": "./src",
+        "jsx": "react",
+        "paths": {
+            "@utils/*":["utils/*"],
+            "@service/*":["service/*"],
+            "@helper/*":["helper/*"],
+            "@style/*": ["styles/*"],
+            "@langue/*": ["lang/*"],
+            "@context/*": ["context/*"],
+            "@image/*":["assets/*"],
+            "@p-components/*":["components/public/*"],
+            "@pr-components/*":["components/private/*"],
+            "@components/*":["components/*"],
+            "@pr-employe-pages/*":["pages/private/employe/*"],
+            "@pr-employeur-pages/*":["pages/private/employeur/*"],
+            "@pr-moderateur-pages/*":["pages/private/moderateur/*"],
+            "@p-pages/*":["pages/public/*"],
+            "@pages/*":["pages/*"],
+            "@/*": ["*"],
+        }
+    }
+}

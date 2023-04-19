@@ -1,0 +1,22 @@
+@import "@style/mixinprof.scss";
+.profile {
+    @include card();
+    & .info {
+        @include info();
+    }
+    & .inf_perso {
+        display: flex;
+        flex-direction: column;
+        width: $with;
+    }
+    & .inf_cont {
+        width: $with;
+    }
+    & .contact {
+        width: $with;
+        display: flex;
+        & .tel {
+            width: 50%;
+        }
+    }
+}

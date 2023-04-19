@@ -1,0 +1,26 @@
+@import "@style/mixinprof.scss";
+.card_cv{
+    @include card();
+    & .info{
+        @include info();
+        margin-bottom: 20px;
+    }
+    & .specialite{
+        width: $with;
+        color: $color_bleu;
+        margin-bottom: 10px;
+    }
+    & .experience{
+        display: flex;
+        width: $with;
+        & .piece{
+            width: 50%;
+            & .clr{
+                color: $color_bleu;
+            }
+        }
+        & .visible{
+            @extend .piece;
+        }
+    }
+}

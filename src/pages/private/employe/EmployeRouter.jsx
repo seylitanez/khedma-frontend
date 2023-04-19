@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route,Routes } from 'react-router-dom'
-import { Profile,JobSearch } from '@pr-employe-pages'
+import { JobSearch, Profile } from './index'
 export default function EmployeRouter() {
     return (
         <Routes>

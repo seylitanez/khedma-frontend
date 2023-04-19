@@ -1,10 +1,10 @@
 import React from 'react'
 import imgh from '@image/img_home.svg'
 import "./home.scss";
-import {LangueContext} from "@context/langue"
-import {Search,ImageHome} from '@p-components';
 import { useContext,useState,useEffect} from 'react';
-import { AnnonceContext } from "@context/Annonce.jsx";
+import { ImageHome, Search } from '@p-components/index';
+import { LangueContext } from '@context/langue';
+import { AnnonceContext } from '@context/Annonce';
 
 export default function Home() {
   const {lang} = useContext(LangueContext);
