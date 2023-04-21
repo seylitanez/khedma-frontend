@@ -6,14 +6,12 @@ let addUser = (user) => {
 let login = (user) => {
     return Axios.post('/api/v1/auth/login', user)
 }
-
 let addCv=(cv)=>{
     return Axios.post('/api/v1/auth/fich',cv,{
         headers: {
           "Content-Type": "multipart/form-data",
         }})
 }
-
 let saveToken = (token) => {
     localStorage.setItem('token', token);
 }
@@ -36,4 +34,4 @@ let getUserName = () => {
 let getUser = () => {
     return Axios.get('/api/v1/me');
 }
-export const accountService = { addUser, login, saveToken, logout, isLogged, getToken, getRole, getUser, getUserName }
+export const accountService = { addUser, login, saveToken, logout, isLogged, getToken, getRole, getUser, getUserName, addCv }
