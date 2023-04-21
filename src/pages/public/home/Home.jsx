@@ -15,32 +15,34 @@ export default function Home() {
   let i=-1
   const [titre,setTitre]=useState("")
 
-  // useEffect(()=>{
+   useEffect(()=>{
 
-  //   const timer=setInterval(()=>{
-  //     i++
-  //     console.log(i);
-  //     console.log(h1.charAt(i));
-  //     if (txt!=h1) {
-  //       setTitre(t=>t+=h1.charAt(i))
-  //     }else
-  //     clearInterval(timer)
-  //     console.log("test");
+     const timer=setInterval(()=>{
+       i++
+       if (i<=h1.length) {
+        console.log("longeur du titre "+titre.length);
+         setTitre(t=>t+=h1.charAt(i))
+       }else{
+         console.log("stop");
+         clearInterval(timer)
 
-  //     return ()=>{
-  //       clearInterval(timer)
-  //     }
-  //   },100)
-    
+       }
 
-  // },[])
+       return ()=>{
+         clearInterval(timer)
+       }
+     },80)
+
+   },[])
+
+
   return (
     <div className='home'>
       <div className="img">
       <ImageHome />
       </div>
       <div className="left">
-        <h1>{h1}</h1>
+        <h1>{titre}</h1>
         <h2>{h2}</h2>
         <Search setSearch={setSearch} parent='home'/>
       </div>
