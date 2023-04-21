@@ -1,0 +1,162 @@
+.popup{
+    position:absolute;
+    z-index: 2;
+    width: 100%;
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+
+
+    & .popup__ins__top{
+        background-color: white;
+        margin-bottom: 10px;
+        border-radius: 20px;
+        height: 25vh;
+        display: flex;
+        flex-direction: column;
+        animation: showup 0.5s ease;
+        align-items: center;
+        padding: 40px;
+        
+        
+        & .etapes{
+            display: flex;
+            padding: 50px;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            z-index: 1;
+            & ::before{
+                position: absolute;
+                content: '';
+                background-color: $color_gris;
+                height: 10px;
+                width: 40px;
+                margin-left: 70px;
+                z-index: -1;
+            }
+            & ::after{
+                position: absolute;
+                content: '';
+                background-color: $color_gris;
+                height: 50px;
+                width: 50px;
+                z-index: -1;
+                border-radius: 100%;
+
+            }
+            & div:nth-child(5)::before{
+                content: none;
+            }
+
+            
+            & .etape{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: $color_gris;
+                padding: 5px;
+                border-radius: 100%;
+                color: white;
+                height: 50px;
+                width: 50px;
+                margin-left: 10px;
+                font-weight: bold;
+                
+                &::before{
+                    background-color: $color_gris;
+                    position: absolute;
+                    content: '';
+                    height: 10px;
+                    margin-left: 0px;
+                    width: 70px;
+                    
+                }
+
+            }
+
+            & .etape__valide{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: $color_bleu;
+                padding: 5px;
+                border-radius: 100%;
+                color: white;
+                height: 50px;
+                width: 50px;
+                margin-left: 10px;
+                font-weight: bold;
+                transition: 1s;
+
+                &::before{
+                position: absolute;
+                content: '';
+                background-color: $color_bleu;
+                height: 10px;
+                width: 30px;
+                margin-left: 70px;
+                z-index: -1;
+            }
+            
+            &:nth-child(5)::before{
+                content: none;
+            }
+
+            @for $i from 1 through 4 {
+               & div:nth-child(#{$i})::before{
+                    background-color: rgba(0, 0, 0, 0.2);
+                    
+                }
+
+            }
+            }
+
+        }
+    }
+
+    
+    & .popup__container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: end;
+        align-items: baseline;
+        flex-direction: row-reverse;
+        z-index: 2;
+        animation: showup 0.5s ease;
+        background-color: white;
+        padding: 70px;
+        border-radius: 20px;
+        display: flex;
+        padding-right: 30px;
+        
+        & .popup__annonce{
+            background-color: red;
+        }
+        & #exit{
+            background: none;
+            border: 1px solid rgba(0, 0, 0, 0.5);
+            border-radius: 100%;
+            color: rgba(0, 0, 0, 0.5);
+            height: 50px;
+            width: 50px;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    
+
+}
+.background__popup{
+    position: absolute;
+    height:100vh;
+    width: 100%;
+    z-index: 1;
+}

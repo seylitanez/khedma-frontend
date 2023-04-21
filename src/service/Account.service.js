@@ -6,6 +6,14 @@ let addUser = (user) => {
 let login = (user) => {
     return Axios.post('/api/v1/auth/login', user)
 }
+
+let addCv=(cv)=>{
+    return Axios.post('/api/v1/auth/fich',cv,{
+        headers: {
+          "Content-Type": "multipart/form-data",
+        }})
+}
+
 let saveToken = (token) => {
     localStorage.setItem('token', token);
 }
@@ -28,7 +36,4 @@ let getUserName = () => {
 let getUser = () => {
     return Axios.get('/api/v1/me');
 }
-let updateUser = (user) => {
-    return Axios.put('/api/v1/employe/update/' +user.email+"?nom="+user.nom+"&prenom="+user.prenom+"&upemail="+user.upemail+"&tel="+user.tel);
-}
-export const accountService = { addUser, login, saveToken, logout, isLogged, getToken, getRole, getUser, getUserName, updateUser }
+export const accountService = { addUser, login, saveToken, logout, isLogged, getToken, getRole, getUser, getUserName }
