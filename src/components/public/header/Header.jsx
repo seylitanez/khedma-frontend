@@ -2,11 +2,11 @@ import React from 'react'
 import {dz,france,royaume_uni} from "@image"
 import './header.scss';
 import { Link ,useNavigate } from 'react-router-dom';
-import {Buttun , Logo} from '@p-components';
 import {LangueContext} from "@context/langue";
 import { useContext } from 'react';
 import Popup from '../popup/popup';
 import { PopupContext } from '../../../context/PopupContext';
+import { Buttun, Logo } from '@p-components/index';
 
 export default function Header() {
     const {lang,langue,setLangue} = useContext(LangueContext);
@@ -19,7 +19,7 @@ export default function Header() {
         <header>
             <nav>
                 <Link to='./' className="logo">
-                    <Logo />
+                    <Logo/>
                 </Link>
                 <div className="menu">
                     <ul>

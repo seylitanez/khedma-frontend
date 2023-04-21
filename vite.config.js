@@ -20,6 +20,7 @@ export default defineConfig({
       '@':path.resolve(__dirname,'src'),
       '@components':path.resolve(__dirname,'src/components'),
       '@p-components':path.resolve(__dirname,'src/components/public'),
+      '@pr-components':path.resolve(__dirname,'src/components/private'),
       '@pages':path.resolve(__dirname,'src/pages'),
       '@p-pages':path.resolve(__dirname,'src/pages/public'),
       '@pr-employe-pages':path.resolve(__dirname,'src/pages/private/employe'),

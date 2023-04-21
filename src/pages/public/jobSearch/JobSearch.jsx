@@ -1,13 +1,10 @@
 import React from 'react'
-import {Annonce,SideBar} from '@p-components'
 import './jobSearch.scss'
-import { useEffect,useRef,useContext} from 'react'
-import { annonceService } from "@service";
-import { Search } from '@p-components';
-import { AnnonceContext } from "@context/Annonce.jsx";
+import { useEffect,useRef,useContext,useState} from 'react'
+import { annonceService } from "@service/index";
+import { Search,Annonce,SideBar } from '@p-components/index';
+import { AnnonceContext } from "@context/Annonce";
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
-import Popup from '../../../components/public/popup/popup';
 import { PopupContext } from '../../../context/PopupContext';
 
 export default function JobSearch() {

@@ -3,10 +3,10 @@ import { BsTelephoneFill, BsFacebook, BsLinkedin } from "react-icons/bs";
 import { HiMail } from "react-icons/hi";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import {Logo} from '@image'
-import {Input,Buttun} from '@p-components';
 import { Link} from "react-router-dom";
-import {LangueContext} from "@context/langue";
 import { useContext ,useState } from 'react';
+import { Buttun, Input } from "@p-components/index";
+import { LangueContext } from "@context/langue";
 const Footer = () => {
     const {lang} = useContext(LangueContext);
     const {lien,accueil,trouver_emploi,blog,a_propos}=lang.footer.menu;

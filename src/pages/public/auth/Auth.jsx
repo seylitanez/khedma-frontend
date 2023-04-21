@@ -1,7 +1,7 @@
 import React from 'react'
 import {Logo,illustration_ayth} from '@image'
 import "./auth.scss";
-import {Login} from '@p-components';
+import {Login} from '@p-components/index';
 
 export default function Auth() {
     return (

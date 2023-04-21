@@ -1,7 +1,7 @@
 import React from 'react'
 import "./profile.scss"
 import { useState, useEffect, useRef } from 'react'
-import { userService } from "@service";
+import { userService } from "@service/index";
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 

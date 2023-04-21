@@ -1,9 +1,9 @@
 import React from 'react'
-import {Buttun} from '@p-components'
 import './annonce.scss'
 import { useState } from 'react'
 import { useContext } from 'react'
 import { PopupContext } from '../../../context/PopupContext'
+import { Buttun } from '@p-components/index'
 
 export default function Annonce({annonce}) {
   const { nom,descriptionFr,adresse,categorie,sousCategorie,salaireDeBase,journees, date}=annonce

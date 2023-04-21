@@ -1,7 +1,7 @@
 import React from 'react'
 import "./listAnnonce.scss"
-import { Annonce } from "@p-components"
-import { userService } from "@service";
+import { Annonce } from "@p-components/index"
+import { userService } from "@service/index";
 import { useEffect,useState } from 'react';
 
 export default function ListAnnonce() {
