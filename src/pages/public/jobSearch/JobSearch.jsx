@@ -8,10 +8,12 @@ import { useParams } from 'react-router-dom';
 import { PopupContext } from '../../../context/PopupContext';
 
 export default function JobSearch() {
+
+  const NOMBRE_ANNONCE_PAR_PAGE=10;
+
   const { search, setSearch, annonce }=useContext(AnnonceContext)
   const [page,setPage]=useState([[]])
   const {showPopup,setShowPop}=useContext(PopupContext)
-  let pages=[[]]
   const [nbrPage,setNbrPage]=useState(0)
   const param=useParams() 
   useEffect(()=>{
@@ -29,7 +31,7 @@ useEffect(()=>{
           let nbrAnnonce=0,p=0;
           res.data.forEach(element => {
             nbrAnnonce++
-            if (nbrAnnonce%6==0) {
+            if (nbrAnnonce % NOMBRE_ANNONCE_PAR_PAGE==0) {
               p++
               page.push([])
             }
@@ -53,7 +55,11 @@ useEffect(()=>{
          {page[nbrPage].length!==0? page[nbrPage].map((annonce,key)=><Annonce annonce={annonce} key={key} setShowPop={setShowPop}/>):<h1>aucun resultat</h1>}
       </div>
 
-      <div className='pagination'>{page.map((btn,index)=><button onClick={()=>{window.scrollTo(top);  setNbrPage(index); console.log(page[index]);}} key={index}>{index}</button>)}</div>
+      <div className='pagination'>{page.map((btn,index)=>
+      nbrPage == index?
+      <button className="page__index__selected" onClick={(e)=>{ window.scrollTo(top);  setNbrPage(index); }} key={index} >{index+1}</button>
+      :<button className="page__index" onClick={(e)=>{ window.scrollTo(top);  setNbrPage(index); }} key={index} >{index+1}</button>)}
+      </div>
     </div>
   )
 }
