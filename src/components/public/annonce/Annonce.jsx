@@ -2,11 +2,15 @@ import React from 'react'
 import {Buttun} from '@p-components'
 import './annonce.scss'
 import { useState } from 'react'
+import { useContext } from 'react'
+import { PopupContext } from '../../../context/PopupContext'
 
 export default function Annonce({annonce}) {
-  const { nom,descriptionFr, categorie,sousCategorie,salaireDeBase,journees, date}=annonce
+  const { nom,descriptionFr,adresse,categorie,sousCategorie,salaireDeBase,journees, date}=annonce
   let [cote,setCote]=useState({transform: "rotateY(0deg)", transition:'1s'})
   let jourPublication=new Date(Date.now()).getDate()-new Date(date).getDate()
+
+  const {setPopupConsulterDetails,setShowPopupConsulter} =useContext(PopupContext)
 
   function annonceFlip(e) {
     if(e.target.innerText!="CONSULTER")
@@ -20,18 +24,19 @@ export default function Annonce({annonce}) {
             <h1 className='titre' >{nom}</h1>
             {jourPublication>1?<h3>il ya {jourPublication} jrs</h3>:<h3>il ya {jourPublication} jr</h3>}
           </div>
-          <div className="ville"><h5>ville,region</h5></div>
+          <div className="ville"><h5>{adresse&&adresse.wilaya},{adresse&&adresse.commune}</h5></div>
           <span className='divider'></span>
           <br />
-          <div className="description"><h4>{descriptionFr} </h4></div>
+          
+          <div className="description"><h4>{descriptionFr&&descriptionFr.substring(0,20)+"..."} </h4></div>
           <br />
           {/* je prefere consulter au lieu de postuler */}
-          <Buttun className='btn__postuler'>CONSULTER</Buttun>
+          <Buttun className='btn__postuler' onClick={()=>{setShowPopupConsulter(true);setPopupConsulterDetails(annonce)}}>CONSULTER</Buttun>
           <br />
           </div>
         
         <div className='annonce__back'>
-          <h5>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus, saepe repudiandae at ab molestias enim asperiores harum magnam suscipit labore, temporibus laudantium quam a eveniet, eligendi voluptas officiis culpa voluptates.</h5>  
+          <h5>{descriptionFr}</h5>  
         </div>
     </div>
   )

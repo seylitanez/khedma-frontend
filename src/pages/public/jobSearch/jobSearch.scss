@@ -2,7 +2,7 @@
     background-color: $color_gris;
     margin-top: 60px;
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 100px 1fr;
     grid-template-areas: "sideBar search search search search" "sideBar lists lists lists lists" "sideBar lists lists lists lists" "sideBar pagination pagination pagination pagination";
     grid-gap: 0.2rem;
@@ -19,6 +19,7 @@
         background-color: red;
     }
     & .list{
+        background-color: red;
         grid-area: lists;
         display: flex;
         flex-wrap: wrap;
