@@ -15,6 +15,7 @@
     & .contact {
         width: $with;
         display: flex;
+        vertical-align: middle;
         & .tel {
             width: 50%;
         }

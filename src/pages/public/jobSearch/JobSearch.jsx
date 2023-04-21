@@ -14,7 +14,7 @@ export default function JobSearch() {
   const param=useParams() 
   useEffect(()=>{
     if (param.job==undefined) {
-      annonceService.getAnnonce()
+      annonceService.getAnnonces()
       .then(res =>annonce.setAnnonces(res.data))
       .catch(err=>console.log(err))
     }
@@ -22,7 +22,7 @@ export default function JobSearch() {
 useEffect(()=>{
     if(param.job!=undefined){
         setSearch(param.job)
-        annonceService.getAnnonceBySearch(param.job/*search*/)
+        annonceService.getAnnoncesBySearch(param.job/*search*/)
         .then(res =>{annonce.setAnnonces(res.data)
           let nbrAnnonce=0,p=0;
           res.data.forEach(element => {
