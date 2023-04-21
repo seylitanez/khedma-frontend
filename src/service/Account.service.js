@@ -7,10 +7,7 @@ let login = (user) => {
     return Axios.post('/api/v1/auth/login', user)
 }
 let addCv=(cv)=>{
-    return Axios.post('/api/v1/auth/fich',cv,{
-        headers: {
-          "Content-Type": "multipart/form-data",
-        }})
+    return Axios.post('/api/v1/auth/fich',cv)
 }
 let saveToken = (token) => {
     localStorage.setItem('token', token);

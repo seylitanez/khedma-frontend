@@ -2,9 +2,9 @@
     background-color: $color_gris;
     margin-top: 60px;
     display: grid;
-    grid-template-columns: 0fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 100px 1fr;
-    grid-template-areas: "sideBar search search search search" "sideBar lists lists lists lists" "sideBar lists lists lists lists" "sideBar pagination pagination pagination pagination";
+    grid-template-areas: "search search search search" "lists lists lists lists" "lists lists lists lists" "pagination pagination pagination pagination";
     grid-gap: 0.2rem;
     & .search__grd{
         width:100%;
@@ -18,7 +18,6 @@
             width: 500px;
             height: 55px;
             background-color: $color_blanc
-            
         }
     }
     & #type_de_travail{
@@ -39,7 +38,6 @@
         align-items: center;
         margin-top: 20px;
         margin-bottom: 20px;
-
         & .page__index{
             background: none;
             cursor: pointer;
@@ -48,7 +46,6 @@
             font-size: medium;
             font-weight: bold;
             color: $color_noir;
-            
             &::after{
                 content: '';
                 position: absolute;
@@ -57,9 +54,7 @@
                 background-color: $color_oronge;
                 border-radius: 100%;
                 transform: translate(-6px,20px);
-            }
-            
-            
+            }        
         }
         & .page__index__selected{
             background: none;
@@ -69,7 +64,6 @@
             font-size: medium;
             font-weight: bold;
             color: $color_bleu;
-            
             &::after{
                 content: '';
                 position: absolute;
@@ -79,7 +73,6 @@
                 border-radius: 100%;
                 transform: translate(-6px,20px);
             }
-
         }
     }
 }

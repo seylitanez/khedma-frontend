@@ -4,9 +4,8 @@ import './header.scss';
 import { Link ,useNavigate } from 'react-router-dom';
 import {LangueContext} from "@context/langue";
 import { useContext } from 'react';
-import Popup from '../popup/popup';
-import { PopupContext } from '../../../context/PopupContext';
-import { Buttun, Logo } from '@p-components/index';
+import { Buttun, Logo, Popup } from '@p-components/index';
+import { PopupContext } from '@context/PopupContext';
 
 export default function Header() {
     const {lang,langue,setLangue} = useContext(LangueContext);
@@ -14,7 +13,6 @@ export default function Header() {
     const {accueil,trouver_emploi,blog,a_propos}=lang.header.menu;
     const {connexion,inscription}=lang.header.auth;
     const {setShowPopup,popupConsulterDetails}=useContext(PopupContext)
-
     return (
         <header>
             <nav>
@@ -47,7 +45,6 @@ export default function Header() {
                 </div>  
                 <Popup type={"inscription"} />
                 <Popup type={"details"} annonce={popupConsulterDetails}/>
-                
                 <div className="burguer">
                     <div className='top'></div><br />
                     <div className='middle'></div><br />

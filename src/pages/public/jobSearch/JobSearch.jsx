@@ -2,20 +2,17 @@ import React from 'react'
 import './jobSearch.scss'
 import { useEffect,useRef,useContext,useState} from 'react'
 import { annonceService } from "@service/index";
-import { Search,Annonce,SideBar } from '@p-components/index';
+import { Search,Annonce,SideBar, Buttun } from '@p-components/index';
 import { AnnonceContext } from "@context/Annonce";
 import { useParams } from 'react-router-dom';
-import { PopupContext } from '../../../context/PopupContext';
+import { PopupContext } from '@context/PopupContext';
 
 export default function JobSearch() {
-
   function selectPage(index) {
     window.scrollTo(top);  
     setNbrPage(index); 
   }
-
   const NOMBRE_ANNONCE_PAR_PAGE=10;
-
   const { search, setSearch, annonce }=useContext(AnnonceContext)
   const [page,setPage]=useState([[]])
   const {showPopup,setShowPop}=useContext(PopupContext)
@@ -61,11 +58,10 @@ useEffect(()=>{
       <div className="list">
          {page[nbrPage].length!==0? page[nbrPage].map((annonce,key)=><Annonce annonce={annonce} key={key} setShowPop={setShowPop}/>):<h1>aucun resultat</h1>}
       </div>
-
       <div className='pagination'>{page.map((btn,index)=>
       nbrPage == index?
-      <button className="page__index__selected" onClick={(e)=>{ selectPage(index) }} key={index} >{index+1}</button>
-      :<button className="page__index" onClick={(e)=>{ selectPage(index)}} key={index} >{index+1}</button>)}
+      <Buttun className="page__index__selected" onClick={(e)=>{ selectPage(index) }} key={index} >{index+1}</Buttun>
+      :<Buttun className="page__index" onClick={(e)=>{ selectPage(index)}} key={index} >{index+1}</Buttun>)}
       </div>
     </div>
   )
