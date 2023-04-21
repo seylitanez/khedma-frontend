@@ -6,17 +6,23 @@
     grid-template-rows: 100px 1fr;
     grid-template-areas: "sideBar search search search search" "sideBar lists lists lists lists" "sideBar lists lists lists lists" "sideBar pagination pagination pagination pagination";
     grid-gap: 0.2rem;
-    & .search{
+    & .search__grd{
         width:100%;
         background-color: $color_blanc;
         grid-area: search;
         display: flex;
-        justify-content: left;
+        justify-content: center;
         align-items: center;
+        background-color: $color_gris;
+        & .search__{
+            width: 500px;
+            height: 55px;
+            background-color: $color_blanc
+            
+        }
     }
     & #type_de_travail{
         position: relative;
-        background-color: red;
     }
     & .list{
         grid-area: lists;
