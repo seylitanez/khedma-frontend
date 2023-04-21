@@ -9,6 +9,11 @@ import { PopupContext } from '../../../context/PopupContext';
 
 export default function JobSearch() {
 
+  function selectPage(index) {
+    window.scrollTo(top);  
+    setNbrPage(index); 
+  }
+
   const NOMBRE_ANNONCE_PAR_PAGE=10;
 
   const { search, setSearch, annonce }=useContext(AnnonceContext)
@@ -57,8 +62,8 @@ useEffect(()=>{
 
       <div className='pagination'>{page.map((btn,index)=>
       nbrPage == index?
-      <button className="page__index__selected" onClick={(e)=>{ window.scrollTo(top);  setNbrPage(index); }} key={index} >{index+1}</button>
-      :<button className="page__index" onClick={(e)=>{ window.scrollTo(top);  setNbrPage(index); }} key={index} >{index+1}</button>)}
+      <button className="page__index__selected" onClick={(e)=>{ selectPage(index) }} key={index} >{index+1}</button>
+      :<button className="page__index" onClick={(e)=>{ selectPage(index)}} key={index} >{index+1}</button>)}
       </div>
     </div>
   )
