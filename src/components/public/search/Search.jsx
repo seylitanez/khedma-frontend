@@ -43,8 +43,8 @@ export default function Search({ setSearch,parent }) {
                     {filtrer}
                 </Buttun>
             </div>
-            <select name="type_de_travail" id="type_de_travail" disabled="disabled">
-                <option value="Temps partiel">{type_travail}</option>
+            <select name="type_de_travail" id="type_de_travail" >
+                <option value="Temps partiel">Temps partiel</option>
                 <option value="Plein Temps">Plein Temps</option>
             </select>
             <input type="text" id='salaire' placeholder={salaire}/>

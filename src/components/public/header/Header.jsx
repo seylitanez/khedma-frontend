@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {dz,france,royaume_uni} from "@image"
 import './header.scss';
-import { Link ,useNavigate } from 'react-router-dom';
+import { Link ,useNavigate, useParams } from 'react-router-dom';
 import {LangueContext} from "@context/langue";
 import { useContext } from 'react';
 import { Buttun, Logo, Popup } from '@p-components/index';
@@ -13,6 +13,25 @@ export default function Header() {
     const {accueil,trouver_emploi,blog,a_propos}=lang.header.menu;
     const {connexion,inscription}=lang.header.auth;
     const {setShowPopup,popupConsulterDetails}=useContext(PopupContext)
+    const [className,setClassName] = useState(["item","item","item","item"])
+    const param= useParams()
+
+    useEffect(()=>{
+        switch (param["*"]) {
+            case 'home':
+                setClassName(["item__selected","item","item","item"])
+                break;
+            case 'jobSearch':
+                setClassName(["item","item__selected","item","item"])
+                break;
+            case 'blog':
+                setClassName(["item","item","item__selected","item"])
+                break;
+            case 'a_propos':
+                setClassName(["item","item","item","item__selected"])
+                break;
+        }
+    },[param['*']])
     return (
         <header>
             <nav>
@@ -21,10 +40,10 @@ export default function Header() {
                 </Link>
                 <div className="menu">
                     <ul>
-                        <li><Link to='/home'>{accueil}</Link></li>
-                        <li><Link to='/jobSearch'>{trouver_emploi}</Link></li>
-                        <li><Link to='/blog'>{blog}</Link></li>
-                        <li><Link to='/a_propos'>{a_propos}</Link></li>
+                        <li><div className={className[0]}><Link  to='/home' >{accueil}</Link></div></li>
+                        <li><div className={className[1]}><Link  to='/jobSearch' >{trouver_emploi}</Link></div></li>
+                        <li><div className={className[2]}><Link  to='/blog' >{blog}</Link></div></li>
+                        <li><div className={className[3]}><Link  to='/a_propos' >{a_propos}</Link></div></li>
                     </ul>
                 </div>
                 <div className="log">
