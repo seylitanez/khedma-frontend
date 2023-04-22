@@ -18,6 +18,9 @@ export default function Header() {
 
     useEffect(()=>{
         switch (param["*"]) {
+            case '':
+                setClassName(["item__selected","item","item","item"])
+                break;
             case 'home':
                 setClassName(["item__selected","item","item","item"])
                 break;
