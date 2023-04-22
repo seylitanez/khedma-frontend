@@ -29,7 +29,7 @@ export default function Logo() {
       setDemmarer(demmare => demmare = !demmare)
       setLoupeId()
 
-    }, 6000)
+    }, 7000)
   }, [])
 
   useEffect(() => {

@@ -17,7 +17,7 @@ nav{
         & li{
             display: inline-block;
             &:nth-child(4){
-                margin-left: -30px;
+                margin-left: -40px;
             }
 
             & .item{
@@ -89,6 +89,7 @@ nav{
         @mixin btn__active (){
             opacity: 0.8;
             transition: 0.3s;
+            transform: scale(0.9);
             cursor: pointer;
         }
         & #sing{
