@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
 import my_password from '@image/My Password.svg'
 import "./home.scss";
 import { useContext,useState,useEffect} from 'react';
@@ -23,14 +23,14 @@ export default function Home() {
   const {h1,h2}=lang.home;
   const images=[{image:<ImageHome />,description:<h2 id='desc1'>"trouvez le travail qui vous corespond en quelques mots seulement"</h2>}
   ,{image:<ImageProfil/>,description:<h3 id='desc2'>"creez votre profile et et deposez votre cv pour etre dans les meilleures coups"</h3>}
-  ,{image:<ImagePassword />,description:<h2 id='desc3'>"inscrivez vous et consulter pour avoir les meilleurs offres d'emploi grace a khedma"</h2>}]
+  ,{image:<ImagePassword />,description:<h2 id='desc1'>"inscrivez vous et consulter pour avoir les meilleurs offres d'emploi grace a khedma"</h2>}]
 
   const [index,setIndex]=useImage(0)
 
   let txt=""
   let i=-1
   const [titre,setTitre]=useState("")
-   useEffect(()=>{
+   useLayoutEffect(()=>{
      const timer=setInterval(()=>{
        i++
        if (i<=h1.length) {
@@ -46,9 +46,8 @@ export default function Home() {
      },80)
    },[])
 
-   useEffect(()=>{
+   useLayoutEffect(()=>{
     const timer=setInterval(()=>{
-      
         
         setIndex(i=>i=(i+1)%3)
 
@@ -61,7 +60,6 @@ export default function Home() {
     <div className='home'>
       <div className="img">
       {images[index].image}
-      {console.log(index)}
       </div>
       <div className="left">
         <h1>{titre}</h1>
