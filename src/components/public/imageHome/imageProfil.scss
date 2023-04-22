@@ -1,0 +1,15 @@
+#profil{
+    animation: showup 1s ease;
+    margin-top: 50px;
+}
+
+#details__profil{
+    animation: profil-details 1s ease;
+    
+}
+
+@keyframes profil-details {
+    0%{
+        transform: scale(0);
+    }
+}

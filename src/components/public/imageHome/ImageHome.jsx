@@ -1,10 +1,9 @@
 import React from 'react'
 import './imageHome.scss'
 
-export default function 
-() {
+export default function () {
   return (
-    <svg width="615" height="492" viewBox="0 0 615 492" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg id='imageHome' width="615" height="492" viewBox="0 0 615 492" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clipPath="url(#clip0_521_358)">
 {/* <mask id="mask0_521_358" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="625" height="492">
 <path d="M624.258 0H0V492H624.258V0Z" fill="black"/>
