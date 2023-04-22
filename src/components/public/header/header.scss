@@ -19,7 +19,6 @@ nav{
             &:nth-child(4){
                 margin-left: -30px;
             }
-
             & .item{
                 display: flex;
                 justify-content: center;
@@ -31,14 +30,8 @@ nav{
                     color: $color_noir;
                     font-size: 16px;
                 }
-    
-    
-    
-               
-                
             }
             & .item__selected{
-
                 display: flex;
                 justify-content: center;
                 width: 160px;
@@ -48,7 +41,6 @@ nav{
                     text-decoration: none;
                     font-size: 16px;
                     color: $color_oronge;
-                    
                 }
                 &::after{
                     content: '';
@@ -60,12 +52,7 @@ nav{
                     border-radius: 100%;
                     animation: selected 1s ease;
                 }
-                
-
-                
             }
-           
-
             &:hover{
                 & a{
                     color: $color_oronge;
@@ -143,9 +130,6 @@ nav{
             }
         }
     }
-    
-
-   
 }
 @media screen and (max-width: 1130px) {
     nav{
@@ -184,13 +168,10 @@ nav{
 }
 
 @keyframes showup {
-
     0%{
         transform: scale(0);
         opacity: 0;
-        
     }
-    
 }
 
 @keyframes selected {
@@ -205,5 +186,4 @@ nav{
     100%{
         transform: translate(3px,25px);
     }
-    
 }
