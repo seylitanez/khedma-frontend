@@ -1,0 +1,78 @@
+$color_8b:#8B8B8B;
+.form__login{
+    width: 300px;
+    margin: auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #000;
+    box-shadow: 0 0 5px $color_8b;
+    padding: 0 10px;
+    border-radius: 3px;
+    & h2{
+        color: $color_noir;
+        font-size: 28px;
+        font-weight: 500;
+        margin-bottom: 45px;
+    }
+    & .nv__compte{
+        color: $color_bleu;
+        
+    }
+    & .icone_account{
+        position: relative;
+        color: $color_oronge;
+        top: -50px;
+        left: 0%;
+    }
+    & .login__group{
+        position: relative;
+        display: flex;
+        margin-bottom: 30px;
+        & label{
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            color: $color_8b;
+            font-size: 16px;
+            transition: 0.4s ease-out;
+        }
+        & input{
+            display: block;
+            width: 100%;
+            padding: 10px 0px;
+            border: none;
+            outline: none;
+            background: none;
+            border-bottom: 3px solid $color_noir;
+            color: $color_noir;
+            font-size: 16px;
+            transition: 0.4s ease-out;
+        }
+        &:focus-within label,&.anim label{
+            top: 0px;
+            color: $color_oronge;
+            transform: translateY(-100%);
+        }
+    }
+    & .login__mdp{
+        @mixin btn ($c1,$c2){
+            background-color: $c1;
+            color: $c2;
+            border: 1px solid $color_oronge;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 16px;
+            margin: 10px 5px;
+            transition: 0.5s;
+            cursor: pointer;
+        }
+        & #log{
+            @include btn($color_oronge,white);
+        }
+        & #sing{
+            @include btn(white,$color_oronge);
+        }
+    }
+}

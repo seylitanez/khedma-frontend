@@ -2,10 +2,8 @@
     "header": {
         "menu":{
             "accueil":"Welcome",
-            "trouver un emploi":"Look for Job",
+            "trouver_emploi":"Look for Job",
             "blog":"Blog",
-            "emploi":"My Job",
-            "cariere":"Career",
             "a_propos":"About"
         },
         "auth":{
@@ -16,7 +14,56 @@
     "home":{
         "search":{
             "emploi":"Search , key word , Job",
-            "region":"Région"
+            "region":"Région",
+            "chercher":"Search",
+            "filtrer":"filter",
+            "type_travail":"kind of job",
+            "salaire":"salary"
+        },
+        "h1":"m3a khedma makanch la chomage la degoutage",
+        "h2":"Trouver un emploi facilement"
+    },
+    "footer":{
+        "menu":{
+            "lien":"LIENS",
+            "accueil":"Welcome",
+            "trouver_emploi":"Look for Job",
+            "blog":"Blog",
+            "a_propos":"About"
+        },
+        "contact":{
+            "contact":"CONTACT",
+            "tel":"+213 34 48 30 04",
+            "mail":"INFO@khedma.com"
+        },
+        "police":{
+            "slogon":"m3a khedma makanch la chomage la degoutage",
+            "copyRight":"Copyrights© khedma 2023",
+            "terms":"Terms",
+            "cockie":"Cookie policy",
+            "privatep":"Privacy Policy",
+            "license":"License"
+        }
+    },
+    "auth":{
+        "login":{
+            "h2":"Connecter",
+            "email":"email",
+            "password":"password"
+        },
+        "signin":{
+            "h2":"Personal Informations",
+            "nom":"lastname",
+            "prenom":"firstname",
+            "username":"username",
+            "email":"email",
+            "password":"password",
+            "rpassword":"Confirm password",
+            "gender":{
+                "male":"MALE",
+                "femme":"WOMEN"
+            },
+            "next":"next"
         }
     }
 }

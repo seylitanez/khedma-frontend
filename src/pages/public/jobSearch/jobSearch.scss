@@ -1,0 +1,80 @@
+.jobSearch{
+    background-color: $color_gris;
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 100px 1fr;
+    grid-template-areas: "search search search search" "lists lists lists lists" "lists lists lists lists" "pagination pagination pagination pagination";
+    grid-gap: 0.2rem;
+    & .search__grd{
+        width:100%;
+        background-color: $color_blanc;
+        grid-area: search;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $color_gris;
+        & .search__{
+            width: 500px;
+            height: 55px;
+            background-color: $color_blanc
+        }
+    }
+    & #type_de_travail{
+        position: relative;
+    }
+    & .list{
+        grid-area: lists;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        min-height: 100vh;
+        margin-bottom: 50px;
+        margin-top: 50px;
+    }
+    & .pagination{
+        grid-area: pagination;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        & .page__index{
+            background: none;
+            cursor: pointer;
+            border: none;
+            margin-left: 5px;
+            font-size: medium;
+            font-weight: bold;
+            color: $color_noir;
+            &::after{
+                content: '';
+                position: absolute;
+                height: 5px;
+                width: 5px;
+                background-color: $color_oronge;
+                border-radius: 100%;
+                transform: translate(-6px,20px);
+            }        
+        }
+        & .page__index__selected{
+            background: none;
+            cursor: pointer;
+            border: none;
+            margin-left: 5px;
+            font-size: medium;
+            font-weight: bold;
+            color: $color_bleu;
+            margin-bottom: 3px;
+            &::after{
+                content: '';
+                position: absolute;
+                height: 5px;
+                width: 5px;
+                background-color: $color_bleu;
+                border-radius: 100%;
+                transform: translate(-6px,18px);
+            }
+        }
+    }
+}

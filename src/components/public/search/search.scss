@@ -1,0 +1,93 @@
+.search{
+    height: 50px;
+    overflow: hidden;
+    transition: 0.5s;
+    @mixin btn($couleur,$couleur_arrireplan){
+        background-color: $couleur_arrireplan;
+        color: $couleur;
+        font-weight: bold;
+        border-radius: 3px;
+        border: none;
+        cursor: pointer;
+        margin-left: 5px;
+        padding: 10px;
+        height: 40px;
+    }
+    @mixin filter_element($width){
+        background-color: $color_blanc;
+        border: 2px solid $color_noir;
+        border-radius: 4px;
+        margin-top: 5px;
+        color: black;
+        font-size: small;
+        font-weight: bold;
+        height: 30px;
+        width: $width;
+        padding-left: auto;
+        padding-right:auto ;
+        margin-left: 5px;
+    }
+    & .searchall{
+        display: flex;
+        padding: 5px;
+        align-items: center;
+        height:50px;
+        // max-width: fit-content;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+        border-radius: 2px;
+        & .searchall__search-emploi{
+            width: 80%;
+            & #search-icone{
+                transform: translateY(25%);
+                color: $color_noir;
+            }
+            & .search__emploi-inp{
+                width: 80%;
+                height: 40px;
+                border: none;
+                // border-right: 2px solid $color_noir;
+                font-size: medium;
+                &:focus{
+                    outline: none;
+                }
+            } 
+        }
+        & .searchall__search-region {
+            & #location__icone{
+                transform: translateY(25%);
+                color: aqua;
+            }
+            & .search__region-inp{
+                border: none;
+                height: 40px;
+                font-size: medium;
+                &:focus{
+                    outline: none;
+                }
+            }        
+        }
+        & #chercher{
+            @include btn($color_blanc,$color_bleu)
+        }
+        & #filtrer{
+            @include btn($color_blanc,$color_bleu);
+            width:80px;
+        }
+    }
+    & #type_de_travail{
+        @include filter_element(120px)
+    }
+    & #salaire{
+        @include filter_element(120px)
+    }
+}
+
+@media screen and (max-width:673px) {
+
+    .search{
+        & .searchall{
+            transform: scale(0.95);
+        }
+    }
+    
+ }

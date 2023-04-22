@@ -4,8 +4,6 @@
             "accueil":"Accueil",
             "trouver_emploi":"Trouver un emploi",
             "blog":"Blog",
-            "emploi":"Mon Emploi",
-            "cariere":"Cariere",
             "a_propos":"A propos"
         },
         "auth":{
@@ -13,10 +11,60 @@
             "inscription":"S'inscrire"
         }
     },
+    "footer":{
+        "btn":"subscribe",
+        "menu":{
+            "lien":"LIENS",
+            "accueil":"Accueil",
+            "trouver_emploi":"Trouver un emploi",
+            "blog":"Blog",
+            "a_propos":"A propos"
+        },
+        "contact":{
+            "contact":"CONTACT",
+            "tel":"+213 34 48 30 04",
+            "mail":"INFO@khedma.com"
+        },
+        "police":{
+            "slogon":"m3a khedma makanch la chomage la degoutage",
+            "copyRight":"Copyrights© khedma 2023",
+            "terms":"Terms",
+            "cockie":"Cookie policy",
+            "privatep":"Privacy Policy",
+            "license":"License"
+        }
+    },
     "home":{
         "search":{
             "emploi":"Rechercher , Mot clé , Emploi",
-            "region":"Région"
+            "region":"Région",
+            "chercher":"chercher",
+            "filtrer":"filtrer",
+            "type_travail":"type de travail",
+            "salaire":"salaire"
+        },
+        "h1":"m3a khedma makanch la chomage la degoutage",
+        "h2":"inscrivez vous et consulter pour avoir les meilleurs offres d'emploi grace a khedma"
+    },
+    "auth":{
+        "login":{
+            "h2":"Connecter",
+            "email":"email",
+            "password":"mot de passe"
+        },
+        "signin":{
+            "h2":"Information personnelles",
+            "nom":"nom",
+            "prenom":"prenom",
+            "username":"nom d'utilisateur",
+            "email":"email",
+            "password":"mot de passe",
+            "rpassword":"confirmer le mot de passe",
+            "gender":{
+                "male":"HOMME",
+                "femme":"FEMME"
+            },
+            "next":"suivant"
         }
     }
 }

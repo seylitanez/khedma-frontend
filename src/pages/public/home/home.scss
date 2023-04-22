@@ -1,9 +1,65 @@
 .home{
-    background-color: aqua;
+    background-image: url(@image/bacgraound_home.svg);
     display: flex;
-    justify-self: flex-start;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding-bottom:50px;
     & .img{
-        position: absolute;
         right: 10px;
     }
+    & .left{
+        width: 580px;
+        & h1{
+            color: $color_bleu;
+            font-size: 40px; 
+            font-weight: bold;
+            margin: 25px 5px;
+            transition: 1s;
+        }
+        & h2{
+            font-size: 20px; 
+            margin: 5px 4px;
+            animation: description 1s ease;
+        }
+        #desc1{
+            animation: description 1s ease;
+            
+        }
+        #desc2{
+            animation: description 1s ease;
+            
+        }
+        #desc3{
+            animation: description 1s ease;
+            
+        }
+    }
 }
+@media screen and (max-width:673px) {
+
+    .home{
+        padding: 30px;
+        & .img{
+            transform: scale(0.7);
+        }
+        & .left{
+            & h1{
+                font-size: 30px;
+            }
+            & h2{
+                font-size: 15px; 
+            }
+        }
+    }
+    
+ }
+
+ @keyframes description {
+    0%{
+        opacity: 0;
+        transform: translateY(5px);
+    }
+ }

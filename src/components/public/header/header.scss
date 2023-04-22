@@ -1,8 +1,14 @@
 nav{
+    position: fixed;
     display: flex;
     justify-content: space-between;
+    width: 100vw;
+    top: 0;
+    z-index: 3;
+    background-color: $color_blanc;
     & .logo{
         height: 60px;
+        overflow: hidden;
         & img{
             height: 100%;
         }
@@ -10,15 +16,46 @@ nav{
     & .menu{
         & li{
             display: inline-block;
-            margin: 0 20px;
-            & a{
-                text-decoration: none;
-                color: $color_b;
-                font-size: 16px;
+            &:nth-child(4){
+                margin-left: -40px;
+            }
+            & .item{
+                display: flex;
+                justify-content: center;
+                width: 160px;
+                // background-color: red;
+                margin: 20px -10px;
+                & a{
+                    text-decoration: none;
+                    color: $color_noir;
+                    font-size: 16px;
+                }
+            }
+            & .item__selected{
+                display: flex;
+                justify-content: center;
+                width: 160px;
+                transition: 0.5s;
+                transform: translateY(-10px);
+                & a{
+                    text-decoration: none;
+                    font-size: 16px;
+                    color: $color_oronge;
+                }
+                &::after{
+                    content: '';
+                    height: 8px;
+                    width: 8px;
+                    position: absolute;
+                    background-color: $color_oronge;
+                    transform: translate(3px,25px);
+                    border-radius: 100%;
+                    animation: selected 1s ease;
+                }
             }
             &:hover{
                 & a{
-                    color: $color_3;
+                    color: $color_oronge;
                     transition: 0.3s;
                 }
             }
@@ -28,59 +65,126 @@ nav{
         @mixin btn ($c1,$c2){
             background-color: $c1;
             color: $c2;
-            border: 1px solid $color_primary;
+            border: 1px solid $color_bleu;
             padding: 8px 20px;
             border-radius: 6px;
             font-size: 16px;
-            margin: 0 5px;
+            margin: 10px 5px;
             transition: 0.5s;
             cursor: pointer;
         }
         @mixin btn__active (){
             opacity: 0.8;
             transition: 0.3s;
+            transform: scale(0.9);
             cursor: pointer;
         }
         & #sing{
-            @include btn($color_secondary,$color_primary);
+            @include btn($color_blanc,$color_bleu);
             &:hover{
-                @include btn($color_primary,$color_secondary);
+                @include btn($color_bleu,$color_blanc);
             }
             &:active{
                 @include btn__active()
             }
         }
         & #log{
-            @include btn($color_primary,$color_secondary);
+            @include btn($color_bleu,$color_blanc);
             &:active{
                 @include btn__active() 
             }
         }
     }
+    & .burguer{
+        display: none;
+    }
     & .__langue{
-        background-color: $color_secondary;
+        background-color: $color_blanc;
         border-radius: 5px;
-            }
-    
+        position: fixed;
+        margin-left: auto;
+        margin-right: auto;
+        right: calc(15vw + 40px);
+        top: 15px;
+        z-index: 1;
+    }
     & .__langue__menu{
         & ul {
             cursor: pointer;
             & li{
+                margin-left: auto;
+                margin-right: auto;
                 display: none;
                 list-style-type: none;
                 cursor: pointer;
             }
-            
             &:hover{
-                box-shadow: 5px 0 5px $color_b;
+                box-shadow: 0 5px 5px 5px rgba(0, 0, 0, 0.107);
                 border-radius: 3px;
                 & li{
                     display: block;
-                    background-color: $color_secondary;
+                    background-color: $color_blanc;
+                    &:hover{
+                        opacity: 0.8;
                     }
+                }
             }
-
         }
+    }
+}
+@media screen and (max-width: 1130px) {
+    nav{
+        & .menu{
+            display: none;
+            // &.active{
 
+            // }
+        }
+        & .log{
+            display: none;
+        }
+        & .burguer{
+            height: 30px;
+            width: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 5px;
+            cursor: pointer;
+            & div{
+                height: 3px;
+                border-radius: 6px;
+                width: 100%;
+                background-color: black;
+            }
+            // & .top{
+            // }
+            & .middle{
+                transform: translateY(-5px);
+            }
+            & .bottom{
+                transform: translateY(-10px);
+            }
+        }
+    }
+}
+
+@keyframes showup {
+    0%{
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes selected {
+    0%{
+        transform: translate(3px,35px);
+        opacity: 0;
+    }
+    75%{
+        transform: translate(3px,20px);
+        
+    }
+    100%{
+        transform: translate(3px,25px);
     }
 }

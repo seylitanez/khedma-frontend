@@ -1,0 +1,22 @@
+@import "@style/mixinauth.scss";
+.auth{
+    @include home();
+    & .auth__container{
+        @include cont();
+        & .logo{
+            position: relative;
+            & img{
+                @include img();
+            }
+        }
+        & .auth__cont{
+            @include auth();
+            & .illustration{
+                width: 700px;
+                & img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
