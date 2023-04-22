@@ -22,6 +22,19 @@
         & h2{
             font-size: 20px; 
             margin: 5px 4px;
+            animation: description 1s ease;
+        }
+        #desc1{
+            animation: description 1s ease;
+            
+        }
+        #desc2{
+            animation: description 1s ease;
+            
+        }
+        #desc3{
+            animation: description 1s ease;
+            
         }
     }
 }
@@ -42,4 +55,11 @@
         }
     }
     
+ }
+
+ @keyframes description {
+    0%{
+        opacity: 0;
+        transform: translateY(5px);
+    }
  }

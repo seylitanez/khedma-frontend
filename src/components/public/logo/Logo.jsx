@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
 import './logo.scss'
 import { Searchloupe } from '@image'
 import { useEffect,useState } from 'react'
@@ -24,12 +24,12 @@ export default function Logo() {
   </svg>)
   const [demmarer, setDemmarer] = useState(true)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setInterval(() => {
       setDemmarer(demmare => demmare = !demmare)
       setLoupeId()
 
-    }, 5000)
+    }, 7000)
   }, [])
 
   useEffect(() => {
