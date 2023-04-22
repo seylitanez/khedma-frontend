@@ -1,19 +1,47 @@
-import React from 'react'
+import React ,{ useReducer } from 'react';
 import "./cardProfile.scss";
 import { MdEdit } from "react-icons/md";
-import { BsTelephoneFill } from "react-icons/bs";
+import { BsTelephoneFill, BsSaveFill } from "react-icons/bs";
 import { HiMail } from "react-icons/hi";
-import { Buttun } from '@p-components/index';
+import { Buttun, Input } from '@p-components/index';
 
 export default function CardProfile({user}) {
+    const value={
+        boul:true,
+        button: {
+            icone: <MdEdit className="pen" />,
+            text: "Modifier",
+        },
+        name(nom,prenom){return <p>{nom + " " + prenom}</p>} 
+
+    }
+    const changes=(state,action)=>{
+        if (state.boul) return {
+            boul:false,
+            button: {
+                icone: <BsSaveFill className="pen" />,
+                text: "Enregistrer",
+            },
+            name(nom, prenom) {return <><Input type="text" className="" value={nom}onChange=""/><Input type="text" className="" value={prenom}onChange=""/></> }
+        }
+        else return {
+            boul:true,
+            button: {
+                icone: <MdEdit className="pen" />,
+                text: "Modifier",
+            },
+            name(nom, prenom) { return <p>{nom + " " + prenom}</p> } 
+        }
+    }
+    const [element,setElement]=useReducer(changes,value)
     return (
         <div className="profile">
             <div className="info">
                 <h3>Informations générales</h3>
-                <Buttun className="edit"><MdEdit className="pen" />Modifier</Buttun>
+                <Buttun className="edit" onClick={setElement}>{element.button.icone}{element.button.text}</Buttun>
             </div>
             <div className="inf_perso">
-                <p>{user.nom + " " + user.prenom}</p>
+                {element.name(user.nom,user.prenom)}
                 <p>{user.genre}</p>
                 {/* <h1>{user.adresse.wilaya}</h1> */}
                 {/* <h1>{[user.adresse.commune]}</h1> */}
