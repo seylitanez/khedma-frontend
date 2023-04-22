@@ -10,13 +10,10 @@ export default function Home() {
   const {lang} = useContext(LangueContext);
   const { setSearch } = useContext(AnnonceContext)
   const {h1,h2}=lang.home;
-
   let txt=""
   let i=-1
   const [titre,setTitre]=useState("")
-
    useEffect(()=>{
-
      const timer=setInterval(()=>{
        i++
        if (i<=h1.length) {
@@ -25,17 +22,12 @@ export default function Home() {
        }else{
          console.log("stop");
          clearInterval(timer)
-
        }
-
        return ()=>{
          clearInterval(timer)
        }
      },80)
-
    },[])
-
-
   return (
     <div className='home'>
       <div className="img">
