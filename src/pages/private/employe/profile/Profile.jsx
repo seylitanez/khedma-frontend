@@ -1,6 +1,7 @@
 import React from 'react'
 import "./profile.scss";
 import { MdFavorite } from "react-icons/md";
+import { FiLogOut } from "react-icons/fi";
 import { CgProfile } from "react-icons/cg";
 import { useState, useEffect, useRef} from 'react'
 import { Header } from '@p-components/index';
@@ -21,6 +22,9 @@ export default function Profile() {
             flg.current = true;
         }
     }, [])
+    const deconnection=()=>{
+        accountService.logout();
+    }
     return (
         <div className='profile_employe'>
             <div className="nav">
@@ -34,6 +38,10 @@ export default function Profile() {
                 <div className="sidebar__item">
                     <MdFavorite size={20} className='fav'/>    
                     <Link to={param.nomUtilisateur+'/favorie'}>Favoris</Link>
+                </div>
+                <div className="sidebar__item">
+                    <FiLogOut size={20} className='prf'/>    
+                    <Link to="/home" onClick={deconnection}>Se Dèconnecter</Link>
                 </div>
             </div>
             <div className="main">
