@@ -1,46 +1,57 @@
-import React ,{ useReducer } from 'react';
+import React ,{ useReducer,useEffect,useRef } from 'react';
 import "./cardProfile.scss";
 import { MdEdit } from "react-icons/md";
 import { BsTelephoneFill, BsSaveFill } from "react-icons/bs";
 import { HiMail } from "react-icons/hi";
 import { Buttun, Input } from '@p-components/index';
+import { accountService } from '@service/Account.service';
 
-export default function CardProfile({user}) {
-    const value={
-        boul: true, nom: user.nom, prenom: user.prenom, tele: user.tel, email: user.adresseMail,
+export default function CardProfile() {
+    let value={
+        boul: true,
         button: {
             icone: <MdEdit className="pen" />,
             text: "Modifier",
-        },
-        name: <p>{user.nom &&this.nom + " " + this.prenom}</p> ,
-        tel:<p className='tel'><BsTelephoneFill size={15} />{user.tel&&this.tele}</p> ,
-        mail: <p><HiMail size={20} />{user.adresseMail&&this.email}</p> ,
+        }, namedit: false, teledit: false, mailedit: false,
     }
+    const flg = useRef(false);
+    useEffect(() => {
+        if (!flg.current) {
+            accountService.getUser()
+                .then(res => setElement({type:"set",value:res.data}))
+                .catch(err => console.log(err))
+        }
+        return () => {
+            flg.current = true;
+        }
+    }, [])
     const changes=(state,action)=>{
-        if (state.boul) return {...state,
-            boul: false, 
-            button: {
-                icone: <BsSaveFill className="pen" />,
-                text: "Enregistrer",
-            },
-            name: <><Input type="text" className="" value={nom}onChange=""/><Input type="text" className="" value={prenom}onChange=""/></> ,
-            tel:  <Input className='tel' value={ tel }><BsTelephoneFill size={15} /></Input> ,
-            mail:  <Input value={mail}><HiMail size={20} /></Input> ,
-        }
-        else return {...state,
-            boul:true,
-            button: {
-                icone: <MdEdit className="pen" />,
-                text: "Modifier",
-            },
-            name: <p>{nom + " " + prenom}</p> ,
-            tel: <p className='tel'><BsTelephoneFill size={15} />{tel}</p> ,
-            mail: <p><HiMail size={20} />{mail}</p> ,
-        }
         switch (action.type) {
-            case value:
-                
-                break;
+            case "nom":return{...state,nom:action.e.target.value}
+            case "prenom": return { ...state, prenom: action.e.target.value }
+            case "tel": return { ...state, tel: action.e.target.value }
+            // case "mail": return { ...state, mail: action.e.target.value }
+            case "set": return { ...state, ...action.value }
+            default:
+                if (state.boul) return {
+                    ...state, boul: false,
+                    button: {
+                        icone: <BsSaveFill className="pen" />,
+                        text: "Enregistrer",
+                    }, namedit: true, teledit: true, mailedit: true,
+                }
+                else{
+                    accountService.updateUser({nom: state.nom, prenom: state.prenom, tel: state.tel, mail: state.adresseMail })
+                        .then(res => console.log(res))
+                        .catch(err => console.log(err))
+                    return {
+                        ...state, boul: true,
+                        button: {
+                            icone: <MdEdit className="pen" />,
+                            text: "Modifier",
+                        }, namedit: false, teledit: false, mailedit: false,
+                    }
+                } 
         }
     }
     const [element,setElement]=useReducer(changes,value)
@@ -51,8 +62,8 @@ export default function CardProfile({user}) {
                 <Buttun className="edit" onClick={setElement}>{element.button.icone}{element.button.text}</Buttun>
             </div>
             <div className="inf_perso">
-                {element.name}
-                <p>{user.genre}</p>
+                {element.namedit ? <><Input type="text" className="" value={element.nom}  onChange={e=>setElement({type:"nom",e:e})} /><Input type="text" className="" value={element.prenom}  onChange={e=>setElement({type:"prenom",e:e})} /></> : <p>{element.nom + " " + element.prenom}</p>}
+                <p>{element.genre}</p>
                 {/* <h1>{user.adresse.wilaya}</h1> */}
                 {/* <h1>{[user.adresse.commune]}</h1> */}
             </div>
@@ -60,8 +71,8 @@ export default function CardProfile({user}) {
                 <h3>Informations de contact</h3>
             </div>
             <div className="contact">
-                {element.tel}
-                {element.mail}
+                {element.teledit ? <Input type="text" className='tel' value={element.tel}  onChange={e=>setElement({type:"tel",e:e})}><BsTelephoneFill size={15} /></Input> : <p className='tel'><BsTelephoneFill size={15} />{element.tel}</p>}
+                <p><HiMail size={20} />{element.adresseMail}</p>
             </div>
         </div>
     )
