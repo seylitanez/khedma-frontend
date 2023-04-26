@@ -6,14 +6,15 @@ import {LangueContext} from "@context/langue";
 import { useNavigate } from 'react-router-dom';
 import {MdOutlineFileUpload} from 'react-icons/md'
 import { Buttun, Input } from '@p-components/index';
+import GLogin from '@p-components/login/GLogin';
 
 
 
-export default function FormIns({setEtape,etape}) {
+export default function FormIns({type,setEtapeEmpploye,etapeEmpploye,etapeEmpployeur,setEtapeEmpployeur}) {
     const {lang} = useContext(LangueContext);
     const {h2,nom,prenom,username,email,password,rpassword,gender,next}=lang.auth.signin;
     const {male,femme}=gender;
-    const [user,setUser]=useState({motDePasse:"",nom:"",prenom:"",adresseMail:"",genre:"",role:"EMPLOYE",numeroTel:"",region:""})
+    const [user,setUser]=useState({motDePasse:"",nom:"",prenom:"",adresseMail:"",genre:"",role:"",numeroTel:"",region:"",entreprise:""})
     const [psw,setpsw]=useState("")
     const [pswd,setpswd]=useState("")
 
@@ -53,8 +54,60 @@ export default function FormIns({setEtape,etape}) {
         .catch(err=>console.log(err))
     }
 
+    console.log("letape actuel "+etapeEmpploye);
+    function onSuccess(e){
+        console.log(e);
+        console.log("lyes");
+    }
 
-    switch (etape) {
+    
+
+
+    
+    switch (etapeEmpployeur) {
+        
+        case 1:
+            return (
+                <div>
+                     <div>
+                
+                  <form className='form' onSubmit={onsubmit}>
+                    <h2>{"Informations de l'entreprise"}</h2>
+                    <div className={"ins__group__nom__prenom "}>
+                        <Input type="text" placeholder="nom" id="nom" name="nom" value={user.nom}   onChange={onchange}/>
+                        <Input type="text"  placeholder='prenom' id="prenom" name="prenom" value={user.prenom} onChange={onchange}/>
+                    </div>
+                    <div className={"ins__group "}>
+                        <Input type="email" id="email" placeholder='email@exemple.com' name="adresseMail" value={user.adresseMail} onChange={onchange}/>
+                    </div>
+                    <div className={"ins__group "}>
+                        <Input type="entreprise" id="entreprise" placeholder='entreprise' name="entreprise" value={user.entreprise} onChange={onchange}/>
+                    </div>
+                    <div className={"ins__group "}>
+                        <Input type="tel" id="tel" placeholder='numero de tel' name="numeroTel" value={user.numeroTel} onChange={onchange}/>
+                    </div>
+                    <div className={"ins__group "}>
+                        <Input type="region" id="region" placeholder='Region' name="region" value={user.region} onChange={onchange}/>
+                    </div>
+                    <div className={"ins__group__genre"}>
+                        <Input type="radio" id='male'name="genre" value="HOMME"onChange={onchange} >{male}</Input>
+                        <Input type="radio" id='femme'name="genre" value='FEMME'onChange={onchange}>{femme}</Input>
+                    </div>
+                </form>
+                        <div className='ins__group__suivant__precedent'>
+                            <Buttun id="sing" onClick={()=>{setEtapeEmpployeur(e=>e=e+1);}}>{next}</Buttun>
+                            <Buttun id="precedent">precedent</Buttun>
+                        </div>
+                    </div>
+                </div>
+              ) 
+                
+            break;
+    }
+
+    switch (etapeEmpploye) {
+
+        
 
         //information personels
         case 1:
@@ -81,13 +134,15 @@ export default function FormIns({setEtape,etape}) {
                     <Input type="radio" id='male'name="genre" value="HOMME"onChange={onchange} >{male}</Input>
                     <Input type="radio" id='femme'name="genre" value='FEMME'onChange={onchange}>{femme}</Input>
                 </div>
+                    <GLogin titre={"s'inscrire avec google"} onSuccess={onSuccess}/>
             </form>
                     <div className='ins__group__suivant__precedent'>
-                        <Buttun id="sing" onClick={()=>{setEtape(e=>e=e+1); console.log(etape);}}>{next}</Buttun>
-                        <Buttun id="precedent" onClick={()=>{etape>1&&setEtape(e=>e=e-1)}}>precedent</Buttun>
+                        <Buttun id="sing" onClick={()=>{if(user.adresseMail!=""){setEtapeEmpploye(e=>e=e+1)} }}>{next}</Buttun>
+                        <Buttun id="precedent">precedent</Buttun>
                     </div>
                 </div>
         )
+        break;
         //parametres du compte
         case 2:
 
@@ -97,9 +152,6 @@ export default function FormIns({setEtape,etape}) {
             <form className='form' onSubmit={onsubmit}>
                 <h2>parametres du compte</h2>
                 <div className={"ins__group "}>
-                    <Input type="email" id="email" placeholder='email@exemple.com' name="adresseMail" value={user.adresseMail} onChange={onchange}/>
-                </div>
-                <div className={"ins__group "}>
                     <Input type="password" id='mdp' name="motDePasse" placeholder="mot de passe" value={pswd} onChange={checkPassword}/>
                 </div>
                 <div className={"ins__group "}>
@@ -107,8 +159,8 @@ export default function FormIns({setEtape,etape}) {
                 </div>
             </form>
                     <div className='ins__group__suivant__precedent'>
-                        <Buttun id="sing" onClick={()=>{setEtape(e=>e=e+1); console.log(etape);}}>{next}</Buttun>
-                        <Buttun id="precedent" onClick={()=>{setEtape(e=>e=e-1)}}>precedent</Buttun>
+                        <Buttun id="sing" onClick={()=>{setEtapeEmpploye(e=>e=e+1);}}>{next}</Buttun>
+                        <Buttun id="precedent" onClick={()=>{setEtapeEmpploye(e=>e=e-1)}}>precedent</Buttun>
                     </div>                
                 </div>
         )
@@ -124,8 +176,8 @@ export default function FormIns({setEtape,etape}) {
                 </div>
             </form>
                     <div className='ins__group__suivant__precedent'>
-                        <Buttun id="sing" onClick={()=>{setEtape(e=>e=e+1); console.log(etape);}}>{next}</Buttun>
-                        <Buttun id="precedent" onClick={()=>{setEtape(e=>e=e-1)}}>precedent</Buttun>
+                        <Buttun id="sing" onClick={()=>{setEtapeEmpploye(e=>e=e+1);}}>{next}</Buttun>
+                        <Buttun id="precedent" onClick={()=>{ setEtapeEmpploye(e=>e=e-1)}}>precedent</Buttun>
                     </div>
             </div>
         )
@@ -157,8 +209,8 @@ export default function FormIns({setEtape,etape}) {
                     <Input type="radio" id='femme'name="genre" value='FEMME'onChange={onchange}>{femme}</Input>
                 </div>
             </form>
-                    <Buttun id="sing" onClick={()=>{setEtape(e=>e=e+1); console.log(etape);}}>{next}</Buttun>
-                    <Buttun id="precedent" onClick={()=>{setEtape(e=>e=e-1)}}>precedent</Buttun>
+                    <Buttun id="sing" onClick={()=>{setEtapeEmpploye(e=>e=e+1);}}>{next}</Buttun>
+                    <Buttun id="precedent" onClick={()=>{setEtapeEmpploye(e=>e=e-1)}}>precedent</Buttun>
                 </div>
         )
 

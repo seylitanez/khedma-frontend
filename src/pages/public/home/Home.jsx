@@ -23,7 +23,7 @@ export default function Home() {
   const {h1,h2}=lang.home;
   const images=[{image:<ImageHome />,description:<h2 id='desc1'>"trouvez le travail qui vous corespond en quelques mots seulement"</h2>}
   ,{image:<ImageProfil/>,description:<h3 id='desc2'>"creez votre profile et et deposez votre cv pour etre dans les meilleures coups"</h3>}
-  ,{image:<ImagePassword />,description:<h2 id='desc1'>"inscrivez vous et consulter pour avoir les meilleurs offres d'emploi grace a khedma"</h2>}]
+  ,{image:<ImagePassword />,description:<h2 id='desc1'>"inscrivez vous et consultez pour avoir les meilleurs offres d'emploi grace a khedma"</h2>}]
 
   const [index,setIndex]=useImage(0)
 
