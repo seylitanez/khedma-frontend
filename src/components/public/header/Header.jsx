@@ -15,7 +15,15 @@ export default function Header() {
     const {setShowPopupInscrption,popupConsulterDetails,popupLogin,setPopupLogin,popupChoix,setPopupChoix}=useContext(PopupContext)
     const [className,setClassName] = useState(["item","item","item","item"])
     const param= useParams()
-
+    useEffect(()=>{
+        const script = document.createElement("script");
+        script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+        script.async = true;
+        document.body.appendChild(script);
+        window.googleTranslateElementInit = function googleTranslateElementInit() {
+            new window.google.translate.TranslateElement({pageLanguage: 'fr'}, 'google_translate_element');
+        }
+    },[])
     useEffect(()=>{
         switch (param["*"]) {
             case '':

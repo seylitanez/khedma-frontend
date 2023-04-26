@@ -49,7 +49,7 @@ export default function Home() {
       {images[index].image}
       </div>
       <div className="left">
-        <h1>{titre}</h1>
+        <h1 className='notranslate'>{titre}</h1>
         {images[index].description}
         <Search setSearch={setSearch} parent='home'/>
       </div>

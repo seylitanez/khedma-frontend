@@ -43,7 +43,6 @@ export default function Login() {
       })
     const navigate = useNavigate()
     const sub = (e) => {
-        console.log("ok");
         e.preventDefault()
         accountService.login(user)
             .then(res => {
