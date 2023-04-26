@@ -3,6 +3,7 @@
         "target": "ESNext",
         "baseUrl": "./src",
         "jsx": "react",
+        "module": "CommonJS",
         "paths": {
             "@utils/*":["utils/*"],
             "@service/*":["service/*"],

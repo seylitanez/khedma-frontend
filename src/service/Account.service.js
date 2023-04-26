@@ -31,4 +31,7 @@ let getUserName = () => {
 let getUser = () => {
     return Axios.get('/api/v1/me');
 }
-export const accountService = { addUser, login, saveToken, logout, isLogged, getToken, getRole, getUser, getUserName, addCv }
+let updateUser = (user) => {
+    return Axios.put('/api/v1/employe/update/' + user.mail +'?nom='+user.nom+'&prenom='+user.prenom+'&tel='+user.tel);
+}
+export const accountService = { addUser, login, saveToken, logout, isLogged, getToken, getRole, getUser, getUserName, addCv, updateUser }

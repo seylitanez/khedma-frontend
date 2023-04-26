@@ -1,7 +1,7 @@
 {
   "name": "khedma_frontend",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "proxy": "http://localhost:9630",
   "scripts": {
