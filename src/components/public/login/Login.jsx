@@ -50,7 +50,7 @@ export default function Login() {
                 accountService.saveToken(res.data.token)
                 switch (accountService.getRole()) {
                     case 'EMPLOYE': navigate('/employe/profile/'+accountService.getUserName());break;
-                    case 'EMPLOYEUR': navigate('/employeur/profile/'+accountService.getUserName());break;
+                    case 'EMPLOYEUR':console.log('connct'); navigate('/employeur/profile/'+accountService.getUserName());break;
                     case 'MODERATEUR':navigate('/moderateur');break;
                 }
             })
