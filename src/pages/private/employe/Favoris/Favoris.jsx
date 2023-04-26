@@ -3,8 +3,9 @@ import React from 'react'
 import { useEffect } from 'react'
 
 export default function Favoris() {
-    useEffect()
-    usePa
+    useEffect(()=>{
+
+    },[])
     return (
         <>
             <h1>Favoris</h1>
