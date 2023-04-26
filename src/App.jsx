@@ -10,19 +10,27 @@ import EmployeRouter from '@pr-employe-pages/EmployeRouter';
 import EmployeurRouter from '@pr-employeur-pages/EmployeurRouter';
 import ModerateurRouter from '@pr-moderateur-pages/ModerateurRouter';
 import { PopupContext } from './context/PopupContext';
+import { gapi } from '../node_modules/gapi-script/index';
+import ReactGA from 'react-ga';
 
 function App() {
   const [langue,setLangue]=useState('fr')
   const [search, setSearch] = useState("")
   const [annonces,setAnnonces] = useState([])
-  const [showPopup,setShowPopup]=useState(false)
+  const [showPopupInscrption,setShowPopupInscrption]=useState(false)
   const [showPopupConsulter,setShowPopupConsulter]=useState(false)
   const [popupConsulterDetails,setPopupConsulterDetails]=useState()
+  const [popupLogin,setPopupLogin]=useState(false)
+  const [popupChoix,setPopupChoix]=useState(false)
+ 
+
+  ReactGA.initialize('G-GZ9KKG4WHJ');
+  ReactGA.pageview('/home');
   return (
     <div className="App">
       <LangueContext.Provider value={{lang:langue==='fr'? fr:langue==='ar'?ar:en,langue,setLangue}}>
         <AnnonceContext.Provider value={{ search, setSearch, annonce: { annonces, setAnnonces }}}>
-          <PopupContext.Provider value={{showPopup,setShowPopup,showPopupConsulter,setShowPopupConsulter,popupConsulterDetails,setPopupConsulterDetails}} >
+          <PopupContext.Provider value={{showPopupInscrption,setShowPopupInscrption,showPopupConsulter,setShowPopupConsulter,popupConsulterDetails,setPopupConsulterDetails,popupLogin,setPopupLogin,popupChoix,setPopupChoix}} >
             <BrowserRouter>
               <Routes>
                 <Route path='/*' element={<PublicRouter/>}/>
