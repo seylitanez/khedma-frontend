@@ -56,6 +56,10 @@ export default function Login() {
             .catch(err => console.log(err))
     }
 
+    function onSuccess(e){
+        console.log(e);
+        
+    }
 
     return (
         <form className="form__login" onSubmit={sub}>
@@ -67,7 +71,7 @@ export default function Login() {
             <div className={"login__group "+anims}>
                 <Input type="password" id='mdp' name='motDePasse' value={user.motDePasse} onChange={onChange} onInput={e => setActives(e)} requirede='required'>{password}</Input>
             </div>
-            <GLogin titre={"se connecter avec google"}/>
+            <GLogin titre={"se connecter avec google"} onSuccess={onSuccess}/>
             <Link className='nv__compte' onClick={()=>{setPopupLogin(false);setShowPopupInscrption(true)}}>nouveau compte?</Link>
             <div className="login__mdp">
                 <Buttun id="log">{connexion}</Buttun>
