@@ -10,7 +10,7 @@ import EmployeRouter from '@pr-employe-pages/EmployeRouter';
 import EmployeurRouter from '@pr-employeur-pages/EmployeurRouter';
 import ModerateurRouter from '@pr-moderateur-pages/ModerateurRouter';
 import { PopupContext } from './context/PopupContext';
-import { gapi } from '../node_modules/gapi-script/index';
+import { gapi } from 'gapi-script';
 import ReactGA from 'react-ga';
 
 function App() {
@@ -22,8 +22,17 @@ function App() {
   const [popupConsulterDetails,setPopupConsulterDetails]=useState()
   const [popupLogin,setPopupLogin]=useState(false)
   const [popupChoix,setPopupChoix]=useState(false)
- 
 
+  useEffect(()=>{
+    const script=document.createElement('script')
+    script.src ="https://www.googletagmanager.com/gtag/js?id=G-GZ9KKG4WHJ" 
+    script.async=true
+    document.body.appendChild(script)
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments) };
+    gtag('js', new Date());
+    gtag('config', 'G-GZ9KKG4WHJ');
+  },[])
   ReactGA.initialize('G-GZ9KKG4WHJ');
   ReactGA.pageview('/home');
   return (

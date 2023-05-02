@@ -44,7 +44,7 @@ export default function Home() {
     },5000)
    },[])
   return (
-    <div className='home'>
+    <main className='home'>
       <div className="img">
       {images[index].image}
       </div>
@@ -53,6 +53,6 @@ export default function Home() {
         {images[index].description}
         <Search setSearch={setSearch} parent='home'/>
       </div>
-    </div>
+    </main>
   )
 }

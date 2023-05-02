@@ -7,6 +7,7 @@ import { useState, useEffect, useRef} from 'react'
 import { Header } from '@p-components/index';
 import { accountService } from '@service/Account.service';
 import { Outlet ,Link,useParams } from 'react-router-dom';
+import { BsCardChecklist } from 'react-icons/bs';
 
 export default function Profile() {
     const param=useParams();
@@ -40,13 +41,17 @@ export default function Profile() {
                     <Link to={param.nomUtilisateur+'/favorie'}>Favoris</Link>
                 </div>
                 <div className="sidebar__item">
+                    <BsCardChecklist size={20} className='prf'/>    
+                    <Link to={param.nomUtilisateur+'/postuler'}>Postuler</Link>
+                </div>
+                <div className="sidebar__item">
                     <FiLogOut size={20} className='prf'/>    
                     <Link to="/home" onClick={deconnection}>Se Dèconnecter</Link>
                 </div>
             </div>
-            <div className="main">
+            <main className="main">
                 <Outlet/>
-            </div>
+            </main>
         </div>
     )
 }

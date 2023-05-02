@@ -5,6 +5,7 @@ import { BsTelephoneFill, BsSaveFill } from "react-icons/bs";
 import { HiMail } from "react-icons/hi";
 import { Buttun, Input } from '@p-components/index';
 import { accountService } from '@service/Account.service';
+import Confirmation from './Confirm/Confirmation';
 
 export default function CardProfile() {
     let value={
@@ -56,7 +57,7 @@ export default function CardProfile() {
     }
     const [element,setElement]=useReducer(changes,value)
     return (
-        <div className="profile">
+        <div className="profile"><Confirmation/>
             <div className="info">
                 <h3>Informations générales</h3>
                 <Buttun className="edit" onClick={setElement}>{element.button.icone}{element.button.text}</Buttun>
@@ -74,6 +75,7 @@ export default function CardProfile() {
                 {element.teledit ? <Input type="text" className='tel' value={element.tel}  onChange={e=>setElement({type:"tel",e:e})}><BsTelephoneFill size={15} /></Input> : <p className='tel'><BsTelephoneFill size={15} />{element.tel}</p>}
                 <p><HiMail size={20} />{element.adresseMail}</p>
             </div>
+            
         </div>
     )
 }
