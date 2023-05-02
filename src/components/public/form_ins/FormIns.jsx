@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import {MdOutlineFileUpload} from 'react-icons/md'
 import { Buttun, Input } from '@p-components/index';
 import GLogin from '@p-components/login/GLogin';
+import { PopupContext } from '@context/PopupContext';
 
 
 
@@ -17,6 +18,7 @@ export default function FormIns({type,setEtapeEmpploye,etapeEmpploye,etapeEmpplo
     const [user,setUser]=useState({motDePasse:"",nom:"",prenom:"",adresseMail:"",genre:"",role:"",numeroTel:"",region:"",entreprise:""})
     const [psw,setpsw]=useState("")
     const [pswd,setpswd]=useState("")
+    const {setShowPopupInscrption}=useContext(PopupContext)
 
     // const [animation,setAnimation]=useAnimation('animation');
 
@@ -26,7 +28,7 @@ export default function FormIns({type,setEtapeEmpploye,etapeEmpploye,etapeEmpplo
     const onchangeFile=(e)=>{
         const extension=e.target.files[0].name.split(".")[1];
         if(extension.includes("pdf")||extension.includes("png")||extension.includes("jpg")){
-        formData.set("file",e.target.files[0],user.adresseMail+e.target.files[0].name.split(".")[1])
+        formData.set("file",e.target.files[0],"cv."+e.target.files[0].name.split(".")[1])
         accountService.addCv(formData);
         console.log(e);
         }else{
@@ -159,7 +161,7 @@ export default function FormIns({type,setEtapeEmpploye,etapeEmpploye,etapeEmpplo
                 </div>
             </form>
                     <div className='ins__group__suivant__precedent'>
-                        <Buttun id="sing" onClick={()=>{setEtapeEmpploye(e=>e=e+1);}}>{next}</Buttun>
+                        <Buttun id="sing" onClick={()=>{setEtapeEmpploye(e=>e=e+1); user.role="EMPLOYE"; accountService.addUser(user).then((res)=>{accountService.saveToken(res.data.token);})}}>{next}</Buttun>
                         <Buttun id="precedent" onClick={()=>{setEtapeEmpploye(e=>e=e-1)}}>precedent</Buttun>
                     </div>                
                 </div>
@@ -190,27 +192,12 @@ export default function FormIns({type,setEtapeEmpploye,etapeEmpploye,etapeEmpplo
             <div>
     
             <form className='form' onSubmit={onsubmit}>
-                <h2>{h2}</h2>
-                <div className={"ins__group__nom__prenom "}>
-                    <Input type="text" placeholder="nom" id="nom" name="nom" value={user.nom}   onChange={onchange}/>
-                    <Input type="text"  placeholder='prenom' id="prenom" name="prenom" value={user.prenom} onChange={onchange}/>
-                </div>
-                <div className={"ins__group "}>
-                    <Input type="email" id="email" placeholder='email@exemple.com' name="adresseMail" value={user.adresseMail} onChange={onchange}/>
-                </div>
-                <div className={"ins__group "}>
-                    <Input type="password" id='mdp' name="motDePasse" placeholder="mot de passe" value={pswd} onChange={checkPassword}/>
-                </div>
-                <div className={"ins__group "}>
-                    <Input type="password" id='rmdp' name="motDePasse" placeholder="confirmer le mot de passe" value={psw} onChange={checkPassword}/>
-                </div>
-                <div className={"ins__group__genre"}>
-                    <Input type="radio" id='male'name="genre" value="HOMME"onChange={onchange} >{male}</Input>
-                    <Input type="radio" id='femme'name="genre" value='FEMME'onChange={onchange}>{femme}</Input>
-                </div>
+                <h2>nous avons envoye un mail de confirmation</h2>
             </form>
-                    <Buttun id="sing" onClick={()=>{setEtapeEmpploye(e=>e=e+1);}}>{next}</Buttun>
-                    <Buttun id="precedent" onClick={()=>{setEtapeEmpploye(e=>e=e-1)}}>precedent</Buttun>
+                    <div className='ins__group__suivant__precedent'>
+                        <Buttun id="sing" onClick={()=>{setShowPopupInscrption(false);setEtapeEmpploye(0);setEtapeEmpployeur(0) }}>ok</Buttun>
+                    </div>
+
                 </div>
         )
 
