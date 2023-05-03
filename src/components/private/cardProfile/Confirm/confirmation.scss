@@ -1,6 +1,6 @@
 .pop{
     position: absolute;
-    z-index: 2;
+    z-index: 4;
     top: 0;
     left: 0;
     width: 100vw;
@@ -19,14 +19,14 @@
         width: 100vw;
         height: 100vh;
         background-color: rgba(0, 0, 0, 0.5);
-        z-index: 1;
-        filter:blur(10px);
+        z-index: 5;
+        filter: blur(15px);
         pointer-events: none;
         -webkit-user-select: none;
         user-select: none;
     }
     & .popup {
-        z-index: 3;
+        z-index: 5;
         width: 40%;
         height: 20%;
         background-color: white;
