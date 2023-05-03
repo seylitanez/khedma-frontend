@@ -35,7 +35,7 @@ export default function CardProfile() {
             case "annuler":return {...state, confirm:""}
             case "confirm":{
                 accountService.updateUser({ nom: state.nom, prenom: state.prenom, tel: state.tel, mail: state.adresseMail })
-                    .then(res => console.log(res))
+                    .then(res => console.log(/*res*/""))
                     .catch(err => console.log(err))
                 return {...state, confirm:""}
             }

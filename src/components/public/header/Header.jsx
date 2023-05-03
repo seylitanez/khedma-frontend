@@ -6,6 +6,8 @@ import {LangueContext} from "@context/langue";
 import { useContext } from 'react';
 import { Buttun, Logo, Popup } from '@p-components/index';
 import { PopupContext } from '@context/PopupContext';
+import { accountService } from '@service/Account.service';
+import { FiLogOut } from 'react-icons/fi';
 
 export default function Header() {
     const {lang,langue,setLangue} = useContext(LangueContext);
@@ -43,6 +45,9 @@ export default function Header() {
                 break;
         }
     },[param['*']])
+    const deconnection = () => {
+        accountService.logout();
+    }
     return (
         <header>
             <nav>
@@ -71,9 +76,13 @@ export default function Header() {
                             </ul>
                         </div>
                     </div>
-
-                    <Buttun id="log" onClick={e=>setPopupLogin(true)}>{connexion}</Buttun>
-                    <Buttun id='sing' onClick={()=>setShowPopupInscrption(true)}>{inscription}</Buttun>
+                    {accountService.isLogged()?
+                    <div className="desco">
+                        <FiLogOut size={20} className='prf' />
+                        <Link to="/home" onClick={deconnection}>Se Dèconnecter</Link>
+                    </div>
+                    :<div><Buttun id="log" onClick={e=>setPopupLogin(true)}>{connexion}</Buttun>
+                    <Buttun id='sing' onClick={()=>setShowPopupInscrption(true)}>{inscription}</Buttun></div>}           
                 </div>  
                 <Popup type={"inscription"} />
                 <Popup type={"details"} annonce={popupConsulterDetails}/>
