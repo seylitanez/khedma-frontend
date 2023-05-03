@@ -26,13 +26,27 @@ export default function FormIns({type,setEtapeEmpploye,etapeEmpploye,etapeEmpplo
     const navigate=useNavigate()
     let formData =new FormData();
     const onchangeFile=(e)=>{
-        const extension=e.target.files[0].name.split(".")[1];
-        if(extension.includes("pdf")||extension.includes("png")||extension.includes("jpg")){
-        formData.set("file",e.target.files[0],"cv."+e.target.files[0].name.split(".")[1])
-        accountService.addCv(formData);
-        console.log(e);
-        }else{
-            console.log("format non accepté");
+        const fichier    = e.target.files[0]
+        const nomFichier = fichier.name
+
+        if (nomFichier.includes('.')) {
+            const extension = nomFichier.split(".").at(-1);
+            console.log(extension);
+
+            if(extension == "pdf" || extension == "png" || extension == "jpeg" || extension == "jpg")
+            {
+                formData.set("file", fichier, "cv." + extension)
+                accountService.addCv(formData);
+                console.log(e);
+            }
+            else
+            {
+                console.log("Format du fichier non supporté");
+            }   
+            }
+        else
+        {
+            console.log("Fichier sans extension");
         }
     }
 

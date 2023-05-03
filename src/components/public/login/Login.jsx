@@ -57,7 +57,18 @@ export default function Login() {
     }
 
     function onSuccess(e){
-        console.log(e);
+        console.log(e.profileObj.email);
+        const email=e.profileObj.email;
+        accountService.loginGoogle({adresseMail:email})
+            .then(res=>{
+                console.log(res.data);
+                accountService.saveToken(res.data.token)
+                switch (accountService.getRole()) {
+                    case 'EMPLOYE': navigate('/employe/profile/'+accountService.getUserName());break;
+                    case 'EMPLOYEUR':console.log('connct'); navigate('/employeur/profile/'+accountService.getUserName());break;
+                    case 'MODERATEUR':navigate('/moderateur');break;
+                }
+            })
         
     }
 

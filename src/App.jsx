@@ -12,6 +12,7 @@ import ModerateurRouter from '@pr-moderateur-pages/ModerateurRouter';
 import { PopupContext } from './context/PopupContext';
 import { gapi } from '../node_modules/gapi-script/index';
 import ReactGA from 'react-ga';
+import { Traducteur } from '@p-components/index';
 
 function App() {
   const [langue,setLangue]=useState('fr')
@@ -28,6 +29,7 @@ function App() {
   ReactGA.pageview('/home');
   return (
     <div className="App">
+      <Traducteur/>
       <LangueContext.Provider value={{lang:langue==='fr'? fr:langue==='ar'?ar:en,langue,setLangue}}>
         <AnnonceContext.Provider value={{ search, setSearch, annonce: { annonces, setAnnonces }}}>
           <PopupContext.Provider value={{showPopupInscrption,setShowPopupInscrption,showPopupConsulter,setShowPopupConsulter,popupConsulterDetails,setPopupConsulterDetails,popupLogin,setPopupLogin,popupChoix,setPopupChoix}} >

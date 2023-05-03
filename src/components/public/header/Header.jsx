@@ -15,15 +15,15 @@ export default function Header() {
     const {setShowPopupInscrption,popupConsulterDetails,popupLogin,setPopupLogin,popupChoix,setPopupChoix}=useContext(PopupContext)
     const [className,setClassName] = useState(["item","item","item","item"])
     const param= useParams()
-    useEffect(()=>{
-        const script = document.createElement("script");
-        script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-        script.async = true;
-        document.body.appendChild(script);
-        window.googleTranslateElementInit = function googleTranslateElementInit() {
-            new window.google.translate.TranslateElement({pageLanguage: 'fr'}, 'google_translate_element');
-        }
-    },[])
+    // useEffect(()=>{
+    //     const script = document.createElement("script");
+    //     script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    //     script.async = true;
+    //     document.body.appendChild(script);
+    //     window.googleTranslateElementInit = function googleTranslateElementInit() {
+    //         new window.google.translate.TranslateElement({pageLanguage: 'fr'}, 'google_translate_element');
+    //     }
+    // },[])
     useEffect(()=>{
         switch (param["*"]) {
             case '':
@@ -57,7 +57,7 @@ export default function Header() {
                         <li><div className={className[3]}><Link  to='/a_propos' >{a_propos}</Link></div></li>
                     </ul>
                 </div>
-                    <div id="google_translate_element"></div>
+                {/* <div id="google_translate_element"></div> */}
                 <div className="log">
                     <div className="__langue">
                         <div className='__langue__menu'>
