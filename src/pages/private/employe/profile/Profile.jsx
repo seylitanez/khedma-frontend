@@ -39,7 +39,7 @@ export default function Profile() {
                 </div>
                 <div className="sidebar__item">
                     <BsCardChecklist size={20} className='prf'/>    
-                    <Link to={param.nomUtilisateur+'/postuler'}>Postuler</Link>
+                    <Link to={param.nomUtilisateur+'/postuler'}>Postulations</Link>
                 </div>
             </div>
             <main className="main">

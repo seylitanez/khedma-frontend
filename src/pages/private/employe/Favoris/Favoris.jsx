@@ -1,16 +1,29 @@
 import { Annonce } from '@p-components/index'
-import React from 'react'
-import { useEffect } from 'react'
+import { accountService } from '@service/Account.service';
+import { annonceService } from '@service/Annonce.service'
+import React ,{ useState , useEffect , useRef } from 'react';
 
 export default function Favoris() {
-    useEffect(()=>{
-
-    },[])
+    const [favoris,setFavorie]=useState([])
+    const flg = useRef(false);
+    useEffect(() => {
+        if (!flg.current) {
+            accountService.getUser()
+                .then(res => 
+                    annonceService.annonceFavorie(res.data.adresseMail)
+                    .then((res)=>{setFavorie(res.data)})
+                    .catch((err)=>{console.log(err)}))
+                .catch(err => console.log(err))
+        }
+        return () => {
+            flg.current = true;
+        }
+    }, [])
     return (
         <>
             <h1>Favoris</h1>
             <div className="favorie">
-                <Annonce annonce={{ nom: "nom", descriptionFr:"", adresse:"", categorie: "", sousCategorie:"", salaireDeBase: "", journees:[], date:"" }}/>
+                {favoris.map((annonce,key)=>(<Annonce annonce={annonce} key={key} />))}
             </div>
         </>
     )
