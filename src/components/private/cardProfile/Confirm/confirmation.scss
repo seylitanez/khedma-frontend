@@ -1,26 +1,60 @@
-.blur{
+.pop{
     position: absolute;
-    z-index: 4;
-    width: 100vw;
-    height: 100vh;
+    z-index: 2;
     top: 0;
     left: 0;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    filter: blur(20px);
+    visibility: hidden;
+    &.visible{
+        visibility: visible;
+    }
+    &::before{
+        content: '';
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+        filter:blur(10px);
         pointer-events: none;
         -webkit-user-select: none;
         user-select: none;
+    }
     & .popup {
         z-index: 3;
-        // width: 40%;
-        // height: 20%;
-        // background-color: white;
+        width: 40%;
+        height: 20%;
+        background-color: white;
         border-radius: 15px;
         & .txt {
-            
+            font-size: 20px;
+        }
+        & .confirm{
+            display: flex;
+            width: 100%;
+            justify-content: space-evenly;
+            margin-top: 20px;
+            & .btn{
+                border-radius: 10px;
+                border: none;
+                font-size: 20px;
+                font-weight: bold;
+                padding: 10px 20px;
+                cursor: pointer;
+                &.confirmer{
+                    background-color: $color_bleu;
+                    color: white;
+                }
+                &.annuler{
+                    background-color: red;
+                    color: white;
+                }
+            }
         }
     }
 }

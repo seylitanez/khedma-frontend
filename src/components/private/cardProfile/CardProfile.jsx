@@ -1,4 +1,4 @@
-import React ,{ useReducer,useEffect,useRef } from 'react';
+import React ,{ useReducer,useEffect,useRef,useState } from 'react';
 import "./cardProfile.scss";
 import { MdEdit } from "react-icons/md";
 import { BsTelephoneFill, BsSaveFill } from "react-icons/bs";
@@ -13,7 +13,7 @@ export default function CardProfile() {
         button: {
             icone: <MdEdit className="pen" />,
             text: "Modifier",
-        }, namedit: false, teledit: false, mailedit: false,
+        }, namedit: false, teledit: false, mailedit: false,confirm:"",
     }
     const flg = useRef(false);
     useEffect(() => {
@@ -21,18 +21,24 @@ export default function CardProfile() {
             accountService.getUser()
                 .then(res => setElement({type:"set",value:res.data}))
                 .catch(err => console.log(err))
-        }
-        return () => {
-            flg.current = true;
-        }
+            }
+            return () => {
+                flg.current = true;
+            }
     }, [])
     const changes=(state,action)=>{
         switch (action.type) {
             case "nom":return{...state,nom:action.e.target.value}
             case "prenom": return { ...state, prenom: action.e.target.value }
             case "tel": return { ...state, tel: action.e.target.value }
-            // case "mail": return { ...state, mail: action.e.target.value }
             case "set": return { ...state, ...action.value }
+            case "annuler":return {...state, confirm:""}
+            case "confirm":{
+                accountService.updateUser({ nom: element.nom, prenom: element.prenom, tel: element.tel, mail: element.adresseMail })
+                    .then(res => console.log(res))
+                    .catch(err => console.log(err))
+                return {...state, confirm:""}
+            }
             default:
                 if (state.boul) return {
                     ...state, boul: false,
@@ -41,23 +47,19 @@ export default function CardProfile() {
                         text: "Enregistrer",
                     }, namedit: true, teledit: true, mailedit: true,
                 }
-                else{
-                    accountService.updateUser({nom: state.nom, prenom: state.prenom, tel: state.tel, mail: state.adresseMail })
-                        .then(res => console.log(res))
-                        .catch(err => console.log(err))
-                    return {
-                        ...state, boul: true,
-                        button: {
-                            icone: <MdEdit className="pen" />,
-                            text: "Modifier",
-                        }, namedit: false, teledit: false, mailedit: false,
-                    }
-                } 
+                else return {
+                    ...state, boul: true,
+                    button: {
+                        icone: <MdEdit className="pen" />,
+                        text: "Modifier",
+                    }, namedit: false, teledit: false, mailedit: false,confirm:"visible"
+                }
         }
     }
     const [element,setElement]=useReducer(changes,value)
     return (
-        <div className="profile"><Confirmation/>
+        <div className="profile">
+            <Confirmation set={setElement} classn={element.confirm}/>
             <div className="info">
                 <h3>Informations générales</h3>
                 <Buttun className="edit" onClick={setElement}>{element.button.icone}{element.button.text}</Buttun>
