@@ -79,6 +79,25 @@ nav{
             transform: scale(0.9);
             cursor: pointer;
         }
+        & .desco{
+            @include btn($color_bleu,$color_blanc);
+            display: flex;
+            align-items: center;
+            & a{
+                margin-left: 5px;
+                text-decoration: none;
+                color: $color_blanc;
+            }
+            &:hover{
+                @include btn($color_blanc,$color_bleu);
+                & a{
+                    color: $color_bleu;
+                }
+            }
+            &:active{
+                @include btn__active()
+            }
+        }
         & #sing{
             @include btn($color_blanc,$color_bleu);
             &:hover{

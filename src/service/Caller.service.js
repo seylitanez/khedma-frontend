@@ -10,9 +10,9 @@ Axios.interceptors.request.use(request => {
 Axios.interceptors.response.use(response => {
     return response
 }, error => {
-    // if (error.response.status === 403) {
-    //     accountService.logout()
-    //     window.location = '/auth'
-    // } else return Promise.reject(error)
+    if (error.response.status === 403) {
+        accountService.logout()
+        window.location = '/auth'
+    } else return Promise.reject(error)
 })
 export default Axios;
