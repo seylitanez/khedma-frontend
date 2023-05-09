@@ -1,54 +1,56 @@
-header {
+nav{
     position: fixed;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-between;
     width: 100vw;
-    height: 86px;
     top: 0;
-    z-index: 1;
+    z-index: 3;
     background-color: $color_blanc;
     & .logo{
-        height: 75%;
+        height: 60px;
         overflow: hidden;
         & img{
             height: 100%;
         }
     }
-    & nav{
-        width: 460px;
-
-        & .menu {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            list-style-type: none;
-        }
+    & .menu{
         & li{
+            display: inline-block;
+            &:nth-child(4){
+                margin-left: -40px;
+            }
             & .item{
-                & a {
+                display: flex;
+                justify-content: center;
+                width: 160px;
+                // background-color: red;
+                margin: 20px -10px;
+                & a{
                     text-decoration: none;
                     color: $color_noir;
                     font-size: 16px;
                 }
             }
             & .item__selected{
-                transition: .3s;
+                display: flex;
+                justify-content: center;
+                width: 160px;
+                transition: 0.5s;
+                transform: translateY(-10px);
                 & a{
-                    color: $color_oronge;
                     text-decoration: none;
-                    position: relative;
+                    font-size: 16px;
+                    color: $color_oronge;
                 }
-                & a::after{
+                &::after{
                     content: '';
+                    height: 8px;
+                    width: 8px;
                     position: absolute;
-                    top: 100%;
-                    left: 50%;
-                    transform: translateX(-50%);
+                    background-color: $color_oronge;
+                    transform: translate(3px,25px);
                     border-radius: 100%;
-                    background: $color_oronge;
-                    height: 5px;
-                    width: 5px;
+                    animation: selected 1s ease;
                 }
             }
             &:hover{
@@ -60,18 +62,14 @@ header {
         }
     }
     & .log{
-        width: 260px;
-        & div {
-            display: flex;
-            justify-content: space-between;
-        }
         @mixin btn ($c1,$c2){
             background-color: $c1;
             color: $c2;
-            border: 2px solid $color_bleu;
+            border: 1px solid $color_bleu;
             padding: 8px 20px;
             border-radius: 6px;
             font-size: 16px;
+            margin: 10px 5px;
             transition: 0.5s;
             cursor: pointer;
         }
@@ -111,10 +109,6 @@ header {
         }
         & #log{
             @include btn($color_bleu,$color_blanc);
-            &:hover{
-                background-color: $color_oronge;
-                border: 2px solid $color_oronge;
-            }
             &:active{
                 @include btn__active() 
             }
@@ -122,6 +116,39 @@ header {
     }
     & .burguer{
         display: none;
+    }
+    & .__langue{
+        background-color: $color_blanc;
+        border-radius: 5px;
+        position: fixed;
+        margin-left: auto;
+        margin-right: auto;
+        right: calc(15vw + 40px);
+        top: 15px;
+        z-index: 1;
+    }
+    & .__langue__menu{
+        & ul {
+            cursor: pointer;
+            & li{
+                margin-left: auto;
+                margin-right: auto;
+                display: none;
+                list-style-type: none;
+                cursor: pointer;
+            }
+            &:hover{
+                box-shadow: 0 5px 5px 5px rgba(0, 0, 0, 0.107);
+                border-radius: 3px;
+                & li{
+                    display: block;
+                    background-color: $color_blanc;
+                    &:hover{
+                        opacity: 0.8;
+                    }
+                }
+            }
+        }
     }
 }
 

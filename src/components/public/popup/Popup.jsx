@@ -4,24 +4,21 @@ import { PopupContext } from '@context/PopupContext';
 import { Buttun, FormIns, Login } from '@p-components/index';
 import { accountService } from '@service/Account.service';
 import GLogin from '@p-components/login/GLogin';
-import { RxCross2 } from "react-icons/rx";
 
 export default function Popup({type,setPopUp,isOn,annonce,children}) {
     const [etapeEmpploye,setEtapeEmpploye]=useState(0)
     const [etapeEmpployeur,setEtapeEmpployeur]=useState(0)
-    const tailleExit = '38px'
     let etatpesEmpploye=[1,2,3,4]
     let etatpesEmpployeur=[1,2,3]
     const {showPopupInscrption,setShowPopupInscrption,showPopupConsulter,setShowPopupConsulter,popupLogin,setPopupLogin,popupChoix,setPopupChoix}=useContext(PopupContext)
+
 
     if (type=='inscription' && showPopupInscrption) {
       if (etapeEmpploye==0&&etapeEmpployeur==0) {
         return  <div className='popup'>
            <div className='popup__container'>
-            <RxCross2 className='exit' size={tailleExit} onClick={()=>{setShowPopupInscrption(false); setEtapeEmpploye(0);setEtapeEmpployeur(0)}}/>
-            <h1>Choisissez le type de compte que vous souhaitez creer</h1>
-            <Buttun className='role__compte' onClick={()=>{setEtapeEmpploye(1);setEtapeEmpployeur(0); setPopupChoix(false);}}>EMPLOYE</Buttun>
-            <Buttun className='role__compte' onClick={()=>{setEtapeEmpployeur(1);setEtapeEmpploye(0);setPopupChoix(false);}}>EMPLOYEUR</Buttun>
+             <Buttun onClick={()=>{setEtapeEmpploye(1);setEtapeEmpployeur(0); setPopupChoix(false);}}>EMPLOYE</Buttun>
+             <Buttun onClick={()=>{setEtapeEmpployeur(1);setEtapeEmpploye(0);setPopupChoix(false);}}>EMPLOYEUR</Buttun>
            </div>
          </div>
         
@@ -35,8 +32,9 @@ export default function Popup({type,setPopUp,isOn,annonce,children}) {
             </div>
           </div>}
           <div className='popup__container'>
-            <RxCross2 size={tailleExit} className='exit' onClick={()=>{setShowPopupInscrption(false); setEtapeEmpploye(0);setEtapeEmpployeur(0)}}/>
-            <FormIns etapeEmpploye={etapeEmpploye} etapeEmpployeur={etapeEmpployeur} setEtapeEmpploye={setEtapeEmpploye} setEtapeEmpployeur={setEtapeEmpployeur}/>
+              <Buttun id='exit' onClick={()=>{setShowPopupInscrption(false); setEtapeEmpploye(0);setEtapeEmpployeur(0)}}>X</Buttun>
+              <FormIns etapeEmpploye={etapeEmpploye} etapeEmpployeur={etapeEmpployeur} setEtapeEmpploye={setEtapeEmpploye} setEtapeEmpployeur={setEtapeEmpployeur}/>
+
           </div>
         </div>
       )
@@ -48,7 +46,7 @@ export default function Popup({type,setPopUp,isOn,annonce,children}) {
           <div className="popup">
                 <div className='popup__container'>
                     <div className='annonce'>
-                    <RxCross2 size={tailleExit} className='exit' onClick={()=>{setShowPopupConsulter(false)}}/>
+                      <button id='exit' onClick={()=>{setShowPopupConsulter(false)}}>X</button>
                       <h1 className='nom'>titre: {annonce.nom}</h1>
                       <h1 className='categorie'>categorie: {annonce.categorie}</h1>
                       <h1 className='sousCategorie'>s.categorie: {annonce.sousCategorie}</h1>
@@ -62,12 +60,16 @@ export default function Popup({type,setPopUp,isOn,annonce,children}) {
         )
     }
 
+
+
+    
+
     if (type=='login' && popupLogin) {
       return (
         <div className='popup'>
           <div className='popup__container'>
-            <RxCross2 className='exit' size={tailleExit} onClick={()=>{setPopupLogin(false); setEtapeEmpploye(0);setEtapeEmpployeur(0)}}/>
-            <Login/>
+              <Buttun id='exit' onClick={()=>{setPopupLogin(false); setEtapeEmpploye(0);setEtapeEmpployeur(0)}}>X</Buttun>
+              <Login/>
           </div>
         </div>
       )
