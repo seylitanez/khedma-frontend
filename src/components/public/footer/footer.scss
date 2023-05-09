@@ -1,20 +1,21 @@
 .footer{
-    width: 100%;
-    margin-bottom:0;
-    
+    width: 100%;    
     background-color: $color_n_bleu;
     line-height: 1.5;
 	font-family: 'Poppins', sans-serif;
-    padding-top: 20px;
-    bottom: 0;
     //text
     color: $color_w_bleu;
-    & a{text-decoration: none;color: $color_w_bleu;}
-    & li{list-style-type: none;}
+    & a{
+        text-decoration: none;
+        color: $color_w_bleu;}
+    & li{
+        list-style-type: none;
+    }
     & .footer_info{
         height: 220px;
-        padding-left: 10px;
         display: flex;
+        flex-wrap: wrap;
+        padding: 30px 100px;
         border-bottom: 1px solid $color_w_bleu;
         & .app_name{
             width: 45%;
@@ -34,22 +35,22 @@
                     font-size: 20px;
                 }
             }
-            & .sub{
-                margin-top: 20px;
-                & #emails{
-                    height: 30px;
-                    padding-left: 10px;
-                    width: 200px;
-                    &::placeholder{
-                        color: #bbb;
-                    }
-                }
-                & #subscribe{
-                    padding: 5px;
-                    background-color: $color_oronge;
-                    color: $color_gris;
-                }
-            }
+        //     & .sub{
+        //         margin-top: 20px;
+        //         & #emails{
+        //             height: 30px;
+        //             padding-left: 10px;
+        //             width: 200px;
+        //             &::placeholder{
+        //                 color: #bbb;
+        //             }
+        //         }
+        //         & #subscribe{
+        //             padding: 5px;
+        //             background-color: $color_oronge;
+        //             color: $color_gris;
+        //         }
+        //     }
         }
         & .link{
             margin-top: 30px;
@@ -78,13 +79,12 @@
     & .policy{
         display: flex;
         justify-content: space-between;
-        & .copy{
-            margin-left: 5px;
-        }
-        & .policy_link{
-            & a{
-                margin: {left: 10px;right: 10px;};
-            }
+        padding: 10px 60px;
+
+        & .policy_link {
+            width: 25%;
+            display: flex;
+            justify-content: space-between;
         }
     }
 } 
