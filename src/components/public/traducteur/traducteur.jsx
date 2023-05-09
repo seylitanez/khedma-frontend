@@ -1,5 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react';
+import { useState } from 'react';
+import { IoEarth } from 'react-icons/io5';
 import './traducteur.scss'
 
 export default function Traducteur() {
@@ -12,9 +14,19 @@ export default function Traducteur() {
             new window.google.translate.TranslateElement({pageLanguage: 'fr'}, 'google_translate_element');
         }
     },[])
+
+    const [isActive, setIsActive] = useState(false);
+
+    const handleClick = () => {
+      setIsActive(current => !current);
+    };
+
     return (
-        <div className='traducteur'>
+        <div className='traducteur'
+        style={{transform: isActive ? 'translateX(0)' : 'translateX(calc(-100% + 60px))' }}
+        onClick={handleClick}>
             <div id="google_translate_element" className='apiTraduction'></div>
+            <IoEarth size="60px" color='white'/>
         </div>
     )
 }

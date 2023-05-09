@@ -1,14 +1,17 @@
 div{
  & .popup{
-    position:absolute;
+    position : absolute;
     z-index: 2;
-    width: 100%;
+    top: 0;
+    left: 0;
+    width: 100vw;
     height:100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.70);
+    
     & .popup__ins__top{
         background-color: white;
         margin-bottom: 10px;
@@ -105,35 +108,57 @@ div{
         }
     }
     & .popup__container{
+        min-width: 300px;
+        max-width: 600px;
+        min-height : 300px;
+        word-wrap: break-word;
+        padding: 42px 40px;
         display: flex;
+        flex-direction: column;
         flex-wrap: wrap;
-        justify-content: end;
-        align-items: baseline;
-        flex-direction: row-reverse;
-        z-index: 2;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 3;
         animation: showup 0.5s ease;
         background-color: white;
-        padding: 70px;
-        border-radius: 20px;
-        display: flex;
-        padding-right: 30px;  
+        border-radius: 12px;
+
+        & h1 {
+            text-align: center;
+            font-size: 32px;
+        }
+
+        & .role__compte {
+            transition: .3s;
+            min-width: 200px;
+            min-height: 42px;
+            border-radius: 2px;
+            border: 2px solid $color_bleu;
+            padding: 6px 10px;
+            font-size: 16px;
+            color: $color_bleu;
+            background-color: transparent;
+        }
+
+        & .role__compte:hover {
+            color: white;
+            background-color: $color_bleu;
+        }
+
         & .popup__annonce{
             background-color: red;
         }
-        & #exit{
-            background: none;
-            border: 1px solid rgba(0, 0, 0, 0.5);
-            border-radius: 100%;
-            color: rgba(0, 0, 0, 0.5);
-            height: 50px;
-            width: 50px;
-            font-size: 2rem;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    }
+    & .exit {
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 30px;
+        color: $color_blanc;
+    }
+    & .exit:hover {
+        transition: .3s;
+        color: $color_rouge;
     }
 }
 .background__popup{
