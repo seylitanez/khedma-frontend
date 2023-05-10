@@ -13,6 +13,7 @@ import { PopupContext } from './context/PopupContext';
 import { gapi } from 'gapi-script';
 import ReactGA from 'react-ga';
 import { Traducteur } from '@p-components/index';
+import Default from './Default';
 
 function App() {
   const [langue,setLangue]=useState('fr')
@@ -43,6 +44,7 @@ function App() {
         <AnnonceContext.Provider value={{ search, setSearch, annonce: { annonces, setAnnonces }}}>
           <PopupContext.Provider value={{showPopupInscrption,setShowPopupInscrption,showPopupConsulter,setShowPopupConsulter,popupConsulterDetails,setPopupConsulterDetails,popupLogin,setPopupLogin,popupChoix,setPopupChoix}} >
             <BrowserRouter>
+              <Default/>
               <Routes>
                 <Route path='/*' element={<PublicRouter/>}/>
                 <Route path='/employe/*' element={<AuthGuard role='EMPLOYE'><EmployeRouter/></AuthGuard>}/>

@@ -1,56 +1,54 @@
-nav{
+header {
     position: fixed;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
     width: 100vw;
+    height: 86px;
     top: 0;
-    z-index: 3;
+    z-index: 1;
     background-color: $color_blanc;
     & .logo{
-        height: 60px;
+        height: 75%;
         overflow: hidden;
         & img{
             height: 100%;
         }
     }
-    & .menu{
+    & nav{
+        width: 460px;
+
+        & .menu {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            list-style-type: none;
+        }
         & li{
-            display: inline-block;
-            &:nth-child(4){
-                margin-left: -40px;
-            }
             & .item{
-                display: flex;
-                justify-content: center;
-                width: 160px;
-                // background-color: red;
-                margin: 20px -10px;
-                & a{
+                & a {
                     text-decoration: none;
                     color: $color_noir;
                     font-size: 16px;
                 }
             }
             & .item__selected{
-                display: flex;
-                justify-content: center;
-                width: 160px;
-                transition: 0.5s;
-                transform: translateY(-10px);
+                transition: .3s;
                 & a{
-                    text-decoration: none;
-                    font-size: 16px;
                     color: $color_oronge;
+                    text-decoration: none;
+                    position: relative;
                 }
-                &::after{
+                & a::after{
                     content: '';
-                    height: 8px;
-                    width: 8px;
                     position: absolute;
-                    background-color: $color_oronge;
-                    transform: translate(3px,25px);
+                    top: 100%;
+                    left: 50%;
+                    transform: translateX(-50%);
                     border-radius: 100%;
-                    animation: selected 1s ease;
+                    background: $color_oronge;
+                    height: 5px;
+                    width: 5px;
                 }
             }
             &:hover{
@@ -62,15 +60,20 @@ nav{
         }
     }
     & .log{
+        width: 300px;
+        & div {
+            display: flex;
+            justify-content: space-between;
+        }
         @mixin btn ($c1,$c2){
             background-color: $c1;
             color: $c2;
-            border: 1px solid $color_bleu;
-            padding: 8px 20px;
+            border: 2px solid $color_bleu;
+            padding: 6px 18px;
             border-radius: 6px;
             font-size: 16px;
-            margin: 10px 5px;
             transition: 0.5s;
+            font-family: Poppins, sans-serif; 
             cursor: pointer;
         }
         @mixin btn__active (){
@@ -109,6 +112,10 @@ nav{
         }
         & #log{
             @include btn($color_bleu,$color_blanc);
+            &:hover{
+                background-color: $color_oronge;
+                border: 2px solid $color_oronge;
+            }
             &:active{
                 @include btn__active() 
             }
@@ -116,39 +123,6 @@ nav{
     }
     & .burguer{
         display: none;
-    }
-    & .__langue{
-        background-color: $color_blanc;
-        border-radius: 5px;
-        position: fixed;
-        margin-left: auto;
-        margin-right: auto;
-        right: calc(15vw + 40px);
-        top: 15px;
-        z-index: 1;
-    }
-    & .__langue__menu{
-        & ul {
-            cursor: pointer;
-            & li{
-                margin-left: auto;
-                margin-right: auto;
-                display: none;
-                list-style-type: none;
-                cursor: pointer;
-            }
-            &:hover{
-                box-shadow: 0 5px 5px 5px rgba(0, 0, 0, 0.107);
-                border-radius: 3px;
-                & li{
-                    display: block;
-                    background-color: $color_blanc;
-                    &:hover{
-                        opacity: 0.8;
-                    }
-                }
-            }
-        }
     }
 }
 

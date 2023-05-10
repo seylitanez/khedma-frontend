@@ -22,17 +22,17 @@ const Footer = () => {
                     <div className="slogo">
                         <p>{slogon}</p>
                     </div>
-                    <div className="sub">
+                    {/* <div className="sub">
                         <Input type="email" id="emails" placeholder="email@exemple.com"/>
                         <Buttun id="subscribe">{lang.footer.btn}</Buttun>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="link">
                     <h3>{lien}</h3>
                     <ul>
                         <li><Link to='./home'>{accueil}</Link></li>
                         <li><Link to='./jobSearch'>{trouver_emploi}</Link></li>
-                        <li><Link to='./blog'>{blog}</Link></li>
+                        {/* <li><Link to='./blog'>{blog}</Link></li> */}
                         <li><Link to='./a_propos'>{a_propos}</Link></li>
                     </ul>
                 </div>
@@ -41,11 +41,6 @@ const Footer = () => {
                     <ul>
                         <li><BsTelephoneFill size={15}/> {tel}</li>
                         <li><HiMail size={20}/> {mail}</li>
-                        <li><div className="social-links">
-                            <AiFillTwitterCircle className="tw"size={25}/>
-                            <BsLinkedin className="li"size={25}/>
-                            <BsFacebook className="fb"size={25}/>
-                        </div></li>
                    </ul>
                 </div>
             </div>

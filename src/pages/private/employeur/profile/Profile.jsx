@@ -4,6 +4,10 @@ import { useState, useEffect, useRef } from 'react'
 import { userService } from "@service/index";
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { CgProfile } from 'react-icons/cg';
+import { Outlet } from 'react-router-dom';
+import { BsList, BsListUl } from 'react-icons/bs';
+import { GrAdd } from 'react-icons/gr';
 
 export default function Profile() {
     const param=useParams()
@@ -15,12 +19,29 @@ export default function Profile() {
     }, [])
     return (
         <div>
-            <h1>{user.nomUtilisateur}</h1>
-            <h2>{user.adresseMail}</h2>
-            <h3>{user.genre}</h3>
-            <h1>{user.tel}</h1>
-            <Link to='ajouterAnnonce'>AjouterAnnonce</Link><br/>
-            <Link to='listAnnonce'>listAnnonce</Link>
+            <div className='profile_employeur'>
+                <div className="sidebar">
+                    <div className="sidebar__item">
+                        <CgProfile size={20} className='prf' />
+                        <Link to={param.nomUtilisateur} >Profile</Link>
+                    </div>
+                    <div className="sidebar__item">
+                        <BsListUl size={20} className='prf' />
+                        <Link to={param.nomUtilisateur + '/listAnnonce'}>listAnnonce</Link>
+                    </div>
+                    <div className="sidebar__item">
+                        <GrAdd size={20} className='prf' />
+                        <Link to={param.nomUtilisateur + '/ajouterAnnonce'}>AjouterAnnonce</Link>
+                    </div>
+                    <div className="sidebar__item">
+                        <BsList size={20} className='prf' />
+                        <Link to={param.nomUtilisateur + '/listPostulent'}>List Postulent</Link>
+                    </div>
+                </div>
+                <main className="main">
+                    <Outlet />
+                </main>
+            </div>
         </div>
     )
 }

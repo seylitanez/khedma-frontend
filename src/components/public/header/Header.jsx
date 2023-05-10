@@ -50,49 +50,35 @@ export default function Header() {
     }
     return (
         <header>
-            <nav>
                 <Link to='./' className="logo">
                     <Logo/>
                 </Link>
-                <div className="menu">
-                    <ul>
+                <nav>
+                    <ul className='menu'>
                         <li><div className={className[0]}><Link  to='/home' >{accueil}</Link></div></li>
                         <li><div className={className[1]}><Link  to='/jobSearch' >{trouver_emploi}</Link></div></li>
-                        <li><div className={className[2]}><Link  to='/blog' >{blog}</Link></div></li>
+                        {/* <li><div className={className[2]}><Link  to='/blog' >{blog}</Link></div></li> */}
                         <li><div className={className[3]}><Link  to='/a_propos' >{a_propos}</Link></div></li>
                     </ul>
-                </div>
-                {/* <div id="google_translate_element"></div> */}
+                </nav>
                 <div className="log">
-                    {/* <div className="__langue">
-                        <div className='__langue__menu'>
-                            <ul>
-                                <div className="__langu__title">{langue==='fr'? <img  src={france}/>:langue==='ar'?<img src={dz}/>:<img src={royaume_uni}/>}</div>
-                                <li onClick={()=>setLangue('ar')}><img src={dz}/>dz</li>
-                                <li onClick={()=>setLangue('fr')}><img src={france}/>fr</li>
-                                <li onClick={()=>setLangue('en')}><img src={royaume_uni}/>en</li>
-                            </ul>
-                        </div>
-                    </div> */}
-                    {accountService.isLogged()?
+                    {
+                    accountService.isLogged()?
                     <div className="desco">
                         <FiLogOut size={20} className='prf' />
                         <Link to="/home" onClick={deconnection}>Se Dèconnecter</Link>
                     </div>
-                    :<div><Buttun id="log" onClick={e=>setPopupLogin(true)}>{connexion}</Buttun>
-                    <Buttun id='sing' onClick={()=>setShowPopupInscrption(true)}>{inscription}</Buttun></div>}           
-                </div>  
+                    :
+                    <div>
+                        <Buttun id='sing' onClick={()=>setShowPopupInscrption(true)}>{inscription}</Buttun>
+                        <Buttun id="log" onClick={e=>setPopupLogin(true)}>{connexion}</Buttun>
+                    </div>
+                    }           
+                </div>
                 <Popup type={"inscription"} />
                 <Popup type={"details"} annonce={popupConsulterDetails}/>
                 <Popup type={"role"}/> 
                 <Popup type={"login"}/> 
-                
-                <div className="burguer">
-                    <div className='top'></div><br />
-                    <div className='middle'></div><br />
-                    <div className='bottom'></div>
-                </div>  
-            </nav>
         </header>
     )
 }
