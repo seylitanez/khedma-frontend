@@ -42,7 +42,7 @@ export default function Popup({type,setPopUp,isOn,annonce,children}) {
       )
     }
     //popup annonce
-    if (showPopupConsulter && type=="details") {
+    if (showPopupConsulter && type=="details" &&accountService.isLogged()) {
         console.log(annonce);
         return (
           <div className="popup">
@@ -56,7 +56,7 @@ export default function Popup({type,setPopUp,isOn,annonce,children}) {
                       <div className='jours'>jours de travail{annonce.journees.map((jour,index)=><h1 key={index}>{jour}</h1>)}</div>
                       <h1 className='salaireDeBase'> avec un salaire de: {annonce.salaireDeBase}</h1>
                     </div>
-                    {accountService.isLogged&&<Buttun>postuler</Buttun>}
+                    <Buttun>postuler</Buttun>
               </div>
         </div>
         )
