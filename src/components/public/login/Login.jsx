@@ -50,7 +50,7 @@ export default function Login() {
                 switch (accountService.getRole()) {
                     case 'EMPLOYE': navigate('/employe/profile/'+accountService.getUserName());break;
                     case 'EMPLOYEUR':console.log('connct'); navigate('/employeur/profile/'+accountService.getUserName());break;
-                    case 'MODERATEUR':navigate('/moderateur');break;
+                    case 'MODERATEUR': navigate('/moderateur/dashboard');break;
                 }
             })
             .catch(err => console.log(err))
