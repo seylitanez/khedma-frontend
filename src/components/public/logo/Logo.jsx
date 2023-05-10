@@ -53,8 +53,8 @@ export default function Logo() {
   }, [demmarer])
 
   return (
-    <div>
+    <>
       {loupeId}
-    </div>
+    </>
   )
 }

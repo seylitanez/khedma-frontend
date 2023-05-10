@@ -4,12 +4,11 @@ header {
     justify-content: space-around;
     align-items: center;
     width: 100vw;
-    height: 80px;
+    height: 70px;
     top: 0;
     z-index: 1;
     background-color: $color_blanc;
     & .logo {
-        height: 75%;
         overflow: hidden;
         & img {
             height: 100%;
