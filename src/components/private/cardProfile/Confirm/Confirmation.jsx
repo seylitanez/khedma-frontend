@@ -5,7 +5,7 @@ import React from 'react'
 export default function Confirmation({set,classn}) {
     return (
         <div className={"pop "+classn}>
-            <div className="popup">
+            <div className="popups">
                 <div className="txt">
                     <h3>Vous les vous confirmer la modification</h3>
                 </div>
