@@ -1,7 +1,7 @@
 import React from 'react'
-import "./dashboard.scss";
+import "./statistic.scss";
 
-export default function Dashboard() {
+export default function Statistic() {
     return (
         <div>
 
