@@ -64,18 +64,16 @@ export default function Header() {
                 </div>
                 {/* <div id="google_translate_element"></div> */}
                 <div className="log">
-                    <div className="__langue">
+                    {/* <div className="__langue">
                         <div className='__langue__menu'>
-                            <ul>{/*ToDo
-                                -mettre du style aux drapeau
-                                */}
+                            <ul>
                                 <div className="__langu__title">{langue==='fr'? <img  src={france}/>:langue==='ar'?<img src={dz}/>:<img src={royaume_uni}/>}</div>
                                 <li onClick={()=>setLangue('ar')}><img src={dz}/>dz</li>
                                 <li onClick={()=>setLangue('fr')}><img src={france}/>fr</li>
                                 <li onClick={()=>setLangue('en')}><img src={royaume_uni}/>en</li>
                             </ul>
                         </div>
-                    </div>
+                    </div> */}
                     {accountService.isLogged()?
                     <div className="desco">
                         <FiLogOut size={20} className='prf' />

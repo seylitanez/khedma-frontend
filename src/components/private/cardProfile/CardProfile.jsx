@@ -19,7 +19,7 @@ export default function CardProfile() {
     useEffect(() => {
         if (!flg.current) {
             accountService.getUser()
-                .then(res => setElement({type:"set",value:res.data}))
+                .then(res =>{console.log(res); setElement({type:"set",value:res.data})})
                 .catch(err => console.log(err))
             }
             return () => {

@@ -68,8 +68,14 @@ export default function Login() {
                     case 'EMPLOYEUR':console.log('connct'); navigate('/employeur/profile/'+accountService.getUserName());break;
                     case 'MODERATEUR':navigate('/moderateur');break;
                 }
-            })
+            }).catch(err=>{
+                console.log(err);
+            }
+            )
         
+    }
+    function onFailure(e){
+        console.log("veuillez creer un compte d'abord");
     }
 
     return (
@@ -82,7 +88,7 @@ export default function Login() {
             <div className={"login__group "+anims}>
                 <Input type="password" id='mdp' name='motDePasse' value={user.motDePasse} onChange={onChange} onInput={e => setActives(e)} requirede='required'>{password}</Input>
             </div>
-            <GLogin titre={"se connecter avec google"} onSuccess={onSuccess}/>
+            <GLogin titre={"se connecter avec google"} onSuccess={onSuccess} onFailure={onFailure}/>
             <Link className='nv__compte' onClick={()=>{setPopupLogin(false);setShowPopupInscrption(true)}}>nouveau compte?</Link>
             <div className="login__mdp">
                 <Buttun id="log">{connexion}</Buttun>
