@@ -4,18 +4,18 @@ header {
     justify-content: space-around;
     align-items: center;
     width: 100vw;
-    height: 86px;
+    height: 80px;
     top: 0;
     z-index: 1;
     background-color: $color_blanc;
-    & .logo{
+    & .logo {
         height: 75%;
         overflow: hidden;
-        & img{
+        & img {
             height: 100%;
         }
     }
-    & nav{
+    & nav {
         width: 460px;
 
         & .menu {
@@ -24,23 +24,23 @@ header {
             justify-content: space-between;
             list-style-type: none;
         }
-        & li{
-            & .item{
+        & li {
+            & .item {
                 & a {
                     text-decoration: none;
                     color: $color_noir;
                     font-size: 16px;
                 }
             }
-            & .item__selected{
-                transition: .3s;
-                & a{
+            & .item__selected {
+                transition: 0.3s;
+                & a {
                     color: $color_oronge;
                     text-decoration: none;
                     position: relative;
                 }
-                & a::after{
-                    content: '';
+                & a::after {
+                    content: "";
                     position: absolute;
                     top: 100%;
                     left: 50%;
@@ -51,21 +51,21 @@ header {
                     width: 5px;
                 }
             }
-            &:hover{
-                & a{
+            &:hover {
+                & a {
                     color: $color_oronge;
                     transition: 0.3s;
                 }
             }
         }
     }
-    & .log{
+    & .log {
         width: 300px;
         & div {
             display: flex;
             justify-content: space-between;
         }
-        @mixin btn ($c1,$c2){
+        @mixin btn($c1, $c2) {
             background-color: $c1;
             color: $c2;
             border: 2px solid $color_bleu;
@@ -73,78 +73,79 @@ header {
             border-radius: 6px;
             font-size: 16px;
             transition: 0.5s;
-            font-family: Poppins, sans-serif; 
+            font-family: Poppins, sans-serif;
             cursor: pointer;
         }
-        @mixin btn__active (){
+        @mixin btn__active() {
             opacity: 0.8;
             transition: 0.3s;
             transform: scale(0.9);
             cursor: pointer;
         }
-        & .desco{
-            @include btn($color_bleu,$color_blanc);
+        & .desco {
+            @include btn($color_bleu, $color_blanc);
             display: flex;
             align-items: center;
-            & a{
+            width: 200px;
+            & a {
                 margin-left: 5px;
                 text-decoration: none;
                 color: $color_blanc;
             }
-            &:hover{
-                @include btn($color_blanc,$color_bleu);
-                & a{
+            &:hover {
+                @include btn($color_blanc, $color_bleu);
+                & a {
                     color: $color_bleu;
                 }
             }
-            &:active{
-                @include btn__active()
+            &:active {
+                @include btn__active();
             }
         }
-        & #sing{
-            @include btn($color_blanc,$color_bleu);
-            &:hover{
-                @include btn($color_bleu,$color_blanc);
+        & #sing {
+            @include btn($color_blanc, $color_bleu);
+            &:hover {
+                @include btn($color_bleu, $color_blanc);
             }
-            &:active{
-                @include btn__active()
+            &:active {
+                @include btn__active();
             }
         }
-        & #log{
-            @include btn($color_bleu,$color_blanc);
-            &:hover{
+        & #log {
+            @include btn($color_bleu, $color_blanc);
+            &:hover {
                 background-color: $color_oronge;
                 border: 2px solid $color_oronge;
             }
-            &:active{
-                @include btn__active() 
+            &:active {
+                @include btn__active();
             }
         }
     }
-    & .burguer{
+    & .burguer {
         display: none;
     }
 }
 
 @media screen and (max-width: 1130px) {
-    nav{
-        & .menu{
+    nav {
+        & .menu {
             display: none;
             // &.active{
 
             // }
         }
-        & .log{
+        & .log {
             display: none;
         }
-        & .burguer{
+        & .burguer {
             height: 30px;
             width: 30px;
             display: flex;
             flex-wrap: wrap;
             margin-top: 5px;
             cursor: pointer;
-            & div{
+            & div {
                 height: 3px;
                 border-radius: 6px;
                 width: 100%;
@@ -152,10 +153,10 @@ header {
             }
             // & .top{
             // }
-            & .middle{
+            & .middle {
                 transform: translateY(-5px);
             }
-            & .bottom{
+            & .bottom {
                 transform: translateY(-10px);
             }
         }
@@ -163,22 +164,21 @@ header {
 }
 
 @keyframes showup {
-    0%{
+    0% {
         transform: scale(0);
         opacity: 0;
     }
 }
 
 @keyframes selected {
-    0%{
-        transform: translate(3px,35px);
+    0% {
+        transform: translate(3px, 35px);
         opacity: 0;
     }
-    75%{
-        transform: translate(3px,20px);
-        
+    75% {
+        transform: translate(3px, 20px);
     }
-    100%{
-        transform: translate(3px,25px);
+    100% {
+        transform: translate(3px, 25px);
     }
 }
