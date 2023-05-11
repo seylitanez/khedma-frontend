@@ -15,24 +15,25 @@ export default function rechercher() {
     const [isFiltreDisplayOff,setIsFiltreDisplayOff]=useState(true)
     const [txtsearch,setTxtsearch]=useState(search)
     const nav = useNavigate()
+    const iconSize = '26px'
 
     return (
         <form className = "rechercher" style={filtreDisplay}>
             <Input type = "search" className='rechercher__input' value={txtsearch} onChange={e => setTxtsearch(e.target.value)} placeholder={emploi} requirede='required'/>
 
             <div className="rechercher__boutons">
-                <FiSliders className='rechercher__filtrer'/>
+                <FiSliders size={iconSize} className='rechercher__filtrer'/>
                 
                 <div id='rechercher__separateur'></div>
                 
-                <Input:button type ='submit'
+                <input type ='submit'
                 onClick={(e)=>{
                     e.preventDefault()
                     setSearch(txtsearch)
                     nav('/jobSearch/'+txtsearch) 
                 }}>
-                    <FiSearch className='rechercher__recherche'/>
-                </Input:button>
+                    <FiSearch size={iconSize} className='rechercher__recherche'/>
+                </input>
             </div>
         </form>
     )
