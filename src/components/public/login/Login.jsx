@@ -57,9 +57,13 @@ export default function Login() {
     }
 
     function onSuccess(e){
-        console.log(e.profileObj.email);
+        console.log(e);
+        // const SECONDES=120
         const email=e.profileObj.email;
-        accountService.loginGoogle({adresseMail:email})
+
+        let playload=({sub: email,isGoogleUser:true})
+        const token=accountService.genrateToken(playload);
+        accountService.loginGoogle({token:token})
             .then(res=>{
                 console.log(res.data);
                 accountService.saveToken(res.data.token)
