@@ -15,18 +15,16 @@ export default function Traducteur() {
         }
     },[])
 
-    const [isActive, setIsActive] = useState(false);
+    const [ouvert, setOuvert] = useState(false);
 
     const handleClick = () => {
-      setIsActive(current => !current);
+        setOuvert(actuel => !actuel);        
     };
 
     return (
-        <div className='traducteur'
-        style={{transform: isActive ? 'translateX(0)' : 'translateX(calc(-100% + 60px))' }}
-        onClick={handleClick}>
+        <div className='traducteur' style={{transform: ouvert ? 'translateX(0)' : 'translateX(calc(-100% + 60px))' }}>
             <div id="google_translate_element" className='apiTraduction'></div>
-            <IoEarth size="60px" color='white'/>
+            <IoEarth size="44px" color='white' className='traducteur__bouton' onClick={handleClick}/>
         </div>
     )
 }

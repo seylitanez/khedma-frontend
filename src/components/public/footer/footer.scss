@@ -87,4 +87,14 @@
             justify-content: space-between;
         }
     }
-} 
+}
+
+@media screen and (max-width: $breakpoint_tel){
+    .footer_info{
+        padding: 20px 8px;
+        
+        .app_name {
+            display: none;
+        }
+    }
+}

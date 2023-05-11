@@ -6,7 +6,7 @@ header {
     width: 100vw;
     height: 70px;
     top: 0;
-    z-index: 1;
+    z-index: 2;
     background-color: $color_blanc;
     & .logo {
         overflow: hidden;
@@ -120,45 +120,21 @@ header {
                 @include btn__active();
             }
         }
+        
     }
-    & .burguer {
+    & .hamburguer {
         display: none;
+        color: $color_bleu;
     }
 }
 
-@media screen and (max-width: 1130px) {
+@media screen and (max-width: $breakpoint_tel){
     nav {
-        & .menu {
-            display: none;
-            // &.active{
+        display: none;
+    }
 
-            // }
-        }
-        & .log {
-            display: none;
-        }
-        & .burguer {
-            height: 30px;
-            width: 30px;
-            display: flex;
-            flex-wrap: wrap;
-            margin-top: 5px;
-            cursor: pointer;
-            & div {
-                height: 3px;
-                border-radius: 6px;
-                width: 100%;
-                background-color: black;
-            }
-            // & .top{
-            // }
-            & .middle {
-                transform: translateY(-5px);
-            }
-            & .bottom {
-                transform: translateY(-10px);
-            }
-        }
+    .log {
+        display: none;
     }
 }
 

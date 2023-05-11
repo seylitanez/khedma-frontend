@@ -8,6 +8,7 @@ import { Buttun, Logo, Popup } from '@p-components/index';
 import { PopupContext } from '@context/PopupContext';
 import { accountService } from '@service/Account.service';
 import { FiLogOut } from 'react-icons/fi';
+// import { MdDensityMedium } from "react-icons/md";
 import { GoogleLogout } from 'react-google-login';
 
 export default function Header() {
@@ -18,15 +19,7 @@ export default function Header() {
     const {setShowPopupInscrption,popupConsulterDetails,popupLogin,setPopupLogin,popupChoix,setPopupChoix}=useContext(PopupContext)
     const [className,setClassName] = useState(["item","item","item","item"])
     const param= useParams()
-    // useEffect(()=>{
-    //     const script = document.createElement("script");
-    //     script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-    //     script.async = true;
-    //     document.body.appendChild(script);
-    //     window.googleTranslateElementInit = function googleTranslateElementInit() {
-    //         new window.google.translate.TranslateElement({pageLanguage: 'fr'}, 'google_translate_element');
-    //     }
-    // },[])
+
     useEffect(()=>{
         switch (param["*"]) {
             case '':
@@ -51,36 +44,38 @@ export default function Header() {
     }
     return (
         <header>
-                <Link to='./' className="logo">
-                    <Logo/>
-                </Link>
-                <nav>
-                    <ul className='menu'>
-                        <li><div className={className[0]}><Link  to='/home' >{accueil}</Link></div></li>
-                        <li><div className={className[1]}><Link  to='/jobSearch' >{trouver_emploi}</Link></div></li>
-                        {/* <li><div className={className[2]}><Link  to='/blog' >{blog}</Link></div></li> */}
-                        <li><div className={className[3]}><Link  to='/a_propos' >{a_propos}</Link></div></li>
-                    </ul>
-                </nav>
-                <div className="log">
-                    {
+            <Link to='./' className="logo">
+                <Logo/>
+            </Link>
+            <nav>
+                <ul className='menu'>
+                    <li><div className={className[0]}><Link  to='/home' >{accueil}</Link></div></li>
+                    <li><div className={className[1]}><Link  to='/jobSearch' >{trouver_emploi}</Link></div></li>
+                    {/* <li><div className={className[2]}><Link  to='/blog' >{blog}</Link></div></li> */}
+                    <li><div className={className[3]}><Link  to='/a_propos' >{a_propos}</Link></div></li>
+                </ul>
+            </nav>
+            <div className='log'>
+                {
                     accountService.isLogged()?
                     <div className="desco">
-                        <FiLogOut size={20} className='prf' />
-                        <Link to="/home" onClick={deconnection}>Se Dèconnecter</Link>
+                    <FiLogOut size={20} className='prf' />
+                    <Link to="/home" onClick={deconnection}>Se Dèconnecter</Link>
                         {/* <GoogleLogout clientId={"96654489585-9kfrhk9jgeq4nodccs7tg0lagl1hq6uj.apps.googleusercontent.com"} buttonText={"se deconnecter"} onLogoutSuccess={()=>{console.log("vous vous etes deconnecte avec success");}} /> */}
-                    </div>
-                    :
-                    <div>
-                        <Buttun id='sing' onClick={()=>setShowPopupInscrption(true)}>{inscription}</Buttun>
-                        <Buttun id="log" onClick={e=>setPopupLogin(true)}>{connexion}</Buttun>
-                    </div>
-                    }           
                 </div>
-                <Popup type={"inscription"} />
-                <Popup type={"details"} annonce={popupConsulterDetails}/>
-                <Popup type={"role"}/> 
-                <Popup type={"login"}/> 
+                :
+                <div>
+                    <Buttun id='sing' onClick={()=>setShowPopupInscrption(true)}>{inscription}</Buttun>
+                    <Buttun id="log" onClick={e=>setPopupLogin(true)}>{connexion}</Buttun>
+                </div>
+                }           
+            </div>
+
+            {/* <MdDensityMedium size = '40px' className = 'hamburger'/> */}
+            <Popup type={"inscription"} />
+            <Popup type={"details"} annonce={popupConsulterDetails}/>
+            <Popup type={"role"}/> 
+            <Popup type={"login"}/> 
         </header>
     )
 }
