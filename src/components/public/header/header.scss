@@ -8,6 +8,7 @@ header {
     top: 0;
     z-index: 2;
     background-color: $color_blanc;
+
     & .logo {
         overflow: hidden;
         & img {
@@ -119,13 +120,16 @@ header {
             &:active {
                 @include btn__active();
             }
-        }
-        
+        } 
     }
-    & .hamburguer {
+
+    & .mobile__menu {
         display: none;
-        color: $color_bleu;
     }
+}
+
+#hamburger {
+    display: none;
 }
 
 @media screen and (max-width: $breakpoint_tel){
@@ -137,24 +141,27 @@ header {
         display: none;
     }
 
-    svg {
+    #hamburger {
         color: $color_bleu;
+        display: block;
         z-index: 4;
         transition: .3s;
+        cursor: pointer;
     }
 
     .mobile__menu {
         z-index: 0;
         width: 100vw;
-        height: 70vh;
+        height: 72vh;
         background-color: rgba($color: $color_bleu, $alpha: .8);
         position: fixed;
         top: 0;
         left: 0;
-        transition: .6s;
+        transition: .6s !important;
+        justify-content: center;
 
         & .menu {
-            margin-top: 70px;
+            // margin-top: 70px;
             padding: 10px 0;
             display: flex;
             flex-direction: column;
@@ -162,15 +169,37 @@ header {
             align-items: center;
             list-style: none;
             
+            & li {
+                margin-bottom: 12px;
+            }
+
             & li > a {
                 color: white;
                 text-decoration: none;
                 font-size: 22px;
+                margin-bottom: 10px;
             }
 
             & li > a:hover, & li > a:focus {
                 color: $color_oronge;
                 transition: .5s;
+            }
+
+            & .mobile__auth {
+                width: 180px;
+                height: 42px;
+                border: 2px solid white;
+                background-color: transparent;
+                color: white;
+                font-size: 22px;
+                margin-bottom: 10px;
+                cursor: pointer;
+            }
+
+            & .mobile__auth:hover, .mobile__auth:focus{
+                background-color: white;
+                transition: .5s;
+                color: black;
             }
         }
     }

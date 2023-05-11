@@ -1,12 +1,12 @@
 .traducteur {
     position : fixed;
     top : 75vh;
-    width: 340px;
+    width: 320px;
     height: 60px;
     left : 0;
     display : flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 40px 8px;
     background-color: $color_bleu;
     border-top-right-radius: 60px;

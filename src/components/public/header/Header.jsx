@@ -63,9 +63,13 @@ export default function Header() {
                 </ul>
             </nav>
 
-            <RxHamburgerMenu size = '38px' className = 'hamburger' onClick={handleClick}
-            style={{color : ouvert ? 'white' : ''}}/>
-            <div className="mobile__menu" style={{transform : ouvert ? 'translateY(0)' : 'translateY(-100%)'}}>
+            <RxHamburgerMenu size = '38px' id='hamburger' className = 'hamburger'
+            onClick={handleClick}
+            style={{color : ouvert ? 'white' : ''}}
+            />
+
+            <div className="mobile__menu"
+            style={{transition : 'display 0s', transform : ouvert ? 'translateY(0)' : 'translateY(-100%)', display : ouvert ? 'flex' : 'none'}}>
                 <ul className='menu'>
                     <li>
                         <Link  to='/home' >{accueil}</Link>
@@ -76,6 +80,8 @@ export default function Header() {
                     <li>
                         <Link  to='/a_propos' >{a_propos}</Link>
                     </li>
+                    <Buttun id='sing' className = 'mobile__auth' onClick={()=>setShowPopupInscrption(true)}>{inscription}</Buttun>
+                    <Buttun id= 'log' className = 'mobile__auth' onClick={e=>setPopupLogin(true)}>{connexion}</Buttun>
                 </ul>
             </div>
 
@@ -84,7 +90,7 @@ export default function Header() {
                     accountService.isLogged()?
                     <div className="desco">
                     <FiLogOut size={20} className='prf' />
-                    <Link to="/home" onClick={deconnection}>Se Dèconnecter</Link>
+                    <Link to="/home" onClick={deconnection}>Se déconnecter</Link>
                         {/* <GoogleLogout clientId={"96654489585-9kfrhk9jgeq4nodccs7tg0lagl1hq6uj.apps.googleusercontent.com"} buttonText={"se deconnecter"} onLogoutSuccess={()=>{console.log("vous vous etes deconnecte avec success");}} /> */}
                 </div>
                 :

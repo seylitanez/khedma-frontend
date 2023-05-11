@@ -7,6 +7,7 @@ import { AnnonceContext } from "@context/Annonce";
 import ImagePassword from "@p-components/imageHome/ImagePassword";
 import ImageProfil from "@p-components/imageHome/ImageProfil";
 import { Fenetre } from "@p-components/index";
+import { Rechercher } from "@p-components/index";
 
 function useImage(indexInitial) {
     const [index, setIndex] = useState(indexInitial);
@@ -73,7 +74,8 @@ export default function Home() {
             <div className="left">
                 <h1 className="notranslate">{titre}</h1>
                 {images[index].description}
-                <Search setSearch={setSearch} parent="home" />
+                {/* <Search setSearch={setSearch} parent="home" className='search'/> */}
+                <Rechercher/>
                 <Fenetre>
                     <div></div>
                 </Fenetre>

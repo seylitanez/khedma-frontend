@@ -2,6 +2,8 @@
     height: 50px;
     overflow: hidden;
     transition: 0.5s;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+
     @mixin btn($couleur,$couleur_arrireplan){
         background-color: $couleur_arrireplan;
         color: $couleur;
@@ -28,12 +30,12 @@
         margin-left: 5px;
     }
     & .searchall{
+        border-radius: 1rem;
         display: flex;
         padding: 5px;
         align-items: center;
         height:50px;
         // max-width: fit-content;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
         border-radius: 2px;
         & .searchall__search-emploi{
             width: 80%;
