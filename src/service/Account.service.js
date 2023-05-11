@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import Axios from "./Caller.service";
 import jsrsasign from 'jsrsasign';
 // import { useJwt } from "react-jwt";
@@ -5,6 +6,10 @@ import jwt_decode from 'jwt-decode'
 
 let addUser = (user) => {
     return Axios.post('/api/v1/auth/add-user', user)
+}
+
+let addUserGoogle=(user)=>{
+    return Axios.post('api/v1/auth/add-GoogleUser', user)
 }
 let login = (user) => {
     return Axios.post('/api/v1/auth/login', user)
@@ -17,9 +22,16 @@ let addCv=(cv)=>{
 }
 let saveToken = (token) => {
     localStorage.setItem('token', token);
+    Cookies.set('token', token,{
+        expires: 1,
+        secure:true,
+        sameSite:"strict",
+        path:"/"
+    });
 }
 let logout = () => {
     localStorage.removeItem('token');
+    Cookies.remove('token');
 }
 let isLogged = () => {
     let token = localStorage.getItem('token');
@@ -34,15 +46,13 @@ let getRole = () => {
 let getUserName = () => {
     return jwt_decode(getToken()).username;
 }
-
- let genrateToken=(information)=>{
+let genrateToken=(information)=>{
     const ALGO="HS256"
     const header = {alg:ALGO};
     const SECRETE_KEY="EIS2vBdXnjtZvZpN6q2+6DnY4i5t8seJzA7LVJZZzcs=+KmmKujUYggGyKH++/skfs6+df+855988++/959=fsdfsG+gdsg=F="
     // const encodedSecretKey = btoa(SECRETE_KEY);
-
     return jsrsasign.KJUR.jws.JWS.sign(ALGO,header,information,SECRETE_KEY) 
- }
+}
 
 let getUser = () => {
     return Axios.get('/api/v1/me');
@@ -50,4 +60,4 @@ let getUser = () => {
 let updateUser = (user) => {
     return Axios.put('/api/v1/employe/update/' + user.mail +'?nom='+user.nom+'&prenom='+user.prenom+'&tel='+user.tel);
 }
-export const accountService = { addUser, loginGoogle, login, saveToken, logout, isLogged, getToken, getRole, getUser, getUserName,genrateToken, addCv, updateUser }
+export const accountService = { addUser, loginGoogle, login, saveToken, addUserGoogle,logout, isLogged, getToken, getRole, getUser, getUserName,genrateToken, addCv, updateUser }

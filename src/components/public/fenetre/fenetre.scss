@@ -3,7 +3,7 @@
     position: fixed;
     top : 0;
     left: 0;
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -13,8 +13,9 @@
 
     & .fenetre__visible {
         border-radius: 12px;
-        height: 200px;
-        width: 300px;
+        height: max-content;
+        width: max-content;
+        top: 0px;
         position : relative;
         background-color: white;
         

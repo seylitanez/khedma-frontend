@@ -4,10 +4,10 @@ import {LangueContext} from "@context/langue"
 import { useContext,useState} from 'react';
 import { useNavigate } from 'react-router-dom'
 import { AnnonceContext } from "@context/Annonce";
-import { Input } from '@p-components/index'
+import { Buttun, Input } from '@p-components/index'
 import "./rechercher.scss";
 
-export default function rechercher() {
+export default function rechercher({ setSearch, parent }) {
     const {lang} = useContext(LangueContext);
     const {search} = useContext(AnnonceContext)
     const {emploi,region,chercher,filtrer,type_travail,salaire}=lang.home.search;
@@ -26,14 +26,14 @@ export default function rechercher() {
                 
                 <div id='rechercher__separateur'></div>
                 
-                <input type ='submit'
+                <Buttun type ='submit'
                 onClick={(e)=>{
                     e.preventDefault()
                     setSearch(txtsearch)
                     nav('/jobSearch/'+txtsearch) 
                 }}>
-                    <FiSearch size={iconSize} className='rechercher__recherche'/>
-                </input>
+                    <FiSearch className='rechercher__recherche' size={20}/>
+                </Buttun>
             </div>
         </form>
     )

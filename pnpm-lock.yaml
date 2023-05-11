@@ -19,6 +19,9 @@ dependencies:
   gapi-script:
     specifier: ^1.2.0
     version: 1.2.0
+  js-cookie:
+    specifier: ^3.0.5
+    version: 3.0.5
   jsonwebtoken:
     specifier: ^9.0.0
     version: 9.0.0
@@ -1929,6 +1932,11 @@ packages:
       graceful-fs: 4.2.11
       picomatch: 2.3.1
     dev: true
+
+  /js-cookie@3.0.5:
+    resolution: {integrity: sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==}
+    engines: {node: '>=14'}
+    dev: false
 
   /js-string-escape@1.0.1:
     resolution: {integrity: sha512-Smw4xcfIQ5LVjAOuJCvN/zIodzA/BBSsluuoSykP+lUvScIi4U6RJLfwHet5cxFnCswUjISV8oAXaqaJDY3chg==}

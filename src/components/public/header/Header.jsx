@@ -4,11 +4,17 @@ import './header.scss';
 import { Link ,useNavigate, useParams } from 'react-router-dom';
 import {LangueContext} from "@context/langue";
 import { useContext } from 'react';
-import { Buttun, Logo, Popup } from '@p-components/index';
+import { Buttun, Login, Logo, Popup } from '@p-components/index';
 import { PopupContext } from '@context/PopupContext';
 import { accountService } from '@service/Account.service';
 import { FiLogOut } from 'react-icons/fi';
 import { GoogleLogout } from 'react-google-login';
+import Fenetre from '@p-components/fenetre/Fenetre';
+import { RxCross2 } from 'react-icons/rx';
+import ChoixRole from '@p-components/form_ins/ChoixRole';
+import { FormulaireContext } from '@context/FormulaireContext';
+import FormInsEmployeur from '@p-components/form_ins/FormInsEmployeur';
+import FormInsEmploye from '@p-components/form_ins/FormInsEmploye';
 import { RxHamburgerMenu } from "react-icons/rx";
 
 export default function Header() {
@@ -18,8 +24,43 @@ export default function Header() {
     const {connexion,inscription}=lang.header.auth;
     const {setShowPopupInscrption,popupConsulterDetails,popupLogin,setPopupLogin,popupChoix,setPopupChoix}=useContext(PopupContext)
     const [className,setClassName] = useState(["item","item","item","item"])
+    const [loginOvert, setLoginOvert] = useState(false);
+    const [inscripOuvert, setInscripOuvert] = useState(false);
+
+    const [contenuFentre, setContenuFentre] = useState(<ChoixRole />);
+
+    const {formulaire,setFormulaire}=useContext(FormulaireContext);
+
+    useEffect(()=>{
+        switch (formulaire.role) {
+            case 'EMPLOYEUR':
+                setContenuFentre(<FormInsEmployeur />)
+                break;
+            case 'EMPLOYE':
+                setContenuFentre(<FormInsEmploye />)
+                break;
+        }
+    },[formulaire.role])
+    
+
+
     const param= useParams()
 
+    const handleClickLogin = () => {
+        setLoginOvert(actuel => !actuel);
+    }
+    const handleClickInscrip = () => {
+        setInscripOuvert(actuel => !actuel);
+    }
+    // useEffect(()=>{
+    //     const script = document.createElement("script");
+    //     script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    //     script.async = true;
+    //     document.body.appendChild(script);
+    //     window.googleTranslateElementInit = function googleTranslateElementInit() {
+    //         new window.google.translate.TranslateElement({pageLanguage: 'fr'}, 'google_translate_element');
+    //     }
+    // },[])
     useEffect(()=>{
         switch (param["*"]) {
             case '':
@@ -80,8 +121,19 @@ export default function Header() {
                     <li>
                         <Link  to='/a_propos' >{a_propos}</Link>
                     </li>
-                    <Buttun id='sing' className = 'mobile__auth' onClick={()=>setShowPopupInscrption(true)}>{inscription}</Buttun>
-                    <Buttun id= 'log' className = 'mobile__auth' onClick={e=>setPopupLogin(true)}>{connexion}</Buttun>
+                    {
+                        accountService.isLogged() ?
+                            <div className="desco">
+                                <FiLogOut size={20} className='prf' />
+                                <Link to="/home" className='mobile__auth' onClick={deconnection}>Se déconnecter</Link>
+                                {/* <GoogleLogout clientId={"96654489585-9kfrhk9jgeq4nodccs7tg0lagl1hq6uj.apps.googleusercontent.com"} buttonText={"se deconnecter"} onLogoutSuccess={()=>{console.log("vous vous etes deconnecte avec success");}} /> */}
+                            </div>
+                            :
+                            <>
+                                <Buttun id='sing' className='mobile__auth' onClick={handleClickInscrip}>{inscription}</Buttun>
+                                <Buttun id="log" className='mobile__auth' onClick={handleClickLogin}>{connexion}</Buttun>
+                            </>
+                    }  
                 </ul>
             </div>
 
@@ -92,19 +144,26 @@ export default function Header() {
                     <FiLogOut size={20} className='prf' />
                     <Link to="/home" onClick={deconnection}>Se déconnecter</Link>
                         {/* <GoogleLogout clientId={"96654489585-9kfrhk9jgeq4nodccs7tg0lagl1hq6uj.apps.googleusercontent.com"} buttonText={"se deconnecter"} onLogoutSuccess={()=>{console.log("vous vous etes deconnecte avec success");}} /> */}
+                    </div>
+                    :
+                    <div>
+                        <Buttun id='sing' onClick={handleClickInscrip}>{inscription}</Buttun>
+                        <Buttun id="log" onClick={handleClickLogin}>{connexion}</Buttun>
+                    </div>
+                    }           
                 </div>
-                :
-                <div>
-                    <Buttun id='sing' onClick={()=>setShowPopupInscrption(true)}>{inscription}</Buttun>
-                    <Buttun id="log" onClick={e=>setPopupLogin(true)}>{connexion}</Buttun>
-                </div>
-                }           
-            </div>
 
-            <Popup type={"inscription"} />
-            <Popup type={"details"} annonce={popupConsulterDetails}/>
-            <Popup type={"role"}/> 
-            <Popup type={"login"}/> 
+                <Fenetre ouvert={inscripOuvert}  handleClick={handleClickInscrip}>
+                    {contenuFentre}
+                </Fenetre>
+                
+                <Fenetre ouvert={loginOvert}  handleClick={handleClickLogin}>
+                    <Login setInscripOuvert={setInscripOuvert} setLoginOvert={setLoginOvert}/>
+                </Fenetre>
+                <Popup type={"inscription"}  />
+                <Popup type={"details"} annonce={popupConsulterDetails} />
+                <Popup type={"role"}/> 
+                <Popup type={"login"}/> 
         </header>
     )
 }

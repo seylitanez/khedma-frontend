@@ -2,7 +2,7 @@ import React from 'react'
 import './jobSearch.scss'
 import { useEffect,useRef,useContext,useState} from 'react'
 import { annonceService } from "@service/index";
-import { Search,Annonce,SideBar, Buttun } from '@p-components/index';
+import { Search,Annonce,SideBar, Buttun, Rechercher } from '@p-components/index';
 import { AnnonceContext } from "@context/Annonce";
 import { useParams } from 'react-router-dom';
 import { PopupContext } from '@context/PopupContext';
@@ -52,7 +52,7 @@ useEffect(()=>{
     <div className='jobSearch'>
       <div className="search__grd">
         <div className='search__'>
-          <Search setSearch={setSearch} parent='job' />
+          <Rechercher setSearch={setSearch} parent='job' />
         </div>
       </div>
       <div className="list">

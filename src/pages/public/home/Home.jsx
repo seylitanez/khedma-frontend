@@ -1,13 +1,14 @@
 import React, { useLayoutEffect } from "react";
 import "./home.scss";
 import { useContext, useState, useEffect } from "react";
-import { ImageHome, Search } from "@p-components/index";
+import {  ImageHome, Search } from "@p-components/index";
 import { LangueContext } from "@context/langue";
 import { AnnonceContext } from "@context/Annonce";
 import ImagePassword from "@p-components/imageHome/ImagePassword";
 import ImageProfil from "@p-components/imageHome/ImageProfil";
 import { Fenetre } from "@p-components/index";
 import { Rechercher } from "@p-components/index";
+// import Fenetre from "@p-components/fenetre/Fenetre";
 
 function useImage(indexInitial) {
     const [index, setIndex] = useState(indexInitial);
@@ -17,6 +18,7 @@ export default function Home() {
     const { lang } = useContext(LangueContext);
     const { setSearch } = useContext(AnnonceContext);
     const { h1, h2 } = lang.home;
+    
     const images = [
         {
             image: <ImageHome />,
@@ -75,10 +77,7 @@ export default function Home() {
                 <h1 className="notranslate">{titre}</h1>
                 {images[index].description}
                 {/* <Search setSearch={setSearch} parent="home" className='search'/> */}
-                <Rechercher/>
-                <Fenetre>
-                    <div></div>
-                </Fenetre>
+                <Rechercher setSearch={setSearch} parent="home" />
             </div>
         </main>
     );

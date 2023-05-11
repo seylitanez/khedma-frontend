@@ -30,20 +30,32 @@ form {
         size: 32px;
     }
 
+
     & .rechercher__boutons {
         display: flex;
         justify-content: space-between;
         align-items: center;
         height: 100%;
         width: 76px;
+        & #rechercher__separateur {
+            background-color: white;
+            width: 2px;
+            height: 26px;
+        }
+        & button{
+            background-color: transparent;
+            height: 100%;
+            border: none;
+            cursor: pointer;
+            & svg{
+                vertical-align: middle;
+            }
+        }
     }
+    
 }
 
-#rechercher__separateur {
-    background-color: white;
-    width: 2px;
-    height: 26px;
-}
+
 
 @media screen and (max-width: $breakpoint_tel) {
     form {
