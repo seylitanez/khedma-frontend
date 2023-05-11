@@ -1,0 +1,43 @@
+.fenetre {
+    background-color: rgba($color: #000000, $alpha: 0.6);
+    position: fixed;
+    top : 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    // display: none;
+
+    & .fenetre__visible {
+        border-radius: 12px;
+        height: 200px;
+        width: 300px;
+        position : relative;
+        background-color: white;
+        
+        & .fenetre_banniere {
+            padding: 12px 12px;
+            height: 30px;
+            width: 100%;
+            
+            & .fermer {
+                margin-left: 100%;
+                transform: translateX(-100%);
+                cursor: pointer;
+                transition: .3s;
+            }
+
+            & .fermer:hover {
+                color: $color_rouge;
+            }
+        }
+
+        & .fenetre__contenu {
+            padding: 42px 40px;
+        }
+    }
+}
+
