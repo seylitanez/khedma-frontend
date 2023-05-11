@@ -8,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 3;
+    z-index: 4;
     // display: none;
 
     & .fenetre__visible {
@@ -41,3 +41,9 @@
     }
 }
 
+@media screen and (max-width: $breakpoint_tel) {
+    .fenetre__visible {
+        height: 70vh;
+        width: 90vw;
+    }
+}

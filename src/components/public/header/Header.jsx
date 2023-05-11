@@ -8,8 +8,8 @@ import { Buttun, Logo, Popup } from '@p-components/index';
 import { PopupContext } from '@context/PopupContext';
 import { accountService } from '@service/Account.service';
 import { FiLogOut } from 'react-icons/fi';
-// import { MdDensityMedium } from "react-icons/md";
 import { GoogleLogout } from 'react-google-login';
+import { RxHamburgerMenu } from "react-icons/rx";
 
 export default function Header() {
     const {lang,langue,setLangue} = useContext(LangueContext);
@@ -42,6 +42,13 @@ export default function Header() {
     const deconnection = () => {
         accountService.logout();
     }
+
+    const [ouvert, setOuvert] = useState(false);
+
+    const handleClick = () => {
+        setOuvert(actuel => !actuel);        
+    };
+
     return (
         <header>
             <Link to='./' className="logo">
@@ -55,6 +62,23 @@ export default function Header() {
                     <li><div className={className[3]}><Link  to='/a_propos' >{a_propos}</Link></div></li>
                 </ul>
             </nav>
+
+            <RxHamburgerMenu size = '38px' className = 'hamburger' onClick={handleClick}
+            style={{color : ouvert ? 'white' : ''}}/>
+            <div className="mobile__menu" style={{transform : ouvert ? 'translateY(0)' : 'translateY(-100%)'}}>
+                <ul className='menu'>
+                    <li>
+                        <Link  to='/home' >{accueil}</Link>
+                    </li>
+                    <li>
+                        <Link  to='/jobSearch' >{trouver_emploi}</Link>
+                    </li>
+                    <li>
+                        <Link  to='/a_propos' >{a_propos}</Link>
+                    </li>
+                </ul>
+            </div>
+
             <div className='log'>
                 {
                     accountService.isLogged()?
@@ -71,7 +95,6 @@ export default function Header() {
                 }           
             </div>
 
-            {/* <MdDensityMedium size = '40px' className = 'hamburger'/> */}
             <Popup type={"inscription"} />
             <Popup type={"details"} annonce={popupConsulterDetails}/>
             <Popup type={"role"}/> 

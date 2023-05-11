@@ -136,6 +136,44 @@ header {
     .log {
         display: none;
     }
+
+    svg {
+        color: $color_bleu;
+        z-index: 4;
+        transition: .3s;
+    }
+
+    .mobile__menu {
+        z-index: 0;
+        width: 100vw;
+        height: 70vh;
+        background-color: rgba($color: $color_bleu, $alpha: .8);
+        position: fixed;
+        top: 0;
+        left: 0;
+        transition: .6s;
+
+        & .menu {
+            margin-top: 70px;
+            padding: 10px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            
+            & li > a {
+                color: white;
+                text-decoration: none;
+                font-size: 22px;
+            }
+
+            & li > a:hover, & li > a:focus {
+                color: $color_oronge;
+                transition: .5s;
+            }
+        }
+    }
 }
 
 @keyframes showup {

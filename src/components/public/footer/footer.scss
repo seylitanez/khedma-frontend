@@ -53,15 +53,16 @@
         //     }
         }
         & .link{
-            margin-top: 30px;
-            width: 40%;
             & h3{
                 font-size: 20px;
                 margin-bottom: 10px;
             }
+            & ul li a:hover {
+                transition: .3s;
+                color: $color_oronge;
+            }
         }
         & .contact{
-            margin-top: 30px;
             & h3{
                 font-size: 20px;
                 margin-bottom: 10px;
@@ -89,12 +90,32 @@
     }
 }
 
-@media screen and (max-width: $breakpoint_tel){
-    .footer_info{
-        padding: 20px 8px;
-        
-        .app_name {
-            display: none;
+@media screen and (max-width: $breakpoint_tel) {
+    .footer {
+        & .footer_info {
+            padding: 20px 10px;
+            font-size: 12px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            
+            & .app_name {
+                display: none;
+            }
+        }
+
+        & .policy {
+            padding: 10px 4px;
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+            & .policy_link {
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 4px;
+            }
         }
     }
 }
