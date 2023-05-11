@@ -8,6 +8,7 @@ import { Buttun, Logo, Popup } from '@p-components/index';
 import { PopupContext } from '@context/PopupContext';
 import { accountService } from '@service/Account.service';
 import { FiLogOut } from 'react-icons/fi';
+import { GoogleLogout } from 'react-google-login';
 
 export default function Header() {
     const {lang,langue,setLangue} = useContext(LangueContext);
@@ -67,6 +68,7 @@ export default function Header() {
                     <div className="desco">
                         <FiLogOut size={20} className='prf' />
                         <Link to="/home" onClick={deconnection}>Se Dèconnecter</Link>
+                        {/* <GoogleLogout clientId={"96654489585-9kfrhk9jgeq4nodccs7tg0lagl1hq6uj.apps.googleusercontent.com"} buttonText={"se deconnecter"} onLogoutSuccess={()=>{console.log("vous vous etes deconnecte avec success");}} /> */}
                     </div>
                     :
                     <div>
