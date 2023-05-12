@@ -15,18 +15,25 @@ export default function Annonce({ annonce,setFenetreConsulterOuvert,setSelectedA
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
     const diffMonths = (date2.getMonth() + 1) - (date1.getMonth() + 1);
     const diffYears = date2.getFullYear() - date1.getFullYear();
+   
     let choix = '';
     let diff = 0;
-    if (diffYears >=1) {
-    choix = 'annees';
-    diff = diffYears;
-    } else if (diffMonths >=1) {
-    choix = 'mois';
-    diff = diffMonths;
-    } else {
-    choix = 'jours';
-    diff = diffDays;
+    if (diffYears >= 1)
+    {
+        choix = 'an(s)';
+        diff = diffYears;
     }
+    else if (diffMonths >= 1)
+    {
+        choix = 'mois';
+        diff = diffMonths;
+    }
+    else
+    {
+        choix = 'jour(s)';
+        diff = diffDays;
+    }
+
     let jourPublication = diff
     
     console.log(jourPublication);
@@ -35,13 +42,23 @@ export default function Annonce({ annonce,setFenetreConsulterOuvert,setSelectedA
             setCote({ transform: cote.transform != 'rotateY(180deg)' ? "rotateY(180deg)" : '', transition: '1s' })
     }
 
+    let contenuDate;
+
+    if (jourPublication == 0)
+    {
+        contenuDate = <h3>Aujourd'hui</h3>
+    }
+    else
+    {
+        contenuDate = <h3>Il y a {diff} {choix}</h3>
+    }
+
     return (
         <div className="annonce" onClick={(e) => { annonceFlip(e) }} style={cote}>
             <div className='annonce__front' id='annonce'>
                 <div className="annonce-top">
                     <h1 className='titre' >{nom}</h1>
-                    {jourPublication == 0 ? <h3>Aujourd'hui</h3> : null}
-                    {jourPublication > 1 ? <h3>Il ya {jourPublication}  {choix}</h3> : <h3>il y a {jourPublication} {choix}</h3>}
+                    {contenuDate}
                 </div>
                 <div className="ville">
                     <h5>{adresse && adresse.wilaya},{adresse && adresse.commune}</h5>
