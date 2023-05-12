@@ -6,9 +6,6 @@ import { RxCross2 } from "react-icons/rx";
 import './fenetre.scss'
 
 export default function Fenetre({children,ouvert,handleClick}) {
-
-    console.log("ouvert ?"+ouvert);
-
     const neRienFaire = (e) => {
         e.stopPropagation();
     }

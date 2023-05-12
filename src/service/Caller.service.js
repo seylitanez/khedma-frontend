@@ -12,7 +12,7 @@ Axios.interceptors.response.use(response => {
 }, error => {
     if (error.response.status === 401) {
         accountService.logout()
-        window.location = '/auth'
+        window.location = '/'
     } else return Promise.reject(error)
 }
 )

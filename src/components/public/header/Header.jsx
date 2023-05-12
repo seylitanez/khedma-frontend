@@ -16,6 +16,7 @@ import { FormulaireContext } from '@context/FormulaireContext';
 import FormInsEmployeur from '@p-components/form_ins/FormInsEmployeur';
 import FormInsEmploye from '@p-components/form_ins/FormInsEmploye';
 import { RxHamburgerMenu } from "react-icons/rx";
+import { gapi } from 'gapi-script';
 
 export default function Header() {
     const {lang,langue,setLangue} = useContext(LangueContext);
@@ -81,9 +82,17 @@ export default function Header() {
         }
     },[param['*']])
     const deconnection = () => {
-        let go=document.querySelector(".out-google")
-        go.click()
         accountService.logout();
+        const go = document.querySelector(".out-google")//.contentWindow.document.querySelector(span)
+        go.click()
+        if (window.gapi) {
+            const auth2 = window.gapi.auth2.getAuthInstance()
+            if (auth2 != null) {
+                auth2.signOut().then(
+                    auth2.disconnect().then(this.props.onLogoutSuccess)
+                )
+            }
+        }
     }
 
     const [ouvert, setOuvert] = useState(false);
@@ -125,11 +134,13 @@ export default function Header() {
                     </li>
                     {
                         accountService.isLogged() ?
-                            <div className="desco">
-                                <FiLogOut size={20} className='prf' />
-                                <Link to="/home" className='mobile__auth' onClick={deconnection}>Se déconnecter</Link>
-                                <GoogleLogout  className='out-google' clientId={"96654489585-9kfrhk9jgeq4nodccs7tg0lagl1hq6uj.apps.googleusercontent.com"} buttonText={"se deconnecter"} onLogoutSuccess={()=>{console.log("vous vous etes deconnecte avec success");}} />
-                            </div>
+                            <>
+                                <div className="desco">
+                                    <FiLogOut size={20} className='prf' />
+                                    <Link to="/home" onClick={()=>deconnection()}>Se déconnecter</Link>
+                                </div>
+                                <GoogleLogout className='out-google' clientId={"96654489585-9kfrhk9jgeq4nodccs7tg0lagl1hq6uj.apps.googleusercontent.com"} buttonText={"se deconnecter"} onLogoutSuccess={() => { console.log("vous vous etes deconnecte avec success"); }} />
+                            </>
                             :
                             <>
                                 <Buttun id='sing' className='mobile__auth' onClick={handleClickInscrip}>{inscription}</Buttun>
@@ -140,13 +151,14 @@ export default function Header() {
             </div>
 
             <div className='log'>
-                {
-                    accountService.isLogged()?
-                    <div className="desco">
-                    {/* <FiLogOut size={20} className='prf' /> */}
-                    <Link to="/home" onClick={deconnection}>Se déconnecter</Link>
-                        <GoogleLogout className='out-google' clientId={"96654489585-9kfrhk9jgeq4nodccs7tg0lagl1hq6uj.apps.googleusercontent.com"} buttonText={"se deconnecter"} onLogoutSuccess={()=>{console.log("vous vous etes deconnecte avec success");}} />
-                    </div>
+                {accountService.isLogged()?
+                    <>
+                        <div className="desco">
+                            <FiLogOut size={20} className='prf' />
+                            <Link to="/home" onClick={()=>deconnection()}>Se déconnecter</Link>
+                        </div>
+                        <GoogleLogout className='out-google' clientId={"96654489585-9kfrhk9jgeq4nodccs7tg0lagl1hq6uj.apps.googleusercontent.com"} buttonText={"se deconnecter"} onClick={{}} onLogoutSuccess={() => { console.log("vous vous etes deconnecte avec success"); }} />
+                    </>
                     :
                     <div>
                         <Buttun id='sing' onClick={handleClickInscrip}>{inscription}</Buttun>
@@ -154,12 +166,9 @@ export default function Header() {
                     </div>
                     }           
                 </div>
-
                 <Fenetre ouvert={inscripOuvert}  handleClick={handleClickInscrip}>
                     {contenuFentre}
                 </Fenetre>
-
-                
                 <Fenetre ouvert={loginOvert}  handleClick={handleClickLogin}>
                     <Login setInscripOuvert={setInscripOuvert} setLoginOvert={setLoginOvert}/>
                 </Fenetre>

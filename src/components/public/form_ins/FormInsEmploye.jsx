@@ -9,6 +9,7 @@ import { Buttun, Input } from '@p-components/index';
 import GLogin from '@p-components/login/GLogin';
 import { PopupContext } from '@context/PopupContext';
 import { FormulaireContext } from '@context/FormulaireContext';
+import { Validator } from '@service/Validator.service';
 
 
 
@@ -18,6 +19,7 @@ export default function FormInsEmploye({type,etapeEmpploye,etapeEmpployeur,setEt
     const [psw,setpsw]=useState("")
     const [pswd,setpswd]=useState("")
     const {setShowPopupInscrption}=useContext(PopupContext)
+    
 
     const navigate=useNavigate()
     let formData =new FormData();
@@ -160,7 +162,11 @@ export default function FormInsEmploye({type,etapeEmpploye,etapeEmpployeur,setEt
                     <GLogin titre={"s'inscrire avec google"} onSuccess={onSuccess}/>
             </form>
                     <div className='ins__group__suivant__precedent'>
-                        <Buttun id="sing" onClick={()=>{setEtapeInscription(2)}}>{"suivant"}</Buttun>
+                        <Buttun id="sing" onClick={()=>{
+                            if(Validator.etape1IsValid(user)){
+                                setEtapeInscription(2)
+                            }
+                            }}>{"suivant"}</Buttun>
                     </div>
                 </div>
         )

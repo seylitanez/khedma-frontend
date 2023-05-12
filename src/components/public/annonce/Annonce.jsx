@@ -8,10 +8,27 @@ import { PopupContext } from '@context/PopupContext'
 export default function Annonce({ annonce,setFenetreConsulterOuvert,setSelectedAnnonce }) {
     const { nom, descriptionFr, adresse, categorie, sousCategorie, salaireDeBase, journees, date } = annonce
     let [cote, setCote] = useState({ transform: "rotateY(0deg)", transition: '1s' })
-    let jourPublication = new Date(Date.now()).getDate() - new Date(date).getDate()
-    
-    
 
+    const date1 = new Date(date)
+    const date2 = new Date(Date.now());
+    const diffTime = Math.abs(date2 - date1);
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    const diffMonths = (date2.getMonth() + 1) - (date1.getMonth() + 1);
+    const diffYears = date2.getFullYear() - date1.getFullYear();
+   let choix = '';
+    let diff = 0;
+    if (diffYears >=1) {
+    choix = 'annees';
+    diff = diffYears;
+    } else if (diffMonths >=1) {
+    choix = 'mois';
+    diff = diffMonths;
+    } else {
+    choix = 'jours';
+    diff = diffDays;
+    }
+    let jourPublication = diff
+    
     function annonceFlip(e) {
         if (e.target.innerText != "CONSULTER")
             setCote({ transform: cote.transform != 'rotateY(180deg)' ? "rotateY(180deg)" : '', transition: '1s' })
@@ -23,7 +40,7 @@ export default function Annonce({ annonce,setFenetreConsulterOuvert,setSelectedA
                 <div className="annonce-top">
                     <h1 className='titre' >{nom}</h1>
                     {jourPublication == 0 ? <h3>Aujourd'hui</h3> : null}
-                    {jourPublication > 1 ? <h3>Il ya {jourPublication} jours</h3> : <h3>il y a {jourPublication} jour</h3>}
+                    {jourPublication > 1 ? <h3>Il ya {jourPublication}  {choix}</h3> : <h3>il y a {jourPublication} {choix}</h3>}
                 </div>
                 <div className="ville">
                     <h5>{adresse && adresse.wilaya},{adresse && adresse.commune}</h5>
