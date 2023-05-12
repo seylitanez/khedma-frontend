@@ -24,8 +24,8 @@ export default function Header() {
     const {connexion,inscription}=lang.header.auth;
     const {setShowPopupInscrption,popupConsulterDetails,popupLogin,setPopupLogin,popupChoix,setPopupChoix}=useContext(PopupContext)
     const [className,setClassName] = useState(["item","item","item","item"])
-    const [loginFermer, setLoginFermer] = useState(true);
-    const [inscripFermer, setInscripFermer] = useState(true);
+    const [loginOvert, setLoginOvert] = useState(false);
+    const [inscripOuvert, setInscripOuvert] = useState(false);
 
     const [contenuFentre, setContenuFentre] = useState(<ChoixRole />);
 
@@ -45,6 +45,13 @@ export default function Header() {
 
 
     const param= useParams()
+
+    const handleClickLogin = () => {
+        setLoginOvert(actuel => !actuel);
+    }
+    const handleClickInscrip = () => {
+        setInscripOuvert(actuel => !actuel);
+    }
     // useEffect(()=>{
     //     const script = document.createElement("script");
     //     script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
@@ -129,13 +136,21 @@ export default function Header() {
                     </div>
                     :
                     <div>
-                        <Buttun id='sing' onClick={()=>setShowPopupInscrption(true)}>{inscription}</Buttun>
-                        <Buttun id="log" onClick={e=>setPopupLogin(true)}>{connexion}</Buttun>
+                        <Buttun id='sing' onClick={handleClickInscrip}>{inscription}</Buttun>
+                        <Buttun id="log" onClick={handleClickLogin}>{connexion}</Buttun>
                     </div>
                     }           
                 </div>
-                <Popup type={"inscription"} />
-                <Popup type={"details"} annonce={popupConsulterDetails}/>
+
+                <Fenetre ouvert={inscripOuvert}  handleClick={handleClickInscrip}>
+                    {contenuFentre}
+                </Fenetre>
+                
+                <Fenetre ouvert={loginOvert}  handleClick={handleClickLogin}>
+                    <Login setInscripOuvert={setInscripOuvert} setLoginOvert={setLoginOvert}/>
+                </Fenetre>
+                <Popup type={"inscription"}  />
+                <Popup type={"details"} annonce={popupConsulterDetails} />
                 <Popup type={"role"}/> 
                 <Popup type={"login"}/> 
         </header>

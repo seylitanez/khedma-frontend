@@ -78,9 +78,6 @@ export default function Home() {
                 {images[index].description}
                 {/* <Search setSearch={setSearch} parent="home" className='search'/> */}
                 <Rechercher setSearch={setSearch} parent="home" />
-                <Fenetre>
-                    <div></div>
-                </Fenetre>
             </div>
         </main>
     );

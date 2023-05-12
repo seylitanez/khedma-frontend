@@ -18,13 +18,17 @@ function useAnim(className) {
     }
     return [anim,setActive]
 }
-export default function Login() {
+export default function Login({setLoginOvert,setInscripOuvert}) {
     const {lang} = useContext(LangueContext);
     const {h2,email,password}=lang.auth.login;
     const {connexion,inscription}=lang.header.auth;
     const [anim,setActive]=useAnim('');
     const [anims,setActives]=useAnim('');
-    const {setShowPopupInscrption,setPopupLogin}=useContext(PopupContext)
+
+    function switchFenetre(params) {
+        setLoginOvert(false);
+        setInscripOuvert(true)
+    }
 
     //conection
     const [user, setUser] = useState({ adresseMail: "", motDePasse :""})
@@ -92,7 +96,7 @@ export default function Login() {
                 <Input type="password" id='mdp' name='motDePasse' value={user.motDePasse} onChange={onChange} onInput={e => setActives(e)} requirede='required'>{password}</Input>
             </div>
             <GLogin titre={"se connecter avec google"} onSuccess={onSuccess} onFailure={onFailure}/>
-            <Link className='nv__compte' onClick={()=>{setPopupLogin(false);setShowPopupInscrption(true)}}>nouveau compte?</Link>
+            <Link className='nv__compte' onClick={()=>{ switchFenetre()}}>nouveau compte?</Link>
             <div className="login__mdp">
                 <Buttun id="log">{connexion}</Buttun>
                 {/* <Buttun id="sing">{inscription}</Buttun> */}

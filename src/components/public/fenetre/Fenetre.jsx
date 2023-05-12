@@ -7,6 +7,7 @@ import './fenetre.scss'
 
 export default function Fenetre({children,ouvert,handleClick}) {
 
+    console.log("ouvert ?"+ouvert);
 
 
     const neRienFaire = (e) => {
@@ -14,7 +15,7 @@ export default function Fenetre({children,ouvert,handleClick}) {
     }
 
     return (
-        <div className='fenetre' style={{display : ouvert ? 'none' : 'flex'}} onClick={handleClick}>
+        <div className='fenetre' style={{display : ouvert ? 'flex' : 'none'}} onClick={handleClick}>
             <div className="fenetre__visible" onClick={neRienFaire}>
                 <div className="fenetre_banniere">
                     <RxCross2 size='24px' className='fermer' onClick={handleClick}/>
