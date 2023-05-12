@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import Axios from "./Caller.service";
 import jsrsasign from 'jsrsasign';
 // import { useJwt } from "react-jwt";
@@ -21,9 +22,16 @@ let addCv=(cv)=>{
 }
 let saveToken = (token) => {
     localStorage.setItem('token', token);
+    Cookies.set('token', token,{
+        expires: 1,
+        secure:true,
+        sameSite:"strict",
+        path:"/"
+    });
 }
 let logout = () => {
     localStorage.removeItem('token');
+    Cookies.remove('token');
 }
 let isLogged = () => {
     let token = localStorage.getItem('token');
@@ -38,17 +46,13 @@ let getRole = () => {
 let getUserName = () => {
     return jwt_decode(getToken()).username;
 }
-
-
-
- let genrateToken=(information)=>{
+let genrateToken=(information)=>{
     const ALGO="HS256"
     const header = {alg:ALGO};
     const SECRETE_KEY="EIS2vBdXnjtZvZpN6q2+6DnY4i5t8seJzA7LVJZZzcs=+KmmKujUYggGyKH++/skfs6+df+855988++/959=fsdfsG+gdsg=F="
     // const encodedSecretKey = btoa(SECRETE_KEY);
-
     return jsrsasign.KJUR.jws.JWS.sign(ALGO,header,information,SECRETE_KEY) 
- }
+}
 
 let getUser = () => {
     return Axios.get('/api/v1/me');
