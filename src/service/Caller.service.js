@@ -1,5 +1,6 @@
 import axios from "axios";
 import { accountService } from "./Account.service";
+import { Navigate } from "react-router-dom";
 
 const Axios = axios.create({ proxy:"http://localhost:9630"})
 Axios.interceptors.request.use(request => {
@@ -9,11 +10,12 @@ Axios.interceptors.request.use(request => {
 })
 Axios.interceptors.response.use(response => {
     return response
-}, error => {
-    if (error.response.status === 403) {
-        accountService.logout()
-        window.location = '/auth'
-    } else return Promise.reject(error)
-}
+    }, error => {
+        if (error.response.status === 403) {
+            accountService.logout()
+            Navigate('/auth')
+            // window.location = '/auth'
+        } else return Promise.reject(error)
+    }
 )
 export default Axios;
