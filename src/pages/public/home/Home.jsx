@@ -75,7 +75,7 @@ export default function Home() {
                 <h1 className="notranslate">{titre}</h1>
                 {images[index].description}
                 {/* <Search setSearch={setSearch} parent="home" className='search'/> */}
-                <Rechercher/>
+                <Rechercher setSearch={setSearch} parent="home" />
                 <Fenetre>
                     <div></div>
                 </Fenetre>
