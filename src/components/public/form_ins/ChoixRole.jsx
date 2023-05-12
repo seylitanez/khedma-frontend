@@ -21,7 +21,7 @@ export default function ChoixRole() {
     <div>
         <div className='popup'>
             <div className='popup__container'>
-                <h1>Choisissez le type de compte que vous souhaitez creer</h1>
+                <h1>Choisissez le type de compte que vous souhaitez créer</h1>
                 <Buttun className='role__compte' onClick={()=>{selection(EMPLOYE)}}>{EMPLOYE}</Buttun>
                 <Buttun className='role__compte' onClick={()=>{selection(EMPLOYEUR)}}>{EMPLOYEUR}</Buttun>
             </div>

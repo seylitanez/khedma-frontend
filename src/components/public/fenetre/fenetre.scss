@@ -18,6 +18,7 @@
         top: 0px;
         position : relative;
         background-color: white;
+        padding : 16px 8px;
         
         & .fenetre_banniere {
             padding: 12px 12px;
@@ -44,7 +45,8 @@
 
 @media screen and (max-width: $breakpoint_tel) {
     .fenetre__visible {
-        height: 70vh;
+        height: 90vh;
         width: 90vw;
+        overflow : scroll;
     }
 }

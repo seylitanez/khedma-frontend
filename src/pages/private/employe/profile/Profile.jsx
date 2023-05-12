@@ -5,9 +5,11 @@ import { FiLogOut } from "react-icons/fi";
 import { CgProfile } from "react-icons/cg";
 import { useState, useEffect, useRef} from 'react'
 import { Header } from '@p-components/index';
-import { accountService } from '@service/Account.service';
 import { Outlet ,Link,useParams } from 'react-router-dom';
 import { BsCardChecklist } from 'react-icons/bs';
+import { accountService } from '@service/Account.service';
+import { BsFillPersonLinesFill, BsFillPersonFill, BsCalendarFill, BsCalendarPlusFill, BsFillCalendarPlusFill } from "react-icons/bs";
+
 
 export default function Profile() {
     const param=useParams();
@@ -23,6 +25,9 @@ export default function Profile() {
             flg.current = true;
         }
     }, [])
+    const deconnection = () => {
+        accountService.logout();
+    }
     return (
         <div className='profile_employe'>
             <div className="nav">
@@ -30,7 +35,7 @@ export default function Profile() {
             </div>
             <div className="sidebar">
                 <div className="sidebar__item">
-                    <CgProfile size={20} className='prf'/>    
+                    <BsFillPersonFill size={20} className='prf'/>    
                     <Link to={param.nomUtilisateur} >Profile</Link>
                 </div>
                 <div className="sidebar__item">
@@ -40,6 +45,10 @@ export default function Profile() {
                 <div className="sidebar__item">
                     <BsCardChecklist size={20} className='prf'/>    
                     <Link to={param.nomUtilisateur+'/postuler'}>Postulations</Link>
+                </div>
+                <div className="sidebar__item">
+                    <FiLogOut size={20} className='prf' /> 
+                    <Link to={"/home"} onClick={deconnection}>Se déconnecter</Link>
                 </div>
             </div>
             <main className="main">

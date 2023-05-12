@@ -9,7 +9,6 @@ export default function Fenetre({children,ouvert,handleClick}) {
 
     console.log("ouvert ?"+ouvert);
 
-
     const neRienFaire = (e) => {
         e.stopPropagation();
     }

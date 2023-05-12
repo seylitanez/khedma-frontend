@@ -102,6 +102,8 @@ export default function FormInsEmployeur() {
                     </div>
                     <div className={"ins__group "}>
                         <Input type="commune" id="commune" placeholder='commune' name="commune" value={user.adresse.commune} onChange={onchange}/>
+                    </div>
+                    <div className={"ins__group "}>
                         <Input type="wilaya" id="wilaya" placeholder='wilaya' name="wilaya" value={user.adresse.wilaya} onChange={onchange}/>
                     </div>
                     <div className={"ins__group "}>
@@ -110,8 +112,11 @@ export default function FormInsEmployeur() {
                     <div className={"ins__group "}>
                         <Input type="password" id='rmdp' name="motDePasse" placeholder="confirmer le mot de passe" value={passwordConfirmation} onChange={(e)=>{setPasswordConfirmation(e.target.value)}}/>
                     </div>
-                    <GLogin titre={"s'inscrire avec google"} onSuccess={onSuccess}/>
 
+                    <br />
+                    <GLogin titre={"S'inscrire avec google"} onSuccess={onSuccess}/>
+                    <br />
+                    
                     <div className={"ins__group__genre"}>
                         <Input type="radio" id='male'name="genre" value="HOMME"onChange={onchange} >{"Homme"}</Input>
                         <Input type="radio" id='femme'name="genre" value='FEMME'onChange={onchange}>{"Femme"}</Input>
@@ -141,10 +146,12 @@ export default function FormInsEmployeur() {
                     </div>
                     <div className={"ins__group "}>
                         <Input type="commune" id="commune" placeholder='commune' name="commune" value={user.adresse.commune} onChange={onchange}/>
+                    </div>
+                    <div className={"ins__group "}>
                         <Input type="wilaya" id="wilaya" placeholder='wilaya' name="wilaya" value={user.adresse.wilaya} onChange={onchange}/>
                     </div>
                     <div className={"ins__group__genre"}>
-                        <Input type="radio" id='male'name="genre" value="HOMME"onChange={onchange} >{"Homme"}</Input>
+                        <Input type="radio" id='male'name="genre" value="HOMME"onChange={onchange}>{"Homme"}</Input>
                         <Input type="radio" id='femme'name="genre" value='FEMME'onChange={onchange}>{"Femme"}</Input>
                     </div>
                         <div className='ins__group__suivant__precedent'>

@@ -56,7 +56,7 @@ useEffect(()=>{
         </div>
       </div>
       <div className="list">
-         {page[nbrPage].length!==0? page[nbrPage].map((annonce,key)=><Annonce annonce={annonce} key={key} setShowPop={setShowPop}/>):<h1>aucun resultat</h1>}
+      {page[nbrPage].length!==0? page[nbrPage].map((annonce,key)=><Annonce annonce={annonce} key={key} setShowPop={setShowPop}/>):<h1>aucun resultat</h1>}
       </div>
       <div className='pagination'>{page.map((btn,index)=>
       nbrPage == index?

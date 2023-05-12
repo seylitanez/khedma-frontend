@@ -1,5 +1,4 @@
 .jobSearch{
-    background-color: $color_gris;
     margin-top: 60px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -8,16 +7,13 @@
     grid-gap: 0.2rem;
     & .search__grd{
         width:100%;
-        background-color: $color_blanc;
         grid-area: search;
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: $color_gris;
         & .search__{
             width: 500px;
             height: 55px;
-            background-color: $color_blanc
         }
     }
     & #type_de_travail{
