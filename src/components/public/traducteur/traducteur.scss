@@ -32,8 +32,14 @@
     & .traducteur__bouton {
         cursor: pointer;
     }
+    & .exit{
+        background-color: transparent;
+        border: none;
+    }
+    &:hover {
+        background-color: $color_oronge;
+    }
 }
-
-.traducteur:hover {
-    background-color: $color_oronge;
+.VIpgJd-ZVi9od-ORHb-OEVmcd{
+    display: none
 }
