@@ -38,9 +38,10 @@ let getUserName = () => {
  let genrateToken=(information)=>{
     const ALGO="HS256"
     const header = {alg:ALGO};
-    const SECRETE_KEY="34753778214125442A472D4B6150645367566B59703373357638792F423F4528"
+    const SECRETE_KEY="EIS2vBdXnjtZvZpN6q2+6DnY4i5t8seJzA7LVJZZzcs=+KmmKujUYggGyKH++/skfs6+df+855988++/959=fsdfsG+gdsg=F="
+    // const encodedSecretKey = btoa(SECRETE_KEY);
 
-    return jsrsasign.KJUR.jws.JWS.sign(ALGO,header,information,SECRETE_KEY)
+    return jsrsasign.KJUR.jws.JWS.sign(ALGO,header,information,SECRETE_KEY) 
  }
 
 let getUser = () => {

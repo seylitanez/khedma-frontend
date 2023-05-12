@@ -59,9 +59,10 @@ export default function Login() {
     function onSuccess(e){
         console.log(e);
         // const SECONDES=120
-
+        
         const googleUser=e.profileObj;
-        accountService.loginGoogle({googleUserObj:googleUser,exp:e.xc.expires_at})
+        const token=accountService.genrateToken(googleUser)//le token est constitue de l'objetgoogle(email,username,id,img,...)
+        accountService.loginGoogle({token:token})
             .then(res=>{
                 console.log(res.data);
                 accountService.saveToken(res.data.token)
