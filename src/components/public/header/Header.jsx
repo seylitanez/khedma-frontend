@@ -121,8 +121,8 @@ export default function Header() {
                     <li>
                         <Link  to='/a_propos' >{a_propos}</Link>
                     </li>
-                    <Buttun id='sing' className = 'mobile__auth' onClick={()=>setShowPopupInscrption(true)}>{inscription}</Buttun>
-                    <Buttun id= 'log' className = 'mobile__auth' onClick={e=>setPopupLogin(true)}>{connexion}</Buttun>
+                    <Buttun id='sing' className = 'mobile__auth' onClick={()=>handleClickInscrip()}>{inscription}</Buttun>
+                    <Buttun id= 'log' className = 'mobile__auth' onClick={e=>handleClickLogin()}>{connexion}</Buttun>
                 </ul>
             </div>
 
