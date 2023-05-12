@@ -10,6 +10,7 @@ import EmployeRouter from '@pr-employe-pages/EmployeRouter';
 import EmployeurRouter from '@pr-employeur-pages/EmployeurRouter';
 import ModerateurRouter from '@pr-moderateur-pages/ModerateurRouter';
 import { PopupContext } from './context/PopupContext';
+import { FormulaireContext } from './context/FormulaireContext';
 import { gapi } from 'gapi-script';
 import ReactGA from 'react-ga';
 import { Traducteur } from '@p-components/index';
@@ -24,6 +25,9 @@ function App() {
   const [popupConsulterDetails,setPopupConsulterDetails]=useState()
   const [popupLogin,setPopupLogin]=useState(false)
   const [popupChoix,setPopupChoix]=useState(false)
+
+  const [etapeInscription,setEtapeInscription]=useState(1)
+  const [formulaire,setFormulaire]=useState({motDePasse:"",nom:"",prenom:"",adresseMail:"",genre:"",role:"",numeroTel:"",adresse:{commune:"",wilaya:""},entreprise:""})
 
   useEffect(()=>{
     const script=document.createElement('script')
@@ -43,15 +47,17 @@ function App() {
       <LangueContext.Provider value={{lang:langue==='fr'? fr:langue==='ar'?ar:en,langue,setLangue}}>
         <AnnonceContext.Provider value={{ search, setSearch, annonce: { annonces, setAnnonces }}}>
           <PopupContext.Provider value={{showPopupInscrption,setShowPopupInscrption,showPopupConsulter,setShowPopupConsulter,popupConsulterDetails,setPopupConsulterDetails,popupLogin,setPopupLogin,popupChoix,setPopupChoix}} >
-            <BrowserRouter>
-              <Default/>
-              <Routes>
-                <Route path='/*' element={<PublicRouter/>}/>
-                <Route path='/employe/*' element={<AuthGuard role='EMPLOYE'><EmployeRouter/></AuthGuard>}/>
-                <Route path='/employeur/*' element={<AuthGuard role='EMPLOYEUR'><EmployeurRouter/></AuthGuard>}/>
-                <Route path='/moderateur/*' element={<AuthGuard role='MODERATEUR'><ModerateurRouter/></AuthGuard>}/>
-              </Routes>
-            </BrowserRouter>
+            <FormulaireContext.Provider value={{formulaire,setFormulaire,etapeInscription,setEtapeInscription}}>
+                <BrowserRouter>
+                  <Default/>
+                  <Routes>
+                    <Route path='/*' element={<PublicRouter/>}/>
+                    <Route path='/employe/*' element={<AuthGuard role='EMPLOYE'><EmployeRouter/></AuthGuard>}/>
+                    <Route path='/employeur/*' element={<AuthGuard role='EMPLOYEUR'><EmployeurRouter/></AuthGuard>}/>
+                    <Route path='/moderateur/*' element={<AuthGuard role='MODERATEUR'><ModerateurRouter/></AuthGuard>}/>
+                  </Routes>
+                </BrowserRouter>
+            </FormulaireContext.Provider>
           </PopupContext.Provider>
         </AnnonceContext.Provider>
       </LangueContext.Provider>

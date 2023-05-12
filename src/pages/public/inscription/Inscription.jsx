@@ -1,7 +1,7 @@
 import React from 'react'
 import "./inscription.scss"
 import {Logo,illustration_ayth} from '@image'
-import {FormIns} from '@p-components/index';
+// import {FormIns} from '@p-components/index';
 
 export default function Inscription() {
     return (
@@ -14,7 +14,7 @@ export default function Inscription() {
                     <div className="illustration">
                         <img src={illustration_ayth}/>
                     </div>
-                    <FormIns/>
+                    {/* <FormIns/> */}
                 </div>
             </div>
         </div>

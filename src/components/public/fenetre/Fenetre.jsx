@@ -5,12 +5,9 @@ import { useState } from 'react';
 import { RxCross2 } from "react-icons/rx";
 import './fenetre.scss'
 
-export default function Fenetre({children}) {
-    const [ouvert, setOuvert] = useState(false);
+export default function Fenetre({children,ouvert,handleClick}) {
 
-    const handleClick = () => {
-        setOuvert(actuel => !actuel);
-    }
+
 
     const neRienFaire = (e) => {
         e.stopPropagation();

@@ -6,6 +6,10 @@ import jwt_decode from 'jwt-decode'
 let addUser = (user) => {
     return Axios.post('/api/v1/auth/add-user', user)
 }
+
+let addUserGoogle=(user)=>{
+    return Axios.post('api/v1/auth/add-GoogleUser', user)
+}
 let login = (user) => {
     return Axios.post('/api/v1/auth/login', user)
 }
@@ -35,6 +39,8 @@ let getUserName = () => {
     return jwt_decode(getToken()).username;
 }
 
+
+
  let genrateToken=(information)=>{
     const ALGO="HS256"
     const header = {alg:ALGO};
@@ -50,4 +56,4 @@ let getUser = () => {
 let updateUser = (user) => {
     return Axios.put('/api/v1/employe/update/' + user.mail +'?nom='+user.nom+'&prenom='+user.prenom+'&tel='+user.tel);
 }
-export const accountService = { addUser, loginGoogle, login, saveToken, logout, isLogged, getToken, getRole, getUser, getUserName,genrateToken, addCv, updateUser }
+export const accountService = { addUser, loginGoogle, login, saveToken, addUserGoogle,logout, isLogged, getToken, getRole, getUser, getUserName,genrateToken, addCv, updateUser }

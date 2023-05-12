@@ -1,7 +1,7 @@
 import React,{ useContext, useState } from 'react';
 import './popup.scss';
 import { PopupContext } from '@context/PopupContext';
-import { Buttun, FormIns, Login } from '@p-components/index';
+import { Buttun, Login } from '@p-components/index';
 import { accountService } from '@service/Account.service';
 import GLogin from '@p-components/login/GLogin';
 import { RxCross2 } from "react-icons/rx";

@@ -8,27 +8,28 @@ import {MdOutlineFileUpload} from 'react-icons/md'
 import { Buttun, Input } from '@p-components/index';
 import GLogin from '@p-components/login/GLogin';
 import { PopupContext } from '@context/PopupContext';
+import { FormulaireContext } from '@context/FormulaireContext';
 
 
 
-export default function FormIns({type,setEtapeEmpploye,etapeEmpploye,etapeEmpployeur,setEtapeEmpployeur}) {
-    const {lang} = useContext(LangueContext);
-    const {h2,nom,prenom,username,email,password,rpassword,gender,next}=lang.auth.signin;
-    const {male,femme}=gender;
-    const [user,setUser]=useState({motDePasse:"",nom:"",prenom:"",adresseMail:"",genre:"",role:"",numeroTel:"",region:"",entreprise:""})
+export default function FormInsEmploye({type,etapeEmpploye,etapeEmpployeur,setEtapeEmpployeur}) {
+    const {formulaire,setFormulaire,etapeInscription,setEtapeInscription}=useContext(FormulaireContext)
+    const [user,setUser]=useState(formulaire)
     const [psw,setpsw]=useState("")
     const [pswd,setpswd]=useState("")
     const {setShowPopupInscrption}=useContext(PopupContext)
 
-    // const [animation,setAnimation]=useAnimation('animation');
-
-    
     const navigate=useNavigate()
     let formData =new FormData();
-    const onchangeFile=(e)=>{
-        const fichier    = e.target.files[0]
-        const nomFichier = fichier.name
 
+    function filtreFichier(fich,nomFich){
+        const fichier    = fich
+        const nomFichier = nomFich
+
+        console.log(fichier)
+        console.log(nomFichier)
+
+        
         if (nomFichier.includes('.')) {
             const extension = nomFichier.split(".").at(-1);
             console.log(extension);
@@ -48,16 +49,35 @@ export default function FormIns({type,setEtapeEmpploye,etapeEmpploye,etapeEmpplo
         {
             console.log("Fichier sans extension");
         }
+
+        
+    }
+    const onchangeFile=(e)=>{
+        //recuperation du fichier et de son nom
+        const fichier=e.target.files[0]
+        const nomFichier=fichier.name
+
+        filtreFichier(fichier,nomFichier)//filtrage du fichier
     }
 
-    const onchange=(e)=>{setUser({...user,[e.target.name]:e.target.value})}
+    const onchange=(e)=>{
+        if(["wilaya","commune"].includes(e.target.name)){
+            user.adresse[e.target.name]=e.target.value
+            setUser({...user,adresse:{...user.adresse, [e.target.name]: e.target.value}})
+        }
+        setUser({...user,[e.target.name]:e.target.value})
+    }
+    
     const checkPassword=e=>{
         if (e.target.id==="rmdp" ) setpsw(e.target.value)
         if (e.target.id==="mdp" ) setpswd(e.target.value)
         if (psw===pswd) onchange(e)        
     }
-    const onsubmit=(e)=>{
-        e.preventDefault();
+
+
+    const creationCompte=()=>{
+
+        
         accountService.addUser(user)
         .then(res=>{
             accountService.saveToken(res.data.token)
@@ -68,62 +88,49 @@ export default function FormIns({type,setEtapeEmpploye,etapeEmpploye,etapeEmpplo
             }
         })
         .catch(err=>console.log(err))
+
+        setEtapeInscription(etapeInscription+1)
     }
 
-    console.log("letape actuel "+etapeEmpploye);
+    const onsubmit=(e)=>{
+        e.preventDefault();
+        creationCompte()
+    }
+
     function onSuccess(e){
         console.log(e);
-        console.log("lyes");
+
+        user.adresseMail=e.profileObj.email
+        user.nom=e.profileObj.familyName
+        user.prenom=e.profileObj.givenName
+        
+        setUser({...user})
+        console.log(user);
+        setEtapeInscription(10)
+
+    }
+
+    function onsubmitGoogle(e){
+        e.preventDefault();
+        accountService.addUserGoogle(user).then(res=>{
+            accountService.saveToken(res.data.token)
+            switch (user.role) {
+                case 'EMPLOYE': navigate('/employe/profile/' + accountService.getUserName()); break;
+                case 'EMPLOYEUR': navigate('/employeur/profile/' + accountService.getUserName()); break;
+                case 'MODERATEUR': navigate('/moderateur'); break;
+            }
+        })
+        .catch(err=>console.log(err))
+
+        setEtapeInscription(etapeInscription+1)
     }
 
     
 
 
     
-    switch (etapeEmpployeur) {
-        
-        case 1:
-            return (
-                <div>
-                     <div>
-                
-                  <form className='form' onSubmit={onsubmit}>
-                    <h2>{"Informations de l'entreprise"}</h2>
-                    <div className={"ins__group__nom__prenom "}>
-                        <Input type="text" placeholder="nom" id="nom" name="nom" value={user.nom}   onChange={onchange}/>
-                        <Input type="text"  placeholder='prenom' id="prenom" name="prenom" value={user.prenom} onChange={onchange}/>
-                    </div>
-                    <div className={"ins__group "}>
-                        <Input type="email" id="email" placeholder='email@exemple.com' name="adresseMail" value={user.adresseMail} onChange={onchange}/>
-                    </div>
-                    <div className={"ins__group "}>
-                        <Input type="entreprise" id="entreprise" placeholder='entreprise' name="entreprise" value={user.entreprise} onChange={onchange}/>
-                    </div>
-                    <div className={"ins__group "}>
-                        <Input type="tel" id="tel" placeholder='numero de tel' name="numeroTel" value={user.numeroTel} onChange={onchange}/>
-                    </div>
-                    <div className={"ins__group "}>
-                        <Input type="region" id="region" placeholder='Region' name="region" value={user.region} onChange={onchange}/>
-                    </div>
-                    <div className={"ins__group__genre"}>
-                        <Input type="radio" id='male'name="genre" value="HOMME"onChange={onchange} >{male}</Input>
-                        <Input type="radio" id='femme'name="genre" value='FEMME'onChange={onchange}>{femme}</Input>
-                    </div>
-                </form>
-                        <div className='ins__group__suivant__precedent'>
-                            <Buttun id="sing" onClick={()=>{setEtapeEmpployeur(e=>e=e+1);}}>{next}</Buttun>
-                            <Buttun id="precedent">precedent</Buttun>
-                        </div>
-                    </div>
-                </div>
-              ) 
-                
-            break;
-    }
-
-    switch (etapeEmpploye) {
-
-        
+    
+    switch (etapeInscription) {
 
         //information personels
         case 1:
@@ -132,7 +139,7 @@ export default function FormIns({type,setEtapeEmpploye,etapeEmpploye,etapeEmpplo
             <div>
     
             <form className='form' onSubmit={onsubmit}>
-                <h2>{h2}</h2>
+                <h2>{"Information Personels"}</h2>
                 <div className={"ins__group__nom__prenom "}>
                     <Input type="text" placeholder="nom" id="nom" name="nom" value={user.nom}   onChange={onchange}/>
                     <Input type="text"  placeholder='prenom' id="prenom" name="prenom" value={user.prenom} onChange={onchange}/>
@@ -144,17 +151,17 @@ export default function FormIns({type,setEtapeEmpploye,etapeEmpploye,etapeEmpplo
                     <Input type="tel" id="tel" placeholder='numero de tel' name="numeroTel" value={user.numeroTel} onChange={onchange}/>
                 </div>
                 <div className={"ins__group "}>
-                    <Input type="region" id="region" placeholder='Region' name="region" value={user.region} onChange={onchange}/>
+                    <Input type="commune" id="commune" placeholder='commune' name="commune" value={user.adresse.commune} onChange={onchange}/>
+                    <Input type="wilaya" id="wilaya" placeholder='wilaya' name="wilaya" value={user.adresse.wilaya} onChange={onchange}/>
                 </div>
                 <div className={"ins__group__genre"}>
-                    <Input type="radio" id='male'name="genre" value="HOMME"onChange={onchange} >{male}</Input>
-                    <Input type="radio" id='femme'name="genre" value='FEMME'onChange={onchange}>{femme}</Input>
+                    <Input type="radio" id='male'name="genre" value="HOMME"onChange={onchange} >{"Homme"}</Input>
+                    <Input type="radio" id='femme'name="genre" value='FEMME'onChange={onchange}>{"Femme"}</Input>
                 </div>
                     <GLogin titre={"s'inscrire avec google"} onSuccess={onSuccess}/>
             </form>
                     <div className='ins__group__suivant__precedent'>
-                        <Buttun id="sing" onClick={()=>{if(user.adresseMail!=""){setEtapeEmpploye(e=>e=e+1)} }}>{next}</Buttun>
-                        <Buttun id="precedent">precedent</Buttun>
+                        <Buttun id="sing" onClick={()=>{setEtapeInscription(2)}}>{"suivant"}</Buttun>
                     </div>
                 </div>
         )
@@ -175,13 +182,22 @@ export default function FormIns({type,setEtapeEmpploye,etapeEmpploye,etapeEmpplo
                 </div>
             </form>
                     <div className='ins__group__suivant__precedent'>
-                        <Buttun id="sing" onClick={()=>{setEtapeEmpploye(e=>e=e+1); user.role="EMPLOYE"; accountService.addUser(user).then((res)=>{accountService.saveToken(res.data.token);})}}>{next}</Buttun>
-                        <Buttun id="precedent" onClick={()=>{setEtapeEmpploye(e=>e=e-1)}}>precedent</Buttun>
+                        <Buttun id="sing" onClick={()=>{creationCompte()}}>{"suivant"}</Buttun>
+                        <Buttun id="precedent" onClick={()=>{setEtapeInscription(1)}}>precedent</Buttun>
                     </div>                
                 </div>
         )
-        //cv
         case 3:
+        return(
+        <div>
+            <div className='ins__group__suivant__precedent'>
+            <h1>votre compte a ete creé avec success</h1>
+            <Buttun id="sing" onClick={()=>{setEtapeInscription(4)}}>suivant</Buttun>
+            </div>
+        </div>
+        )
+        //cv
+        case 4:
             return (
                 <div>
     
@@ -192,15 +208,14 @@ export default function FormIns({type,setEtapeEmpploye,etapeEmpploye,etapeEmpplo
                 </div>
             </form>
                     <div className='ins__group__suivant__precedent'>
-                        <Buttun id="sing" onClick={()=>{setEtapeEmpploye(e=>e=e+1);}}>{next}</Buttun>
-                        <Buttun id="precedent" onClick={()=>{ setEtapeEmpploye(e=>e=e-1)}}>precedent</Buttun>
+                        <Buttun id="sing" onClick={()=>{setEtapeInscription(e=>e=e+1);}}>{"suivant"}</Buttun>
                     </div>
             </div>
         )
         break;
 
         
-        case 4:
+        case 5:
 
         return(
             <div>
@@ -209,12 +224,41 @@ export default function FormIns({type,setEtapeEmpploye,etapeEmpploye,etapeEmpplo
                 <h2>nous avons envoye un mail de confirmation</h2>
             </form>
                     <div className='ins__group__suivant__precedent'>
-                        <Buttun id="sing" onClick={()=>{setShowPopupInscrption(false);setEtapeEmpploye(0);setEtapeEmpployeur(0) }}>ok</Buttun>
+                        <Buttun id="sing" onClick={()=>{setShowPopupInscrption(false);setEtapeInscription(0);setEtapeEmpployeur(0) }}>confirmer</Buttun>
                     </div>
 
                 </div>
         )
 
+
+
+        //authentification google elle ne fait pas partie des etapes precedentes
+
+        case 10:
+            return( <div>
+    
+                <form className='form' onSubmit={onsubmit}>
+                    <h2>{"Information Personels"}</h2>
+                    <div className={"ins__group "}>
+                        <Input type="tel" id="tel" placeholder='numero de tel' name="numeroTel" value={user.numeroTel} onChange={onchange}/>
+                    </div>
+                    <div className={"ins__group "}>
+                        <Input type="commune" id="commune" placeholder='commune' name="commune" value={user.adresse.commune} onChange={onchange}/>
+                        <Input type="wilaya" id="wilaya" placeholder='wilaya' name="wilaya" value={user.adresse.wilaya} onChange={onchange}/>
+
+                    </div>
+                    <div className={"ins__group__genre"}>
+                        <Input type="radio" id='male'name="genre" value="HOMME"onChange={onchange} >{"Homme"}</Input>
+                        <Input type="radio" id='femme'name="genre" value='FEMME'onChange={onchange}>{"Femme"}</Input>
+                    </div>
+                    </form>
+                        <div className='ins__group__suivant__precedent'>
+                            <Buttun id="sing" onClick={()=>{console.log(user);}}>{"confirmer"}</Buttun>
+                        </div>
+                    </div>)
+
     }
+
+
 
 }

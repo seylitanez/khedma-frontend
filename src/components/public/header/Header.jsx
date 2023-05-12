@@ -4,11 +4,17 @@ import './header.scss';
 import { Link ,useNavigate, useParams } from 'react-router-dom';
 import {LangueContext} from "@context/langue";
 import { useContext } from 'react';
-import { Buttun, Logo, Popup } from '@p-components/index';
+import { Buttun, Login, Logo, Popup } from '@p-components/index';
 import { PopupContext } from '@context/PopupContext';
 import { accountService } from '@service/Account.service';
 import { FiLogOut } from 'react-icons/fi';
 import { GoogleLogout } from 'react-google-login';
+import Fenetre from '@p-components/fenetre/Fenetre';
+import { RxCross2 } from 'react-icons/rx';
+import ChoixRole from '@p-components/form_ins/ChoixRole';
+import { FormulaireContext } from '@context/FormulaireContext';
+import FormInsEmployeur from '@p-components/form_ins/FormInsEmployeur';
+import FormInsEmploye from '@p-components/form_ins/FormInsEmploye';
 
 export default function Header() {
     const {lang,langue,setLangue} = useContext(LangueContext);
@@ -17,7 +23,34 @@ export default function Header() {
     const {connexion,inscription}=lang.header.auth;
     const {setShowPopupInscrption,popupConsulterDetails,popupLogin,setPopupLogin,popupChoix,setPopupChoix}=useContext(PopupContext)
     const [className,setClassName] = useState(["item","item","item","item"])
+    const [loginFermer, setLoginFermer] = useState(true);
+    const [inscripFermer, setInscripFermer] = useState(true);
+
+    const [contenuFentre, setContenuFentre] = useState(<ChoixRole />);
+
+    const {formulaire,setFormulaire}=useContext(FormulaireContext);
+
+    useEffect(()=>{
+        switch (formulaire.role) {
+            case 'EMPLOYEUR':
+                setContenuFentre(<FormInsEmployeur />)
+                break;
+            case 'EMPLOYE':
+                setContenuFentre(<FormInsEmploye />)
+                break;
+        }
+    },[formulaire.role])
+    
+
+
     const param= useParams()
+
+    const handleClickLogin = () => {
+        setLoginFermer(actuel => !actuel);
+    }
+    const handleClickInscrip = () => {
+        setInscripFermer(actuel => !actuel);
+    }
     // useEffect(()=>{
     //     const script = document.createElement("script");
     //     script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
@@ -72,13 +105,21 @@ export default function Header() {
                     </div>
                     :
                     <div>
-                        <Buttun id='sing' onClick={()=>setShowPopupInscrption(true)}>{inscription}</Buttun>
-                        <Buttun id="log" onClick={e=>setPopupLogin(true)}>{connexion}</Buttun>
+                        <Buttun id='sing' onClick={handleClickInscrip}>{inscription}</Buttun>
+                        <Buttun id="log" onClick={handleClickLogin}>{connexion}</Buttun>
                     </div>
                     }           
                 </div>
-                <Popup type={"inscription"} />
-                <Popup type={"details"} annonce={popupConsulterDetails}/>
+
+                <Fenetre ouvert={inscripFermer}  handleClick={handleClickInscrip}>
+                    {contenuFentre}
+                </Fenetre>
+                
+                <Fenetre ouvert={loginFermer}  handleClick={handleClickLogin}>
+                    <Login/>
+                </Fenetre>
+                <Popup type={"inscription"}  />
+                <Popup type={"details"} annonce={popupConsulterDetails} />
                 <Popup type={"role"}/> 
                 <Popup type={"login"}/> 
         </header>
