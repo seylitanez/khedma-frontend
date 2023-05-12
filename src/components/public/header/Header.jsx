@@ -10,7 +10,7 @@ import { accountService } from '@service/Account.service';
 import { FiLogOut } from 'react-icons/fi';
 import { GoogleLogout } from 'react-google-login';
 import Fenetre from '@p-components/fenetre/Fenetre';
-import { RxCross2 } from 'react-icons/rx';
+import { RxCross2, RxWidth } from 'react-icons/rx';
 import ChoixRole from '@p-components/form_ins/ChoixRole';
 import { FormulaireContext } from '@context/FormulaireContext';
 import FormInsEmployeur from '@p-components/form_ins/FormInsEmployeur';
@@ -101,19 +101,39 @@ export default function Header() {
         setOuvert(actuel => !actuel);        
     };
 
+    let routeProfile;
+    
+    if (accountService.isLogged())
+    {
+        switch (accountService.getRole())
+        {
+            case 'EMPLOYE':
+                routeProfile = '/employe/profile/' + accountService.getUserName();
+                break;
+            case 'EMPLOYEUR':
+                routeProfile = '/employeur/profile/' + accountService.getUserName();
+                break;
+        }
+    }
+
     return (
         <header>
             <Link to='./' className="logo">
                 <Logo/>
             </Link>
-            <nav>
-                <ul className='menu'>
-                    <li><div className={className[0]}><Link  to='/home' >{accueil}</Link></div></li>
-                    <li><div className={className[1]}><Link  to='/jobSearch' >{trouver_emploi}</Link></div></li>
-            
-                    <li><div className={className[3]}><Link  to='/a_propos' >{a_propos}</Link></div></li>
-                </ul>
-            </nav>
+            {
+                accountService.isLogged() ?
+                <>
+                </>
+                :
+                <nav>
+                    <ul className='menu'>
+                        <li><div className={className[0]}><Link  to='/home' >{accueil}</Link></div></li>
+                        <li><div className={className[1]}><Link  to='/jobSearch' >{trouver_emploi}</Link></div></li>
+                        <li><div className={className[3]}><Link  to='/a_propos' >{a_propos}</Link></div></li>
+                    </ul>
+                </nav>
+            }
 
             <RxHamburgerMenu size = '38px' id='hamburger' className = 'hamburger'
             onClick={handleClick}
@@ -136,7 +156,7 @@ export default function Header() {
                         accountService.isLogged() ?
                             <>
                                 <div className="desco">
-                                    <FiLogOut size={20} className='prf' />
+                                    {/* <FiLogOut size={20} className='prf' /> */}
                                     <Link to="/home" onClick={()=>deconnection()}>Se déconnecter</Link>
                                 </div>
                                 <GoogleLogout className='out-google' clientId={"96654489585-9kfrhk9jgeq4nodccs7tg0lagl1hq6uj.apps.googleusercontent.com"} buttonText={"se deconnecter"} onLogoutSuccess={() => { console.log("vous vous etes deconnecte avec success"); }} />
@@ -151,13 +171,22 @@ export default function Header() {
             </div>
 
             <div className='log'>
-                {accountService.isLogged()?
+                {
+                    accountService.isLogged()?
                     <>
-                        <div className="desco">
-                            <FiLogOut size={20} className='prf' />
-                            <Link to="/home" onClick={()=>deconnection()}>Se déconnecter</Link>
+                        <div>
+                            <div className="desco voir__annonces">
+                                <Link  to='/jobSearch' >Voir les annonces</Link>
+                            </div>
+                            <div className="desco mon__profile">
+                                <Link to={routeProfile}>Mon profile</Link>
+                            </div>
+                            <div className="desco">
+                                {/* <FiLogOut size={20} className='prf' /> */}
+                                <Link to="/home" onClick={()=>deconnection()}>Se déconnecter</Link>
+                            </div>
+                            <GoogleLogout className='out-google' clientId={"96654489585-9kfrhk9jgeq4nodccs7tg0lagl1hq6uj.apps.googleusercontent.com"} buttonText={"se deconnecter"} onClick={{}} onLogoutSuccess={() => { console.log("vous vous etes deconnecte avec success"); }} />
                         </div>
-                        <GoogleLogout className='out-google' clientId={"96654489585-9kfrhk9jgeq4nodccs7tg0lagl1hq6uj.apps.googleusercontent.com"} buttonText={"se deconnecter"} onClick={{}} onLogoutSuccess={() => { console.log("vous vous etes deconnecte avec success"); }} />
                     </>
                     :
                     <div>
@@ -165,18 +194,19 @@ export default function Header() {
                         <Buttun id="log" onClick={handleClickLogin}>{connexion}</Buttun>
                     </div>
                     }           
-                </div>
-                <Fenetre ouvert={inscripOuvert}  handleClick={handleClickInscrip}>
-                    {contenuFentre}
-                </Fenetre>
-                <Fenetre ouvert={loginOvert}  handleClick={handleClickLogin}>
-                    <Login setInscripOuvert={setInscripOuvert} setLoginOvert={setLoginOvert}/>
-                </Fenetre>
-                
-                <Popup type={"inscription"}  />
-                <Popup type={"details"} annonce={popupConsulterDetails} />
-                <Popup type={"role"}/> 
-                <Popup type={"login"}/> 
+            </div>
+
+            <Fenetre ouvert={inscripOuvert}  handleClick={handleClickInscrip}>
+                {contenuFentre}
+            </Fenetre>
+            <Fenetre ouvert={loginOvert}  handleClick={handleClickLogin}>
+                <Login setInscripOuvert={setInscripOuvert} setLoginOvert={setLoginOvert}/>
+            </Fenetre>
+            
+            <Popup type={"inscription"}  />
+            <Popup type={"details"} annonce={popupConsulterDetails} />
+            <Popup type={"role"}/> 
+            <Popup type={"login"}/> 
         </header>
     )
 }
