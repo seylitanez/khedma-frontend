@@ -1,0 +1,10 @@
+{
+  "appId": "dz.khedma.app",
+  "appName": "Khedma",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https",
+    "url": "http://",
+    "cleartext": true
+  }
+}
