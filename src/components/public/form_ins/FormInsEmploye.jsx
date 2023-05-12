@@ -67,7 +67,6 @@ export default function FormInsEmploye({type,etapeEmpploye,etapeEmpployeur,setEt
         }
         setUser({...user,[e.target.name]:e.target.value})
     }
-    
     const checkPassword=e=>{
         if (e.target.id==="rmdp" ) setpsw(e.target.value)
         if (e.target.id==="mdp" ) setpswd(e.target.value)
@@ -237,7 +236,7 @@ export default function FormInsEmploye({type,etapeEmpploye,etapeEmpployeur,setEt
         case 10:
             return( <div>
     
-                <form className='form' onSubmit={onsubmit}>
+                <form className='form' onSubmit={onsubmitGoogle}>
                     <h2>{"Information Personels"}</h2>
                     <div className={"ins__group "}>
                         <Input type="tel" id="tel" placeholder='numero de tel' name="numeroTel" value={user.numeroTel} onChange={onchange}/>
@@ -251,10 +250,10 @@ export default function FormInsEmploye({type,etapeEmpploye,etapeEmpployeur,setEt
                         <Input type="radio" id='male'name="genre" value="HOMME"onChange={onchange} >{"Homme"}</Input>
                         <Input type="radio" id='femme'name="genre" value='FEMME'onChange={onchange}>{"Femme"}</Input>
                     </div>
-                    </form>
                         <div className='ins__group__suivant__precedent'>
-                            <Buttun id="sing" onClick={()=>{console.log(user);}}>{"confirmer"}</Buttun>
+                            <Buttun type="submit" id="sing" onClick={()=>{}}>{"confirmer"}</Buttun>
                         </div>
+                    </form>
                     </div>)
 
     }
