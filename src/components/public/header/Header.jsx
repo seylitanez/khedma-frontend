@@ -81,6 +81,8 @@ export default function Header() {
         }
     },[param['*']])
     const deconnection = () => {
+        let go=document.querySelector(".out-google")
+        go.click()
         accountService.logout();
     }
 
@@ -121,8 +123,19 @@ export default function Header() {
                     <li>
                         <Link  to='/a_propos' >{a_propos}</Link>
                     </li>
-                    <Buttun id='sing' className = 'mobile__auth' onClick={()=>handleClickInscrip()}>{inscription}</Buttun>
-                    <Buttun id= 'log' className = 'mobile__auth' onClick={e=>handleClickLogin()}>{connexion}</Buttun>
+                    {
+                        accountService.isLogged() ?
+                            <div className="desco">
+                                <FiLogOut size={20} className='prf' />
+                                <Link to="/home" className='mobile__auth' onClick={deconnection}>Se déconnecter</Link>
+                                <GoogleLogout className='out-google' clientId={"96654489585-9kfrhk9jgeq4nodccs7tg0lagl1hq6uj.apps.googleusercontent.com"} buttonText={"se deconnecter"} onLogoutSuccess={()=>{console.log("vous vous etes deconnecte avec success");}} />
+                            </div>
+                            :
+                            <>
+                                <Buttun id='sing' className='mobile__auth' onClick={handleClickInscrip}>{inscription}</Buttun>
+                                <Buttun id="log" className='mobile__auth' onClick={handleClickLogin}>{connexion}</Buttun>
+                            </>
+                    }  
                 </ul>
             </div>
 
@@ -132,7 +145,7 @@ export default function Header() {
                     <div className="desco">
                     <FiLogOut size={20} className='prf' />
                     <Link to="/home" onClick={deconnection}>Se déconnecter</Link>
-                        {/* <GoogleLogout clientId={"96654489585-9kfrhk9jgeq4nodccs7tg0lagl1hq6uj.apps.googleusercontent.com"} buttonText={"se deconnecter"} onLogoutSuccess={()=>{console.log("vous vous etes deconnecte avec success");}} /> */}
+                        <GoogleLogout className='out-google' clientId={"96654489585-9kfrhk9jgeq4nodccs7tg0lagl1hq6uj.apps.googleusercontent.com"} buttonText={"se deconnecter"} onLogoutSuccess={()=>{console.log("vous vous etes deconnecte avec success");}} />
                     </div>
                     :
                     <div>

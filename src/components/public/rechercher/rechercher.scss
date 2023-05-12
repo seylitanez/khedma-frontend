@@ -1,5 +1,6 @@
 form {
     width: 100%;
+    height: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,7 +21,7 @@ form {
     }
 
     & .rechercher__input::placeholder {
-        color: $color_blanc;
+        color: $color_gris;
     }
 
     & svg {

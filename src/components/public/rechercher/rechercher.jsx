@@ -15,13 +15,14 @@ export default function rechercher({ setSearch, parent }) {
     const [isFiltreDisplayOff,setIsFiltreDisplayOff]=useState(true)
     const [txtsearch,setTxtsearch]=useState(search)
     const nav = useNavigate()
+    const iconSize = '26px'
 
     return (
         <form className = "rechercher" style={filtreDisplay}>
             <Input type = "search" className='rechercher__input' value={txtsearch} onChange={e => setTxtsearch(e.target.value)} placeholder={emploi} requirede='required'/>
 
             <div className="rechercher__boutons">
-                <FiSliders className='rechercher__filtrer'/>
+                <FiSliders size={iconSize} className='rechercher__filtrer'/>
                 
                 <div id='rechercher__separateur'></div>
                 
