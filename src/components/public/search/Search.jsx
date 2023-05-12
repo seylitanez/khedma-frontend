@@ -21,7 +21,7 @@ export default function Search({ setSearch,parent }) {
         <form className="search" style={filtreDisplay}>
             <div className='searchall'>
                 <div className="searchall__search-emploi">
-                    <BiSearchAlt2 id='search-icone' size={25} className='search-icone'/>
+                    {/* <BiSearchAlt2 id='search-icone' size={25} className='search-icone'/> */}
                     <Input type="search" className='search__emploi-inp' value={txtsearch} onChange={e => setTxtsearch(e.target.value)} placeholder={emploi} requirede='required'/>
                 </div>
                 {/* <div className="searchall__search-region">
@@ -33,13 +33,16 @@ export default function Search({ setSearch,parent }) {
                     // setSearch(txtsearch)
                     setSearch(txtsearch)
                     nav('/jobSearch/'+txtsearch) 
-                }}>{chercher}</Buttun>
+                }}>
+                    {chercher}
+                </Buttun>
+
                 <Buttun id="filtrer"  onClick={(e)=>{
                     e.preventDefault()
                     setIsFiltreDisplayOff(on=>!on)
                     isFiltreDisplayOff ? setFiltreDisplay({height:'100px'}):setFiltreDisplay({height:'55px'})
                 }}>
-                    <FiFilter/>
+                    {/* <FiFilter/> */}
                     {filtrer}
                 </Buttun>
             </div>

@@ -15,6 +15,7 @@ import ChoixRole from '@p-components/form_ins/ChoixRole';
 import { FormulaireContext } from '@context/FormulaireContext';
 import FormInsEmployeur from '@p-components/form_ins/FormInsEmployeur';
 import FormInsEmploye from '@p-components/form_ins/FormInsEmploye';
+import { RxHamburgerMenu } from "react-icons/rx";
 
 export default function Header() {
     const {lang,langue,setLangue} = useContext(LangueContext);
@@ -44,13 +45,6 @@ export default function Header() {
 
 
     const param= useParams()
-
-    const handleClickLogin = () => {
-        setLoginFermer(actuel => !actuel);
-    }
-    const handleClickInscrip = () => {
-        setInscripFermer(actuel => !actuel);
-    }
     // useEffect(()=>{
     //     const script = document.createElement("script");
     //     script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
@@ -82,44 +76,66 @@ export default function Header() {
     const deconnection = () => {
         accountService.logout();
     }
+
+    const [ouvert, setOuvert] = useState(false);
+
+    const handleClick = () => {
+        setOuvert(actuel => !actuel);        
+    };
+
     return (
         <header>
-                <Link to='./' className="logo">
-                    <Logo/>
-                </Link>
-                <nav>
-                    <ul className='menu'>
-                        <li><div className={className[0]}><Link  to='/home' >{accueil}</Link></div></li>
-                        <li><div className={className[1]}><Link  to='/jobSearch' >{trouver_emploi}</Link></div></li>
-                        {/* <li><div className={className[2]}><Link  to='/blog' >{blog}</Link></div></li> */}
-                        <li><div className={className[3]}><Link  to='/a_propos' >{a_propos}</Link></div></li>
-                    </ul>
-                </nav>
-                <div className="log">
-                    {
+            <Link to='./' className="logo">
+                <Logo/>
+            </Link>
+            <nav>
+                <ul className='menu'>
+                    <li><div className={className[0]}><Link  to='/home' >{accueil}</Link></div></li>
+                    <li><div className={className[1]}><Link  to='/jobSearch' >{trouver_emploi}</Link></div></li>
+                    {/* <li><div className={className[2]}><Link  to='/blog' >{blog}</Link></div></li> */}
+                    <li><div className={className[3]}><Link  to='/a_propos' >{a_propos}</Link></div></li>
+                </ul>
+            </nav>
+
+            <RxHamburgerMenu size = '38px' id='hamburger' className = 'hamburger'
+            onClick={handleClick}
+            style={{color : ouvert ? 'white' : ''}}
+            />
+
+            <div className="mobile__menu"
+            style={{transition : 'display 0s', transform : ouvert ? 'translateY(0)' : 'translateY(-100%)', display : ouvert ? 'flex' : 'none'}}>
+                <ul className='menu'>
+                    <li>
+                        <Link  to='/home' >{accueil}</Link>
+                    </li>
+                    <li>
+                        <Link  to='/jobSearch' >{trouver_emploi}</Link>
+                    </li>
+                    <li>
+                        <Link  to='/a_propos' >{a_propos}</Link>
+                    </li>
+                    <Buttun id='sing' className = 'mobile__auth' onClick={()=>setShowPopupInscrption(true)}>{inscription}</Buttun>
+                    <Buttun id= 'log' className = 'mobile__auth' onClick={e=>setPopupLogin(true)}>{connexion}</Buttun>
+                </ul>
+            </div>
+
+            <div className='log'>
+                {
                     accountService.isLogged()?
                     <div className="desco">
-                        <FiLogOut size={20} className='prf' />
-                        <Link to="/home" onClick={deconnection}>Se Dèconnecter</Link>
+                    <FiLogOut size={20} className='prf' />
+                    <Link to="/home" onClick={deconnection}>Se déconnecter</Link>
                         {/* <GoogleLogout clientId={"96654489585-9kfrhk9jgeq4nodccs7tg0lagl1hq6uj.apps.googleusercontent.com"} buttonText={"se deconnecter"} onLogoutSuccess={()=>{console.log("vous vous etes deconnecte avec success");}} /> */}
                     </div>
                     :
                     <div>
-                        <Buttun id='sing' onClick={handleClickInscrip}>{inscription}</Buttun>
-                        <Buttun id="log" onClick={handleClickLogin}>{connexion}</Buttun>
+                        <Buttun id='sing' onClick={()=>setShowPopupInscrption(true)}>{inscription}</Buttun>
+                        <Buttun id="log" onClick={e=>setPopupLogin(true)}>{connexion}</Buttun>
                     </div>
                     }           
                 </div>
-
-                <Fenetre ouvert={inscripFermer}  handleClick={handleClickInscrip}>
-                    {contenuFentre}
-                </Fenetre>
-                
-                <Fenetre ouvert={loginFermer}  handleClick={handleClickLogin}>
-                    <Login/>
-                </Fenetre>
-                <Popup type={"inscription"}  />
-                <Popup type={"details"} annonce={popupConsulterDetails} />
+                <Popup type={"inscription"} />
+                <Popup type={"details"} annonce={popupConsulterDetails}/>
                 <Popup type={"role"}/> 
                 <Popup type={"login"}/> 
         </header>

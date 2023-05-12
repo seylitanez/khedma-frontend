@@ -1,0 +1,80 @@
+form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $color_bleu;
+    border-radius: 30px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.4);
+    color: white;
+    padding: 8px 22px;
+
+    & .rechercher__input {
+        width: 75%;
+        height: 100%;
+        background-color: transparent;
+        outline: none;
+        border: none;
+        color: white;
+        font-size: 18px;
+    }
+
+    & .rechercher__input::placeholder {
+        color: $color_blanc;
+    }
+
+    & svg {
+        color: white;
+        cursor: pointer;
+        size: 32px;
+    }
+
+
+    & .rechercher__boutons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        width: 76px;
+        & #rechercher__separateur {
+            background-color: white;
+            width: 2px;
+            height: 26px;
+        }
+        & button{
+            background-color: transparent;
+            height: 100%;
+            border: none;
+            cursor: pointer;
+            & svg{
+                vertical-align: middle;
+            }
+        }
+    }
+    
+}
+
+
+
+@media screen and (max-width: $breakpoint_tel) {
+    form {
+        height: 18px;
+        padding: 4px 16px;
+        
+        & .rechercher__input {
+            font-size: 14px;
+        }
+
+        & svg {
+            size: 18px;
+        }
+
+        & .rechercher__boutons {
+            width: 48px;
+        }
+    }
+
+    #rechercher__separateur {
+        height: 16px;
+    }
+ }

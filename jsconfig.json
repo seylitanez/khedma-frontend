@@ -4,6 +4,7 @@
         "baseUrl": "./src",
         "jsx": "react",
         "module": "CommonJS",
+        "types": ["vitest/globals"],
         "paths": {
             "@utils/*":["utils/*"],
             "@service/*":["service/*"],

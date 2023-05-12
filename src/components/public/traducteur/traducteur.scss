@@ -1,23 +1,22 @@
 .traducteur {
-    cursor: pointer;
     position : fixed;
     top : 75vh;
-    width: 300px;
+    width: 340px;
     height: 60px;
     left : 0;
     display : flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 40px 8px;
     background-color: $color_bleu;
     border-top-right-radius: 60px;
     border-bottom-right-radius: 60px ;
-    z-index: 10;
+    z-index: 3;
     transition: .8s;
 
     & .goog-te-gadget {
         font-family: Poppins, sans-serif;
-        font-size: 16px;
+        font-size: 13px;
         color : white;
         padding: 4px 10px;
     }
@@ -27,10 +26,20 @@
         font-family: Poppins, sans-serif;
         background-color: white;
         border-radius: 1rem;
-        border: 2px solid black;
+        border: 1px solid black;
+    }
+
+    & .traducteur__bouton {
+        cursor: pointer;
+    }
+    & .exit{
+        background-color: transparent;
+        border: none;
+    }
+    &:hover {
+        background-color: $color_oronge;
     }
 }
-
-.traducteur:hover {
-    background-color: $color_oronge;
+.VIpgJd-ZVi9od-ORHb-OEVmcd{
+    display: none
 }

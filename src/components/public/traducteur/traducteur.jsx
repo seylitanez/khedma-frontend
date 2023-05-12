@@ -1,8 +1,9 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { IoEarth } from 'react-icons/io5';
+import { IoClose, IoEarth } from 'react-icons/io5';
 import './traducteur.scss'
+import { Buttun } from '..';
 
 export default function Traducteur() {
     useEffect(()=>{
@@ -15,18 +16,20 @@ export default function Traducteur() {
         }
     },[])
 
-    const [isActive, setIsActive] = useState(false);
+    const [ouvert, setOuvert] = useState(false);
 
     const handleClick = () => {
-      setIsActive(current => !current);
+        setOuvert(actuel => !actuel);        
     };
-
+    const close =()=> {
+        let btn = document.querySelector(".VIpgJd-ZVi9od-ORHb-OEVmcd").contentWindow.document.querySelector(".VIpgJd-ZVi9od-TvD9Pc-hSRGPd");
+        btn.click()
+    }
     return (
-        <div className='traducteur'
-        style={{transform: isActive ? 'translateX(0)' : 'translateX(calc(-100% + 60px))' }}
-        onClick={handleClick}>
+        <div className='traducteur' style={{transform: ouvert ? 'translateX(0)' : 'translateX(calc(-100% + 60px))' }}>
             <div id="google_translate_element" className='apiTraduction'></div>
-            <IoEarth size="60px" color='white'/>
+            <Buttun className="exit" onClick={()=>close()}><IoClose color='red' size={30}/></Buttun>
+            <IoEarth size="44px" color='white' className='traducteur__bouton' onClick={handleClick}/>
         </div>
     )
 }

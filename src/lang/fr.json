@@ -4,7 +4,7 @@
             "accueil":"Accueil",
             "trouver_emploi":"Trouver un emploi",
             "blog":"Blog",
-            "a_propos":"A propos"
+            "a_propos":"À propos"
         },
         "auth":{
             "connexion":"Se connecter",
@@ -18,16 +18,16 @@
             "accueil":"Accueil",
             "trouver_emploi":"Trouver un emploi",
             "blog":"Blog",
-            "a_propos":"A propos"
+            "a_propos":"À propos"
         },
         "contact":{
             "contact":"CONTACT",
             "tel":"+213 34 48 30 04",
-            "mail":"INFO@khedma.com"
+            "mail":"info@khedma.com"
         },
         "police":{
-            "slogon":"m3a khedma makanch la chomage la degoutage",
-            "copyRight":"Copyrights© khedma 2023",
+            "slogon":"M3a khedma makanch la chomage la dégoûtage !",
+            "copyRight":"Copyrights© Khedma 2023",
             "terms":"Terms",
             "cockie":"Cookie policy",
             "privatep":"Privacy Policy",
@@ -36,35 +36,35 @@
     },
     "home":{
         "search":{
-            "emploi":"Rechercher , Mot clé , Emploi",
+            "emploi":"Rechercher (Mot-clé, type d'emploi, région, etc)",
             "region":"Région",
-            "chercher":"chercher",
-            "filtrer":"filtrer",
-            "type_travail":"type de travail",
-            "salaire":"salaire"
+            "chercher":"Rechercher",
+            "filtrer":"Filtrer",
+            "type_travail":"Type de travail",
+            "salaire":"Salaire"
         },
-        "h1":"m3a khedma makanch la chomage la degoutage",
-        "h2":"inscrivez vous et consulter pour avoir les meilleurs offres d'emploi grace a khedma"
+        "h1":"M3a khedma makanch la chomage la dégoûtage !",
+        "h2":"Inscrivez-vous pour avoir les meilleurs offres d'emploi grace a Khedma."
     },
     "auth":{
         "login":{
             "h2":"Connecter",
-            "email":"email",
-            "password":"mot de passe"
+            "email":"E-mail",
+            "password":"Mot de passe"
         },
         "signin":{
             "h2":"Information personnelles",
-            "nom":"nom",
-            "prenom":"prenom",
-            "username":"nom d'utilisateur",
-            "email":"email",
-            "password":"mot de passe",
-            "rpassword":"confirmer le mot de passe",
+            "nom":"Nom",
+            "prenom":"Prénom",
+            "username":"Nom d'utilisateur",
+            "email":"E-mail",
+            "password":"Mot de passe",
+            "rpassword":"Confirmer le mot de passe",
             "gender":{
-                "male":"HOMME",
-                "femme":"FEMME"
+                "male":"Homme",
+                "femme":"Femme"
             },
-            "next":"suivant"
+            "next":"Suivant"
         }
     }
 }

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Khedma</string>
+    <string name="title_activity_main">Khedma</string>
+    <string name="package_name">dz.khedma.app</string>
+    <string name="custom_url_scheme">dz.khedma.app</string>
+</resources>

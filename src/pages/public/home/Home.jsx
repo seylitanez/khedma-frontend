@@ -6,7 +6,9 @@ import { LangueContext } from "@context/langue";
 import { AnnonceContext } from "@context/Annonce";
 import ImagePassword from "@p-components/imageHome/ImagePassword";
 import ImageProfil from "@p-components/imageHome/ImageProfil";
-import Fenetre from "@p-components/fenetre/Fenetre";
+import { Fenetre } from "@p-components/index";
+import { Rechercher } from "@p-components/index";
+// import Fenetre from "@p-components/fenetre/Fenetre";
 
 function useImage(indexInitial) {
     const [index, setIndex] = useState(indexInitial);
@@ -22,8 +24,7 @@ export default function Home() {
             image: <ImageHome />,
             description: (
                 <h2 id="desc1">
-                    trouvez le travail qui vous corespond en quelques mots
-                    seulement
+                    Trouvez le travail qui vous corespond en quelques mots seulement.
                 </h2>
             ),
         },
@@ -31,8 +32,7 @@ export default function Home() {
             image: <ImageProfil />,
             description: (
                 <h2 id="desc2">
-                    creez votre profile et et deposez votre cv pour etre dans
-                    les meilleures coups
+                    Créez votre profile et et deposez votre CV pour être dans les meilleures coups.
                 </h2>
             ),
         },
@@ -40,8 +40,7 @@ export default function Home() {
             image: <ImagePassword />,
             description: (
                 <h2 id="desc1">
-                    inscrivez vous et consulter pour avoir les meilleurs offres
-                    d'emploi grace a khedma
+                    Inscrivez-vous et consultez les meilleurs offres d'emploi grâce a Khedma.
                 </h2>
             ),
         },
@@ -77,7 +76,11 @@ export default function Home() {
             <div className="left">
                 <h1 className="notranslate">{titre}</h1>
                 {images[index].description}
-                <Search setSearch={setSearch} parent="home" />
+                {/* <Search setSearch={setSearch} parent="home" className='search'/> */}
+                <Rechercher setSearch={setSearch} parent="home" />
+                <Fenetre>
+                    <div></div>
+                </Fenetre>
             </div>
         </main>
     );

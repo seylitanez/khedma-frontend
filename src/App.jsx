@@ -41,6 +41,7 @@ function App() {
   },[])
   ReactGA.initialize('G-GZ9KKG4WHJ');
   ReactGA.pageview('/home');
+
   return (
     <div className="App">
       <Traducteur/>
