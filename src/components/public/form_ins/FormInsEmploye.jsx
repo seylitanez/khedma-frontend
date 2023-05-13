@@ -82,11 +82,11 @@ export default function FormInsEmploye({type,etapeEmpploye,etapeEmpployeur,setEt
         accountService.addUser(user)
         .then(res=>{
             accountService.saveToken(res.data.token)
-            switch (user.role) {
-                case 'EMPLOYE': navigate('/employe/profile/' + accountService.getUserName()); break;
-                case 'EMPLOYEUR': navigate('/employeur/profile/' + accountService.getUserName()); break;
-                case 'MODERATEUR': navigate('/moderateur'); break;
-            }
+            // switch (user.role) {
+            //     case 'EMPLOYE': navigate('/employe/profile/' + accountService.getUserName()); break;
+            //     case 'EMPLOYEUR': navigate('/employeur/profile/' + accountService.getUserName()); break;
+            //     case 'MODERATEUR': navigate('/moderateur'); break;
+            // }
         })
         .catch(err=>console.log(err))
 
