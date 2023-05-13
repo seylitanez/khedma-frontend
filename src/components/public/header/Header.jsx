@@ -16,6 +16,7 @@ import { FormulaireContext } from '@context/FormulaireContext';
 import FormInsEmployeur from '@p-components/form_ins/FormInsEmployeur';
 import FormInsEmploye from '@p-components/form_ins/FormInsEmploye';
 import { RxHamburgerMenu } from "react-icons/rx";
+import { gapi } from 'gapi-script';
 
 export default function Header() {
     const {lang,langue,setLangue} = useContext(LangueContext);
@@ -82,8 +83,16 @@ export default function Header() {
     },[param['*']])
     const deconnection = () => {
         accountService.logout();
-        const go = document.querySelector(".out-google")
+        const go =document.querySelector(".out-google")
         go.click()
+        if (window.gapi) {
+            const auth2 = window.gapi.auth2.getAuthInstance()
+            if (auth2 != null) {
+                auth2.signOut().then(
+                    auth2.disconnect().then(this.props.onLogoutSuccess)
+                )
+            }
+        }
     }
 
     const [ouvert, setOuvert] = useState(false);
