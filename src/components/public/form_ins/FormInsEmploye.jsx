@@ -229,7 +229,7 @@ export default function FormInsEmploye({type,etapeEmpploye,etapeEmpployeur,setEt
                 <h2>nous avons envoye un mail de confirmation</h2>
             </form>
                     <div className='ins__group__suivant__precedent'>
-                        <Buttun id="sing" onClick={()=>{setShowPopupInscrption(false);setEtapeInscription(0);setEtapeEmpployeur(0) }}>confirmer</Buttun>
+                        <Buttun id="sing" onClick={()=>{setEtapeInscription(etapeEmpploye+1)}}>confirmer</Buttun>
                     </div>
 
                 </div>
