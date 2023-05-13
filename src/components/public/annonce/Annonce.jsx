@@ -29,6 +29,7 @@ export default function Annonce({ annonce,setFenetreConsulterOuvert,setSelectedA
     }
     let jourPublication = diff
     
+    console.log(jourPublication);
     function annonceFlip(e) {
         if (e.target.innerText != "CONSULTER")
             setCote({ transform: cote.transform != 'rotateY(180deg)' ? "rotateY(180deg)" : '', transition: '1s' })
