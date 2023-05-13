@@ -83,7 +83,7 @@ export default function Header() {
     },[param['*']])
     const deconnection = () => {
         accountService.logout();
-        const go =document.querySelector(".out-google")
+        const go = document.querySelector(".out-google")//.contentWindow.document.querySelector(span)
         go.click()
         if (window.gapi) {
             const auth2 = window.gapi.auth2.getAuthInstance()
