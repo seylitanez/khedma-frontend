@@ -51,6 +51,7 @@ useEffect(()=>{
   return (
     <div className='jobSearch'>
       <Popup />
+      <Fenetre ouvert={true}/>
       <div className="search__grd">
         <div className='search__'>
           <Rechercher setSearch={setSearch} parent='job' />
