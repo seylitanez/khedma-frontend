@@ -4,7 +4,7 @@ import { MdAccountCircle } from "react-icons/md";
 import "./login.scss"
 import { useNavigate,Link} from 'react-router-dom';
 import { accountService } from '@service/Account.service';
-import { Buttun, Input } from '@p-components/index';
+import { Buttun, Fenetre, Input } from '@p-components/index';
 import GLogin from './GLogin';
 import { PopupContext } from '@context/PopupContext';
 import { gapi } from 'gapi-script';
@@ -26,11 +26,16 @@ export default function Login({setLoginOvert,setInscripOuvert}) {
     const [anim,setActive]=useAnim('');
     const [anims,setActives]=useAnim('');
 
+    const [fenetreErreur, setFenetreErreur] = useState({ouvert:false,message:""})
+
     function switchFenetre(params) {
         setLoginOvert(false);
         setInscripOuvert(true)
     }
 
+    function handleClick(e) {
+        setFenetreErreur(fen => fen = {ouvert:false,message:""});
+    }
     //conection
     const [user, setUser] = useState({ adresseMail: "", motDePasse :""})
     const onChange = (e) => {
@@ -56,14 +61,17 @@ export default function Login({setLoginOvert,setInscripOuvert}) {
         e.preventDefault()
         accountService.login(user)
             .then(res => {
-                accountService.saveToken(res.data.token)
-                switch (accountService.getRole()) {
-                    case 'EMPLOYE': navigate('/employe/profile/'+accountService.getUserName());break;
-                    case 'EMPLOYEUR':console.log('connct'); navigate('/employeur/profile/'+accountService.getUserName());break;
-                    case 'MODERATEUR': navigate('/moderateur/dashboard');break;
+                try {
+                    accountService.saveToken(res.data.token)
+                    switch (accountService.getRole()) {
+                        case 'EMPLOYE': navigate('/employe/profile/'+accountService.getUserName());break;
+                        case 'EMPLOYEUR':console.log('connct'); navigate('/employeur/profile/'+accountService.getUserName());break;
+                        case 'MODERATEUR': navigate('/moderateur/dashboard');break;
+                    }
+                } catch (error) {
+                    setFenetreErreur(fen => fen = {ouvert:true,message:error});
                 }
             })
-            .catch(err => console.log(err))
     }
 
     function onSuccess(e){
@@ -91,6 +99,7 @@ export default function Login({setLoginOvert,setInscripOuvert}) {
 
     return (
         <form className="form__login" onSubmit={sub}>
+            <Fenetre ouvert={fenetreErreur.ouvert} handleClick={handleClick} ><h1>information incorrectes</h1></Fenetre>
             {/* <h2>{h2}</h2> */}
             <MdAccountCircle size={100} className='icone_account'/>
             <div className={"login__group "+anim}>
@@ -102,7 +111,7 @@ export default function Login({setLoginOvert,setInscripOuvert}) {
             <GLogin titre={"se connecter avec google"} onSuccess={onSuccess} onFailure={onFailure}/>
             <Link className='nv__compte' onClick={()=>{ switchFenetre()}}>nouveau compte?</Link>
             <div className="login__mdp">
-                <Buttun id="log">{connexion}</Buttun>
+                <Buttun type={"submit"} id="log">{connexion}</Buttun>
                 {/* <Buttun id="sing">{inscription}</Buttun> */}
             </div> 
         </form>
