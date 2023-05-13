@@ -66,7 +66,7 @@ let postuler= (id,body) => {
 }
 
 let ajouterFavoris=(id)=>{
-    return Axios.post('/api/v1/employe/add-favoris?idAnnonce=' + id);
+    return Axios.get('/api/v1/employe/add-favoris?idAnnonce=' + id);
 }
 
 export const accountService = { addUser, loginGoogle, login, saveToken, addUserGoogle,logout, isLogged, getToken, getRole, getUser, getUserName,genrateToken, addCv, updateUser,postuler,ajouterFavoris }

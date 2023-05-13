@@ -42,6 +42,7 @@ export default function AnnonceDetails({selectedAnnonce}) {
 
   return (
     <div>
+        {console.log(postulation)}
         <Buttun onClick={()=>{accountService.ajouterFavoris(id)}}>Ajouter favoris</Buttun>
             <h1>titre:{selectedAnnonce&&nom}</h1>
             <h1>descriptionFr:{selectedAnnonce&&descriptionFr}</h1>

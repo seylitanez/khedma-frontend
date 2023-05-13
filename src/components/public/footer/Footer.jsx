@@ -40,7 +40,7 @@ const Footer = () => {
                     <h3>{contact}</h3>
                     <ul>
                         <li><BsTelephoneFill size={15}/> {tel}</li>
-                        <li><HiMail size={20}/> {mail}</li>
+                        <li><HiMail size={20}/> {"TeamKhedma@gmail.com"}</li>
                    </ul>
                 </div>
             </div>

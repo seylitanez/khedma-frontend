@@ -25,7 +25,8 @@ export default function Profile() {
             flg.current = true;
         }
     }, [])
-    const deconnection = () => {
+    const deconnection = async () => {
+        console.log('deconnection');
         accountService.logout();
     }
     return (
@@ -48,7 +49,7 @@ export default function Profile() {
                 </div>
                 <div className="sidebar__item">
                     <FiLogOut size={20} className='prf' /> 
-                    <Link to={"/home"} onClick={deconnection}>Se déconnecter</Link>
+                    <Link to={"/home"} onClick={()=>deconnection()}>Se déconnecter</Link>
                 </div>
             </div>
             <main className="main">
