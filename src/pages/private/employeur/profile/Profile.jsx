@@ -54,7 +54,7 @@ export default function Profile() {
                         </Link>
                     </div> */}
 
-                </div>
+                </div> 
                 <main className="main">
                     <Outlet />
                 </main>

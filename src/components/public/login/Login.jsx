@@ -63,10 +63,12 @@ export default function Login({setLoginOvert,setInscripOuvert}) {
             .then(res => {
                 try {
                     accountService.saveToken(res.data.token)
-                    switch (accountService.getRole()) {
-                        case 'EMPLOYE': navigate('/employe/profile/'+accountService.getUserName());break;
-                        case 'EMPLOYEUR':console.log('connct'); navigate('/employeur/profile/'+accountService.getUserName());break;
-                        case 'MODERATEUR': navigate('/moderateur/dashboard');break;
+                    if (accountService.isValid()) {
+                        switch (accountService.getRole()) {
+                            case 'EMPLOYE': navigate('/employe/profile/'+accountService.getUserName());break;
+                            case 'EMPLOYEUR':console.log('connct'); navigate('/employeur/profile/'+accountService.getUserName());break;
+                            case 'MODERATEUR': navigate('/moderateur/dashboard');break;
+                        }
                     }
                 } catch (error) {
                     setFenetreErreur(fen => fen = {ouvert:true,message:error});

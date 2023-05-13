@@ -45,6 +45,7 @@ function App() {
   return (
     <div className="App">
       <Traducteur/>
+      
       <LangueContext.Provider value={{lang:langue==='fr'? fr:langue==='ar'?ar:en,langue,setLangue}}>
         <AnnonceContext.Provider value={{ search, setSearch, annonce: { annonces, setAnnonces }}}>
           <PopupContext.Provider value={{showPopupInscrption,setShowPopupInscrption,showPopupConsulter,setShowPopupConsulter,popupConsulterDetails,setPopupConsulterDetails,popupLogin,setPopupLogin,popupChoix,setPopupChoix}} >

@@ -18,7 +18,7 @@ let loginGoogle = (user) => {
     return Axios.post('/api/v1/auth/Google-login', user)
 }
 let addCv=(cv)=>{
-    return Axios.post('/api/v1/auth/fich',cv)
+    return Axios.post('/api/v1/document/fich',cv)
 }
 let saveToken = (token) => {
     localStorage.setItem('token', token);
@@ -46,6 +46,9 @@ let getRole = () => {
 let getUserName = () => {
     return jwt_decode(getToken()).username;
 }
+let isValid=()=>{
+    return jwt_decode(getToken()).valid;
+}
 let genrateToken=(information)=>{
     const ALGO="HS256"
     const header = {alg:ALGO};
@@ -69,4 +72,4 @@ let ajouterFavoris=(id)=>{
     return Axios.get('/api/v1/employe/add-favoris?idAnnonce=' + id);
 }
 
-export const accountService = { addUser, loginGoogle, login, saveToken, addUserGoogle,logout, isLogged, getToken, getRole, getUser, getUserName,genrateToken, addCv, updateUser,postuler,ajouterFavoris }
+export const accountService = { addUser, loginGoogle, login, saveToken, addUserGoogle,logout, isLogged, getToken, getRole, getUser, getUserName,genrateToken, addCv, updateUser,postuler,ajouterFavoris,isValid }

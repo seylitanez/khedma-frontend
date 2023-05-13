@@ -10,7 +10,6 @@ import { BsCardChecklist } from 'react-icons/bs';
 import { accountService } from '@service/Account.service';
 import { BsFillPersonLinesFill, BsFillPersonFill, BsCalendarFill, BsCalendarPlusFill, BsFillCalendarPlusFill } from "react-icons/bs";
 
-
 export default function Profile() {
     const param=useParams();
     const [user, setUser] = useState({})
