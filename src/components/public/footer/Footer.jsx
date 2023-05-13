@@ -49,9 +49,9 @@ const Footer = () => {
                     <p>{copyRight}</p>
                 </div>
                 <div className="policy_link">
-                    <Link to="#">{terms}</Link>
-                    <Link to="#">{cockie}</Link>
-                    <Link to="#">{privatep}</Link>
+                    <Link to="./terms">{terms}</Link>
+                    <Link to="./cookies_policy">{cockie}</Link>
+                    <Link to="./privacy">{privatep}</Link>
                     {/* <Link to="#">{license}</Link>   */}
                 </div>  
             </div>

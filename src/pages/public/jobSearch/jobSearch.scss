@@ -1,5 +1,6 @@
 .jobSearch{
     margin-top: 60px;
+    background-color: $color_gris;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 100px 1fr;
@@ -39,38 +40,27 @@
             background: none;
             cursor: pointer;
             border: none;
-            margin-left: 5px;
             font-size: medium;
             font-weight: bold;
-            color: $color_noir;
-            &::after{
-                content: '';
-                position: absolute;
-                height: 5px;
-                width: 5px;
-                background-color: $color_oronge;
-                border-radius: 100%;
-                transform: translate(-6px,20px);
-            }        
+            color: $color_bleu;
+            padding-left: 10px;
+            padding-left: 10px;
+            border-radius: 3px;
+            border: 1px solid $color_bleu;
         }
         & .page__index__selected{
             background: none;
             cursor: pointer;
             border: none;
-            margin-left: 5px;
             font-size: medium;
+            background-color: $color_bleu;
+            display: flex;
             font-weight: bold;
-            color: $color_bleu;
-            margin-bottom: 3px;
-            &::after{
-                content: '';
-                position: absolute;
-                height: 5px;
-                width: 5px;
-                background-color: $color_bleu;
-                border-radius: 100%;
-                transform: translate(-6px,18px);
-            }
+            border-radius: 3px;
+            color: $color_blanc;
+            padding-left: 20px;
+            padding-right: 20px;
+            border: 1px solid $color_blanc;
         }
     }
 }

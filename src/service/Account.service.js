@@ -60,4 +60,13 @@ let getUser = () => {
 let updateUser = (user) => {
     return Axios.put('/api/v1/employe/update/' + user.mail +'?nom='+user.nom+'&prenom='+user.prenom+'&tel='+user.tel);
 }
-export const accountService = { addUser, loginGoogle, login, saveToken, addUserGoogle,logout, isLogged, getToken, getRole, getUser, getUserName,genrateToken, addCv, updateUser }
+
+let postuler= (id,body) => {
+    return Axios.post('/api/v1/employe/postuler/' + id,body);
+}
+
+let ajouterFavoris=(id)=>{
+    return Axios.post('/api/v1/employe/add-favoris?idAnnonce=' + id);
+}
+
+export const accountService = { addUser, loginGoogle, login, saveToken, addUserGoogle,logout, isLogged, getToken, getRole, getUser, getUserName,genrateToken, addCv, updateUser,postuler,ajouterFavoris }

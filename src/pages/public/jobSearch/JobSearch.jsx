@@ -1,7 +1,7 @@
 import React from 'react'
 import './jobSearch.scss'
 import { useEffect,useRef,useContext,useState} from 'react'
-import { annonceService } from "@service/index";
+import { accountService, annonceService } from "@service/index";
 import { Search,Annonce,SideBar, Buttun, Rechercher, Fenetre, Popup } from '@p-components/index';
 import { AnnonceContext } from "@context/Annonce";
 import { useParams } from 'react-router-dom';
@@ -58,9 +58,13 @@ useEffect(()=>{
    },[param.job])
   return (
     <div className='jobSearch'>
+     {accountService.isLogged()&&
+     
       <Fenetre ouvert={fenetreConsulterOuvert} handleClick={handleClickConsulter}>
+
           {selectedAnnonce&& <AnnonceDetails selectedAnnonce={selectedAnnonce} />}
-      </Fenetre>
+
+      </Fenetre>}
       <div className="search__grd">
         <div className='search__'>
           <Rechercher setSearch={setSearch} parent='job' />
