@@ -28,7 +28,7 @@ export default function FormInsEmployeur() {
     }
     const creationCompte=()=>{
 
-        setEtapeInscription(etapeInscription+1)
+        setEtapeInscription(2)
 
         accountService.addUser(user)
         .then(res=>{
@@ -52,7 +52,6 @@ export default function FormInsEmployeur() {
     function onsubmitGoogle(e){
         e.preventDefault();
         accountService.addUserGoogle(user).then(res=>{
-            accountService.saveToken(res.data.token)
             switch (user.role) {
                 case 'EMPLOYE': navigate('/employe/profile/' + accountService.getUserName()); break;
                 case 'EMPLOYEUR': navigate('/employeur/profile/' + accountService.getUserName()); break;
@@ -74,7 +73,7 @@ export default function FormInsEmployeur() {
         user.prenom=e.profileObj.givenName
         
         setUser({...user})
-        setEtapeInscription(2)
+        setEtapeInscription(3)
         console.log(user);
 
     }
@@ -135,6 +134,15 @@ export default function FormInsEmployeur() {
               
             break;
             case 2:
+                return (
+                    <div>
+                        <h1>votre compte a ete cree avec success veuillez valider votre compte avec avec le mail de confirmation </h1>
+                    </div>
+                )
+
+
+
+            case 3:
             return (
                 <div>
                      <div>

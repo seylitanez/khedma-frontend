@@ -32,6 +32,7 @@ let saveToken = (token) => {
 let logout = () => {
     localStorage.removeItem('token');
     Cookies.remove('token');
+    Cookies.remove('nextRotationAttemptTs');
 }
 let isLogged = () => {
     let token = localStorage.getItem('token');
@@ -61,8 +62,8 @@ let updateUser = (user) => {
     return Axios.put('/api/v1/employe/update/' + user.mail +'?nom='+user.nom+'&prenom='+user.prenom+'&tel='+user.tel);
 }
 
-let postuler= (id,body) => {
-    return Axios.post('/api/v1/employe/postuler/' + id,body);
+let postuler= (id) => {
+    return Axios.get('/api/v1/employe/postuler/' + id);
 }
 
 let ajouterFavoris=(id)=>{
