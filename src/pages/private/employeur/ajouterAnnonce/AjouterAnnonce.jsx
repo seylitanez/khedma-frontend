@@ -52,15 +52,13 @@ export default function AjouterAnnonce() {
                 <br />
                 <Input type="text" id="descriptionFr" name="descriptionFr" value={annonce.descriptionFr} onChange={onChange} requirede='required'>descriptionFr</Input>
                 <br />
-                <Input type="text" id="descriptionAr" name="descriptionAr" value={annonce.descriptionAr} onChange={onChange} requirede='required'>descriptionAr</Input>
-                <br />
                 <Input type="text" id="wilaya" name="wilaya" value={annonce.adresse.wilaya} onChange={onChange} requirede='required'>wilaya</Input>
                 <Input type="text" id="commune" name="commune" value={annonce.adresse.commune} onChange={onChange} requirede='required'>commune</Input>
                 <br />
-                <Buttun>send</Buttun>
+                <Buttun>Créer</Buttun>
                 <br />
             </form>
-            {success && <h1>success</h1>}
+            {success && <h1>Succès</h1>}
         </div>
     )
 }

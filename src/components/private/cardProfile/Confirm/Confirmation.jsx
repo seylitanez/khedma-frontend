@@ -7,7 +7,7 @@ export default function Confirmation({set,classn}) {
         <div className={"pop "+classn}>
             <div className="popups">
                 <div className="txt">
-                    <h3>Vous les vous confirmer la modification</h3>
+                    <h3>Vous les vous confirmer la modification ?</h3>
                 </div>
                 <div className="confirm">
                     <Buttun className="btn confirmer" onClick={() => set({ type:"confirm"})}>Confirmer</Buttun>

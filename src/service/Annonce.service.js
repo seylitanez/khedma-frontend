@@ -17,4 +17,7 @@ let addAnnonce=(annonce)=>{
 let annonceFavorie=(email)=>{
     return Axios.get('/api/v1/employe/favoris?email='+email)
 }
-export const annonceService = { getAnnonce, getAnnonceBySearch, addAnnonce, getAnnoncesBySearch, getAnnonces, annonceFavorie }
+let annoncePostules=()=>{
+    return Axios.get('/api/v1/employe/postulations')
+}
+export const annonceService = { getAnnonce, getAnnonceBySearch, addAnnonce, getAnnoncesBySearch, getAnnonces, annonceFavorie, annoncePostules }
