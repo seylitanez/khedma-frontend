@@ -153,7 +153,7 @@ export default function Header() {
                         <Link  to='/a_propos' >{a_propos}</Link>
                     </li>
                     {
-                        accountService.isLogged() ?
+                        accountService.isLogged() &&accountService.isValid()?
                             <>
                                 <div className="desco">
                                     {/* <FiLogOut size={20} className='prf' /> */}
@@ -172,7 +172,7 @@ export default function Header() {
 
             <div className='log'>
                 {
-                    accountService.isLogged()?
+                    accountService.isLogged() && accountService.isValid()?
                     <>
                         <div>
                             <div className="desco voir__annonces">
