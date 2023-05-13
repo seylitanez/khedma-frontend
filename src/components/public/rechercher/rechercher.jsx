@@ -32,7 +32,7 @@ export default function rechercher({ setSearch, parent }) {
                     setSearch(txtsearch)
                     nav('/jobSearch/'+txtsearch) 
                 }}>
-                    <FiSearch className='rechercher__recherche' size={20}/>
+                <FiSearch size={iconSize} className='rechercher__recherche'/>
                 </Buttun>
             </div>
         </form>

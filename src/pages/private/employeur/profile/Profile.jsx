@@ -4,10 +4,10 @@ import { useState, useEffect, useRef } from "react";
 import { userService } from "@service/index";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { CgProfile } from "react-icons/cg";
 import { Outlet } from "react-router-dom";
-import { BsList, BsListUl } from "react-icons/bs";
-import { GrAdd } from "react-icons/gr";
+import { FiLogOut } from 'react-icons/fi';
+import { accountService } from '@service/Account.service';
+import { BsFillPersonLinesFill, BsFillPersonFill, BsCalendarFill, BsCalendarPlusFill, BsFillCalendarPlusFill } from "react-icons/bs";
 
 export default function Profile() {
     const param = useParams();
@@ -18,32 +18,42 @@ export default function Profile() {
             .then((res) => setUser(res.data))
             .catch((err) => console.log(err));
     }, []);
+    const deconnection = () => {
+        accountService.logout();
+    }
     return (
         <div>
             <div className="profile_employeur">
                 <div className="sidebar">
                     <div className="sidebar__item">
-                        <CgProfile size={20} className="prf" />
-                        <Link to={param.nomUtilisateur}>Profile</Link>
+                        <BsFillPersonFill size={20} className="prf" />
+                        <Link to={param.nomUtilisateur}>Mon profile</Link>
                     </div>
                     <div className="sidebar__item">
-                        <BsListUl size={20} className="prf" />
+                        <BsCalendarFill size={20} className="prf" />
                         <Link to={param.nomUtilisateur + "/listAnnonce"}>
-                            listAnnonce
+                            Liste des annonces
                         </Link>
                     </div>
                     <div className="sidebar__item">
-                        <GrAdd size={20} className="prf" />
+                        <BsCalendarPlusFill size={20} className="prf"/>
                         <Link to={param.nomUtilisateur + "/ajouterAnnonce"}>
-                            AjouterAnnonce
+                            Ajouter une annonce
                         </Link>
                     </div>
                     <div className="sidebar__item">
-                        <BsList size={20} className="prf" />
+                        <BsFillPersonLinesFill size={20} className="prf"/>
                         <Link to={param.nomUtilisateur + "/listPostulent"}>
-                            List Postulent
+                            List des postulants
                         </Link>
                     </div>
+                    <div className="sidebar__item">
+                        <FiLogOut size={20} className='prf' /> 
+                        <Link to={"/home"} onClick={deconnection}>
+                            Se déconnecter
+                        </Link>
+                    </div>
+
                 </div>
                 <main className="main">
                     <Outlet />

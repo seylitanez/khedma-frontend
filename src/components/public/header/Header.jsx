@@ -101,7 +101,7 @@ export default function Header() {
                 <ul className='menu'>
                     <li><div className={className[0]}><Link  to='/home' >{accueil}</Link></div></li>
                     <li><div className={className[1]}><Link  to='/jobSearch' >{trouver_emploi}</Link></div></li>
-                    {/* <li><div className={className[2]}><Link  to='/blog' >{blog}</Link></div></li> */}
+            
                     <li><div className={className[3]}><Link  to='/a_propos' >{a_propos}</Link></div></li>
                 </ul>
             </nav>
@@ -143,7 +143,7 @@ export default function Header() {
                 {
                     accountService.isLogged()?
                     <div className="desco">
-                    <FiLogOut size={20} className='prf' />
+                    {/* <FiLogOut size={20} className='prf' /> */}
                     <Link to="/home" onClick={deconnection}>Se déconnecter</Link>
                         <GoogleLogout className='out-google' clientId={"96654489585-9kfrhk9jgeq4nodccs7tg0lagl1hq6uj.apps.googleusercontent.com"} buttonText={"se deconnecter"} onLogoutSuccess={()=>{console.log("vous vous etes deconnecte avec success");}} />
                     </div>
@@ -163,6 +163,7 @@ export default function Header() {
                 <Fenetre ouvert={loginOvert}  handleClick={handleClickLogin}>
                     <Login setInscripOuvert={setInscripOuvert} setLoginOvert={setLoginOvert}/>
                 </Fenetre>
+                
                 <Popup type={"inscription"}  />
                 <Popup type={"details"} annonce={popupConsulterDetails} />
                 <Popup type={"role"}/> 

@@ -1,43 +1,59 @@
 .profile_employeur {
+    height: 100vh;
+    width: 100vw;
     display: flex;
     background-color: $color_gris;  
     & .sidebar {
-        background-color: $color_blanc;
+        background-color: white;
         position: fixed;
         height: 100vh;
-        padding-top: 80px;
+        padding-top: 100px;
         width: 300px;
         display: flex;
         flex-direction: column;
+        align-items: center;
         & .sidebar__item {
+            padding: 4px 16px;
+            width: 90%;
+            height: 52px;
             display: flex;
-            width: 100%;
-            height: 60px;
-            vertical-align: middle;
-            padding: 10px 20px;
+            justify-content: left;
             align-items: center;
-            justify-content: center;
-            font-size: 20px;
+            vertical-align: middle;
+            font-size: 18px;
             font-weight: 600;
             cursor: pointer;
+            margin-bottom: 12px;
+            transition: .6s;
+
+            & svg {
+                margin-top: 2px;
+                color: $color_bleu;
+                margin-right: 20px;
+            }
 
             & a {
-                margin-left: 10px;
-                text-decoration: none;
                 color: $color_noir;
-            }
-
-            & .fav {
-                color: red;
-            }
-
-            & .prf {
-                color: $color_bleu;
+                text-decoration: none;
             }
 
             &.active {
                 background-color: $color_gris;
                 color: $color_blanc;
+            }
+        }
+
+        & .sidebar__item:hover, .sidebar__item:focus{
+            border-radius: 4px;
+            transition: .6s;
+            background-color: $color_bleu;
+
+            & a {
+                color: white;
+            }
+
+            & svg {
+                color: white;
             }
         }
     }

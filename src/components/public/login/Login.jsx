@@ -82,7 +82,7 @@ export default function Login({setLoginOvert,setInscripOuvert}) {
         
     }
     function onFailure(e){
-        console.log("veuillez creer un compte d'abord");
+        console.log("Veuillez créer un compte d'abord.");
     }
 
     return (

@@ -1,5 +1,8 @@
 $color_8b:#8B8B8B;
 
+#male {
+    margin-right: 14px;
+}
 .form{
 
     display: flex;
@@ -44,12 +47,12 @@ $color_8b:#8B8B8B;
         }
         
         & #nom{
-            width: 21%;
+            width: 24%;
             
         }
         & #prenom{
             margin-left: 10px;
-            width: 21%;
+            width: 24%;
         }
     }
 

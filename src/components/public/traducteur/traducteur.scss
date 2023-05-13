@@ -2,15 +2,15 @@
     position : fixed;
     top : 75vh;
     width: 340px;
-    height: 60px;
+    height: 50px;
     left : 0;
     display : flex;
     align-items: center;
     justify-content: space-around;
-    padding: 40px 8px;
+    padding: 36px 6px;
     background-color: $color_bleu;
-    border-top-right-radius: 60px;
-    border-bottom-right-radius: 60px ;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px ;
     z-index: 3;
     transition: .8s;
 
