@@ -5,12 +5,12 @@ import { useContext } from 'react'
 import { Buttun } from '@p-components/index'
 import { PopupContext } from '@context/PopupContext'
 
-export default function Annonce({ annonce }) {
+export default function Annonce({ annonce,setFenetreConsulterOuvert,setSelectedAnnonce }) {
     const { nom, descriptionFr, adresse, categorie, sousCategorie, salaireDeBase, journees, date } = annonce
     let [cote, setCote] = useState({ transform: "rotateY(0deg)", transition: '1s' })
     let jourPublication = new Date(Date.now()).getDate() - new Date(date).getDate()
-
-    const { setPopupConsulterDetails, setShowPopupConsulter } = useContext(PopupContext)
+    
+    
 
     function annonceFlip(e) {
         if (e.target.innerText != "CONSULTER")
@@ -37,7 +37,7 @@ export default function Annonce({ annonce }) {
 
                 <br />
                 {/* je prefere consulter au lieu de postuler */}
-                <Buttun className='btn__postuler' onClick={() => { setShowPopupConsulter(true); setPopupConsulterDetails(annonce) }}>
+                <Buttun className='btn__postuler' onClick={() => {setFenetreConsulterOuvert(true); setSelectedAnnonce(annonce); }}>
                     CONSULTER
                 </Buttun>
                 <br />

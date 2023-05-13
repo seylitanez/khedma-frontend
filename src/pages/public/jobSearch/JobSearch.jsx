@@ -6,6 +6,7 @@ import { Search,Annonce,SideBar, Buttun, Rechercher, Fenetre, Popup } from '@p-c
 import { AnnonceContext } from "@context/Annonce";
 import { useParams } from 'react-router-dom';
 import { PopupContext } from '@context/PopupContext';
+import AnnonceDetails from '@p-components/annonce/AnnonceDetails';
 
 export default function JobSearch() {
   function selectPage(index) {
@@ -17,7 +18,14 @@ export default function JobSearch() {
   const [page,setPage]=useState([[]])
   const {showPopup,setShowPop}=useContext(PopupContext)
   const [nbrPage,setNbrPage]=useState(0)
+  const [fenetreConsulterOuvert, setFenetreConsulterOuvert] = useState(false);
+  const [selectedAnnonce, setSelectedAnnonce] = useState();
+
   const param=useParams() 
+
+  const handleClickConsulter = () => {
+    setFenetreConsulterOuvert(actuel => !actuel);
+  }
   useEffect(()=>{
     if (param.job==undefined) {
       annonceService.getAnnonces()
@@ -50,15 +58,16 @@ useEffect(()=>{
    },[param.job])
   return (
     <div className='jobSearch'>
-      <Popup />
-      <Fenetre ouvert={true}/>
+      <Fenetre ouvert={fenetreConsulterOuvert} handleClick={handleClickConsulter}>
+          {selectedAnnonce&& <AnnonceDetails selectedAnnonce={selectedAnnonce} />}
+      </Fenetre>
       <div className="search__grd">
         <div className='search__'>
           <Rechercher setSearch={setSearch} parent='job' />
         </div>
       </div>
       <div className="list">
-         {page[nbrPage].length!==0? page[nbrPage].map((annonce,key)=><Annonce annonce={annonce} key={key} setShowPop={setShowPop}/>):<h1>aucun resultat</h1>}
+         {page[nbrPage].length!==0? page[nbrPage].map((annonce,key)=><Annonce annonce={annonce} key={key} setFenetreConsulterOuvert={setFenetreConsulterOuvert} setSelectedAnnonce={setSelectedAnnonce}/>):<h1>aucun resultat</h1>}
       </div>
       <div className='pagination'>{page.map((btn,index)=>
       nbrPage == index?
