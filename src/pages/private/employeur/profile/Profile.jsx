@@ -8,6 +8,7 @@ import { Outlet } from "react-router-dom";
 import { FiLogOut } from 'react-icons/fi';
 import { accountService } from '@service/Account.service';
 import { BsFillPersonLinesFill, BsFillPersonFill, BsCalendarFill, BsCalendarPlusFill, BsFillCalendarPlusFill } from "react-icons/bs";
+import { GoogleLogout } from "react-google-login";
 
 export default function Profile() {
     const param = useParams();
@@ -18,6 +19,24 @@ export default function Profile() {
             .then((res) => setUser(res.data))
             .catch((err) => console.log(err));
     }, []);
+
+
+    const dec = () => {
+        accountService.logout();
+        const go = document.querySelector(".out-google")//.contentWindow.document.querySelector(span)
+        go.click()
+        if (window.gapi) {
+            const auth2 = window.gapi.auth2.getAuthInstance()
+            if (auth2 != null) {
+                auth2.signOut().then(
+                    auth2.disconnect().then(this.props.onLogoutSuccess)
+                )
+            }
+        }
+    }
+
+
+
     const deconnection = () => {
         accountService.logout();
     }

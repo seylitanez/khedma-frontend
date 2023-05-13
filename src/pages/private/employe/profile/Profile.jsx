@@ -9,6 +9,7 @@ import { Outlet ,Link,useParams } from 'react-router-dom';
 import { BsCardChecklist } from 'react-icons/bs';
 import { accountService } from '@service/Account.service';
 import { BsFillPersonLinesFill, BsFillPersonFill, BsCalendarFill, BsCalendarPlusFill, BsFillCalendarPlusFill } from "react-icons/bs";
+import { GoogleLogout } from 'react-google-login';
 
 export default function Profile() {
     const param=useParams();
@@ -24,6 +25,10 @@ export default function Profile() {
             flg.current = true;
         }
     }, [])
+
+
+    
+
     // const deconnection = () => {
     //     accountService.logout();
     // }
@@ -33,6 +38,7 @@ export default function Profile() {
                 <Header/>
             </div>
             <div className="sidebar">
+
                 <div className="sidebar__item">
                     <BsFillPersonFill size={20} className='prf'/>    
                     <Link to={param.nomUtilisateur} >Profile</Link>
