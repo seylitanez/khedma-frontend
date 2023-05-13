@@ -3,6 +3,7 @@ import { Annonce } from '@p-components'
 import './jobSearch.scss'
 import { useState, useEffect, useRef } from 'react'
 import { annonceService } from '@service/Annonce.service'
+import { Fenetre } from '@p-components/index'
 
 export default function JobSearch() {
     const [annonces, setAnnonces] = useState([])
@@ -24,6 +25,7 @@ export default function JobSearch() {
 
             </div>
             <div className="list">
+                
                 {annonces.map((annonce, key) => <Annonce annonce={annonce} key={key} />)}
             </div>
         </div>

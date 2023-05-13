@@ -72,6 +72,7 @@ export default function Home() {
     }, []);
     return (
         <main className="home">
+            
             <div className="img">{images[index].image}</div>
             <div className="left">
                 <h1 className="notranslate">{titre}</h1>

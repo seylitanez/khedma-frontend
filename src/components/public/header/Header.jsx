@@ -158,6 +158,7 @@ export default function Header() {
                 <Fenetre ouvert={inscripOuvert}  handleClick={handleClickInscrip}>
                     {contenuFentre}
                 </Fenetre>
+
                 
                 <Fenetre ouvert={loginOvert}  handleClick={handleClickLogin}>
                     <Login setInscripOuvert={setInscripOuvert} setLoginOvert={setLoginOvert}/>
