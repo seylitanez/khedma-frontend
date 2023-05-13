@@ -1,8 +1,8 @@
 // pour numeros de telephones fixes et mobiles
-const regexNumTelephone = /^(?:\+213|0)[75263]\d{8}$/;
+const regexNumTelephone = /^(05|06|07|03|\+2135|\+2136|\+2137|\+21353)[0-9]{8}$/;
 
 // pour noms propres
-const regexNom = /^[a-zA-Z-]+$/;
+const regexNom = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/;
 
 // pour les adresses mail
 const regexMail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
