@@ -59,8 +59,12 @@ header {
             }
         }
     }
+
+    & .log * {
+        margin: 0 8px;
+    }
     & .log {
-        width: 300px;
+        width: fit-content;
         & div {
             display: flex;
             justify-content: space-between;
@@ -100,6 +104,34 @@ header {
                 border: 2px solid $color_rouge;
                 & a {
                     color: $color_rouge;
+                }
+            }
+            &:active {
+                @include btn__active();
+            }
+        }
+        & .voir__annonces {
+            @include btn($color_bleu, $color_blanc);
+            border: 2px solid $color_bleu;
+            &:hover {
+                @include btn($color_blanc, $color_bleu);
+                border: 2px solid $color_bleu;
+                & a {
+                    color: $color_bleu;
+                }
+            }
+            &:active {
+                @include btn__active();
+            }
+        }
+        & .mon__profile {
+            @include btn($color_oronge, $color_blanc);
+            border: 2px solid $color_oronge;
+            &:hover {
+                @include btn($color_blanc, $color_oronge);
+                border: 2px solid $color_oronge;
+                & a {
+                    color: $color_oronge;
                 }
             }
             &:active {
