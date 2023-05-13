@@ -10,7 +10,6 @@
     align-items: center;
     z-index: 4;
     // display: none;
-
     & .fenetre__visible {
         border-radius: 12px;
         height: max-content;
@@ -46,5 +45,6 @@
     .fenetre__visible {
         height: 70vh;
         width: 90vw;
+        overflow-y: scroll;
     }
 }
