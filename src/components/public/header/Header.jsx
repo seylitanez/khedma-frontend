@@ -128,7 +128,7 @@ export default function Header() {
                             <div className="desco">
                                 <FiLogOut size={20} className='prf' />
                                 <Link to="/home" className='mobile__auth' onClick={deconnection}>Se déconnecter</Link>
-                                <GoogleLogout className='out-google' clientId={"96654489585-9kfrhk9jgeq4nodccs7tg0lagl1hq6uj.apps.googleusercontent.com"} buttonText={"se deconnecter"} onLogoutSuccess={()=>{console.log("vous vous etes deconnecte avec success");}} />
+                                <GoogleLogout  className='out-google' clientId={"96654489585-9kfrhk9jgeq4nodccs7tg0lagl1hq6uj.apps.googleusercontent.com"} buttonText={"se deconnecter"} onLogoutSuccess={()=>{console.log("vous vous etes deconnecte avec success");}} />
                             </div>
                             :
                             <>
