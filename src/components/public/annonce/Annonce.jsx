@@ -15,7 +15,7 @@ export default function Annonce({ annonce,setFenetreConsulterOuvert,setSelectedA
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
     const diffMonths = (date2.getMonth() + 1) - (date1.getMonth() + 1);
     const diffYears = date2.getFullYear() - date1.getFullYear();
-   let choix = '';
+    let choix = '';
     let diff = 0;
     if (diffYears >=1) {
     choix = 'annees';

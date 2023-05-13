@@ -13,7 +13,8 @@ Axios.interceptors.response.use(response => {
     if (error.response.status === 401) {
         accountService.logout()
         window.location = '/'
-    } else return Promise.reject(error)
+    } else 
+    return Promise.reject(error)
 }
 )
 export default Axios;

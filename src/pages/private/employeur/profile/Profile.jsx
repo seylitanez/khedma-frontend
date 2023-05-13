@@ -47,12 +47,12 @@ export default function Profile() {
                             List des postulants
                         </Link>
                     </div>
-                    <div className="sidebar__item">
+                    {/* <div className="sidebar__item">
                         <FiLogOut size={20} className='prf' /> 
                         <Link to={"/home"} onClick={deconnection}>
                             Se déconnecter
                         </Link>
-                    </div>
+                    </div> */}
 
                 </div>
                 <main className="main">
