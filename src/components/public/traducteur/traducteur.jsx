@@ -19,8 +19,9 @@ export default function Traducteur() {
     const [ouvert, setOuvert] = useState(false);
 
     const handleClick = () => {
-        setOuvert(actuel => !actuel);        
-    };
+        setOuvert(actuel => !actuel);   
+        if (ouvert) close()
+    }
     const close =()=> {
         let btn = document.querySelector(".VIpgJd-ZVi9od-ORHb-OEVmcd").contentWindow.document.querySelector(".VIpgJd-ZVi9od-TvD9Pc-hSRGPd");
         btn.click()

@@ -1,7 +1,8 @@
 import React from 'react'
-import { Annonce } from "@p-components/index"
 import { userService } from "@service/index";
 import { useEffect, useState } from 'react';
+import { Postulon } from '@pr-components/index';
+import { Annonce } from '@p-components/index';
 
 export default function Postulats() {
     const [user, setUser] = useState({})
@@ -12,7 +13,12 @@ export default function Postulats() {
     }, [])
     return (
         <div>
-            {(user.postulants != null) && user.postulants.map((annonce, key) => <Annonce annonce={annonce} key={key} />)}
+            {(user.annonces!=null)&& user.annonces.map((annonce, key) =>(
+                <>
+                <p key={key}>anonce</p>
+                 {(annonce.postulants != null) && annonce.postulants.map((annonce, key) => <Postulon Postulon={annonce} key={key} />)}<br />
+                </>
+            ))}
         </div>
     )
 }
