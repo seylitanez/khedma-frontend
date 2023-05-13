@@ -7,6 +7,7 @@ import { Buttun, Input } from '@p-components/index';
 import { PopupContext } from '@context/PopupContext';
 import GLogin from '@p-components/login/GLogin';
 import { FormulaireContext } from '@context/FormulaireContext';
+import { Validator } from '@service/Validator.service';
 
 
 export default function FormInsEmployeur() {
@@ -43,7 +44,9 @@ export default function FormInsEmployeur() {
 
     const onsubmit=(e)=>{
         e.preventDefault();
+        if(Validator.etape1IsValid(user)){
         creationCompte()
+        }
     }
 
     function onsubmitGoogle(e){
