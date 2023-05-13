@@ -1,4 +1,4 @@
-import React,{ useContext,useEffect,useState } from 'react'
+import React,{ useContext,useEffect,useRef,useState } from 'react'
 import {LangueContext} from "@context/langue";
 import { MdAccountCircle } from "react-icons/md";
 import "./login.scss"
@@ -7,6 +7,7 @@ import { accountService } from '@service/Account.service';
 import { Buttun, Input } from '@p-components/index';
 import GLogin from './GLogin';
 import { PopupContext } from '@context/PopupContext';
+import { gapi } from 'gapi-script';
 function useAnim(className) {
     const [anim,setAnim]=useState(className);
     const setActive=(e)=>{
@@ -35,16 +36,21 @@ export default function Login({setLoginOvert,setInscripOuvert}) {
     const onChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value })
     }
+    const log=useRef(false);
     useEffect(()=>{
-        function start(){
-          gapi.client.init({
-            clientId:"96654489585-9kfrhk9jgeq4nodccs7tg0lagl1hq6uj.apps.googleusercontent.com",
-            scope:""
-          })
+        if (!log.current) {
+            function start(){
+            gapi.client.init({
+                clientId:"96654489585-9kfrhk9jgeq4nodccs7tg0lagl1hq6uj.apps.googleusercontent.com",
+                scope:""
+            })
+            }
+            gapi.load('client:auth2',start);
         }
-    
-        gapi.load('client:auth2',start);
-      })
+        return () => {
+            log.current = true;
+        }
+    })
     const navigate = useNavigate()
     const sub = (e) => {
         e.preventDefault()
@@ -61,14 +67,12 @@ export default function Login({setLoginOvert,setInscripOuvert}) {
     }
 
     function onSuccess(e){
-        console.log(e);
         // const SECONDES=120
         
         const googleUser=e.profileObj;
         const token=accountService.genrateToken(googleUser)//le token est constitue de l'objetgoogle(email,username,id,img,...)
         accountService.loginGoogle({token:token})
             .then(res=>{
-                console.log(res.data);
                 accountService.saveToken(res.data.token)
                 switch (accountService.getRole()) {
                     case 'EMPLOYE': navigate('/employe/profile/'+accountService.getUserName());break;

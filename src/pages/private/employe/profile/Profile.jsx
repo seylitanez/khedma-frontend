@@ -25,9 +25,9 @@ export default function Profile() {
             flg.current = true;
         }
     }, [])
-    const deconnection = () => {
-        accountService.logout();
-    }
+    // const deconnection = () => {
+    //     accountService.logout();
+    // }
     return (
         <div className='profile_employe'>
             <div className="nav">
@@ -46,10 +46,10 @@ export default function Profile() {
                     <BsCardChecklist size={20} className='prf'/>    
                     <Link to={param.nomUtilisateur+'/postuler'}>Postulations</Link>
                 </div>
-                <div className="sidebar__item">
+                {/* <div className="sidebar__item">
                     <FiLogOut size={20} className='prf' /> 
                     <Link to={"/home"} onClick={deconnection}>Se déconnecter</Link>
-                </div>
+                </div> */}
             </div>
             <main className="main">
                 <Outlet/>
