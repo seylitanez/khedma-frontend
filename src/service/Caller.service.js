@@ -14,6 +14,7 @@ Axios.interceptors.response.use(response => {
         // accountService.logout()
         // window.location = '/'
         accountService.logout()
+        window.location = '/'
     } else return Promise.reject(error)
 }
 )
