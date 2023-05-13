@@ -48,8 +48,7 @@ let getUserName = () => {
     return jwt_decode(getToken()).username;
 }
 let isValid=()=>{
-
-    if(getToken()) return jwt_decode(getToken()).valid;
+    return isLogged? jwt_decode(getToken()).valid:false;
 }
 let genrateToken=(information)=>{
     const ALGO="HS256"
