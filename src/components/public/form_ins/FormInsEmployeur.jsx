@@ -106,7 +106,7 @@ export default function FormInsEmployeur() {
                         <Input type="entreprise" id="entreprise" placeholder='entreprise' name="entreprise" value={user.entreprise} onChange={onchange}/>
                     </div>
                     <div className={"ins__group "}>
-                        <Input type="tel" id="tel" placeholder='numero de tel' name="numeroTel" value={user.numeroTel} onChange={onchange}/>
+                        <Input type="tel" id="tel" placeholder='numero de tel' name="tel" value={user.tel} onChange={onchange}/>
                     </div>
                     <div className={"ins__group "}>
                         <Input type="commune" id="commune" placeholder='commune' name="commune" value={user.adresse.commune} onChange={onchange}/>
