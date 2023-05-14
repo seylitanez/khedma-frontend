@@ -6,7 +6,7 @@ import { BsSaveFill } from 'react-icons/bs';
 import { accountService } from '@service/Account.service';
 import { Link } from 'react-router-dom';
 export default function CardCV() {
-    const value={
+    const value = {
         boul: false,
         button: {
             icone: <MdEdit className="pen" />,
@@ -14,11 +14,14 @@ export default function CardCV() {
         },
     }
 
+    console.log("test");
+
     const [user, setUser] = useState({})
     const [pathCv, setPathCv] = useState("")
     let formData = new FormData();
-    const [ext,setExt]=useState("")
-    const [fichier,setFichier]=useState()
+    const [ext, setExt] = useState("")
+    const [fichier, setFichier] = useState()
+    const [change, setChange] = useState(false)
 
 
     useEffect(() => {
@@ -27,18 +30,20 @@ export default function CardCV() {
                 console.log(res.data)
                 setUser(res.data)
                 console.log(res.data.id)
-    
+
             })
             .catch(err => console.log(err))
         accountService.getUserCv().then(res => {
             console.log(res.data)
             setPathCv(res.data)
         }).catch(err => console.log(err))
-    }, [fichier])
+    }, [change])
 
-    const changes=(state,action)=>{
+
+
+    const changes = (state, action) => {
         switch (action.type) {
-            case "edit": 
+            case "edit":
                 if (!state.boul) return {
                     ...state, boul: true,
                     button: {
@@ -46,28 +51,30 @@ export default function CardCV() {
                         text: "Enregistrer",
                     }
                 }
-                else{ 
+                else {
                     if (ext == "pdf" || ext == "png" || ext == "jpeg" || ext == "jpg") {
                         formData.set("file", fichier, "cv." + ext)
                         accountService.addCv(formData);
+                        setChange(c => !c)
                         console.log(e);
                     }
                     else {
-                        console.log("l'extention est"+ ext);
+                        console.log("l'extention est" + ext);
                         console.log("Format du fichier non supporté");
                     }
                     return {
-                    ...state, boul: false,
-                    button: {
-                        icone: <MdEdit className="pen" />,
-                        text: "Modifier",
+                        ...state, boul: false,
+                        button: {
+                            icone: <MdEdit className="pen" />,
+                            text: "Modifier",
+                        }
                     }
-                }}
+                }
         }
     }
-    
+
     function filtreFichier(fich, nomFich) {
-        let extension ;
+        let extension;
         const fichier = fich
         setFichier(fichier)
         const nomFichier = nomFich
@@ -78,12 +85,13 @@ export default function CardCV() {
         if (nomFichier.includes('.')) {
             // extension = nomFichier.split(".").at(-1);
             console.log(extension);
-            setExt(e=>e=nomFichier.split(".").at(-1))
+            setExt(e => e = nomFichier.split(".").at(-1))
         }
         else {
             console.log("Fichier sans extension");
         }
     }
+
     const onchangeFile = (e) => {
         //recuperation du fichier et de son nom
         const fichier = e.target.files[0]
@@ -95,14 +103,14 @@ export default function CardCV() {
         <div className="card_cv">
             <div className="info">
                 <h3>Mon CV</h3>
-                <Buttun className="edit" onClick={() => setElement({type:"edit"})}>{element.button.icone}{element.button.text}</Buttun>
+                <Buttun className="edit" onClick={() => setElement({ type: "edit" })}>{element.button.icone}{element.button.text}</Buttun>
             </div>
             <div className="specialite">
                 <h4>Devlopment</h4>
             </div>
             <div className="experience">
                 <div className="piece">
-                    <p>Piece jointe: {element.boul ? <Input type="file" placeholder="cv" onChange={onchangeFile} icone={MdOutlineFileUpload} /> : <Link to={`http://localhost:9630/${pathCv}`} className="clr">{"mon CV"}</Link>}</p>
+                    <p>Piece jointe: {element.boul ? <Input type="file" placeholder="cv" onChange={onchangeFile} icone={MdOutlineFileUpload} /> : <a href={`http://localhost:9630/${pathCv}`} className="clr" target={"_blank"}>{"mon CV"}</a>}</p>
                 </div>
                 <div className="visible">
                     <p>Visible pour les recruteurs: <span className="clr">visible</span></p>
