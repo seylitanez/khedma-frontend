@@ -1,7 +1,7 @@
 import axios from "axios";
 import { accountService } from "./Account.service";
 
-const Axios = axios.create({ proxy:"http://localhost:9630"})
+const Axios = axios.create({ proxy:"https://khedma-backend-production.up.railway.app"})
 Axios.interceptors.request.use(request => {
     if (accountService.isLogged()) request.headers.Authorization = 'Bearer ' + accountService.getToken();
     if (request.url.includes('/api/v1/auth/fich')) request.headers['Content-Type'] = 'multipart/form-data';
