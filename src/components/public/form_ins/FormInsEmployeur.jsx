@@ -26,20 +26,26 @@ export default function FormInsEmployeur() {
         }
         setUser({...user,[e.target.name]:e.target.value})
     }
+
+
     const creationCompte=()=>{
 
-        setEtapeInscription(2)
-
+        
+        console.log("mmmmmmmm");
+        console.log(user.motDePasse);
+        console.log(user.motDePasseC);
+        Validator.etape1IsValid(user)
+        if (user.motDePasse===user.motDePasseC) {
         accountService.addUser(user)
         .then(res=>{
-            accountService.saveToken(res.data.token)
-            switch (user.role) {
-                case 'EMPLOYE': navigate('/employe/profile/' + accountService.getUserName()); break;
-                case 'EMPLOYEUR': navigate('/employeur/profile/' + accountService.getUserName()); break;
-                case 'MODERATEUR': navigate('/moderateur'); break;
-            }
         })
+
         .catch(err=>console.log(err))
+        setEtapeInscription(etapeInscription+1)
+        }else{
+            console.log("mot de passe non identique");
+        }
+
     }
 
     const onsubmit=(e)=>{
@@ -112,7 +118,7 @@ export default function FormInsEmployeur() {
                     <Input type="password" id='mdp' name="motDePasse" placeholder="mot de passe" value={user.motDePasse} onChange={onchange}/>
                     </div>
                     <div className={"ins__group "}>
-                        <Input type="password" id='rmdp' name="motDePasse" placeholder="confirmer le mot de passe" value={passwordConfirmation} onChange={(e)=>{setPasswordConfirmation(e.target.value)}}/>
+                        <Input type="password" id='rmdp' name="motDePasseC" placeholder="confirmer le mot de passe" value={user.motDePasseC} onChange={onchange}/>
                     </div>
 
                     <br />
