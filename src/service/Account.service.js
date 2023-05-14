@@ -61,6 +61,9 @@ let genrateToken=(information)=>{
 let getUser = () => {
     return Axios.get('/api/v1/me');
 }
+let getUserCv = () => {
+    return Axios.get('/api/v1/me/monCv');
+}
 let updateUser = (user) => {
     return Axios.put('/api/v1/employe/update/' + user.mail +'?nom='+user.nom+'&prenom='+user.prenom+'&tel='+user.tel);
 }
@@ -73,4 +76,4 @@ let ajouterFavoris=(id)=>{
     return Axios.get('/api/v1/employe/add-favoris?idAnnonce=' + id);
 }
 
-export const accountService = { addUser, loginGoogle, login, saveToken, addUserGoogle,logout, isLogged, getToken, getRole, getUser, getUserName,genrateToken, addCv, updateUser,postuler,ajouterFavoris,isValid }
+export const accountService = { addUser, loginGoogle, login, saveToken, addUserGoogle,logout, isLogged, getToken, getRole, getUser,getUserCv, getUserName,genrateToken, addCv, updateUser,postuler,ajouterFavoris,isValid }

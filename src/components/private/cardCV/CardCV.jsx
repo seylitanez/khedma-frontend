@@ -15,6 +15,11 @@ export default function CardCV() {
     }
 
     const [user, setUser] = useState({})
+    const [pathCv, setPathCv] = useState("")
+    let formData = new FormData();
+    const [ext,setExt]=useState("")
+    const [fichier,setFichier]=useState()
+
 
     useEffect(() => {
         accountService.getUser()
@@ -25,7 +30,11 @@ export default function CardCV() {
     
             })
             .catch(err => console.log(err))
-    }, [])
+        accountService.getUserCv().then(res => {
+            console.log(res.data)
+            setPathCv(res.data)
+        }).catch(err => console.log(err))
+    }, [fichier])
 
     const changes=(state,action)=>{
         switch (action.type) {
@@ -56,9 +65,6 @@ export default function CardCV() {
                 }}
         }
     }
-    let formData = new FormData();
-    const [ext,setExt]=useState("")
-    const [fichier,setFichier]=useState()
     
     function filtreFichier(fich, nomFich) {
         let extension ;
@@ -96,7 +102,7 @@ export default function CardCV() {
             </div>
             <div className="experience">
                 <div className="piece">
-                    <p>Piece jointe: {element.boul ? <Input type="file" placeholder="cv" onChange={onchangeFile} icone={MdOutlineFileUpload} /> : <Link to={`http://localhost:9630/images/${user.id}/cv`} className="clr">{"mon CV"}</Link>}</p>
+                    <p>Piece jointe: {element.boul ? <Input type="file" placeholder="cv" onChange={onchangeFile} icone={MdOutlineFileUpload} /> : <Link to={`http://localhost:9630/${pathCv}`} className="clr">{"mon CV"}</Link>}</p>
                 </div>
                 <div className="visible">
                     <p>Visible pour les recruteurs: <span className="clr">visible</span></p>
