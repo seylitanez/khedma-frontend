@@ -7,7 +7,7 @@ const Journees = ({journees}) => {
     const [classe, setClasse] = useState('journee');
 
     const updateClassName = () => {
-      setClassName((prevClassName) => classe += {prevClassName} );
+        setClassName((prevClassName) => setClasse(c => c +  prevClassName ) );
     };
 
     let pJournees = [
@@ -45,3 +45,4 @@ const Journees = ({journees}) => {
     </div>
     );
 };
+export default Journees;
