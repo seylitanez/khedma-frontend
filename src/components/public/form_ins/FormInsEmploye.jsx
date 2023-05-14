@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./formins.scss";
 import { useContext,useState } from 'react';
 import { accountService } from "@service";
@@ -68,13 +68,20 @@ export default function FormInsEmploye({type,etapeEmpploye,etapeEmpployeur,setEt
             setUser({...user,adresse:{...user.adresse, [e.target.name]: e.target.value}})
         }
         setUser({...user,[e.target.name]:e.target.value})
+
+        console.log({...user});
     }
     const checkPassword=e=>{
-        if (e.target.id==="rmdp" ) setpsw(e.target.value)
-        if (e.target.id==="mdp" ) setpswd(e.target.value)
-        if (psw===pswd) onchange(e)        
+        // if (psw===pswd) onchange(e)        
+        // if (e.target.id==="rmdp" ) setpsw(e.target.value)
+        // if (e.target.id==="mdp" ) setpswd(e.target.value)
+
     }
 
+    useEffect(() => {
+
+        
+    }, [user])
 
     const creationCompte=()=>{
 
@@ -95,7 +102,9 @@ export default function FormInsEmploye({type,etapeEmpploye,etapeEmpployeur,setEt
 
     const onsubmit=(e)=>{
         e.preventDefault();
-        creationCompte()
+        if (user.motDePasse===user.motDePasseC) {
+            creationCompte()
+        }
     }
 
     function onSuccess(e){
@@ -180,10 +189,10 @@ export default function FormInsEmploye({type,etapeEmpploye,etapeEmpployeur,setEt
             <form className='form' onSubmit={onsubmit}>
                 <h2>parametres du compte</h2>
                 <div className={"ins__group "}>
-                    <Input type="password" id='mdp' name="motDePasse" placeholder="mot de passe" value={pswd} onChange={checkPassword}/>
+                    <Input type="password" id='mdp' name="motDePasse" placeholder="mot de passe" value={user.motDePasse} onChange={onchange}/>
                 </div>
                 <div className={"ins__group "}>
-                    <Input type="password" id='rmdp' name="motDePasse" placeholder="confirmer le mot de passe" value={psw} onChange={checkPassword}/>
+                    <Input type="password" id='rmdp' name="motDePasseC" placeholder="confirmer le mot de passe" value={user.motDePasseC} onChange={onchange}/>
                 </div>
             </form>
                     <div className='ins__group__suivant__precedent'>
