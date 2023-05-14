@@ -1,0 +1,36 @@
+.creer {
+    cursor: pointer;
+    background-color: $color_bleu;
+    border-radius: 3px;
+    border: none;
+    font-size: 16px;
+    padding: 10px 36px;
+    color: white;
+    transition: .4s;
+}
+
+.creer:hover {
+    background-color: $color_oronge;
+}
+
+ul {
+    list-style: none;
+}
+
+.ajout__grp{
+    margin-top: 10px;
+    width: fit-content;
+    margin-bottom: 10px;
+    & Input{
+        border-radius: 10px;
+        border: none;
+        height: 25px;
+        box-shadow: 0 0 1px black;
+        padding: 10px;
+        
+        &:hover{
+            box-shadow: 0 0 0px 1px $color_bleu;
+        }
+        
+    }
+}

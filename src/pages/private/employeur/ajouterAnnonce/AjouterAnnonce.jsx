@@ -32,30 +32,58 @@ export default function AjouterAnnonce() {
          .catch(err => console.log(err))
     }
     return (
-        <div>
+        <div className='ajouter__annonce'>
+            <h1>Ajouter une annonce</h1>
+            <br />
             <form onSubmit={onSubmit}>
-                <Input type="text" id="nom" name="nom" value={annonce.nom} onChange={onChange} requirede='required'>Nom du job</Input>
+                <div className="ajout__grp">
+                    <Input type="text" id="nom" name="nom" value={annonce.nom} onChange={onChange} requirede='required'>Nom du job : </Input>
+                </div>
+                <div className="ajout__grp">
+                <Input type="text" id="categorie" name="categorie" value={annonce.categorie} onChange={onChange} requirede='required'>Catégorie : </Input>
+                </div>
+                <div className="ajout__grp">
+                <Input type="text" id="souscategorie" name="sousCategorie" value={annonce.sousCategorie} onChange={onChange} requirede='required'>Sous-catégorie : </Input>
+                </div>
+                <div className="ajout__grp">    
+                <Input type="text" id="salaire" name="salaireDeBase" value={annonce.salaireDeBase} onChange={onChange} requirede='required'> Salaire : </Input>
+                </div>
+                <p>Journées :</p>
+                <ul>
+                    <li>
+                        <Input type="checkbox" id="dimanche" name="dimanche" onChange={onChangeJour} value='DIMANCHE'>Dimanche      </Input>
+                    </li>
+                    <li>
+                        <Input type="checkbox" id="lundi" name="lundi" onChange={onChangeJour} value='LUNDI'>Lundi      </Input>
+                    </li>
+                    <li>
+                        <Input type="checkbox" id="mardi" name="mardi" onChange={onChangeJour} value='MARDI'>Mardi      </Input>
+                    </li>
+                    <li>
+                        <Input type="checkbox" id="mercredi" name="mercredi" onChange={onChangeJour} value='MERCREDI'>Mercredi      </Input>
+                    </li>
+                    <li>
+                        <Input type="checkbox" id="jeudi" name="jeudi" onChange={onChangeJour} value='JEUDI'>Jeudi      </Input>
+                    </li>
+                    <li>
+                        <Input type="checkbox" id="vendredi" name="vendredi" onChange={onChangeJour} value='VENDREDI'>Vendredi      </Input>
+                    </li>
+                    <li>
+                        <Input type="checkbox" id="samedi" name="samedi" onChange={onChangeJour} value='SAMEDI'>Samedi      </Input>
+                    </li>
+                </ul>                
+                <div className="ajout__grp">    
+                <Input type="text" id="descriptionFr" name="descriptionFr" value={annonce.descriptionFr} onChange={onChange} requirede='required'>Description : </Input>
+                </div>
+                <div className="ajout__grp">    
+                <Input type="text" id="wilaya" name="wilaya" value={annonce.adresse.wilaya} onChange={onChange} requirede='required'>Wilaya : </Input>
+                </div>
+                <div className="ajout__grp">    
+                <Input type="text" id="commune" name="commune" value={annonce.adresse.commune} onChange={onChange} requirede='required'>Commune : </Input>
+                </div>
                 <br />
-                <Input type="text" id="categorie" name="categorie" value={annonce.categorie} onChange={onChange} requirede='required'>Categorie</Input>
                 <br />
-                <Input type="text" id="souscategorie" name="sousCategorie" value={annonce.sousCategorie} onChange={onChange} requirede='required'>Sous Categorie</Input>
-                <br />
-                <Input type="text" id="salaire" name="salaireDeBase" value={annonce.salaireDeBase} onChange={onChange} requirede='required'> Salaire</Input>
-                <br />
-                <Input type="checkbox" id="samedi" name="samedi" onChange={onChangeJour} value='SAMEDI'>SAMEDI</Input>
-                <Input type="checkbox" id="dimanche" name="dimanche" onChange={onChangeJour} value='DIMANCHE'>DIMANCHE</Input>
-                <Input type="checkbox" id="lundi" name="lundi" onChange={onChangeJour} value='LUNDI'>LUNDI</Input>
-                <Input type="checkbox" id="mardi" name="mardi" onChange={onChangeJour} value='MARDI'>MARDI</Input>
-                <Input type="checkbox" id="mercredi" name="mercredi" onChange={onChangeJour} value='MERCREDI'>MERCREDI</Input>
-                <Input type="checkbox" id="jeudi" name="jeudi" onChange={onChangeJour} value='JEUDI'>JEUDI</Input>
-                <Input type="checkbox" id="vendredi" name="vendredi" onChange={onChangeJour} value='VENDREDI'>VENDREDI</Input>
-                <br />
-                <Input type="text" id="descriptionFr" name="descriptionFr" value={annonce.descriptionFr} onChange={onChange} requirede='required'>descriptionFr</Input>
-                <br />
-                <Input type="text" id="wilaya" name="wilaya" value={annonce.adresse.wilaya} onChange={onChange} requirede='required'>wilaya</Input>
-                <Input type="text" id="commune" name="commune" value={annonce.adresse.commune} onChange={onChange} requirede='required'>commune</Input>
-                <br />
-                <Buttun>Créer</Buttun>
+                <Buttun className='creer'>Créer</Buttun>
                 <br />
             </form>
             {success && <h1>Succès</h1>}

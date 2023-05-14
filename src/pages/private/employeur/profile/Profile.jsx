@@ -54,10 +54,10 @@ export default function Profile() {
                         <p>Liste des annonces</p>
                     </Link>
 
-                    <Link to={param.nomUtilisateur + "/ajouterAnnonce"} className="sidebar__item">
+                    {/* <Link to={param.nomUtilisateur + "/ajouterAnnonce"} className="sidebar__item">
                         <BsCalendarPlusFill size={20} className="prf"/>
                         <p>Ajouter une annonce</p>
-                    </Link>
+                    </Link> */}
 
                     <Link to={param.nomUtilisateur + "/listPostulent"}className="sidebar__item">
                         <BsFillPersonLinesFill size={20} className="prf"/>

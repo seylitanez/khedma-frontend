@@ -1,0 +1,28 @@
+.liste__annonces {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    .tete {
+        width: 100%;
+        padding: 10px 100px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .ajouter {
+            cursor: pointer;
+            background-color: $color_bleu;
+            border-radius: 3px;
+            border: none;
+            font-size: 16px;
+            padding: 10px 36px;
+            color: white;
+            transition: .4s;
+        }
+
+        .ajouter:hover {
+            background-color: $color_oronge;
+        }
+    }
+}

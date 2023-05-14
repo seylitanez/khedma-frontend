@@ -1,0 +1,49 @@
+.card__postulant:hover, li .card__dev:focus {
+    background-color: black;
+    color: white;
+    transition: .4s;
+
+    & .contact__dev a {
+        color: white;
+        transition: .4s;
+    }
+
+    & .contact__dev  a:hover, a:focus {
+        color: $color_oronge;
+    }
+}
+
+.card__postulant {
+    cursor: pointer;
+    width: fit-content;
+    color: black;
+    height: fit-content;
+    padding: 24px 38px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    margin-right: 30px;
+    background-color: $color_oronge;
+
+    & h3 {
+        font-size: 32px;
+    }
+
+    & .card__contact {
+        display: flex;
+        width: 160px;
+        align-items: center;
+
+        & a {
+            text-decoration: none;
+            color: black;
+        }
+
+        & a:hover, a:focus {
+            color: $color_bleu;
+        }
+
+        & svg {
+            margin-right: 12px;
+        }
+    }
+}
