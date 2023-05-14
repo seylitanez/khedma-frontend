@@ -16,7 +16,7 @@ const  etape1IsValid=(user)=> {
     }else if (!emailRegex.test(user.adresseMail)) {
         alert("email invalide")
         return false
-    }else if (!telRegex.test(user.numeroTel)) {
+    }else if (!telRegex.test(user.tel)) {
         alert("numero de telephone invalide")
         return false
     }else if (!communeWilayaRegex.test(user.adresse.wilaya)) {

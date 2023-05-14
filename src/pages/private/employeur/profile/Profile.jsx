@@ -44,28 +44,25 @@ export default function Profile() {
         <div>
             <div className="profile_employeur">
                 <div className="sidebar">
-                    <div className="sidebar__item">
+                    <Link to={param.nomUtilisateur} className="sidebar__item">
                         <BsFillPersonFill size={20} className="prf" />
-                        <Link to={param.nomUtilisateur}>Mon profile</Link>
-                    </div>
-                    <div className="sidebar__item">
+                        <p>Mon profile</p>
+                    </Link>
+
+                    <Link to={param.nomUtilisateur + "/listAnnonce"} className="sidebar__item">
                         <BsCalendarFill size={20} className="prf" />
-                        <Link to={param.nomUtilisateur + "/listAnnonce"}>
-                            Liste des annonces
-                        </Link>
-                    </div>
-                    <div className="sidebar__item">
+                        <p>Liste des annonces</p>
+                    </Link>
+
+                    <Link to={param.nomUtilisateur + "/ajouterAnnonce"} className="sidebar__item">
                         <BsCalendarPlusFill size={20} className="prf"/>
-                        <Link to={param.nomUtilisateur + "/ajouterAnnonce"}>
-                            Ajouter une annonce
-                        </Link>
-                    </div>
-                    <div className="sidebar__item">
+                        <p>Ajouter une annonce</p>
+                    </Link>
+
+                    <Link to={param.nomUtilisateur + "/listPostulent"}className="sidebar__item">
                         <BsFillPersonLinesFill size={20} className="prf"/>
-                        <Link to={param.nomUtilisateur + "/listPostulent"}>
-                            List des postulants
-                        </Link>
-                    </div>
+                        <p>List des postulants</p>
+                    </Link>
                     {/* <div className="sidebar__item">
                         <FiLogOut size={20} className='prf' /> 
                         <Link to={"/home"} onClick={deconnection}>

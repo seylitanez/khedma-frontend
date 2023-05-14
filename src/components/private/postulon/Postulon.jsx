@@ -10,7 +10,7 @@ export default function Postulon({Postulon}) {
             <h3>genre : <span>{genre}</span></h3>
             <h3>tel : <span>{tel}</span></h3>
             {/* <h3>adresse : <span>{adresse.wilaya+" "+adresse.commune}</span></h3> */}
-            <h3>cv : <a href={cv} target='_blank'>{cv}</a></h3>
+            <h3>cv : <a href={"http://localhost:9630/"+cv} target='_blank'>{cv}</a></h3>
         </div>
     )
 }

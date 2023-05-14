@@ -38,19 +38,20 @@ export default function Profile() {
                 <Header/>
             </div>
             <div className="sidebar">
-
-                <div className="sidebar__item">
+                <Link to={param.nomUtilisateur} className="sidebar__item">
                     <BsFillPersonFill size={20} className='prf'/>    
-                    <Link to={param.nomUtilisateur} >Profile</Link>
-                </div>
-                <div className="sidebar__item">
-                    <MdFavorite size={20} className='fav'/>    
-                    <Link to={param.nomUtilisateur+'/favorie'}>Favoris</Link>
-                </div>
-                <div className="sidebar__item">
-                    <BsCardChecklist size={20} className='prf'/>    
-                    <Link to={param.nomUtilisateur+'/postuler'}>Postulations</Link>
-                </div>
+                    <p>Profile</p>
+                </Link>
+
+                <Link to={param.nomUtilisateur+'/favorie'} className="sidebar__item">
+                    <MdFavorite size={20} className='fav'/>
+                    <p>Favoris</p>
+                </Link>
+                
+                <Link to={param.nomUtilisateur+'/postuler'} className="sidebar__item">
+                    <BsCardChecklist size={20} className='prf'/>
+                    <p>Postulations</p>
+                </Link>
                 {/* <div className="sidebar__item">
                     <FiLogOut size={20} className='prf' /> 
                     <Link to={"/home"} onClick={deconnection}>Se déconnecter</Link>
