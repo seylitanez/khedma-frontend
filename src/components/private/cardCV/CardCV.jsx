@@ -1,9 +1,10 @@
 import { Buttun, Input } from '@p-components/index';
-import React, { useReducer, useState } from 'react'
+import React, { useEffect, useReducer, useState } from 'react'
 import "./cardcv.scss";
 import { MdEdit, MdOutlineFileUpload } from "react-icons/md";
 import { BsSaveFill } from 'react-icons/bs';
 import { accountService } from '@service/Account.service';
+import { Link } from 'react-router-dom';
 export default function CardCV() {
     const value={
         boul: false,
@@ -12,7 +13,20 @@ export default function CardCV() {
             text: "Modifier",
         },
     }
-    let extension;
+
+    const [user, setUser] = useState({})
+
+    useEffect(() => {
+        accountService.getUser()
+            .then(res => {
+                console.log(res.data)
+                setUser(res.data)
+                console.log(res.data.id)
+    
+            })
+            .catch(err => console.log(err))
+    }, [])
+
     const changes=(state,action)=>{
         switch (action.type) {
             case "edit": 
@@ -24,12 +38,13 @@ export default function CardCV() {
                     }
                 }
                 else{ 
-                    if (extension === "pdf" || extension === "png" || extension === "jpeg" || extension === "jpg") {
-                        formData.set("file", fichier, "cv." + extension)
+                    if (ext == "pdf" || ext == "png" || ext == "jpeg" || ext == "jpg") {
+                        formData.set("file", fichier, "cv." + ext)
                         accountService.addCv(formData);
                         console.log(e);
                     }
                     else {
+                        console.log("l'extention est"+ ext);
                         console.log("Format du fichier non supporté");
                     }
                     return {
@@ -42,15 +57,22 @@ export default function CardCV() {
         }
     }
     let formData = new FormData();
+    const [ext,setExt]=useState("")
+    const [fichier,setFichier]=useState()
+    
     function filtreFichier(fich, nomFich) {
+        let extension ;
         const fichier = fich
+        setFichier(fichier)
         const nomFichier = nomFich
-
+        console.log("--------------------");
         console.log(fichier)
         console.log(nomFichier)
+        console.log("****************");
         if (nomFichier.includes('.')) {
-            extension = nomFichier.split(".").at(-1);
+            // extension = nomFichier.split(".").at(-1);
             console.log(extension);
+            setExt(e=>e=nomFichier.split(".").at(-1))
         }
         else {
             console.log("Fichier sans extension");
@@ -74,7 +96,7 @@ export default function CardCV() {
             </div>
             <div className="experience">
                 <div className="piece">
-                    <p>Piece jointe: {element.boul ? <Input type="file" placeholder="cv" onChange={onchangeFile} icone={MdOutlineFileUpload} /> : <span className="clr">CV.{extension}</span>}</p>
+                    <p>Piece jointe: {element.boul ? <Input type="file" placeholder="cv" onChange={onchangeFile} icone={MdOutlineFileUpload} /> : <Link to={`http://localhost:9630/images/${user.id}/cv`} className="clr">{"mon CV"}</Link>}</p>
                 </div>
                 <div className="visible">
                     <p>Visible pour les recruteurs: <span className="clr">visible</span></p>
