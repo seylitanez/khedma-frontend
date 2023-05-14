@@ -81,7 +81,7 @@ export default function FormInsEmploye({type,etapeEmpploye,etapeEmpployeur,setEt
         
         accountService.addUser(user)
         .then(res=>{
-            accountService.saveToken(res.data.token)
+            // accountService.saveToken(res.data.token)
             // switch (user.role) {
             //     case 'EMPLOYE': navigate('/employe/profile/' + accountService.getUserName()); break;
             //     case 'EMPLOYEUR': navigate('/employeur/profile/' + accountService.getUserName()); break;
@@ -149,7 +149,7 @@ export default function FormInsEmploye({type,etapeEmpploye,etapeEmpployeur,setEt
                     <Input type="email" id="email" placeholder='email@exemple.com' name="adresseMail" value={user.adresseMail} onChange={onchange}/>
                 </div>
                 <div className={"ins__group "}>
-                    <Input type="tel" id="tel" placeholder='numero de tel' name="numeroTel" value={user.numeroTel} onChange={onchange}/>
+                    <Input type="tel" id="tel" placeholder='numero de tel' name="tel" value={user.tel} onChange={onchange}/>
                 </div>
                 <div className={"ins__group "}>
                     <Input type="commune" id="commune" placeholder='commune' name="commune" value={user.adresse.commune} onChange={onchange}/>

@@ -27,7 +27,7 @@ function App() {
   const [popupChoix,setPopupChoix]=useState(false)
 
   const [etapeInscription,setEtapeInscription]=useState(1)
-  const [formulaire,setFormulaire]=useState({motDePasse:"",nom:"",prenom:"",adresseMail:"",genre:"",role:"",numeroTel:"",adresse:{commune:"",wilaya:""},entreprise:""})
+  const [formulaire,setFormulaire]=useState({motDePasse:"",nom:"",prenom:"",adresseMail:"",genre:"",role:"",tel:"",adresse:{commune:"",wilaya:""},entreprise:""})
 
   useEffect(()=>{
     const script=document.createElement('script')
