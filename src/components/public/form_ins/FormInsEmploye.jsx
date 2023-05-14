@@ -86,25 +86,26 @@ export default function FormInsEmploye({type,etapeEmpploye,etapeEmpployeur,setEt
     const creationCompte=()=>{
 
         
+        console.log("mmmmmmmm");
+        console.log(user.motDePasse);
+        console.log(user.motDePasseC);
+        if (user.motDePasse===user.motDePasseC) {
         accountService.addUser(user)
         .then(res=>{
-            // accountService.saveToken(res.data.token)
-            // switch (user.role) {
-            //     case 'EMPLOYE': navigate('/employe/profile/' + accountService.getUserName()); break;
-            //     case 'EMPLOYEUR': navigate('/employeur/profile/' + accountService.getUserName()); break;
-            //     case 'MODERATEUR': navigate('/moderateur'); break;
-            // }
         })
         .catch(err=>console.log(err))
-
         setEtapeInscription(etapeInscription+1)
+        }else{
+            console.log("mot de passe non identique");
+        }
+
     }
+
+
 
     const onsubmit=(e)=>{
         e.preventDefault();
-        if (user.motDePasse===user.motDePasseC) {
-            creationCompte()
-        }
+        creationCompte()
     }
 
     function onSuccess(e){
