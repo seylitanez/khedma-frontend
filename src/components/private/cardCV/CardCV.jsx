@@ -12,6 +12,7 @@ export default function CardCV() {
             text: "Modifier",
         },
     }
+    let extension;
     const changes=(state,action)=>{
         switch (action.type) {
             case "edit": 
@@ -23,7 +24,7 @@ export default function CardCV() {
                     }
                 }
                 else{ 
-                    if (extension == "pdf" || extension == "png" || extension == "jpeg" || extension == "jpg") {
+                    if (extension === "pdf" || extension === "png" || extension === "jpeg" || extension === "jpg") {
                         formData.set("file", fichier, "cv." + extension)
                         accountService.addCv(formData);
                         console.log(e);
@@ -41,7 +42,6 @@ export default function CardCV() {
         }
     }
     let formData = new FormData();
-    let extension ;
     function filtreFichier(fich, nomFich) {
         const fichier = fich
         const nomFichier = nomFich
