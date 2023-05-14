@@ -26,7 +26,8 @@ export default function JobSearch() {
             </div>
             <div className="list">
                 
-                {annonces.map((annonce, key) => <Annonce annonce={annonce} key={key} />)}
+                {annonces.map((annonce, key) =>
+                 <Annonce annonce={annonce} key={key} />)}
             </div>
         </div>
     )
