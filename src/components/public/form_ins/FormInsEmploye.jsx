@@ -44,12 +44,12 @@ export default function FormInsEmploye({type,etapeEmpploye,etapeEmpployeur,setEt
             }
             else
             {
-                console.log("Format du fichier non supporté");
+                console.log("Format du fichier non supporté !");
             }   
             }
         else
         {
-            console.log("Fichier sans extension");
+            console.log("Fichier sans extension !");
         }
 
         
@@ -159,7 +159,7 @@ export default function FormInsEmploye({type,etapeEmpploye,etapeEmpployeur,setEt
                     <Input type="radio" id='male'name="genre" value="HOMME"onChange={onchange} >{"Homme"}</Input>
                     <Input type="radio" id='femme'name="genre" value='FEMME'onChange={onchange}>{"Femme"}</Input>
                 </div>
-                    <GLogin titre={"s'inscrire avec google"} onSuccess={onSuccess}/>
+                <GLogin className='glogin' titre={"S'inscrire avec google"} onSuccess={onSuccess}/>
             </form>
                     <div className='ins__group__suivant__precedent'>
                         <Buttun id="sing" onClick={()=>{

@@ -27,9 +27,8 @@ export default function Traducteur() {
         btn.click()
     }
     return (
-        <div className='traducteur' style={{transform: ouvert ? 'translateX(0)' : 'translateX(calc(-100% + 60px))' }}>
+        <div className='traducteur' style={{transform: ouvert ? 'translateX(0)' : 'translateX(calc(-100% + 68px))' }}>
             <div id="google_translate_element" className='apiTraduction'></div>
-            {/* <Buttun className="exit" onClick={()=>close()}><IoClose color='red' size={30}/></Buttun> */}
             <IoEarth size="44px" color='white' className='traducteur__bouton' onClick={handleClick}/>
     </div>
     )

@@ -101,21 +101,21 @@ export default function Login({setLoginOvert,setInscripOuvert}) {
 
     return (
         <form className="form__login" onSubmit={sub}>
-            <Fenetre ouvert={fenetreErreur.ouvert} handleClick={handleClick} ><h1>information incorrectes</h1></Fenetre>
+            <Fenetre ouvert={fenetreErreur.ouvert} handleClick={handleClick}><h1>information incorrectes</h1></Fenetre>
             {/* <h2>{h2}</h2> */}
-            <MdAccountCircle size={100} className='icone_account'/>
+            {/* <MdAccountCircle size={100} className='icone_account'/> */}
             <div className={"login__group "+anim}>
                 <Input type="text" id="email" name='adresseMail' value={user.adresseMail} onChange={onChange} onInput={e => setActive(e)} requirede='required'>{email}</Input>
             </div>
             <div className={"login__group "+anims}>
                 <Input type="password" id='mdp' name='motDePasse' value={user.motDePasse} onChange={onChange} onInput={e => setActives(e)} requirede='required'>{password}</Input>
             </div>
-            <GLogin titre={"se connecter avec google"} onSuccess={onSuccess} onFailure={onFailure}/>
-            <Link className='nv__compte' onClick={()=>{ switchFenetre()}}>nouveau compte?</Link>
+            {/* <Link className='nv__compte' onClick={()=>{ switchFenetre()}}>nouveau compte?</Link> */}
             <div className="login__mdp">
                 <Buttun type={"submit"} id="log">{connexion}</Buttun>
                 {/* <Buttun id="sing">{inscription}</Buttun> */}
             </div> 
+            <GLogin titre={"Se connecter avec Google"} onSuccess={onSuccess} onFailure={onFailure}/>
         </form>
     )
 }

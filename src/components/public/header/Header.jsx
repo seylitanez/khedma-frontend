@@ -175,16 +175,21 @@ export default function Header() {
                     accountService.isLogged() && accountService.isValid()?
                     <>
                         <div>
-                            <div className="desco voir__annonces">
-                                <Link  to='/jobSearch' >Voir les annonces</Link>
-                            </div>
-                            <div className="desco mon__profile">
-                                <Link to={routeProfile}>Mon profile</Link>
-                            </div>
-                            <div className="desco">
-                                {/* <FiLogOut size={20} className='prf' /> */}
-                                <Link to="/home" onClick={()=>deconnection()}>Se déconnecter</Link>
-                            </div>
+                            <Link  to='/jobSearch' >
+                                <div className="desco voir__annonces">
+                                    Voir les annonces
+                                </div>
+                            </Link>
+                            <Link to={routeProfile}>
+                                <div className="desco mon__profile">
+                                    Mon profile
+                                </div>
+                            </Link>
+                            <Link to="/home" onClick={()=>deconnection()}>
+                                <div className="desco">
+                                        Se déconnecter
+                                </div>
+                            </Link>
                             <GoogleLogout className='out-google' clientId={"96654489585-9kfrhk9jgeq4nodccs7tg0lagl1hq6uj.apps.googleusercontent.com"} buttonText={"se deconnecter"} onClick={{}} onLogoutSuccess={() => { console.log("vous vous etes deconnecte avec success"); }} />
                         </div>
                     </>
