@@ -97,6 +97,7 @@ export default function FormInsEmploye({type,etapeEmpploye,etapeEmpployeur,setEt
         setEtapeInscription(etapeInscription+1)
         }else{
             console.log("mot de passe non identique");
+            alert("mot de passe non identique")
         }
 
     }
@@ -211,26 +212,9 @@ export default function FormInsEmploye({type,etapeEmpploye,etapeEmpployeur,setEt
             </div>
         </div>
         )
-        //cv
-        case 4:
-            return (
-                <div>
-    
-            <form className='form' onSubmit={onsubmit}>
-                <h2>deposez votre cv en piece jointe</h2>
-                <div className={"ins__group__cv"}>
-                    <Input type="file" placeholder="cv" onChange={onchangeFile} icone={MdOutlineFileUpload}/>
-                </div>
-            </form>
-                    <div className='ins__group__suivant__precedent'>
-                        <Buttun id="sing" onClick={()=>{setEtapeInscription(e=>e=e+1);}}>{"suivant"}</Buttun>
-                    </div>
-            </div>
-        )
-        break;
 
-        
-        case 5:
+
+        case 4:
 
         return(
             <div>
